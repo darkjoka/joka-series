@@ -1,0 +1,18 @@
+{% extends 'joka_series/base.html' %}
+
+{% block content %}
+
+    <h1 class="hot">User's Beloved💖</h1>
+    <section class="content">
+        {% for link, image in series %}
+            <a href="{% url 'joka_series:detail' link %}">
+                <div class="episodes">
+                    <img src="{{ image }}" alt="#">
+                </div>
+            </a>
+        {% endfor %}
+
+
+    </section>
+
+{% endblock content %}

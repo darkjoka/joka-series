@@ -1,0 +1,158 @@
+/* style for detail.html */
+
+.dhero img {
+    width: 100vw;
+}
+.dvdt {
+    display: flex;
+}
+.dinfo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: rgb(80, 196, 137);
+    font-size: 1em;
+    border-left: .5em solid rgb(46, 70, 83);
+    height: 2em;
+    margin: 1em .5em;
+    padding-left: .3em;
+    text-transform: capitalize;
+}
+.description {
+    margin: 0 1em 1em 1em;
+    color: rgb(46, 70, 83);
+}
+
+input[type="checkbox"] {
+    opacity: 0;
+    z-index: -1;
+    position: absolute;
+}
+
+.dcontainer {
+    margin: 0 1em;
+    overflow: hidden;
+    border-radius: 8px;
+
+}
+
+.dseason {
+    width: 100%;
+    color: rgb(80, 196, 137);
+    overflow: hidden;
+}
+
+.dseason-label {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    background: rgb(46, 70, 83);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.dseason-label:hover {
+    background-color: rgb(39, 61, 73);
+}
+
+.dseason-label::after {
+    content: "\276F";
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    transition: all .35s;
+}
+
+.depisodes {
+    max-height: 0;
+    padding: 0 1em;
+    color: rgb(46, 70, 83);
+    background: white;
+    transition: all .35s
+}
+
+input:checked + .dseason-label {
+    background: rgb(39, 61, 73);
+}
+
+input:checked + .dseason-label::after {
+    transform: rotate(90deg);
+}
+input:checked ~ .depisodes {
+    max-height: 100%;
+    padding: 1em;
+}
+
+.depisode {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.depinfo {
+    display: flex;
+    align-items: center;
+}
+
+.dfinal {
+    font-weight: bold;
+    padding: .5em;
+    background-color: rgb(152, 228, 189);;
+    border-radius: 5px;
+    color: rgb(39, 61, 73) ;
+    margin-left: 1em;
+    transition: background-color ,color .5s ease;
+}
+
+.dfinal:hover {
+    background-color: rgb(33, 51, 61);
+    color: rgb(80, 196, 137);
+}
+
+
+
+
+@media (min-width: 700px) {
+
+    .dvdt {
+        justify-content: center;
+    }
+
+    .dinfo {
+        font-size: 1.3em;
+    }
+
+    .description {
+        margin: 0 2em 2em 2em ;
+    }
+
+    .dcontainer {
+        margin: 0 2em;
+    }
+
+
+}
+
+@media (min-width: 900px) {
+    .dhero {
+        display: flex;
+        justify-content: center;
+        background: url(bg.png) rgb(33, 51, 61);
+        background-size: cover;
+    }
+
+    .dhero img {
+        width: 50em;
+        height: 100%;
+
+    }
+
+    .dcontainer {
+        margin: 0 10em 2em 10em;
+
+    }
+    .description{
+        margin: 0 10em 2em 10em;
+    }
+
+}

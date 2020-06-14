@@ -1,0 +1,101 @@
+
+
+/* styling for index html */
+
+.hero img {
+    width: 100vw;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.episodes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:  rgb(46, 138, 90);
+    width: 15em;
+    height: 20em;
+    border-radius: 5px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: background-color .5s;
+    margin-bottom: 2em;
+
+}
+
+.episodes img {
+    width: calc(100% + 60px);
+    opacity: .5;
+    transform: translate3d(0,-20px, 0) scale(1.13);
+    transition: .5s;
+ 
+
+}
+
+.episodes h3 {
+    position: absolute;
+    padding: .5em 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(80, 196, 137);
+    background-color: rgb(33, 51, 61);
+    border-radius: 4px;
+    left: 0;
+}
+
+.episodes:hover {
+    background-color: rgb(33, 51, 61);
+}
+
+.episodes:hover img {
+    transform: translate3d(0,0,0) scale(1);
+    opacity: .7;
+}
+
+.hot {
+    text-align: center;
+    margin: 1em 0;
+    text-transform: uppercase;
+    color: rgb(33, 51, 61);
+}
+
+
+@media (min-width: 700px){
+    .content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .episodes {
+        margin: 1em 1em;
+    }
+
+    
+}
+
+@media (min-width: 900px){
+    .hero {
+        display: flex;
+        justify-content: center;
+        background: url(bg.png) rgb(33, 51, 61);
+        background-size: cover;
+    }
+
+    .hero img {
+        width: 50em;
+        height: 100%;
+        
+    }
+
+
+    .content {
+        margin: 0, 10em;
+    }
+
+}

@@ -1,0 +1,34 @@
+{% extends 'joka_series/base.html' %}
+
+{% block content %}
+    <h1 class="shead">
+        You searched for {{ searchTerm }}
+    </h1>
+
+        <section class="scontent">
+            {% for title, link in series%}
+            <a href="{% url 'joka_series:detail' link %}">
+                <div class="sepisodes">
+                    <h3>{{ title }}</h3>
+                </div>
+            </a>
+            {% empty %}
+                <p>Hmmm...🤔 That's surprising we found nothing </p>
+            {% endfor %}
+        </section>
+            
+
+
+{% endblock content %}
+
+<h1 class="shead">
+    You searched for 'Koobe'
+  </h1>
+
+<section class="scontent">
+    <a href="#">
+        <div class="sepisodes">
+            <h3>This is the title</h3>
+        </div>
+    </a>
+</section>

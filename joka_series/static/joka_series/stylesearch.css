@@ -1,0 +1,59 @@
+/* style for search.html */
+
+.shead {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: rgb(39, 61, 73);
+}
+
+.scontent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em 0;
+}
+
+.sepisodes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(anbg.png) rgb(39, 61, 73);
+    background-size: cover;
+    width: 20em;
+    height: 5em;
+    color: rgb(80, 196, 137);
+    margin-bottom: 1em;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: color .5s;
+
+}
+
+.sepisodes:hover {
+    color: rgb(152, 228, 189);
+}
+
+@media (min-width: 700px) {
+
+
+    .scontent {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sepisodes{
+        margin: 1em 1em;
+    }
+}
+
+@media (min-width: 900px) {
+
+
+    .scontent{
+        margin-left: 10em;
+        margin-right: 10em;
+    }
+}

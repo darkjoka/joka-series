@@ -1,0 +1,1 @@
+web: gunicorn joka_tv.wsgi --log-file -

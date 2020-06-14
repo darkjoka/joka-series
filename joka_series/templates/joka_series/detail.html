@@ -1,0 +1,49 @@
+{% extends 'joka_series/base.html' %}
+
+{% block content %}
+
+    <section class="dhero">
+        <img src="{{ heroImage }}" alt="{{ title }}">
+    </section>
+    <div class="dvdt">
+        <div class="dinfo">{{ title }}</div>
+        <div class="dinfo">{{ genre }} </div>
+    </div>
+    <div class="description">
+        {% for desc in seriesDesc %}
+            <p>
+                {{ desc }}
+            </p>
+        {% endfor %}
+    </div>
+
+    <div class="dcontainer">
+      {% for key,value in season.items %}
+      <div class="dseason">
+        <input type="checkbox" id="{{ key }}">
+        <label for="{{ key }}" class="dseason-label">{{ key }}</label>
+        <div class="depisodes">
+          {% for keey in value.values %}
+          <div class="depisode">
+            <div class="dep">{{ keey.0 }}</div>
+            <div class = "depinfo">
+              <div class="dsize">{{ keey.1 }}</div>
+              <a href="{{ keey.2 }}" class="dfinal">Download</a>
+            </div>
+          </div>
+          <p>
+            <br>
+            <hr>
+            <br>
+          </p>
+          {% endfor %}
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+
+
+{% endblock content %}
+
