@@ -2,6 +2,7 @@ from django.shortcuts import render
 import requests
 from bs4 import BeautifulSoup
 from requests.compat import quote_plus
+from scraper import scrapers
 
 # Create your views here.
 
@@ -11,23 +12,7 @@ baseeUrl = "http://www.todaytvseries2.com/tv-series/"
 
 
 def index(request):
-    res = requests.get(baseUrl)
-    soup = BeautifulSoup(res.content, "html.parser")
-    hero = soup.find(class_="uk-width-large-2-3")
-    heroImage = hero.find("img").get("src")
-    heroImage = baseUrl + heroImage
-    heroLink = hero.find("a").get("href").split("/")[-1]
-
-    outer = soup.find(class_="uk-grid-width-1-1")
-    series = outer.find_all(class_="uk-text-center")
-    seriesTitle = [title.find("a").get("title") for title in series]
-    seriesLink = [link.find("a").get("href").split("/")[-1] for link in series]
-    seriesImage = [baseUrl + image.find("img").get("src") for image in series]
-    series = zip(seriesTitle, seriesLink, seriesImage)
-
-    context = {"heroImage": heroImage, "heroLink": heroLink, "series": series}
-
-    return render(request, "joka_series/index.html", context)
+    result = scrapers.getFromIndex(baseeUrl)
 
 
 def popular(request):
