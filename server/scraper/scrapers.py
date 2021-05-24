@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-movie = Dict[str, str]
+movieType = Dict[str, str]
 
 
 def getFromIndex(pageLink: str):
@@ -11,7 +11,7 @@ def getFromIndex(pageLink: str):
     soup = BeautifulSoup(mime.content, "html.parser")
     articles = soup.find_all(class_="uk-article")
 
-    series: List[movie] = []
+    series: List[movieType] = []
 
     for article in articles:
         title: str = article.find(class_="uk-article-title1").get_text().strip()
@@ -20,3 +20,14 @@ def getFromIndex(pageLink: str):
         lastEpisode: str = article.find("time").get("datetime")
         rating: str = article.find(class_="current-rating").get_text().strip()
         teaser: str = article.find(class_="teasershort").get_text().strip()
+
+        movie: movieType = {
+            "title": title,
+            "permaLink": permaLink,
+            "lastEpisode": lastEpisode,
+            "rating": rating,
+            "teaser": teaser,
+        }
+        series.append(movie)
+
+    return series
