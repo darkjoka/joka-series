@@ -28,6 +28,7 @@ def getFromIndex(pageLink: str):
             "rating": rating,
             "teaser": teaser,
         }
+
         series.append(movie)
 
     return series
