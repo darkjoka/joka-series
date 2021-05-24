@@ -2,7 +2,7 @@ from django.shortcuts import render
 import requests
 from bs4 import BeautifulSoup
 from requests.compat import quote_plus
-from scraper import scrapers
+from scraper import scrapers  # type: ignore
 
 # Create your views here.
 
