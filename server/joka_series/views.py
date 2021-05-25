@@ -1,10 +1,12 @@
+from typing import Dict, List
 from django.shortcuts import render
 import requests
 from bs4 import BeautifulSoup
 from requests.compat import quote_plus
+from django.http import JsonResponse
+
 from scraper import scrapers  # type: ignore
 
-# Create your views here.
 
 # base urls
 baseUrl = "http://www.todaytvseries2.com/"
@@ -12,7 +14,8 @@ baseeUrl = "http://www.todaytvseries2.com/tv-series/"
 
 
 def index(request):
-    result = scrapers.getFromIndex(baseeUrl)
+    result: List[Dict[str, str]] = scrapers.getFromIndex(baseeUrl)
+    return JsonResponse({"data": result})
 
 
 def popular(request):
