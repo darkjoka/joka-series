@@ -24,6 +24,7 @@ def getFromIndex(pageLink: str):
         movie: movieType = {
             "title": title,
             "permaLink": permaLink,
+            "imageSrc": imageSrc,
             "lastEpisode": lastEpisode,
             "rating": rating,
             "teaser": teaser,
