@@ -16,7 +16,7 @@ def getFromIndex(pageLink: str):
     for article in articles:
         title: str = article.find(class_="uk-article-title1").get_text().strip()
         permaLink: str = article.get("data-permalink")
-        imageSrc: str = article.find("img").get("src")
+        imageSource: str = article.find("img").get("src")
         lastEpisode: str = article.find("time").get("datetime")
         rating: str = article.find(class_="current-rating").get_text().strip()
         teaser: str = article.find(class_="teasershort").get_text().strip()
@@ -24,7 +24,7 @@ def getFromIndex(pageLink: str):
         movie: movieType = {
             "title": title,
             "permaLink": permaLink,
-            "imageSrc": imageSrc,
+            "imageSource": imageSource,
             "lastEpisode": lastEpisode,
             "rating": rating,
             "teaser": teaser,
