@@ -8,7 +8,7 @@ movieType = Dict[str, str]
 
 def getFromIndex(pageLink: str):
     mime = requests.get(pageLink)
-    soup = BeautifulSoup(mime.content, "html.parser")
+    soup: BeautifulSoup = BeautifulSoup(mime.content, "html.parser")
     articles = soup.find_all(class_="uk-article")
 
     series: List[movieType] = []
@@ -28,6 +28,39 @@ def getFromIndex(pageLink: str):
             "lastEpisode": lastEpisode,
             "rating": rating,
             "teaser": teaser,
+        }
+
+        series.append(movie)
+
+    return series
+
+
+def getTrailers(pageLink: str):
+    mime = requests.get(pageLink)
+    soup: BeautifulSoup = BeautifulSoup(mime.content, "html.parser")
+    articles = soup.find_all(class_="jux-item")
+
+    series: List[movieType] = []
+
+    for article in articles:
+        classes: List[str] = article.get("class")
+        production: str = classes[4] if len(classes) > 4 else ""
+
+        titleGroup = article.find(class_="jux-title")
+        [permaLink, title] = [
+            titleGroup.find("a").get("href").strip(),
+            titleGroup.get_text().strip(),
+        ]
+
+        thumbNailSource: str = article.find("img").get("src").strip()
+        videoSource: str = article.find("iframe").get("src").strip()
+
+        movie: movieType = {
+            "title": title,
+            "permaLink": permaLink,
+            "thumbNailSource": thumbNailSource,
+            "videoSource": videoSource,
+            "production": production,
         }
 
         series.append(movie)
