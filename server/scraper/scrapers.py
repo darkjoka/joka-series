@@ -87,4 +87,26 @@ def getDetails(pageLink: str):
     seasonHeads: ResultSet = soup.find_all(class_="uk-accordion-title")
     episodeHeads: ResultSet = soup.find_all(class_="uk-accordion-content")
 
-    episodes = []
+    episodes: List[seasonEpisodeType] = []
+
+    for seasonHead, episodeHead in zip(seasonHeads, episodeHeads):
+        head: str = seasonHead.get_text().strip()
+        episodes = episodeHead.find_all(class_="footer")
+        obj: seasonEpisodeType = {head: {"episodes": []}}
+
+        for episode in episodes:
+            episodeTitle: str = episode.find(class_="cell2").get_text().stip()
+            episodeSize: str = episode.find(class_="cell3").get_text()
+            epidoseDownloadLink = episode.find(class_="cell4").find("a").get("href")
+
+            obj[head]["episode"].append(
+                {
+                    "episodeTitle": episodeTitle,
+                    "episodeSize": episodeSize,
+                    "episodeDownloadLink": epidoseDownloadLink,
+                }
+            )
+
+        episodes.append(obj)
+
+    return episodes
