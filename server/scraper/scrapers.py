@@ -92,14 +92,14 @@ def getDetails(pageLink: str):
     for seasonHead, episodeHead in zip(seasonHeads, episodeHeads):
         head: str = seasonHead.get_text().strip()
         episodes = episodeHead.find_all(class_="footer")
-        obj: seasonEpisodeType = {head: {"episodes": []}}
+        seasonEpisode: seasonEpisodeType = {head: {"episodes": []}}
 
         for episode in episodes:
             episodeTitle: str = episode.find(class_="cell2").get_text().stip()
             episodeSize: str = episode.find(class_="cell3").get_text()
             epidoseDownloadLink = episode.find(class_="cell4").find("a").get("href")
 
-            obj[head]["episode"].append(
+            seasonEpisode[head]["episode"].append(
                 {
                     "episodeTitle": episodeTitle,
                     "episodeSize": episodeSize,
@@ -107,6 +107,6 @@ def getDetails(pageLink: str):
                 }
             )
 
-        episodes.append(obj)
+        episodes.append(seasonEpisode)
 
     return episodes
