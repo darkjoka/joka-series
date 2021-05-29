@@ -5,6 +5,7 @@ import requests
 
 
 movieType = Dict[str, str]
+seasonEpisodeType = Dict[str, Dict[str, List[Dict[str, str]]]]
 
 
 def getFromIndex(pageLink: str):
