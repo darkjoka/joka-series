@@ -87,7 +87,7 @@ def getDetails(pageLink: str):
     seasonHeads: ResultSet = soup.find_all(class_="uk-accordion-title")
     episodeHeads: ResultSet = soup.find_all(class_="uk-accordion-content")
 
-    episodes: List[seasonEpisodeType] = []
+    seasonEpisodes: List[seasonEpisodeType] = []
 
     for seasonHead, episodeHead in zip(seasonHeads, episodeHeads):
         head: str = seasonHead.get_text().strip()
@@ -107,6 +107,6 @@ def getDetails(pageLink: str):
                 }
             )
 
-        episodes.append(seasonEpisode)
+        seasonEpisodes.append(seasonEpisode)
 
-    return episodes
+    return seasonEpisodes
