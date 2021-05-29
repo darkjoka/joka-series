@@ -2,6 +2,7 @@ from typing import Dict, List
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet
 import requests
+from requests.models import Response
 
 
 movieType = Dict[str, str]
@@ -9,9 +10,9 @@ seasonEpisodeType = Dict[str, Dict[str, List[Dict[str, str]]]]
 
 
 def getFromIndex(pageLink: str):
-    mime = requests.get(pageLink)
+    mime: Response = requests.get(pageLink)
     soup: BeautifulSoup = BeautifulSoup(mime.content, "html.parser")
-    articles = soup.find_all(class_="uk-article")
+    articles: ResultSet = soup.find_all(class_="uk-article")
 
     series: List[movieType] = []
 
@@ -38,9 +39,9 @@ def getFromIndex(pageLink: str):
 
 
 def getTrailers(pageLink: str):
-    mime = requests.get(pageLink)
+    mime: Response = requests.get(pageLink)
     soup: BeautifulSoup = BeautifulSoup(mime.content, "html.parser")
-    articles = soup.find_all(class_="jux-item")
+    articles: ResultSet = soup.find_all(class_="jux-item")
 
     series: List[movieType] = []
 
@@ -91,13 +92,15 @@ def getDetails(pageLink: str):
 
     for seasonHead, episodeHead in zip(seasonHeads, episodeHeads):
         head: str = seasonHead.get_text().strip()
-        episodes = episodeHead.find_all(class_="footer")
+        episodes: ResultSet = episodeHead.find_all(class_="footer")
         seasonEpisode: seasonEpisodeType = {head: {"episodes": []}}
 
         for episode in episodes:
             episodeTitle: str = episode.find(class_="cell2").get_text().stip()
             episodeSize: str = episode.find(class_="cell3").get_text()
-            epidoseDownloadLink = episode.find(class_="cell4").find("a").get("href")
+            epidoseDownloadLink: str = (
+                episode.find(class_="cell4").find("a").get("href")
+            )
 
             seasonEpisode[head]["episode"].append(
                 {
@@ -113,7 +116,7 @@ def getDetails(pageLink: str):
 
 
 def getFilteredSearch(pageLink: str):
-    mime = requests.get(pageLink)
+    mime: Response = requests.get(pageLink)
     soup: BeautifulSoup = BeautifulSoup(mime.content, "html.parser")
 
     articles: ResultSet = soup.find_all("article")
@@ -123,8 +126,8 @@ def getFilteredSearch(pageLink: str):
     for article in articles:
         titleGroup = article.find(class_="uk-article-titletag")
 
-        title = titleGroup.find_text().strip()
-        permaLink = (titleGroup.find("a").get("href").strip(),)
+        title: str = titleGroup.find_text().strip()
+        permaLink: str = titleGroup.find("a").get("href").strip()
 
         imageSource: str = article.find("img").get("src").strip()
 
