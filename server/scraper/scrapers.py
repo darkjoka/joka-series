@@ -66,3 +66,18 @@ def getTrailers(pageLink: str):
         series.append(movie)
 
     return series
+
+
+def getDetails(pageLink: str):
+    mime = requests.get(pageLink)
+    soup: BeautifulSoup = BeautifulSoup(mime.content, "html.parser")
+
+    heroImage: str = soup.find(class_="imageseries1").find("img").get("src")
+    title: str = soup.find("h1", attrs={"class": "uk-badge1"}).get_text().strip()
+    description: str = soup.find("meta", attrs={"property": "og:description"}).get(
+        "content"
+    )
+
+    genres: List[str] = (
+        soup.find(class_="footer").find(class_="cell1").get_text().strip(" | ")
+    )
