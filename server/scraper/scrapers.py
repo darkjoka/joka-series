@@ -110,3 +110,30 @@ def getDetails(pageLink: str):
         seasonEpisodes.append(seasonEpisode)
 
     return seasonEpisodes
+
+
+def getFilteredSearch(pageLink: str):
+    mime = requests.get(pageLink)
+    soup: BeautifulSoup = BeautifulSoup(mime.content, "html.parser")
+
+    articles: ResultSet = soup.find_all("article")
+
+    series: List[movieType] = []
+
+    for article in articles:
+        titleGroup = article.find(class_="uk-article-titletag")
+
+        title = titleGroup.find_text().strip()
+        permaLink = (titleGroup.find("a").get("href").strip(),)
+
+        imageSource: str = article.find("img").get("src").strip()
+
+        movie: movieType = {
+            "title": title,
+            "permaLink": permaLink,
+            "imageSource": imageSource,
+        }
+
+        series.append(movie)
+
+    return series
