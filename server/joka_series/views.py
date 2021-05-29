@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Union
 from django.shortcuts import render
 import requests
 from bs4 import BeautifulSoup
@@ -44,52 +44,5 @@ def search(request):
 
 def detail(request, series):
     finalUrl = baseeUrl + series
-    res = requests.get(finalUrl)
-    soup = BeautifulSoup(res.content, "html.parser")
-    hero = soup.find(class_="imageseries1")
-    heroImage = hero.find("img").get("src")
-    heroImage = baseUrl + heroImage
-    title = soup.find("h1", attrs={"class": "uk-badge1"}).get_text()
-
-    desc = soup.find(class_="content2")
-    allPara = desc.find_all("p", attrs={"class": ""})
-    seriesDesc = [
-        para.get_text()
-        for para in allPara
-        if not (
-            para.get_text().startswith("Download")
-            or para.get_text().startswith("We try our best")
-            or para.get_text().startswith("Note")
-        )
-    ]
-
-    info = soup.find(class_="footer").find_all(class_="cell1")
-    Genre, Language, resolution = [i.get_text() for i in info[0:3]]
-    seasons = soup.find_all(class_="uk-accordion-title")
-    episodes = soup.find_all(class_="uk-accordion-content")
-    seasondict = {}
-
-    for season, episode in zip(seasons, episodes):
-        epdict = {}
-        baseEp = episode.find(class_="uk-margin")
-        eps = baseEp.find_all(class_="cell2")
-        sizes = baseEp.find_all(class_="cell3")
-        links = baseEp.find_all(class_="cell4")
-        for ep, size, link in zip(eps, sizes, links):
-            epdict[ep.get_text()] = [
-                ep.get_text(),
-                size.get_text(),
-                link.find("a").get("href"),
-            ]
-        seasondict[season.get_text()] = epdict
-
-    context = {
-        "heroImage": heroImage,
-        "title": title,
-        "seriesDesc": seriesDesc,
-        "genre": Genre,
-        "resolution": resolution,
-        "season": seasondict,
-    }
-
-    return render(request, "joka_series/detail.html", context)
+    result: Dict[str, Union(str, list)] = scrapers.getDetails(finalUrl)
+    return JsonResponse({"data": result})
