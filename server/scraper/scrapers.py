@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Union
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet
 import requests
@@ -7,6 +7,7 @@ from requests.models import Response
 
 movieType = Dict[str, str]
 seasonEpisodeType = Dict[str, Dict[str, List[Dict[str, str]]]]
+stringOrList = Union(str, list)
 
 
 def getFromIndex(pageLink: str):
