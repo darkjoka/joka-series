@@ -18,21 +18,6 @@ def index(request):
     return JsonResponse({"data": result})
 
 
-def popular(request):
-    addUrl = "tv-series"
-    finalUrl = baseUrl + addUrl
-    res = requests.get(finalUrl)
-    soup = BeautifulSoup(res.content, "html.parser")
-    series = soup.find_all(class_="nspArt")
-    seriesLink = [link.find("a").get("href").split("/")[-1] for link in series]
-    seriesImage = [baseUrl + link.find("img").get("src") for link in series]
-    series = zip(seriesLink, seriesImage)
-
-    context = {"series": series}
-
-    return render(request, "joka_series/popular.html", context)
-
-
 def search(request):
     searchTerm = request.POST.get("search")
     addUrl = (
