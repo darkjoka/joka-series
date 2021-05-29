@@ -113,7 +113,15 @@ def getDetails(pageLink: str):
 
         seasonEpisodes.append(seasonEpisode)
 
-    return seasonEpisodes
+    detail: Dict[str, stringOrList] = {
+        "heroImage": heroImage,
+        "title": title,
+        "description": description,
+        "genres": genres,
+        "seasonEpisodes": seasonEpisodes,
+    }
+
+    return detail
 
 
 def getFilteredSearch(pageLink: str):
