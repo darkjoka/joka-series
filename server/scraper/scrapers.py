@@ -1,5 +1,6 @@
 from typing import Dict, List
 from bs4 import BeautifulSoup
+from bs4.element import ResultSet
 import requests
 
 
@@ -81,3 +82,8 @@ def getDetails(pageLink: str):
     genres: List[str] = (
         soup.find(class_="footer").find(class_="cell1").get_text().strip(" | ")
     )
+
+    seasonHeads: ResultSet = soup.find_all(class_="uk-accordion-title")
+    episodeHeads: ResultSet = soup.find_all(class_="uk-accordion-content")
+
+    episodes = []
