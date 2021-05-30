@@ -1,4 +1,5 @@
 from typing import Dict, List, Union
+import json
 
 from requests.compat import quote_plus
 from django.http import JsonResponse
@@ -13,7 +14,7 @@ baseeUrl = "http://www.todaytvseries2.com/tv-series/"
 
 def index(request):
     result: List[Dict[str, str]] = scrapers.getFromIndex(baseeUrl)
-    return JsonResponse({"data": result})
+    return JsonResponse(json.dumps({"data": result}, indent=2))
 
 
 def search(request):
@@ -23,10 +24,10 @@ def search(request):
     )
     finalUrl = baseUrl + addUrl
     result: List[Dict[str, str]] = scrapers.getSearchResults(finalUrl)
-    return JsonResponse({"data": result})
+    return JsonResponse(json.dumps({"data": result}, indent=2))
 
 
 def detail(request, series):
     finalUrl = baseeUrl + series
     result: Dict[str, Union(str, list)] = scrapers.getDetails(finalUrl)
-    return JsonResponse({"data": result})
+    return JsonResponse(json.dumps({"data": result}, indent=2))
