@@ -1,7 +1,5 @@
 from typing import Dict, List, Union
-from django.shortcuts import render
-import requests
-from bs4 import BeautifulSoup
+
 from requests.compat import quote_plus
 from django.http import JsonResponse
 
