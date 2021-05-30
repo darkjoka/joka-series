@@ -149,3 +149,20 @@ def getFilteredSearch(pageLink: str):
         series.append(movie)
 
     return series
+
+
+def getSearchResult(permaLink: str):
+    mime: Response = requests.get(permaLink)
+    soup: BeautifulSoup = BeautifulSoup(mime.content, "html.parser")
+
+    articles: ResultSet = soup.find_all("article")
+
+    searchResults: List[movieType] = []
+
+    for article in articles:
+        title: str = article.get_text().strip()
+        permaLink: str = article.find("a").get("href")
+
+        searchResults.append({"title": title, "permaLink": permaLink})
+
+    return searchResults
