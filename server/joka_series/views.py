@@ -24,22 +24,8 @@ def search(request):
         f"search-series?searchword={quote_plus(searchTerm)}&searchphrase=all&limit=0"
     )
     finalUrl = baseUrl + addUrl
-    res = requests.get(finalUrl)
-    soup = BeautifulSoup(res.content, "html.parser")
-
-    outer = soup.find(class_="tm-content")
-    series = outer.find_all(class_="content2")
-    seriesTitle = [title.find("a").get("title") for title in series]
-    seriesLink = [link.find("a").get("href").split("/")[-1] for link in series]
-    series = zip(seriesTitle, seriesLink)
-    state = True if len(seriesLink) != 0 else False
-
-    context = {
-        "searchTerm": searchTerm,
-        "series": series,
-        "state": state,
-    }
-    return render(request, "joka_series/search.html", context)
+    result: List[Dict[str, str]] = scrapers.getSearchResults(finalUrl)
+    return JsonResponse({"data": result})
 
 
 def detail(request, series):
