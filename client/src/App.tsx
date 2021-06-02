@@ -11,7 +11,8 @@ const App:FC = () => {
 }
 
 const Main = styled.div`
-  background-color: ${GENERIC_BACKGROUND}
+  background-color: ${GENERIC_BACKGROUND};
+  height: 100vh;
 `
 
 
