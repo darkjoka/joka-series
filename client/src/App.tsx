@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { GENERIC_BACKGROUND } from './constants/colors';
 
-function App() {
+const App:FC = () => {
   return (
     <Main>
 
