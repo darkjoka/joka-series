@@ -1,5 +1,6 @@
 const GENERIC_BORDER = "#f1f1f1";
 const GENERIC_BACKGROUND = "#fafafa";
+const WHITE = "#ffffff";
 const GREEN = "#66C2AE";
 const YELLOW = "#F7E973";
 const DISCORD_YELLOW = "#DD951F";
