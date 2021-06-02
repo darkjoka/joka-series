@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { GENERIC_BORDER } from "../constants/colors";
+import { GENERIC_BORDER, WHITE } from "../constants/colors";
 
 
 const MovieCard:FC = () => {
@@ -19,7 +19,7 @@ const Card = styled.div`
   border-radius: 4px 4px 0 0;
   margin: 8px;
   position: relative;
-  background-color: white;
+  background-color: ${WHITE};
 
   img {
     aspect-ratio: 250/350;
