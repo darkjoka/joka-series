@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { GENERIC_BACKGROUND } from './constants/colors';
+import GlobalStyle from './components/GlobalStyle';
 
 const App:FC = () => {
-  return (
+  return (<>
+    <GlobalStyle></GlobalStyle>
     <Main>
-
     </Main>
-  );
+  </>);
 }
 
 const Main = styled.div`
