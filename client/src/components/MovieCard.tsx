@@ -18,7 +18,8 @@ const MovieCard:FC<MovieCardProps> = ({ imageSrc, title, teaser }) => {
         <CardContent>
           <Title>{ title }
           </Title>
-          <p>{ teaser }</p>
+          {teaser ? <p>{teaser}</p> : <AltButtons></AltButtons>}
+          
         </CardContent>
         <BookMarkIcon></BookMarkIcon>
       </Card>
@@ -75,5 +76,12 @@ const BookMarkIcon = styled.div`
   background-color: bisque;
   position: absolute;
   right: 5px;
+`
+
+const AltButtons = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+
 `
 export {MovieCard}
