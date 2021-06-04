@@ -3,22 +3,24 @@ import styled from "styled-components";
 import { GENERIC_BORDER, WHITE } from "../constants/colors";
 import { device } from "../constants/device"
 
+interface MovieCardProps {
+  imageSrc: string,
+  title: string,
+  teaser?: string,
+}
 
-const MovieCard:FC = () => {
+const MovieCard:FC<MovieCardProps> = ({ imageSrc, title, teaser }) => {
     return (
       <Card>
         <ImageHold>
-            <img src="" alt="" />
+            <img src={ imageSrc } alt={ title } />
         </ImageHold>
         <CardContent>
-          <Title>
-
+          <Title>{ title }
           </Title>
-          <p></p>
+          <p>{ teaser }</p>
         </CardContent>
-        <BookMarkIcon>
-
-        </BookMarkIcon>
+        <BookMarkIcon></BookMarkIcon>
       </Card>
     )
 }
