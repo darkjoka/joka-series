@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { GENERIC_BORDER, WHITE } from "../constants/colors";
-import { device }from "../constants/device"
+import { device } from "../constants/device"
 
 
 const MovieCard:FC = () => {
@@ -12,7 +12,7 @@ const MovieCard:FC = () => {
         </ImageHold>
         <CardContent>
           <Title>
-            
+
           </Title>
           <p></p>
         </CardContent>
@@ -32,6 +32,7 @@ const Card = styled.div`
   position: relative;
   background-color: ${WHITE};
   font-size: 0.9em;
+  display: flex;
   
   @media ${device.mobileM}{
     font-size: 1em;
