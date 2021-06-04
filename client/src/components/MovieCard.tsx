@@ -15,7 +15,7 @@ const MovieCard:FC<MovieCardProps> = ({ imageSrc, title, teaser }) => {
         <ImageHold>
             <img src={ imageSrc } alt={ title } />
         </ImageHold>
-        <CardContent>
+        <CardContent teaser={teaser}>
           <Title>{ title }
           </Title>
           {teaser ? <p>{teaser}</p> : <AltButtons></AltButtons>}
@@ -53,11 +53,12 @@ const ImageHold = styled.div`
   }
 `
 
-const CardContent = styled.div`
+const CardContent = styled.div<{teaser: string|undefined}>`
   margin-left: 4px;
   display: flex;
   flex-direction: column;
   width: 100%;
+  justify: ${({teaser}) => teaser? 'space-between': '' };
 
   p{
     margin: 4px;
