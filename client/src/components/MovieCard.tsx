@@ -1,30 +1,28 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { GENERIC_BORDER, WHITE } from "../constants/colors";
-import { device } from "../constants/device"
+import { device } from "../constants/device";
 
 interface MovieCardProps {
-  imageSrc: string,
-  title: string,
-  teaser?: string,
+  imageSrc: string;
+  title: string;
+  teaser?: string;
 }
 
-const MovieCard:FC<MovieCardProps> = ({ imageSrc, title, teaser }) => {
-    return (
-      <Card>
-        <ImageHold>
-            <img src={ imageSrc } alt={ title } />
-        </ImageHold>
-        <CardContent teaser={teaser}>
-          <Title>{ title }
-          </Title>
-          {teaser ? <p>{teaser}</p> : <AltButtons></AltButtons>}
-          
-        </CardContent>
-        <BookMarkIcon></BookMarkIcon>
-      </Card>
-    )
-}
+const MovieCard: FC<MovieCardProps> = ({ imageSrc, title, teaser }) => {
+  return (
+    <Card>
+      <ImageHold>
+        <img src={imageSrc} alt={title} />
+      </ImageHold>
+      <CardContent teaser={teaser}>
+        <Title>{title}</Title>
+        {teaser ? <p>{teaser}</p> : <AltButtons></AltButtons>}
+      </CardContent>
+      <BookMarkIcon></BookMarkIcon>
+    </Card>
+  );
+};
 
 const Card = styled.div`
   width: 100%;
@@ -36,11 +34,11 @@ const Card = styled.div`
   background-color: ${WHITE};
   font-size: 0.9em;
   display: flex;
-  
-  @media ${device.mobileM}{
+
+  @media ${device.mobileM} {
     font-size: 1em;
   }
-`
+`;
 
 const ImageHold = styled.div`
   display: grid;
@@ -51,24 +49,24 @@ const ImageHold = styled.div`
     height: 150px;
     border-radius: 4px;
   }
-`
+`;
 
-const CardContent = styled.div<{teaser: string|undefined}>`
+const CardContent = styled.div<{ teaser: string | undefined }>`
   margin-left: 4px;
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify: ${({teaser}) => teaser? 'space-between': '' };
+  justify: ${({ teaser }) => (teaser ? "space-between" : "")};
 
-  p{
+  p {
     margin: 4px;
   }
-`
+`;
 
 const Title = styled.p`
   font-weight: bold;
   width: calc(100% - 12px);
-`
+`;
 
 // PlaceHolder for actual Bookmark svg
 const BookMarkIcon = styled.div`
@@ -77,12 +75,11 @@ const BookMarkIcon = styled.div`
   background-color: bisque;
   position: absolute;
   right: 5px;
-`
+`;
 
 const AltButtons = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: baseline;
-
-`
-export {MovieCard}
+`;
+export { MovieCard };

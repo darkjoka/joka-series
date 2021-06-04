@@ -1,11 +1,10 @@
 import React, { FC } from "react";
-import { WHITE,GENERIC_BORDER } from "../../constants/colors";
+import { WHITE, GENERIC_BORDER } from "../../constants/colors";
 import styled from "styled-components";
 
-const TopNav:FC = () => {
-    return <Nav></Nav>
-}
-
+const TopNav: FC = () => {
+  return <Nav></Nav>;
+};
 
 const Nav = styled.nav`
   height: 64px;
@@ -20,6 +19,6 @@ const Nav = styled.nav`
   z-index: 1;
   box-shadow: 0 5px 4px -4px ${GENERIC_BORDER};
   margin: 0;
-`
+`;
 
-export {TopNav}
+export { TopNav };
