@@ -1,11 +1,14 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { Layout } from "./components/layout";
 import { GENERIC_BACKGROUND } from "./constants/colors";
 
 const App: FC = () => {
   return (
     <>
-      <Main></Main>
+      <Main>
+        <Layout>PlaceHolder Value</Layout>
+      </Main>
     </>
   );
 };
