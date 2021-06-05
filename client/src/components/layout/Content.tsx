@@ -1,9 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
+import { Hero } from "./Hero";
 import styled from "styled-components";
 
-const Content = () => {
+const Content: FC = () => {
   return (
     <StyledContent>
+      <Hero></Hero>
       <section></section>
     </StyledContent>
   );

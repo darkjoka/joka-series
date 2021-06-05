@@ -1,13 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import { Content } from "./Content";
-import { Hero } from "./Hero";
 import { TopNav } from "./TopNav";
 
-const Layout = () => {
+const Layout: FC = () => {
   return (
     <>
       <TopNav></TopNav>
-      <Hero></Hero>
       <Content></Content>
     </>
   );
