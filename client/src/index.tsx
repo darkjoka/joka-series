@@ -4,6 +4,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./store";
 import { Provider } from "react-redux";
+import "./fonts/VarelaRound-Regular.ttf";
 
 ReactDOM.render(
   <React.StrictMode>
