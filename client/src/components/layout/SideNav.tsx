@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { viewBox, preserveAspectRatio, close } from "../../constants/svg"
+
 
 const SideNav: React.FC = () => {
-  return <StyledNav></StyledNav>;
+  return <StyledNav><Icon><path d = {close}></path></Icon></StyledNav>;
 };
 
 const StyledNav = styled.nav`
@@ -18,4 +20,9 @@ const StyledNav = styled.nav`
   padding: 12px;
 `;
 
+const Icon = styled.svg.attrs({ viewBox, preserveAspectRatio })`
+  width: 24px;
+  height: 24px;
+  fill: gainsboro;
+`;
 export { SideNav };
