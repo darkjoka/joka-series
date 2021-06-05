@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import React from "react";
 import { WHITE, GENERIC_BORDER } from "../../constants/colors";
 import styled from "styled-components";
 
-const TopNav: FC = () => {
+const TopNav: React.FC = () => {
   return <Nav></Nav>;
 };
 

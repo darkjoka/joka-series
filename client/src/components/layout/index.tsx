@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import React from "react";
 import { Content } from "./Content";
 import { TopNav } from "./TopNav";
 
-const Layout: FC = () => {
+const Layout: React.FC = () => {
   return (
     <>
       <TopNav></TopNav>

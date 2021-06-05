@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import React from "react";
 import { Hero } from "./Hero";
 import styled from "styled-components";
 
-const Content: FC = () => {
+const Content: React.FC = () => {
   return (
     <StyledContent>
       <Hero></Hero>

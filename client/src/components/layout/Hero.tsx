@@ -1,7 +1,7 @@
-import React, { FC } from "react";
+import React from "react";
 import styled from "styled-components";
 
-const Hero: FC = () => {
+const Hero: React.FC = () => {
   return (
     <StyledHero>
       <Frost />

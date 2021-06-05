@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import styled from "styled-components";
 import { GENERIC_BORDER, WHITE } from "../constants/colors";
 import { device } from "../constants/device";
@@ -16,7 +16,7 @@ interface MovieCardProps {
   isBookMarked: boolean;
 }
 
-const MovieCard: FC<MovieCardProps> = ({
+const MovieCard: React.FC<MovieCardProps> = ({
   imageSrc,
   title,
   teaser,
