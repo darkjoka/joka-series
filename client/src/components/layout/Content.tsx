@@ -2,11 +2,15 @@ import React from "react";
 import { Hero } from "./Hero";
 import styled from "styled-components";
 
-const Content: React.FC = () => {
+interface ContentProps {
+  children: React.ReactNode;
+}
+
+const Content: React.FC<ContentProps> = ({ children }) => {
   return (
     <StyledContent>
       <Hero></Hero>
-      <section></section>
+      <section>{children}</section>
     </StyledContent>
   );
 };
