@@ -1,15 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { preserveAspectRatio, close } from "../../constants/svg";
 
 const Hero: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <StyledHero>
       <Frost />
       <FormHold>
         <FormInner>
           <form>
-            <label htmlFor="sField">Search Input</label>
-            <input type="text" id="sField" />
+            <label htmlFor="searchField">Search Input</label>
+            <InputHold>
+              <input
+                type="text"
+                id="searchField"
+                value={searchTerm}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                }}
+              />
+              {searchTerm ? (
+                <Icon
+                  onClick={() => {
+                    setSearchTerm("");
+                  }}
+                >
+                  <path d={close}></path>
+                </Icon>
+              ) : (
+                ""
+              )}
+            </InputHold>
             <input type="submit" value="Search" />
           </form>
         </FormInner>
@@ -75,18 +98,6 @@ const FormInner = styled.div`
     padding: 0 8px;
   }
 
-  input[type="text"] {
-    height: 42px;
-    border: none;
-    width: inherit;
-    outline: none;
-    border-radius: 8px;
-    background-color: gainsboro;
-    padding: 0 4px;
-    font-size: 1em;
-    padding: 0 24px 0 8px;
-  }
-
   input[type="submit"] {
     background-color: gainsboro;
     border: none;
@@ -100,6 +111,36 @@ const FormInner = styled.div`
   label {
     position: absolute;
     z-index: -1;
+  }
+`;
+
+const InputHold = styled.div`
+  width: inherit;
+  background-color: gainsboro;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  padding: 4px;
+
+  input[type="text"] {
+    height: 36px;
+    width: inherit;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1em;
+  }
+`;
+
+const Icon = styled.svg.attrs({ viewBox: "-6 -6 24 24", preserveAspectRatio })`
+  width: 24px;
+  height: 24px;
+  fill: gray;
+  padding: 0px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: darkseagreen;
   }
 `;
 
