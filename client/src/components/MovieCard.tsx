@@ -2,14 +2,26 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import { GENERIC_BORDER, WHITE } from "../constants/colors";
 import { device } from "../constants/device";
+import {
+  viewBox,
+  preserveAspectRatio,
+  bookMarkFilled,
+  bookMark,
+} from "../constants/svg";
 
 interface MovieCardProps {
   imageSrc: string;
   title: string;
   teaser?: string;
+  isBookMarked: boolean;
 }
 
-const MovieCard: FC<MovieCardProps> = ({ imageSrc, title, teaser }) => {
+const MovieCard: FC<MovieCardProps> = ({
+  imageSrc,
+  title,
+  teaser,
+  isBookMarked,
+}) => {
   return (
     <Card>
       <ImageHold>
@@ -19,7 +31,9 @@ const MovieCard: FC<MovieCardProps> = ({ imageSrc, title, teaser }) => {
         <Title>{title}</Title>
         {teaser ? <p>{teaser}</p> : <AltButtons></AltButtons>}
       </CardContent>
-      <BookMarkIcon></BookMarkIcon>
+      <Icon>
+        <path d={isBookMarked ? bookMarkFilled : bookMark}> </path>
+      </Icon>
     </Card>
   );
 };
@@ -68,13 +82,12 @@ const Title = styled.p`
   width: calc(100% - 12px);
 `;
 
-// PlaceHolder for actual Bookmark svg
-const BookMarkIcon = styled.div`
-  width: 20px;
-  height: 20px;
-  background-color: bisque;
+const Icon = styled.svg.attrs({ viewBox, preserveAspectRatio })`
+  width: 24px;
+  height: 24px;
   position: absolute;
   right: 5px;
+  fill: gainsboro;
 `;
 
 const AltButtons = styled.div`
