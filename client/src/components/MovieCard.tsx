@@ -43,7 +43,7 @@ const Card = styled.div`
   border: 1px solid ${GENERIC_BORDER};
   padding: 4px;
   border-radius: 4px 4px 0 0;
-  margin: 8px;
+  margin: 8px 0px;
   position: relative;
   background-color: ${WHITE};
   font-size: 0.9em;
