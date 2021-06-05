@@ -4,11 +4,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./store";
 import { Provider } from "react-redux";
-import "./fonts/VarelaRound-Regular.ttf";
+import GlobalStyle from "./components/GlobalStyle";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <GlobalStyle />
       <App />
     </Provider>
   </React.StrictMode>,
