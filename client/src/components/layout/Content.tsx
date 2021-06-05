@@ -19,4 +19,4 @@ const StyledContent = styled.div`
   }
 `;
 
-export default Content;
+export { Content };

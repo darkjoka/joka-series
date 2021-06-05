@@ -103,4 +103,4 @@ const FormInner = styled.div`
   }
 `;
 
-export default Hero;
+export { Hero };
