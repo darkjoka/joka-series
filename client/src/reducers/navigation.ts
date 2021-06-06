@@ -12,6 +12,8 @@ const defaultState: NavState = {
   isBottomSectOpen: false,
 };
 
-const navigation = (state: NavState = defaultState, action: Action) => {};
+const navigation = (state: NavState = defaultState, action: Action) => {
+  return state;
+};
 
 export { navigation };

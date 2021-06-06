@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
+import { navigation } from "./navigation";
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({ navigation });
 
 export { rootReducer };
