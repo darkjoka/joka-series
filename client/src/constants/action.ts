@@ -1,0 +1,4 @@
+const OPEN_SIDE = "OPEN_SIDE_NAV";
+const OPEN_BOTTOM = "OPEN_BOTTOM_NAV";
+
+export { OPEN_BOTTOM, OPEN_SIDE };
