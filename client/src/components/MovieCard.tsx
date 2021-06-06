@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { GENERIC_BORDER, WHITE } from "../constants/colors";
 import { device } from "../constants/device";
 import {
-  viewBox,
   preserveAspectRatio,
   bookMarkFilled,
   bookMark,
@@ -32,7 +31,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
         {teaser ? <p>{teaser}</p> : <AltButtons></AltButtons>}
       </CardContent>
       <Icon>
-        <path d={isBookMarked ? bookMarkFilled : bookMark}> </path>
+        <path d={isBookMarked ? bookMarkFilled.path : bookMark.path}> </path>
       </Icon>
     </Card>
   );
@@ -82,7 +81,10 @@ const Title = styled.p`
   width: calc(100% - 12px);
 `;
 
-const Icon = styled.svg.attrs({ viewBox, preserveAspectRatio })`
+const Icon = styled.svg.attrs({
+  viewBox: bookMark.viewBox,
+  preserveAspectRatio,
+})`
   width: 24px;
   height: 24px;
   position: absolute;
