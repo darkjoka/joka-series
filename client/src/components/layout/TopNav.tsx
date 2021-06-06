@@ -1,12 +1,20 @@
 import React from "react";
 import { WHITE, GENERIC_BORDER } from "../../constants/colors";
 import { menu, preserveAspectRatio } from "../../constants/svg";
+import { openSide } from "../../actions/navigation";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
 const TopNav: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(openSide());
+  };
+
   return (
     <Nav>
-      <Icon>
+      <Icon onClick={handleClick}>
         <path d={menu.path}></path>
       </Icon>
     </Nav>
