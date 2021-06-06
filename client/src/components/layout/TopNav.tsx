@@ -1,9 +1,16 @@
 import React from "react";
 import { WHITE, GENERIC_BORDER } from "../../constants/colors";
+import { menu, preserveAspectRatio } from "../../constants/svg";
 import styled from "styled-components";
 
 const TopNav: React.FC = () => {
-  return <Nav></Nav>;
+  return (
+    <Nav>
+      <Icon>
+        <path d={menu.path}></path>
+      </Icon>
+    </Nav>
+  );
 };
 
 const Nav = styled.nav`
@@ -19,6 +26,12 @@ const Nav = styled.nav`
   z-index: 1;
   box-shadow: 0 5px 4px -4px ${GENERIC_BORDER};
   margin: 0;
+`;
+
+const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })`
+  width: 48px;
+  height: 48px;
+  fill: gainsboro;
 `;
 
 export { TopNav };
