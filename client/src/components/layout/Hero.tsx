@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
                     setSearchTerm("");
                   }}
                 >
-                  <path d={close}></path>
+                  <path d={close.path}></path>
                 </Icon>
               ) : (
                 ""
@@ -132,7 +132,7 @@ const InputHold = styled.div`
   }
 `;
 
-const Icon = styled.svg.attrs({ viewBox: "-6 -6 24 24", preserveAspectRatio })`
+const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })`
   width: 24px;
   height: 24px;
   fill: gray;
