@@ -34,7 +34,7 @@ const StyledNav = styled.nav<{ sideNavStatus: boolean }>`
   transform: translateX(
     ${({ sideNavStatus }) => (sideNavStatus ? "0vw" : "-100vw")}
   );
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   z-index: 2;
   box-shadow: 8px 0px 14px 2px rgba(82, 82, 82, 0.6);
   padding: 12px;
