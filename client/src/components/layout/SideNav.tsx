@@ -1,5 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { closeSide } from "../../actions/navigation";
 import { RootState } from "../../reducers";
 import styled from "styled-components";
 import { preserveAspectRatio, close } from "../../constants/svg";
@@ -8,9 +9,16 @@ const SideNav: React.FC = () => {
   const sideNavigation = useSelector(
     (state: RootState) => state.navigation.isSideNavOpen
   );
+
+  const dispatch = useDispatch();
+
+  const handleClick = (): void => {
+    dispatch(closeSide());
+  };
+
   return (
     <StyledNav sideNavStatus={sideNavigation}>
-      <Icon>
+      <Icon onClick={handleClick}>
         <path d={close.path}></path>
       </Icon>
     </StyledNav>
@@ -33,8 +41,8 @@ const StyledNav = styled.nav<{ sideNavStatus: boolean }>`
 `;
 
 const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })`
-  width: 24px;
-  height: 24px;
+  width: 48px;
+  height: 48px;
   fill: gainsboro;
 `;
 export { SideNav };
