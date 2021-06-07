@@ -45,7 +45,7 @@ const StyledHero = styled.div`
   height: 10em;
   margin-bottom: 4em;
   overflow: hidden;
-  background: url(d.jpg) 0 / cover fixed;
+  background: url(${""}) 0 / cover fixed;
 `;
 
 const Frost = styled.div`
