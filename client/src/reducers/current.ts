@@ -14,7 +14,7 @@ interface CurrentState {
   heroImageSource: string;
   genres: string[];
   descriptioin: string;
-  seasonEpisodes: seasonEpisode[];
+  seasonEpisodes: SeasonEpisode[];
 }
 
 interface Action {
