@@ -1,3 +1,5 @@
+import { PUSH_DATA, PUSH_LINK } from "../constants/action";
+
 interface Episode {
   downloadLink: string;
   size: string;
@@ -22,6 +24,7 @@ interface CurrentState {
 
 interface Action {
   type: string;
+  payLoad: string | DetailState;
 }
 
 const defaultState: CurrentState = {
@@ -39,6 +42,16 @@ export const current = (
   action: Action
 ): CurrentState => {
   switch (action.type) {
+    case PUSH_LINK:
+      return typeof action.payLoad === "string"
+        ? { ...state, link: action.payLoad }
+        : state;
+
+    case PUSH_DATA:
+      return typeof action.payLoad === "object"
+        ? { ...state, detail: action.payLoad }
+        : state;
+
     default:
       return state;
   }
