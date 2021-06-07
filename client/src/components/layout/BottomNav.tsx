@@ -32,7 +32,7 @@ const BottomNav: React.FC = () => {
 const StyledNav = styled.div<{ isBottomNavOpen: boolean }>`
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 10;
   top: 0;
   background-color: rgba(0, 25, 25, 0.4);
