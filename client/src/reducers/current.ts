@@ -9,12 +9,15 @@ interface SeasonEpisode {
   episodes: Episode[];
 }
 
-interface CurrentState {
-  link: string;
+export interface DetailState {
   heroImageSource: string;
   genres: string[];
   descriptioin: string;
   seasonEpisodes: SeasonEpisode[];
+}
+interface CurrentState {
+  link: string;
+  detail: DetailState;
 }
 
 interface Action {
@@ -23,10 +26,12 @@ interface Action {
 
 const defaultState: CurrentState = {
   link: "",
-  heroImageSource: "",
-  genres: [],
-  descriptioin: "",
-  seasonEpisodes: [],
+  detail: {
+    heroImageSource: "",
+    genres: [],
+    descriptioin: "",
+    seasonEpisodes: [],
+  },
 };
 
 export const current = (
