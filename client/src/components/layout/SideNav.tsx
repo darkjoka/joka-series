@@ -3,7 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { closeSide } from "../../actions/navigation";
 import { RootState } from "../../reducers";
 import styled from "styled-components";
-import { preserveAspectRatio, close } from "../../constants/svg";
+import {
+  preserveAspectRatio,
+  close,
+  home,
+  recent,
+  bookMarkFilled,
+} from "../../constants/svg";
+import { Section } from "../Section";
 
 const SideNav: React.FC = () => {
   const sideNavigation = useSelector(
@@ -21,6 +28,23 @@ const SideNav: React.FC = () => {
       <Icon onClick={handleClick}>
         <path d={close.path}></path>
       </Icon>
+      <BaseSection>
+        <Section label={"Home"}>
+          <IconSect viewBox={home.viewBox}>
+            <path d={home.path}></path>
+          </IconSect>
+        </Section>
+        <Section label={"Favorited"}>
+          <IconSect viewBox={bookMarkFilled.viewBox}>
+            <path d={bookMarkFilled.path}></path>
+          </IconSect>
+        </Section>
+        <Section label={"Recent"}>
+          <IconSect viewBox={recent.viewBox}>
+            <path d={recent.path}></path>
+          </IconSect>
+        </Section>
+      </BaseSection>
     </StyledNav>
   );
 };
@@ -44,5 +68,14 @@ const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })`
   width: 48px;
   height: 48px;
   fill: gainsboro;
+`;
+const IconSect = styled.svg.attrs({ preserveAspectRatio })`
+  fill: gainsboro;
+  width: 24px;
+  height: 24px;
+`;
+const BaseSection = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 export { SideNav };
