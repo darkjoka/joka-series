@@ -16,4 +16,15 @@ export const Section: React.FC<SectionInterface> = ({ children, label }) => {
 
 const Sect = styled.div`
   display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: gray;
+  }
+
+  svg {
+    margin-right: 12px;
+  }
 `;

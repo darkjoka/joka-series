@@ -77,5 +77,7 @@ const IconSect = styled.svg.attrs({ preserveAspectRatio })`
 const BaseSection = styled.div`
   display: flex;
   flex-direction: column;
+  height: 156px;
+  justify-content: space-evenly;
 `;
 export { SideNav };
