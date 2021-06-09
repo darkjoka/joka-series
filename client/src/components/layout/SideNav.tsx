@@ -11,6 +11,7 @@ import {
   bookMarkFilled,
 } from "../../constants/svg";
 import { Section } from "../Section";
+import { Filters } from "../Filters";
 
 const SideNav: React.FC = () => {
   const sideNavigation = useSelector(
@@ -49,6 +50,9 @@ const SideNav: React.FC = () => {
           </IconSect>
         </Section>
       </BaseSection>
+      <div>
+        <Filters></Filters>
+      </div>
     </StyledNav>
   );
 };
