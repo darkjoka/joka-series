@@ -46,13 +46,13 @@ const Filters: React.FC = () => {
 
       <Content>
         <Section>
-          {genreFilter.map((genre) => {
-            return <FilterObj>{genre}</FilterObj>;
+          {genreFilter.map((genre, index) => {
+            return <FilterObj key={index}>{genre}</FilterObj>;
           })}
         </Section>
         <Section>
-          {yearFilter.map((genre) => {
-            return <FilterObj>{genre}</FilterObj>;
+          {yearFilter.map((year, index) => {
+            return <FilterObj key={index}>{year}</FilterObj>;
           })}
         </Section>
       </Content>
@@ -87,7 +87,7 @@ const Content = styled.div`
   scroll-behavior: smooth;
 `;
 
-const FilterObj = styled.div`
+const FilterObj = styled.div<{ key: number }>`
   display: grid;
   place-items: center;
   background-color: gainsboro;
