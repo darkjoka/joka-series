@@ -23,8 +23,12 @@ const SideNav: React.FC = () => {
     dispatch(closeSide());
   };
 
+  const handlePropagation = (event: React.BaseSyntheticEvent): void => {
+    event.stopPropagation();
+  };
+
   return (
-    <StyledNav sideNavStatus={sideNavigation}>
+    <StyledNav sideNavStatus={sideNavigation} onClick={handlePropagation}>
       <Icon onClick={handleClick}>
         <path d={close.path}></path>
       </Icon>
