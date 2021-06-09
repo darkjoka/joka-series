@@ -1,40 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-const genreFilter: String[] = [
-  "Action",
-  "Adventure",
-  "Comedy",
-  "Crime",
-  "Drama",
-  "Fantasy",
-  "History",
-  "Horror",
-  "Mystery",
-  "New Series",
-  "New Start",
-  "Romance",
-  "Sci-Fi",
-  "Thriller",
-];
-
-const yearFilter: String[] = [
-  "2005",
-  "2007",
-  "2009",
-  "2010",
-  "2011",
-  "2012",
-  "2013",
-  "2014",
-  "2015",
-  "2016",
-  "2017",
-  "2018",
-  "2019",
-  "2020",
-  "2021",
-];
+import { genreFilter, yearFilter } from "../constants/filters";
 
 const Filters: React.FC = () => {
   return (
