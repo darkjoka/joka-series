@@ -43,7 +43,7 @@ const SideNav: React.FC = () => {
             <path d={bookMarkFilled.path}></path>
           </IconSect>
         </Section>
-        <Section label={"Recent"}>
+        <Section label={"History"}>
           <IconSect viewBox={recent.viewBox}>
             <path d={recent.path}></path>
           </IconSect>
