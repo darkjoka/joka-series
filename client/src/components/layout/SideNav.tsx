@@ -12,6 +12,7 @@ import {
 } from "../../constants/svg";
 import { Section } from "../Section";
 import { Filters } from "../Filters";
+import { Link } from "react-router-dom";
 
 const SideNav: React.FC = () => {
   const sideNavigation = useSelector(
@@ -34,21 +35,27 @@ const SideNav: React.FC = () => {
         <path d={close.path}></path>
       </Icon>
       <BaseSection>
-        <Section label={"Home"}>
-          <IconSect viewBox={home.viewBox}>
-            <path d={home.path}></path>
-          </IconSect>
-        </Section>
-        <Section label={"Favorited"}>
-          <IconSect viewBox={bookMarkFilled.viewBox}>
-            <path d={bookMarkFilled.path}></path>
-          </IconSect>
-        </Section>
-        <Section label={"History"}>
-          <IconSect viewBox={recent.viewBox}>
-            <path d={recent.path}></path>
-          </IconSect>
-        </Section>
+        <Link to="/" onClick={handleClick}>
+          <Section label={"Home"}>
+            <IconSect viewBox={home.viewBox}>
+              <path d={home.path}></path>
+            </IconSect>
+          </Section>
+        </Link>
+        <Link to="/favorite" onClick={handleClick}>
+          <Section label={"Favorited"}>
+            <IconSect viewBox={bookMarkFilled.viewBox}>
+              <path d={bookMarkFilled.path}></path>
+            </IconSect>
+          </Section>
+        </Link>
+        <Link to="/history" onClick={handleClick}>
+          <Section label={"History"}>
+            <IconSect viewBox={recent.viewBox}>
+              <path d={recent.path}></path>
+            </IconSect>
+          </Section>
+        </Link>
       </BaseSection>
       <div>
         <Filters></Filters>
@@ -87,5 +94,10 @@ const BaseSection = styled.div`
   flex-direction: column;
   height: 156px;
   justify-content: space-evenly;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
 `;
 export { SideNav };
