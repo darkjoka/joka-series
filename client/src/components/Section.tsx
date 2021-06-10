@@ -16,7 +16,7 @@ export const Section: React.FC<SectionInterface> = ({ children, label }) => {
 
 const Sect = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   padding: 8px;
   border-radius: 4px;
 

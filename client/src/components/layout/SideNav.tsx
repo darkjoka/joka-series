@@ -89,6 +89,7 @@ const StyledNav = styled.div`
   height: 100vh;
   background-color: white;
   padding: 12px;
+  border-right: 4px solid gainsboro;
 `;
 
 const StyledOther = styled.div`
@@ -101,13 +102,13 @@ const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })`
 `;
 const IconSect = styled.svg.attrs({ preserveAspectRatio })`
   fill: gainsboro;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 `;
 const BaseSection = styled.div`
   display: flex;
   flex-direction: column;
-  height: 156px;
+  height: 128px;
   justify-content: space-evenly;
 
   a {
