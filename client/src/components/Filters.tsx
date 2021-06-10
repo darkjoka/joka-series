@@ -1,8 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import { genreFilter, yearFilter } from "../constants/filters";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { closeSide } from "../actions/navigation";
 
 const Filters: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(closeSide());
+  };
+
   return (
     <div>
       <HeadList>
@@ -13,12 +22,20 @@ const Filters: React.FC = () => {
       <Content>
         <Section>
           {genreFilter.map((genre, index) => {
-            return <FilterObj key={index}>{genre}</FilterObj>;
+            return (
+              <FilterObj key={index} onClick={handleClick}>
+                <Link to={`/filter/${genre.toLowerCase()}`}>{genre}</Link>
+              </FilterObj>
+            );
           })}
         </Section>
         <Section>
           {yearFilter.map((year, index) => {
-            return <FilterObj key={index}>{year}</FilterObj>;
+            return (
+              <FilterObj key={index} onClick={handleClick}>
+                <Link to={`/filter/${year}`}>{year}</Link>
+              </FilterObj>
+            );
           })}
         </Section>
       </Content>
@@ -60,6 +77,11 @@ const FilterObj = styled.div<{ key: number }>`
   width: 95%;
   border-radius: 4px;
   height: 30px;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
 `;
 
 const Section = styled.div`
