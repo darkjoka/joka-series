@@ -14,7 +14,7 @@ baseeUrl = "http://www.todaytvseries2.com/tv-series/"
 
 def index(request):
     result: List[Dict[str, str]] = scrapers.getFromIndex(baseeUrl)
-    return JsonResponse(json.dumps({"data": result}, indent=2))
+    return JsonResponse({"data": result},json_dumps_params={"indent":2})
 
 
 def search(request):

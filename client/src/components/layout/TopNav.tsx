@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { WHITE, GENERIC_BORDER } from "../../constants/colors";
-import { menu, preserveAspectRatio } from "../../constants/svg";
+import { menu, close, preserveAspectRatio } from "../../constants/svg";
 import { openSide } from "../../actions/navigation";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -12,11 +12,37 @@ const TopNav: React.FC = () => {
     dispatch(openSide());
   };
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <Nav>
       <Icon onClick={handleClick}>
         <path d={menu.path}></path>
       </Icon>
+      <form>
+        <label htmlFor="searchField">Search Input</label>
+        <div>
+          <input
+            type="text"
+            id="searchField"
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+          />
+          {searchTerm ? (
+            <XIcon
+              onClick={() => {
+                setSearchTerm("");
+              }}
+            >
+              <path d={close.path}></path>
+            </XIcon>
+          ) : (
+            ""
+          )}
+        </div>
+      </form>
     </Nav>
   );
 };
@@ -40,6 +66,18 @@ const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })`
   width: 48px;
   height: 48px;
   fill: gainsboro;
+`;
+
+const XIcon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })`
+  width: 24px;
+  height: 24px;
+  fill: gray;
+  padding: 0px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: darkseagreen;
+  }
 `;
 
 export { TopNav };
