@@ -30,55 +30,70 @@ const SideNav: React.FC = () => {
   };
 
   return (
-    <StyledNav sideNavStatus={sideNavigation} onClick={handlePropagation}>
-      <Icon onClick={handleClick}>
-        <path d={close.path}></path>
-      </Icon>
-      <BaseSection>
-        <Link to="/" onClick={handleClick}>
-          <Section label={"Home"}>
-            <IconSect viewBox={home.viewBox}>
-              <path d={home.path}></path>
-            </IconSect>
-          </Section>
-        </Link>
-        <Link to="/favorite" onClick={handleClick}>
-          <Section label={"Favorited"}>
-            <IconSect viewBox={bookMarkFilled.viewBox}>
-              <path d={bookMarkFilled.path}></path>
-            </IconSect>
-          </Section>
-        </Link>
-        <Link to="/history" onClick={handleClick}>
-          <Section label={"History"}>
-            <IconSect viewBox={recent.viewBox}>
-              <path d={recent.path}></path>
-            </IconSect>
-          </Section>
-        </Link>
-      </BaseSection>
-      <div>
-        <Filters></Filters>
-      </div>
-    </StyledNav>
+    <SuperNav sideNavStatus={sideNavigation}>
+      <StyledNav onClick={handlePropagation}>
+        <Icon onClick={handleClick}>
+          <path d={close.path}></path>
+        </Icon>
+
+        <BaseSection>
+          <Link to="/" onClick={handleClick}>
+            <Section label={"Home"}>
+              <IconSect viewBox={home.viewBox}>
+                <path d={home.path}></path>
+              </IconSect>
+            </Section>
+          </Link>
+
+          <Link to="/favorite" onClick={handleClick}>
+            <Section label={"Favorited"}>
+              <IconSect viewBox={bookMarkFilled.viewBox}>
+                <path d={bookMarkFilled.path}></path>
+              </IconSect>
+            </Section>
+          </Link>
+
+          <Link to="/history" onClick={handleClick}>
+            <Section label={"History"}>
+              <IconSect viewBox={recent.viewBox}>
+                <path d={recent.path}></path>
+              </IconSect>
+            </Section>
+          </Link>
+        </BaseSection>
+
+        <div>
+          <Filters></Filters>
+        </div>
+      </StyledNav>
+
+      <StyledOther onClick={handleClick}></StyledOther>
+    </SuperNav>
   );
 };
 
-const StyledNav = styled.nav<{ sideNavStatus: boolean }>`
+const SuperNav = styled.nav<{ sideNavStatus: boolean }>`
   position: fixed;
   height: 100vh;
-  width: 70vw;
-  overflow-y: scroll;
-  background-color: white;
+  transition: transform 0.3s ease-in-out;
+  z-index: 100;
   transform: translateX(
     ${({ sideNavStatus }) => (sideNavStatus ? "0vw" : "-100vw")}
   );
-  transition: transform 0.3s ease-in-out;
-  z-index: 2;
-  box-shadow: 8px 0px 14px 2px rgba(82, 82, 82, 0.6);
+
+  display: flex;
+`;
+const StyledNav = styled.div`
+  width: 70vw;
+  overflow-y: scroll;
+  height: 100vh;
+  background-color: white;
   padding: 12px;
 `;
 
+const StyledOther = styled.div`
+  width: 30vw;
+`;
 const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })`
   width: 48px;
   height: 48px;
