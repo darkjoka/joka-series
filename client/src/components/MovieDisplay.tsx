@@ -20,6 +20,7 @@ const MovieDisplay: React.FC<DisplayProps> = ({ movies }) => {
       {movies.map(({ title, permaLink, imageSource, teaser }) => {
         return (
           <MovieCard
+            permaLink={permaLink}
             key={permaLink}
             title={title}
             imageSrc={imageSource}

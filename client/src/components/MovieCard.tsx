@@ -9,13 +9,19 @@ import {
 } from "../constants/svg";
 
 interface MovieCardProps {
+  permaLink: string;
   imageSrc: string;
   title: string;
   teaser?: string;
   isBookMarked?: boolean;
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ imageSrc, title, teaser }) => {
+const MovieCard: React.FC<MovieCardProps> = ({
+  imageSrc,
+  title,
+  teaser,
+  permaLink,
+}) => {
   const [localStore, setLocalStore] = useState<MovieCardProps[]>(() => {
     const item = localStorage.getItem("favorite");
     if (item) {
@@ -41,7 +47,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ imageSrc, title, teaser }) => {
           return series.title !== title;
         });
       } else {
-        favorites = favorites.concat([{ title, imageSrc, teaser }]);
+        favorites = favorites.concat([{ title, imageSrc, teaser, permaLink }]);
       }
 
       updateLocal(favorites);
