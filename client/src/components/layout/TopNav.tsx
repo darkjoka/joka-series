@@ -2,14 +2,27 @@ import React from "react";
 import { WHITE, GENERIC_BORDER } from "../../constants/colors";
 import { menu, preserveAspectRatio, sun, moon } from "../../constants/svg";
 import { openSide } from "../../actions/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { RootState } from "../../reducers";
+import { toggleDark, toggleLight } from "../../actions/theme";
 
 const TopNav: React.FC = () => {
+  const theme = useSelector((state: RootState) => {
+    return state.theme;
+  });
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     dispatch(openSide());
+  };
+
+  const handleDarkToggle = (): void => {
+    dispatch(toggleDark());
+  };
+
+  const handleLightToggle = (): void => {
+    dispatch(toggleLight());
   };
 
   return (
@@ -17,7 +30,17 @@ const TopNav: React.FC = () => {
       <Icon onClick={handleClick}>
         <path d={menu.path}></path>
       </Icon>
-      {?<ThemeIcon viewBox={sun.viewBox}><path d={sun.path}></path></ThemeIcon>:<ThemeIcon viewBox={moon.viewBox}><path d={moon.path}></path></ThemeIcon>}
+      {theme.isLight && (
+        <ThemeIcon viewBox={sun.viewBox} onClick={handleDarkToggle}>
+          <path d={sun.path}></path>
+        </ThemeIcon>
+      )}
+
+      {theme.isDark && (
+        <ThemeIcon viewBox={moon.viewBox} onClick={handleLightToggle}>
+          <path d={moon.path}></path>
+        </ThemeIcon>
+      )}
     </Nav>
   );
 };
@@ -28,6 +51,7 @@ const Nav = styled.nav`
   transition: transform 0.5s ease-in-out;
   align-items: center;
   justify-items: baseline;
+  justify-content: space-between;
   padding: 0 0.5em;
   position: fixed;
   width: 100%;
@@ -43,8 +67,8 @@ const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })`
   fill: gainsboro;
 `;
 const ThemeIcon = styled.svg.attrs({ preserveAspectRatio })`
-  width: 48px;
-  height: 48px;
+  width: 24px;
+  height: 24px;
   fill: gainsboro;
 `;
 export { TopNav };
