@@ -1,12 +1,12 @@
 import { POPULATE_INDEX } from "../constants/action";
 
 export interface Movie {
-  title: String;
-  permaLink: String;
-  imageSource: String;
+  title: string;
+  permaLink: string;
+  imageSource: string;
   lastEpisode?: string;
-  rating?: String;
-  teaser?: String;
+  rating?: string;
+  teaser?: string;
 }
 
 interface Action {

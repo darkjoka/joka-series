@@ -56,11 +56,15 @@ const Card = styled.div`
 const ImageHold = styled.div`
   display: grid;
   place-items: center;
+  background: gainsboro;
+  border-radius: 4px;
+  aspect-ratio: 250/350;
+  height: 150px;
 
   img {
-    aspect-ratio: 250/350;
-    height: 150px;
-    border-radius: 4px;
+    border-radius: inherit;
+    aspect-ratio: inherit;
+    height: inherit;
   }
 `;
 
