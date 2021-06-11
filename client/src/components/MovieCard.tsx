@@ -28,7 +28,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
       </ImageHold>
       <CardContent teaser={teaser}>
         <Title>{title}</Title>
-        {teaser ? <p>{teaser}</p> : <AltButtons></AltButtons>}
+        {teaser ? <p>{teaser}...</p> : <AltButtons></AltButtons>}
       </CardContent>
       <Icon>
         <path d={isBookMarked ? bookMarkFilled.path : bookMark.path}> </path>
@@ -73,7 +73,7 @@ const CardContent = styled.div<{ teaser: string | undefined }>`
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify: ${({ teaser }) => (teaser ? "space-between" : "")};
+  justify-content: ${({ teaser }) => (!teaser ? "space-between" : "")};
 
   p {
     margin: 4px;
