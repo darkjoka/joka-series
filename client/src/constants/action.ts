@@ -6,3 +6,4 @@ export const PUSH_LINK = "PUSH_LINK";
 export const PUSH_DATA = "PUSH_DATA";
 export const TOGGLE_DARK = "TOGGLE_DARK";
 export const TOGGLE_LIGHT = "TOGGLE_LIGHT";
+export const POPULATE_INDEX = "POPULATE_INDEX";
