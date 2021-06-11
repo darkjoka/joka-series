@@ -1,37 +1,49 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { populate_index } from "../actions/populate";
+import { RootState } from "../reducers";
 import { Error } from "./Error";
 import { Load } from "./Load";
-
-interface Dstate {
-  title: String;
-}
-type state = Dstate[];
+import { Movie } from "../reducers/indexP";
 
 export const IndexList = () => {
-  const [state, setState] = useState<state>([{ title: "" }]);
+  const movies = useSelector((state: RootState) => {
+    return state.index;
+  });
+  const dispatch = useDispatch();
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:4000/")
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        setState(result.data);
-        setLoading(false);
-      })
-      .catch((e) => {
-        setLoading(false);
-        setError(true);
-      });
-  }, []);
+    const handlePopulation = (data: Movie[]): void => {
+      dispatch(populate_index(data));
+      setLoading(false);
+    };
+
+    if (movies.length === 0) {
+      setLoading(true);
+      setError(false);
+
+      fetch("http://localhost:4000/")
+        .then((response) => {
+          return response.json();
+        })
+
+        .then((result) => {
+          handlePopulation(result.data);
+        })
+
+        .catch((e) => {
+          setLoading(false);
+          setError(true);
+        });
+    }
+  }, [movies, dispatch]);
+
   return (
     <>
-      {!loading &&
-        state?.map(({ title }, index) => {
-          return <p key={index}>{title}</p>;
-        })}
+      {!loading && !error && <p>should change to this</p>}
       {loading && <Load />}
       {error && <Error />}
     </>
