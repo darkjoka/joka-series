@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Error } from "./Error";
 
 interface Dstate {
   title: String;
@@ -31,7 +32,7 @@ export const IndexList = () => {
           return <p key={index}>{title}</p>;
         })}
       {loading && <p>Loading...</p>}
-      {error && <p>There was an Error... Please try again later</p>}
+      {error && <Error />}
     </>
   );
 };
