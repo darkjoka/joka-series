@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { preserveAspectRatio, close } from "../../constants/svg";
 
 const Hero: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    if (!localStorage.getItem("favorite")) {
+      localStorage.setItem("favorite", JSON.stringify([]));
+      localStorage.setItem("history", JSON.stringify([]));
+    }
+  });
 
   return (
     <StyledHero>
