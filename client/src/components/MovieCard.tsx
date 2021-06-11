@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { GENERIC_BORDER, WHITE } from "../constants/colors";
 import { device } from "../constants/device";
@@ -12,15 +12,42 @@ interface MovieCardProps {
   imageSrc: string;
   title: string;
   teaser?: string;
-  isBookMarked: boolean;
+  isBookMarked?: boolean;
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({
-  imageSrc,
-  title,
-  teaser,
-  isBookMarked,
-}) => {
+const MovieCard: React.FC<MovieCardProps> = ({ imageSrc, title, teaser }) => {
+  const [localStore, setLocalStore] = useState<MovieCardProps[]>(() => {
+    const item = localStorage.getItem("favorite");
+    if (item) {
+      return JSON.parse(item);
+    }
+  });
+
+  const updateLocal = (items: MovieCardProps[]): void => {
+    localStorage.setItem("favorite", JSON.stringify(items));
+    setLocalStore(items);
+  };
+
+  const handleBookmark = (): void => {
+    const store = localStorage.getItem("favorite");
+    if (store) {
+      let favorites: MovieCardProps[] = JSON.parse(store);
+      if (
+        favorites.some((movie) => {
+          return movie.title === title;
+        })
+      ) {
+        favorites = favorites.filter((series) => {
+          return series.title !== title;
+        });
+      } else {
+        favorites = favorites.concat([{ title, imageSrc, teaser }]);
+      }
+
+      updateLocal(favorites);
+    }
+  };
+
   return (
     <Card>
       <ImageHold>
@@ -30,8 +57,18 @@ const MovieCard: React.FC<MovieCardProps> = ({
         <Title>{title}</Title>
         {teaser ? <p>{teaser}...</p> : <AltButtons></AltButtons>}
       </CardContent>
-      <Icon>
-        <path d={isBookMarked ? bookMarkFilled.path : bookMark.path}> </path>
+      <Icon onClick={handleBookmark}>
+        <path
+          d={
+            localStore.some((movie) => {
+              return movie.title === title;
+            })
+              ? bookMarkFilled.path
+              : bookMark.path
+          }
+        >
+          {" "}
+        </path>
       </Icon>
     </Card>
   );
