@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { MovieCard } from "./MovieCard";
 
 interface Movie {
@@ -15,13 +15,6 @@ interface DisplayProps {
 }
 
 const MovieDisplay: React.FC<DisplayProps> = ({ movies }) => {
-  const [favorite] = useState(() => {
-    const item = localStorage.getItem("favorite");
-    if (item) {
-      return JSON.parse(item);
-    }
-  });
-
   return (
     <>
       {movies.map(({ title, permaLink, imageSource, teaser }) => {
@@ -30,7 +23,6 @@ const MovieDisplay: React.FC<DisplayProps> = ({ movies }) => {
             key={permaLink}
             title={title}
             imageSrc={imageSource}
-            isBookMarked={favorite.includes(title)}
             teaser={teaser}
           />
         );
