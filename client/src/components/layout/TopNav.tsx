@@ -1,6 +1,6 @@
 import React from "react";
 import { WHITE, GENERIC_BORDER } from "../../constants/colors";
-import { menu, preserveAspectRatio } from "../../constants/svg";
+import { menu, preserveAspectRatio, sun, moon } from "../../constants/svg";
 import { openSide } from "../../actions/navigation";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -17,6 +17,7 @@ const TopNav: React.FC = () => {
       <Icon onClick={handleClick}>
         <path d={menu.path}></path>
       </Icon>
+      {?<ThemeIcon viewBox={sun.viewBox}><path d={sun.path}></path></ThemeIcon>:<ThemeIcon viewBox={moon.viewBox}><path d={moon.path}></path></ThemeIcon>}
     </Nav>
   );
 };
@@ -41,5 +42,9 @@ const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })`
   height: 48px;
   fill: gainsboro;
 `;
-
+const ThemeIcon = styled.svg.attrs({ preserveAspectRatio })`
+  width: 48px;
+  height: 48px;
+  fill: gainsboro;
+`;
 export { TopNav };
