@@ -14,7 +14,7 @@ interface Action {
   payLoad: Movie[];
 }
 
-type MovieType = Movie[] | null;
+type MovieType = Movie[] | [];
 
 const defaultState: MovieType = [];
 
