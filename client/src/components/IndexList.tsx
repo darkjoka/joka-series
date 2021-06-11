@@ -5,14 +5,16 @@ import { RootState } from "../reducers";
 import { Error } from "./Error";
 import { Load } from "./Load";
 import { Movie } from "../reducers/indexP";
+import MovieDisplay from "./MovieDisplay";
 
 export const IndexList = () => {
   const movies = useSelector((state: RootState) => {
     return state.index;
   });
+
   const dispatch = useDispatch();
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -43,7 +45,7 @@ export const IndexList = () => {
 
   return (
     <>
-      {!loading && !error && <p>should change to this</p>}
+      {!loading && !error && <MovieDisplay movies={movies} />}
       {loading && <Load />}
       {error && <Error />}
     </>
