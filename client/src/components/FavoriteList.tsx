@@ -1,5 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import MovieDisplay from "./MovieDisplay";
+import { handleLocalFetch } from "./MovieCard";
 
 export const FavoriteList = () => {
-  return <>This is the Favorite List</>;
+  const [movies] = useState(handleLocalFetch);
+
+  return (
+    <>
+      <MovieDisplay movies={movies} />
+    </>
+  );
 };

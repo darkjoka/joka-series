@@ -16,18 +16,21 @@ interface MovieCardProps {
   isBookMarked?: boolean;
 }
 
+export const handleLocalFetch = () => {
+  const item = localStorage.getItem("favorite");
+  if (item) {
+    return JSON.parse(item);
+  }
+};
+
 const MovieCard: React.FC<MovieCardProps> = ({
   imageSrc,
   title,
   teaser,
   permaLink,
 }) => {
-  const [localStore, setLocalStore] = useState<MovieCardProps[]>(() => {
-    const item = localStorage.getItem("favorite");
-    if (item) {
-      return JSON.parse(item);
-    }
-  });
+  const [localStore, setLocalStore] =
+    useState<MovieCardProps[]>(handleLocalFetch);
 
   const updateLocal = (items: MovieCardProps[]): void => {
     localStorage.setItem("favorite", JSON.stringify(items));
@@ -59,10 +62,12 @@ const MovieCard: React.FC<MovieCardProps> = ({
       <ImageHold>
         <img src={imageSrc} alt={title} />
       </ImageHold>
+
       <CardContent teaser={teaser}>
         <Title>{title}</Title>
         {teaser ? <p>{teaser}...</p> : <AltButtons></AltButtons>}
       </CardContent>
+
       <Icon onClick={handleBookmark}>
         <path
           d={
@@ -72,9 +77,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
               ? bookMarkFilled.path
               : bookMark.path
           }
-        >
-          {" "}
-        </path>
+        ></path>
       </Icon>
     </Card>
   );
