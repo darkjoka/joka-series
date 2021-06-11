@@ -1,6 +1,6 @@
 import { POPULATE_INDEX } from "../constants/action";
 
-interface Movie {
+export interface Movie {
   title: String;
   permaLink: String;
   imageSource: String;
