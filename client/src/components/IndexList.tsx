@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Error } from "./Error";
+import { Load } from "./Load";
 
 interface Dstate {
   title: String;
@@ -31,7 +32,7 @@ export const IndexList = () => {
         state?.map(({ title }, index) => {
           return <p key={index}>{title}</p>;
         })}
-      {loading && <p>Loading...</p>}
+      {loading && <Load />}
       {error && <Error />}
     </>
   );
