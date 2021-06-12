@@ -65,7 +65,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
 
       <CardContent teaser={teaser}>
         <Title>{title}</Title>
-        {teaser ? <p>{teaser}...</p> : <AltButtons></AltButtons>}
+        {teaser ? <p>{teaser.slice(0, 70)}...</p> : <AltButtons></AltButtons>}
         <AltButtons>
           <Favorite onClick={handleBookmark}>
             {localStore.some((movie) => {
