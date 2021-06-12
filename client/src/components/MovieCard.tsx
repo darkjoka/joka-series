@@ -66,6 +66,16 @@ const MovieCard: React.FC<MovieCardProps> = ({
       <CardContent teaser={teaser}>
         <Title>{title}</Title>
         {teaser ? <p>{teaser}...</p> : <AltButtons></AltButtons>}
+        <AltButtons>
+          <Favorite onClick={handleBookmark}>
+            {localStore.some((movie) => {
+              return movie.title === title;
+            })
+              ? "unfavorite"
+              : "favorite"}
+          </Favorite>
+          <Download>download</Download>
+        </AltButtons>
       </CardContent>
 
       <Icon onClick={handleBookmark}>
@@ -119,7 +129,8 @@ const CardContent = styled.div<{ teaser: string | undefined }>`
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify-content: ${({ teaser }) => (!teaser ? "space-between" : "")};
+  justify-content: ${({ teaser }) =>
+    !teaser ? "space-between" : "space-between"};
 
   p {
     margin: 4px;
@@ -145,6 +156,28 @@ const Icon = styled.svg.attrs({
 const AltButtons = styled.div`
   display: flex;
   justify-content: flex-end;
-  align-items: baseline;
+  align-items: center;
 `;
+
+const Favorite = styled.div`
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background-color: gainsboro;
+  color: gray;
+  width: 86px;
+  border-radius: 4px;
+`;
+
+const Download = styled.div`
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background-color: gray;
+  color: gainsboro;
+  width: 78px;
+  border-radius: 4px;
+  margin-left: 4px;
+`;
+
 export { MovieCard };
