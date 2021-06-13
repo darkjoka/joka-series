@@ -6,6 +6,7 @@ import {
   preserveAspectRatio,
   bookMarkFilled,
   bookMark,
+  camera,
 } from "../constants/svg";
 
 interface MovieCardProps {
@@ -60,7 +61,11 @@ const MovieCard: React.FC<MovieCardProps> = ({
   return (
     <Card>
       <ImageHold>
-        <img src={imageSrc} alt={title} />
+        <object data={imageSrc} aria-label={title}>
+          <CamIcon>
+            <path d={camera.path}></path>
+          </CamIcon>
+        </object>
       </ImageHold>
 
       <CardContent teaser={teaser}>
@@ -117,10 +122,12 @@ const ImageHold = styled.div`
   aspect-ratio: 250/350;
   height: 150px;
 
-  img {
+  object {
     border-radius: inherit;
     aspect-ratio: inherit;
     height: inherit;
+    display: grid;
+    place-items: center;
   }
 `;
 
@@ -151,6 +158,15 @@ const Icon = styled.svg.attrs({
   position: absolute;
   right: 5px;
   fill: gainsboro;
+`;
+
+const CamIcon = styled.svg.attrs({
+  viewBox: camera.viewBox,
+  preserveAspectRatio,
+})`
+  width: 24px;
+  height: 24px;
+  fill: gray;
 `;
 
 const AltButtons = styled.div`
