@@ -47,6 +47,8 @@ const Inner = styled.div`
   background-color: ${GENERIC_BACKGROUND};
   height: 92%;
   border-radius: 26px 26px 0 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
 `;
 const InnerNav = styled.div`
   height: 8%;
