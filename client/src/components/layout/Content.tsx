@@ -6,11 +6,8 @@ import { IndexList } from "../IndexList";
 import { FavoriteList } from "../FavoriteList";
 import { FilterList } from "../FilterList";
 import { HistoryList } from "../HistoryList";
-interface ContentProps {
-  children: React.ReactNode;
-}
 
-const Content: React.FC<ContentProps> = ({ children }) => {
+const Content: React.FC = () => {
   return (
     <StyledContent>
       <Hero></Hero>

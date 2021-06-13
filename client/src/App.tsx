@@ -7,7 +7,7 @@ const App: React.FC = () => {
   return (
     <>
       <Main>
-        <Layout>PlaceHolder Value</Layout>
+        <Layout></Layout>
       </Main>
     </>
   );

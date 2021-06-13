@@ -5,18 +5,14 @@ import { SideNav } from "./SideNav";
 import { BottomNav } from "./BottomNav";
 import { BrowserRouter as Router } from "react-router-dom";
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC = () => {
   return (
     <>
       <Router>
         <SideNav></SideNav>
         <TopNav></TopNav>
         <BottomNav></BottomNav>
-        <Content>{children}</Content>
+        <Content></Content>
       </Router>
     </>
   );
