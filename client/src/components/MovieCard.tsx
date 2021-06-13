@@ -167,6 +167,10 @@ const Favorite = styled.div`
   color: gray;
   width: 86px;
   border-radius: 4px;
+
+  @media ${device.mobileM} {
+    width: 92px;
+  }
 `;
 
 const Download = styled.div`
@@ -178,6 +182,10 @@ const Download = styled.div`
   width: 78px;
   border-radius: 4px;
   margin-left: 4px;
+
+  @media ${device.mobileM} {
+    width: 86px;
+  }
 `;
 
 export { MovieCard };
