@@ -8,6 +8,7 @@ export default createGlobalStyle`
     src: local("varela"),
     url(${varela}) format("truetype");
     font-weight: normal;
+    font-display: swap;
   }
   *{
       margin: 0;
