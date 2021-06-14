@@ -23,7 +23,7 @@ const Content: React.FC = () => {
   );
 };
 
-const StyledContent = styled.div`
+const StyledContent = styled.main`
   width: 100vw;
   padding-top: 64px;
 
