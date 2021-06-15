@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-export const Accordion = () => {
-  const [isOpen, setIsOpen] = useState(true);
+interface AccordionProps {
+  index: number;
+  value: boolean;
+  handleAccordion: (index: number) => void;
+}
+
+export const Accordion: React.FC<AccordionProps> = ({
+  index,
+  value,
+  handleAccordion,
+}) => {
   return (
     <>
       <AccordionContainer>
         <AccordionHead
-          isOpen={isOpen}
+          isOpen={value}
           onClick={() => {
-            setIsOpen(!isOpen);
+            handleAccordion(index);
           }}
         ></AccordionHead>
-        <AccordionBody isOpen={isOpen}>
+        <AccordionBody isOpen={value}>
           <div></div>
           <div></div>
           <div></div>
@@ -25,6 +34,7 @@ export const Accordion = () => {
 };
 
 const AccordionContainer = styled.div`
+  margin: 8px 0;
   border: 1px solid gainsboro;
   border-radius: 4px;
 `;
@@ -33,7 +43,6 @@ const AccordionHead = styled.div<{ isOpen: boolean }>`
   width: 100%;
   height: 52px;
   background-color: white;
-
   transition: all 0.5s ease;
   ${({ isOpen }) => {
     return isOpen ? "  border-radius: 4px 4px 0 0;" : "  border-radius: 4px";
