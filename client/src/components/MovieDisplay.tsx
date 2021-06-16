@@ -1,14 +1,6 @@
 import React from "react";
 import { MovieCard } from "./MovieCard";
-
-interface Movie {
-  title: string;
-  permaLink: string;
-  imageSource: string;
-  lastEpisode?: string;
-  rating?: string;
-  teaser?: string;
-}
+import { Movie } from "../reducers/indexP";
 
 interface DisplayProps {
   movies: Movie[];
