@@ -23,7 +23,7 @@ const MovieDisplay: React.FC<DisplayProps> = ({ movies }) => {
             permaLink={permaLink}
             key={permaLink}
             title={title}
-            imageSrc={imageSource}
+            imageSource={imageSource}
             teaser={teaser}
           />
         );
