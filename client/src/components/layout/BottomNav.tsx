@@ -1,21 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { GENERIC_BACKGROUND } from "../../constants/colors";
 import { close, preserveAspectRatio } from "../../constants/svg";
 import { RootState } from "../../reducers";
 import { closeBottom } from "../../actions/navigation";
+import { Detail } from "../skeleton/Detail";
 
 const BottomNav: React.FC = () => {
-  const bottomNavigation = useSelector(
-    (state: RootState) => state.navigation.isBottomSectOpen
+  const [bottomNavigation, link]: [boolean, string] = useSelector(
+    (state: RootState) => {
+      return [state.navigation.isBottomSectOpen, state.current.link];
+    }
   );
+
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
 
   const handleClick = (): void => {
     dispatch(closeBottom());
   };
+
+  useEffect(() => {
+    setLoading(true);
+    //to-do: request data from api
+  }, [link]);
 
   return (
     <StyledNav isBottomNavOpen={bottomNavigation}>
@@ -24,7 +34,7 @@ const BottomNav: React.FC = () => {
           <path d={close.path}></path>
         </Icon>
       </InnerNav>
-      <Inner></Inner>
+      <Inner>{loading && <Detail />}</Inner>
     </StyledNav>
   );
 };
