@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { pushLink } from "../actions/current";
+import { openBottom } from "../actions/navigation";
 import { GENERIC_BORDER, WHITE } from "../constants/colors";
 import { device } from "../constants/device";
 import {
@@ -57,10 +60,16 @@ const MovieCard: React.FC<MovieCardProps> = ({
       updateLocal(favorites);
     }
   };
+  const dispatch = useDispatch();
+
+  const handleDownload = () => {
+    dispatch(pushLink(permaLink));
+    dispatch(openBottom());
+  };
 
   return (
     <Card>
-      <ImageHold>
+      <ImageHold onClick={handleDownload}>
         <object data={imageSrc} aria-label={title}>
           <CamIcon>
             <path d={camera.path}></path>
@@ -69,7 +78,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
       </ImageHold>
 
       <CardContent teaser={teaser}>
-        <Title>{title}</Title>
+        <Title onClick={handleDownload}>{title}</Title>
         {teaser ? <p>{teaser.slice(0, 70)}...</p> : <AltButtons></AltButtons>}
         <AltButtons>
           <Favorite onClick={handleBookmark}>
@@ -79,7 +88,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
               ? "unfavorite"
               : "favorite"}
           </Favorite>
-          <Download>download</Download>
+          <Download onClick={handleDownload}>download</Download>
         </AltButtons>
       </CardContent>
 
