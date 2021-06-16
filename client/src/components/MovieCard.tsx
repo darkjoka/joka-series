@@ -11,66 +11,72 @@ import {
   bookMark,
   camera,
 } from "../constants/svg";
+import { Movie } from "../reducers/indexP";
 
-interface MovieCardProps {
-  permaLink: string;
-  imageSrc: string;
-  title: string;
-  teaser?: string;
-  isBookMarked?: boolean;
-}
-
-export const handleLocalFetch = () => {
-  const item = localStorage.getItem("favorite");
+export const handleLocalFetch = (store: string): Movie[] => {
+  const item = localStorage.getItem(store);
   if (item) {
     return JSON.parse(item);
   }
+  return [];
 };
 
-const MovieCard: React.FC<MovieCardProps> = ({
-  imageSrc,
+const MovieCard: React.FC<Movie> = ({
+  imageSource,
   title,
   teaser,
   permaLink,
 }) => {
-  const [localStore, setLocalStore] =
-    useState<MovieCardProps[]>(handleLocalFetch);
+  const [localFavoriteStore, setLocalFavoriteStore] = useState<Movie[]>(
+    handleLocalFetch("favorite")
+  );
 
-  const updateLocal = (items: MovieCardProps[]): void => {
-    localStorage.setItem("favorite", JSON.stringify(items));
-    setLocalStore(items);
+  const updateLocal = (items: Movie[], store: string): void => {
+    localStorage.setItem(store, JSON.stringify(items));
+    setLocalFavoriteStore(items);
   };
 
   const handleBookmark = (): void => {
-    const store = localStorage.getItem("favorite");
-    if (store) {
-      let favorites: MovieCardProps[] = JSON.parse(store);
-      if (
-        favorites.some((movie) => {
-          return movie.title === title;
-        })
-      ) {
-        favorites = favorites.filter((series) => {
-          return series.title !== title;
-        });
-      } else {
-        favorites = favorites.concat([{ title, imageSrc, teaser, permaLink }]);
-      }
-
-      updateLocal(favorites);
+    let favorites = handleLocalFetch("favorite");
+    if (
+      favorites.some((movie) => {
+        return movie.title === title;
+      })
+    ) {
+      favorites = favorites.filter((series) => {
+        return series.title !== title;
+      });
+    } else {
+      favorites = favorites.concat([{ title, imageSource, teaser, permaLink }]);
     }
+
+    updateLocal(favorites, "favorite");
   };
   const dispatch = useDispatch();
+
+  const addToHistory = () => {
+    let history = handleLocalFetch("history");
+    if (
+      !history.some((movie) => {
+        return movie.title === title;
+      })
+    ) {
+      history = history.concat([{ title, imageSource, teaser, permaLink }]);
+    }
+
+    updateLocal(history, "history");
+  };
 
   const handleDownload = () => {
     dispatch(pushLink(permaLink));
     dispatch(openBottom());
+    addToHistory();
   };
 
   return (
     <Card>
       <ImageHold onClick={handleDownload}>
-        <object data={imageSrc} aria-label={title}>
+        <object data={imageSource} aria-label={title}>
           <CamIcon>
             <path d={camera.path}></path>
           </CamIcon>
@@ -82,7 +88,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
         {teaser ? <p>{teaser.slice(0, 70)}...</p> : <AltButtons></AltButtons>}
         <AltButtons>
           <Favorite onClick={handleBookmark}>
-            {localStore.some((movie) => {
+            {localFavoriteStore.some((movie) => {
               return movie.title === title;
             })
               ? "unfavorite"
@@ -95,7 +101,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
       <Icon onClick={handleBookmark}>
         <path
           d={
-            localStore.some((movie) => {
+            localFavoriteStore.some((movie) => {
               return movie.title === title;
             })
               ? bookMarkFilled.path
