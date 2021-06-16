@@ -41,6 +41,11 @@ export const IndexList = () => {
           setError(true);
         });
     }
+
+    return () => {
+      setLoading(false);
+      setError(false);
+    }; //set states to defaults on unmount => prevent prob of memory leak
   }, [movies, dispatch]);
 
   return (
