@@ -1,5 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import MovieDisplay from "./MovieDisplay";
+import { handleLocalFetch } from "./MovieCard";
 
 export const HistoryList = () => {
-  return <>This is the History List</>;
+  const [movies] = useState(handleLocalFetch("history"));
+  return (
+    <>
+      <MovieDisplay movies={movies} />
+    </>
+  );
 };
