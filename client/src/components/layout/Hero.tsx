@@ -95,6 +95,7 @@ const FormInner = styled.div`
   box-shadow: 0 10px 24px rgba(82, 82, 82, 0.2);
   display: grid;
   place-items: center;
+  max-width: 600px;
 
   form {
     width: 95%;
