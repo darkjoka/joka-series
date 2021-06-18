@@ -127,6 +127,12 @@ const Card = styled.div`
   @media ${device.mobileM} {
     font-size: 1em;
   }
+
+  @media ${device.tablet} {
+    flex-direction: column;
+    width: 222.29px;
+    margin: 8px;
+  }
 `;
 
 const ImageHold = styled.div`
@@ -144,6 +150,19 @@ const ImageHold = styled.div`
     display: grid;
     place-items: center;
   }
+
+  @media ${device.tablet} {
+    height: 300px;
+    border-radius: 0;
+    aspect-ratio: 250/350;
+    width: 214.29px;
+
+    object {
+      height: 300px;
+      border-radius: inherit;
+      aspect-ratio: 250/350;
+    }
+  }
 `;
 
 const CardContent = styled.div<{ teaser: string | undefined }>`
@@ -157,11 +176,20 @@ const CardContent = styled.div<{ teaser: string | undefined }>`
   p {
     margin: 4px;
   }
+
+  @media ${device.tablet} {
+    margin-top: -68px;
+    margin-left: -1px;
+    width: calc(100% + 3px);
+    background-color: white;
+    background: white;
+  }
 `;
 
 const Title = styled.p`
   font-weight: bold;
   width: calc(100% - 12px);
+  margin-bottom: 8px;
 `;
 
 const Icon = styled.svg.attrs({
@@ -173,6 +201,11 @@ const Icon = styled.svg.attrs({
   position: absolute;
   right: 5px;
   fill: gainsboro;
+
+  @media ${device.tablet} {
+    fill: white;
+    top: 5px;
+  }
 `;
 
 const CamIcon = styled.svg.attrs({
@@ -182,12 +215,19 @@ const CamIcon = styled.svg.attrs({
   width: 24px;
   height: 24px;
   fill: gray;
+
+  @media ${device.tablet} {
+    height: 42px;
+    width: 42px;
+    transform: translate3d(-10px, -30px, 0);
+  }
 `;
 
 const AltButtons = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-top: 8px;
 `;
 
 const Favorite = styled.div`
@@ -212,7 +252,7 @@ const Download = styled.div`
   color: gainsboro;
   width: 78px;
   border-radius: 4px;
-  margin-left: 4px;
+  margin-left: 8px;
 
   @media ${device.mobileM} {
     width: 86px;
