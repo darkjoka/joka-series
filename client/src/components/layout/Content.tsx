@@ -12,14 +12,16 @@ const Content: React.FC = () => {
   return (
     <StyledContent>
       <Hero></Hero>
-      <section>
-        <Switch>
-          <Route path="/" exact component={IndexList} />
-          <Route path="/favorite" component={FavoriteList} />
-          <Route path="/filter/:filterItem" component={FilterList} />
-          <Route path="/history" component={HistoryList} />{" "}
-        </Switch>
-      </section>
+      <SectionHold>
+        <section>
+          <Switch>
+            <Route path="/" exact component={IndexList} />
+            <Route path="/favorite" component={FavoriteList} />
+            <Route path="/filter/:filterItem" component={FilterList} />
+            <Route path="/history" component={HistoryList} />{" "}
+          </Switch>
+        </section>
+      </SectionHold>
     </StyledContent>
   );
 };
@@ -34,8 +36,17 @@ const StyledContent = styled.main`
 
     @media ${device.tablet} {
       display: flex;
+      flex-wrap: wrap;
+      max-width: 1000px;
       justify-content: center;
     }
+  }
+`;
+
+const SectionHold = styled.div`
+  @media ${device.tablet} {
+    display: flex;
+    justify-content: center;
   }
 `;
 
