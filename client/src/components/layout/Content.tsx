@@ -6,6 +6,7 @@ import { IndexList } from "../IndexList";
 import { FavoriteList } from "../FavoriteList";
 import { FilterList } from "../FilterList";
 import { HistoryList } from "../HistoryList";
+import { device } from "../../constants/device";
 
 const Content: React.FC = () => {
   return (
@@ -30,6 +31,11 @@ const StyledContent = styled.main`
   section {
     padding: 8px;
     min-height: 50vh;
+
+    @media ${device.tablet} {
+      display: flex;
+      justify-content: center;
+    }
   }
 `;
 
