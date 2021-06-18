@@ -76,7 +76,10 @@ const MovieCard: React.FC<Movie> = ({
   return (
     <Card>
       <ImageHold onClick={handleDownload}>
-        <object data={imageSource} aria-label={title}>
+        <object
+          data={`http://www.todaytvseries2.com/${imageSource}`}
+          aria-label={title}
+        >
           <CamIcon>
             <path d={camera.path}></path>
           </CamIcon>
