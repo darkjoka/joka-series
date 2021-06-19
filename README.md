@@ -12,6 +12,6 @@ A django webscraping app that scrapes information from todaytvseries2.com and pr
 
 ## Tech Stack
 
-**Client:** Html, Css
+**Client:** React, Redux
 
 **Server:** python, Django
