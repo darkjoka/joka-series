@@ -205,6 +205,10 @@ const Icon = styled.svg.attrs({
   right: 5px;
   fill: gainsboro;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   @media ${device.tablet} {
     fill: white;
     top: 5px;
@@ -242,6 +246,10 @@ const Favorite = styled.div`
   width: 86px;
   border-radius: 4px;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   @media ${device.mobileM} {
     width: 92px;
   }
@@ -256,6 +264,10 @@ const Download = styled.div`
   width: 78px;
   border-radius: 4px;
   margin-left: 8px;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   @media ${device.mobileM} {
     width: 86px;
