@@ -146,6 +146,10 @@ const ImageHold = styled.div`
   aspect-ratio: 250/350;
   height: 150px;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   object {
     border-radius: inherit;
     aspect-ratio: inherit;
@@ -193,6 +197,10 @@ const Title = styled.p`
   font-weight: bold;
   width: calc(100% - 12px);
   margin-bottom: 8px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Icon = styled.svg.attrs({
