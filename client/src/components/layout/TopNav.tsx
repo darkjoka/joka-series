@@ -1,12 +1,22 @@
 import React from "react";
 import { WHITE, GENERIC_BORDER } from "../../constants/colors";
-import { menu, preserveAspectRatio, sun, moon } from "../../constants/svg";
+import {
+  menu,
+  preserveAspectRatio,
+  sun,
+  moon,
+  home,
+  bookMarkFilled,
+  recent,
+} from "../../constants/svg";
 import { openSide } from "../../actions/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { RootState } from "../../reducers";
 import { toggleDark, toggleLight } from "../../actions/theme";
 import { device } from "../../constants/device";
+import { Link } from "react-router-dom";
+import { Section } from "../Section";
 
 const TopNav: React.FC = () => {
   const theme = useSelector((state: RootState) => {
@@ -32,6 +42,31 @@ const TopNav: React.FC = () => {
         <Icon onClick={handleClick}>
           <path d={menu.path}></path>
         </Icon>
+        <BaseSection>
+          <Link to="/">
+            <Section label={"Home"}>
+              <IconSect viewBox={home.viewBox}>
+                <path d={home.path}></path>
+              </IconSect>
+            </Section>
+          </Link>
+
+          <Link to="/favorite">
+            <Section label={"Favorited"}>
+              <IconSect viewBox={bookMarkFilled.viewBox}>
+                <path d={bookMarkFilled.path}></path>
+              </IconSect>
+            </Section>
+          </Link>
+
+          <Link to="/history">
+            <Section label={"History"}>
+              <IconSect viewBox={recent.viewBox}>
+                <path d={recent.path}></path>
+              </IconSect>
+            </Section>
+          </Link>
+        </BaseSection>
         {theme.isLight && (
           <ThemeIcon viewBox={sun.viewBox} onClick={handleDarkToggle}>
             <path d={sun.path}></path>
@@ -78,10 +113,32 @@ const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })`
   width: 48px;
   height: 48px;
   fill: gainsboro;
+
+  @media ${device.laptopL} {
+    display: none;
+  }
 `;
 const ThemeIcon = styled.svg.attrs({ preserveAspectRatio })`
   width: 24px;
   height: 24px;
   fill: gainsboro;
+`;
+
+const IconSect = styled.svg.attrs({ preserveAspectRatio })`
+  fill: gainsboro;
+  width: 20px;
+  height: 20px;
+`;
+const BaseSection = styled.div`
+  justify-content: space-evenly;
+  display: none;
+
+  @media ${device.laptopL} {
+    display: flex;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
 `;
 export { TopNav };
