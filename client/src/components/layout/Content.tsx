@@ -38,7 +38,7 @@ const StyledContent = styled.main`
       display: flex;
       flex-wrap: wrap;
       max-width: 1000px;
-      justify-content: center;
+      justify-content: flex-start;
     }
   }
 `;
