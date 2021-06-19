@@ -3,30 +3,41 @@ import styled from "styled-components";
 
 export const Detail: React.FC = () => {
   return (
-    <Entry>
-      <Hero></Hero>
-      <Genre>
-        {[1, 2, 3, 4].map((num) => {
-          return <div key={num}></div>;
-        })}
-      </Genre>
-      <Description>
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => {
-          return <div key={num}></div>;
-        })}
-      </Description>
+    <SupEntry>
+      <Entry>
+        <Hero></Hero>
+        <Genre>
+          {[1, 2, 3, 4].map((num) => {
+            return <div key={num}></div>;
+          })}
+        </Genre>
+        <Description>
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => {
+            return <div key={num}></div>;
+          })}
+        </Description>
 
-      <Accordion>
-        {[1, 2, 3, 4].map((num) => {
-          return <div key={num}></div>;
-        })}
-      </Accordion>
-    </Entry>
+        <Accordion>
+          {[1, 2, 3, 4].map((num) => {
+            return <div key={num}></div>;
+          })}
+        </Accordion>
+      </Entry>
+    </SupEntry>
   );
 };
 
+const SupEntry = styled.div`
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+`;
+
 const Entry = styled.div`
   padding: 8px 8px 0;
+  width: inherit;
+  max-width: 800px;
 `;
 
 const Hero = styled.div`
