@@ -13,6 +13,7 @@ import {
 import { Section } from "../Section";
 import { Filters } from "../Filters";
 import { Link } from "react-router-dom";
+import { device } from "../../constants/device";
 
 const SideNav: React.FC = () => {
   const sideNavigation = useSelector(
@@ -90,10 +91,17 @@ const StyledNav = styled.div`
   background-color: white;
   padding: 12px;
   border-right: 4px solid gainsboro;
+  @media ${device.tablet} {
+    width: 30vw;
+  }
 `;
 
 const StyledOther = styled.div`
   width: 30vw;
+
+  @media ${device.tablet} {
+    width: 70vw;
+  }
 `;
 const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })`
   width: 48px;
