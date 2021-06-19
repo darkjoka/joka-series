@@ -8,4 +8,5 @@ urlpatterns = [
     path("search/<str:searchTerm>", views.search, name="search"),
     path("detail/<str:series>/", views.detail, name="detail"),
     path("trailers/", views.trailers, name="trailers"),
+    path("filter/<str:type>", views.filter, name="filter"),
 ]
