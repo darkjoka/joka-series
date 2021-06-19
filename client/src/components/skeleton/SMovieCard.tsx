@@ -59,8 +59,10 @@ const Card = styled.div`
     animation: load 1.5s infinite;
   }
 
-  @media ${device.mobileM} {
-    font-size: 1em;
+  @media ${device.tablet} {
+    flex-direction: column;
+    width: 222.29px;
+    margin: 8px;
   }
 
   @keyframes load {
@@ -78,6 +80,12 @@ const ImageHold = styled.div`
   height: 150px;
   border-radius: 4px;
   background: #dddddd;
+
+    @media ${device.tablet} {
+    height: 200px;
+    border-radius: 0;
+    aspect-ratio: 250/350;
+    width: 214.29px;
 `;
 
 const CardContent = styled.div<{ teaser: boolean }>`
@@ -89,6 +97,11 @@ const CardContent = styled.div<{ teaser: boolean }>`
 
   p {
     margin: 4px;
+  }
+
+  @media ${device.tablet} {
+    margin-left: -1px;
+    width: calc(100% + 3px);
   }
 `;
 
@@ -108,6 +121,11 @@ const Icon = styled.svg.attrs({
   position: absolute;
   right: 5px;
   fill: #dddddd;
+
+  @media ${device.tablet} {
+    fill: white;
+    top: 5px;
+  }
 `;
 
 const AltButtons = styled.div`
