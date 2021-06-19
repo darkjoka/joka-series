@@ -5,7 +5,7 @@ import { GENERIC_BACKGROUND } from "../../constants/colors";
 import { close, preserveAspectRatio } from "../../constants/svg";
 import { RootState } from "../../reducers";
 import { closeBottom } from "../../actions/navigation";
-import { Detail } from "../skeleton/Detail";
+import { SDetail } from "../skeleton/SDetail";
 
 const BottomNav: React.FC = () => {
   const [bottomNavigation, link]: [boolean, string] = useSelector(
@@ -34,7 +34,7 @@ const BottomNav: React.FC = () => {
           <path d={close.path}></path>
         </Icon>
       </InnerNav>
-      <Inner>{loading && <Detail />}</Inner>
+      <Inner>{loading && <SDetail />}</Inner>
     </StyledNav>
   );
 };
