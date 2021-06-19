@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { RootState } from "../../reducers";
 import { toggleDark, toggleLight } from "../../actions/theme";
+import { device } from "../../constants/device";
 
 const TopNav: React.FC = () => {
   const theme = useSelector((state: RootState) => {
@@ -27,20 +28,22 @@ const TopNav: React.FC = () => {
 
   return (
     <Nav>
-      <Icon onClick={handleClick}>
-        <path d={menu.path}></path>
-      </Icon>
-      {theme.isLight && (
-        <ThemeIcon viewBox={sun.viewBox} onClick={handleDarkToggle}>
-          <path d={sun.path}></path>
-        </ThemeIcon>
-      )}
+      <Hold>
+        <Icon onClick={handleClick}>
+          <path d={menu.path}></path>
+        </Icon>
+        {theme.isLight && (
+          <ThemeIcon viewBox={sun.viewBox} onClick={handleDarkToggle}>
+            <path d={sun.path}></path>
+          </ThemeIcon>
+        )}
 
-      {theme.isDark && (
-        <ThemeIcon viewBox={moon.viewBox} onClick={handleLightToggle}>
-          <path d={moon.path}></path>
-        </ThemeIcon>
-      )}
+        {theme.isDark && (
+          <ThemeIcon viewBox={moon.viewBox} onClick={handleLightToggle}>
+            <path d={moon.path}></path>
+          </ThemeIcon>
+        )}
+      </Hold>
     </Nav>
   );
 };
@@ -48,17 +51,27 @@ const TopNav: React.FC = () => {
 const Nav = styled.nav`
   height: 64px;
   display: flex;
+  justify-content: center;
   transition: transform 0.5s ease-in-out;
-  align-items: center;
-  justify-items: baseline;
-  justify-content: space-between;
   padding: 0 0.5em;
   position: fixed;
   width: 100%;
   background-color: ${WHITE};
+  margin: 0;
   z-index: 1;
   box-shadow: 0 5px 4px -4px ${GENERIC_BORDER};
-  margin: 0;
+`;
+
+const Hold = styled.div`
+  width: inherit;
+  display: flex;
+  align-items: center;
+  justify-items: baseline;
+  justify-content: space-between;
+
+  @media ${device.tablet} {
+    max-width: 950px;
+  }
 `;
 
 const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })`
