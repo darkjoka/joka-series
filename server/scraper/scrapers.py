@@ -38,8 +38,8 @@ def getFromIndex(pageLink: str):
     return series
 
 
-def getTrailers(pageLink: str):
-    mime: Response = requests.get(pageLink)
+def getTrailers():
+    mime: Response = requests.get("http://www.todaytvseries2.com/tvshow-trailers")
     soup: BeautifulSoup = BeautifulSoup(mime.content, "html.parser")
     articles: ResultSet = soup.find_all(class_="jux-item")
 
@@ -96,13 +96,13 @@ def getDetails(pageLink: str):
         seasonEpisode: seasonEpisodeType = {head: {"episodes": []}}
 
         for episode in episodes:
-            episodeTitle: str = episode.find(class_="cell2").get_text().stip()
+            episodeTitle: str = episode.find(class_="cell2").get_text().strip()
             episodeSize: str = episode.find(class_="cell3").get_text()
             epidoseDownloadLink: str = (
                 episode.find(class_="cell4").find("a").get("href")
             )
 
-            seasonEpisode[head]["episode"].append(
+            seasonEpisode[head]["episodes"].append(
                 {
                     "episodeTitle": episodeTitle,
                     "episodeSize": episodeSize,
