@@ -134,7 +134,7 @@ def getFilteredSearch(pageLink: str):
     for article in articles:
         titleGroup = article.find(class_="uk-article-titletag")
 
-        title: str = titleGroup.find_text().strip()
+        title: str = titleGroup.get_text().strip()
         permaLink: str = titleGroup.find("a").get("href").strip()
 
         imageSource: str = article.find("img").get("src").strip()
