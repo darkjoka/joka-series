@@ -1,24 +1,29 @@
 import React from "react";
 import styled from "styled-components";
+import { DetailState } from "../reducers/current";
 import { AccordionList } from "./AccordionList";
 
-export const Detail: React.FC = () => {
+export const Detail: React.FC<DetailState> = ({
+  heroImageSource,
+  genres,
+  description,
+  seasonEpisodes,
+  title,
+}) => {
   return (
     <SupEntry>
       <Entry>
-        <Hero image={""}></Hero>
-        <Title>Sample Title</Title>
+        <Hero image={heroImageSource}></Hero>
+        <Title>
+          {title}
+          {console.log(genres)}
+        </Title>
         <Genre>
-          {["Romance", "Action", "Thriller"].map((value) => {
-            return <span>{value}</span>;
+          {genres.split(" ").map((value) => {
+            return <span key={value}>{value}</span>;
           })}
         </Genre>
-        <Description>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
-          cupiditate deserunt rerum quidem consequatur quam voluptatem numquam,
-          tempora necessitatibus aliquid vitae a deleniti facere quia sint magni
-          mollitia officia beatae?
-        </Description>
+        <Description>{description}</Description>
         <AccordionList></AccordionList>
       </Entry>
     </SupEntry>
