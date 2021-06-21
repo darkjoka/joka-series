@@ -44,9 +44,24 @@ const AccordionHead = styled.div<{ isOpen: boolean }>`
   height: 52px;
   background-color: white;
   transition: all 0.5s ease;
+  position: relative;
   ${({ isOpen }) => {
     return isOpen ? "  border-radius: 4px 4px 0 0;" : "  border-radius: 4px";
   }};
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 52px;
+    left: 0;
+    right: 0;
+    height: 26px;
+    background: linear-gradient(to bottom, #bbbaba2b, transparent);
+    max-height: ${({ isOpen }) => {
+      return isOpen ? "26px" : "0;";
+    }};
+    transition: all 0.5s ease;
+  }
 `;
 const AccordionBody = styled.div<{ isOpen: boolean }>`
   width: 100%;
