@@ -1,9 +1,9 @@
 import { PUSH_DATA, PUSH_LINK } from "../constants/action";
 
 interface Episode {
-  downloadLink: string;
-  size: string;
-  title: string;
+  episodeTitle: string;
+  episodeSize: string;
+  episodeDownloadLink: string;
 }
 
 export interface SeasonEpisode {
@@ -13,7 +13,7 @@ export interface SeasonEpisode {
 
 export interface DetailState {
   heroImageSource: string;
-  genres: string;
+  genres: string[];
   description: string;
   seasonEpisodes: SeasonEpisode[];
   title: string;
@@ -33,7 +33,7 @@ const defaultState: CurrentState = {
   detail: {
     title: "",
     heroImageSource: "",
-    genres: "",
+    genres: [],
     description: "",
     seasonEpisodes: [],
   },
