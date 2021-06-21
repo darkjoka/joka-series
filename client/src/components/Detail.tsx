@@ -14,17 +14,14 @@ export const Detail: React.FC<DetailState> = ({
     <SupEntry>
       <Entry>
         <Hero image={heroImageSource}></Hero>
-        <Title>
-          {title}
-          {console.log(genres)}
-        </Title>
+        <Title>{title}</Title>
         <Genre>
-          {genres.split(" ").map((value) => {
+          {genres.map((value) => {
             return <span key={value}>{value}</span>;
           })}
         </Genre>
         <Description>{description}</Description>
-        <AccordionList></AccordionList>
+        <AccordionList seasonEpisode={seasonEpisodes}></AccordionList>
       </Entry>
     </SupEntry>
   );
