@@ -6,7 +6,7 @@ interface Episode {
   title: string;
 }
 
-interface SeasonEpisode {
+export interface SeasonEpisode {
   season: string;
   episodes: Episode[];
 }
