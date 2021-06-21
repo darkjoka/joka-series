@@ -1,8 +1,18 @@
 import React, { useState } from "react";
+import { SeasonEpisode } from "../reducers/current";
 import { Accordion } from "./Accordion";
 
-export const AccordionList = () => {
-  const [accState, setAccState] = useState([false, false, false]);
+interface seasonEp {
+  seasonEpisode: SeasonEpisode[];
+}
+export const AccordionList: React.FC<seasonEp> = ({ seasonEpisode }) => {
+  const [accState, setAccState] = useState(() => {
+    const acc: boolean[] = [];
+    for (let i = 0; i < seasonEpisode.length; i++) {
+      acc.push(false);
+    }
+    return acc;
+  });
 
   const handleAccordion = (index: number) => {
     const interest = accState[index];
@@ -16,12 +26,13 @@ export const AccordionList = () => {
   };
   return (
     <>
-      {accState.map((value, index) => {
+      {seasonEpisode.map((data, index) => {
         return (
           <Accordion
             key={index}
-            value={value}
+            value={accState[index]}
             index={index}
+            {...data}
             handleAccordion={handleAccordion}
           />
         );
