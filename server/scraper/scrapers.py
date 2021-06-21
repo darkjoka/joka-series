@@ -82,7 +82,7 @@ def getDetails(pageLink: str):
     )
 
     genres: List[str] = (
-        soup.find(class_="footer").find(class_="cell1").get_text().strip(" | ")
+        soup.find(class_="footer").find(class_="cell1").get_text().split(" | ")
     )
 
     seasonHeads: ResultSet = soup.find_all(class_="uk-accordion-title")
@@ -93,7 +93,7 @@ def getDetails(pageLink: str):
     for seasonHead, episodeHead in zip(seasonHeads, episodeHeads):
         head: str = seasonHead.get_text().strip()
         episodes: ResultSet = episodeHead.find_all(class_="footer")
-        seasonEpisode: seasonEpisodeType = {head: {"episodes": []}}
+        seasonEpisode: seasonEpisodeType = {"season": head, "episodes": []}
 
         for episode in episodes:
             episodeTitle: str = episode.find(class_="cell2").get_text().strip()
@@ -102,7 +102,7 @@ def getDetails(pageLink: str):
                 episode.find(class_="cell4").find("a").get("href")
             )
 
-            seasonEpisode[head]["episodes"].append(
+            seasonEpisode["episodes"].append(
                 {
                     "episodeTitle": episodeTitle,
                     "episodeSize": episodeSize,
