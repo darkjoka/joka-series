@@ -1,16 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 
+interface Episode {
+  episodeTitle: string;
+  episodeSize: string;
+  episodeDownloadLink: string;
+}
 interface AccordionProps {
   index: number;
   value: boolean;
   handleAccordion: (index: number) => void;
+  season: string;
+  episodes: Episode[];
 }
 
 export const Accordion: React.FC<AccordionProps> = ({
   index,
   value,
   handleAccordion,
+  season,
+  episodes,
 }) => {
   return (
     <>
@@ -20,13 +29,13 @@ export const Accordion: React.FC<AccordionProps> = ({
           onClick={() => {
             handleAccordion(index);
           }}
-        ></AccordionHead>
+        >
+          {season}
+        </AccordionHead>
         <AccordionBody isOpen={value}>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          {episodes.map(({ episodeTitle }) => {
+            return <div key={episodeTitle}>{episodeTitle}</div>;
+          })}
         </AccordionBody>
       </AccordionContainer>
     </>
