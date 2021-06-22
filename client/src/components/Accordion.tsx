@@ -57,6 +57,9 @@ const AccordionHead = styled.div<{ isOpen: boolean }>`
   ${({ isOpen }) => {
     return isOpen ? "  border-radius: 4px 4px 0 0;" : "  border-radius: 4px";
   }};
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 
   &::before {
     content: "";
