@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { cheveron, preserveAspectRatio } from "../constants/svg";
 
 interface Episode {
   episodeTitle: string;
@@ -31,6 +32,10 @@ export const Accordion: React.FC<AccordionProps> = ({
           }}
         >
           {season}
+
+          <Icon>
+            <path d={cheveron.path}></path>
+          </Icon>
         </AccordionHead>
         <AccordionBody isOpen={value}>
           {episodes.map(({ episodeTitle }) => {
@@ -59,7 +64,8 @@ const AccordionHead = styled.div<{ isOpen: boolean }>`
   }};
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 16px;
 
   &::before {
     content: "";
@@ -90,4 +96,15 @@ const AccordionBody = styled.div<{ isOpen: boolean }>`
     background: white;
     margin: 8px 0;
   }
+`;
+
+const Icon = styled.svg.attrs({
+  viewBox: cheveron.viewBox,
+  preserveAspectRatio,
+})`
+  width: 24px;
+  height: 24px;
+  border: 3px solid black;
+  border-radius: 50%;
+  background: yellow;
 `;
