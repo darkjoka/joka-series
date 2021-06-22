@@ -4,7 +4,7 @@ import { DetailState } from "../reducers/current";
 import { AccordionList } from "./AccordionList";
 
 export const Detail: React.FC<DetailState> = ({
-  heroImageSource,
+  heroImage,
   genres,
   description,
   seasonEpisodes,
@@ -13,7 +13,7 @@ export const Detail: React.FC<DetailState> = ({
   return (
     <SupEntry>
       <Entry>
-        <Hero image={heroImageSource}></Hero>
+        <Hero image={`http://www.todaytvseries2.com${heroImage}`}></Hero>
         <Title>{title}</Title>
         <Genre>
           {genres.map((value) => {
@@ -59,7 +59,11 @@ const Genre = styled.div`
 const Hero = styled.div<{ image: string }>`
   aspect-ratio: 1067/600;
   width: 100%;
-  background: url(${({ image }) => image}), #dddddd;
+  background: url(${({ image }) => {
+      return image;
+    }}),
+    #dddddd;
+  background-size: cover;
   border-radius: 8px;
   margin: 16px 0;
   overflow: hidden;

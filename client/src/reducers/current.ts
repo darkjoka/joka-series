@@ -12,7 +12,7 @@ export interface SeasonEpisode {
 }
 
 export interface DetailState {
-  heroImageSource: string;
+  heroImage: string;
   genres: string[];
   description: string;
   seasonEpisodes: SeasonEpisode[];
@@ -32,7 +32,7 @@ const defaultState: CurrentState = {
   link: "",
   detail: {
     title: "",
-    heroImageSource: "",
+    heroImage: "",
     genres: [],
     description: "",
     seasonEpisodes: [],
