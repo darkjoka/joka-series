@@ -7,13 +7,14 @@ import { FavoriteList } from "../FavoriteList";
 import { FilterList } from "../FilterList";
 import { HistoryList } from "../HistoryList";
 import { device } from "../../constants/device";
-import { GENERIC_BACKGROUND } from "../../constants/colors";
+import { GENERIC_BACKGROUND, DISCORD_DARK } from "../../constants/colors";
+import { ThemeProps } from "./SideNav";
 
-const Content: React.FC = () => {
+const Content: React.FC<ThemeProps> = ({ light }) => {
   return (
     <StyledContent>
-      <Hero></Hero>
-      <SectionHold>
+      <Hero light={light}></Hero>
+      <SectionHold light={light}>
         <section>
           <Switch>
             <Route path="/" exact component={IndexList} />
@@ -50,9 +51,9 @@ const StyledContent = styled.main`
   }
 `;
 
-const SectionHold = styled.div`
+const SectionHold = styled.div<{ light: boolean }>`
   margin-top: -65px;
-  background: ${GENERIC_BACKGROUND};
+  background: ${({ light }) => (light ? GENERIC_BACKGROUND : DISCORD_DARK)};
 `;
 
 export { Content };

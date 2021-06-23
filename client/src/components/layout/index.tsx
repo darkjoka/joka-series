@@ -4,15 +4,21 @@ import { TopNav } from "./TopNav";
 import { SideNav } from "./SideNav";
 import { BottomNav } from "./BottomNav";
 import { BrowserRouter as Router } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../reducers";
 
 const Layout: React.FC = () => {
+  const theme = useSelector((state: RootState) => {
+    return state.theme.isLight;
+  });
+
   return (
     <>
       <Router>
-        <SideNav></SideNav>
-        <TopNav></TopNav>
-        <BottomNav></BottomNav>
-        <Content></Content>
+        <SideNav light={theme}></SideNav>
+        <TopNav light={theme}></TopNav>
+        <BottomNav light={theme}></BottomNav>
+        <Content light={theme}></Content>
       </Router>
     </>
   );

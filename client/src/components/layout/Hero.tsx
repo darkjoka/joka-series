@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { preserveAspectRatio, close } from "../../constants/svg";
+import { DISCORD_DARK, WHITE } from "../../constants/colors";
+import { ThemeProps } from "./SideNav";
 
-const Hero: React.FC = () => {
+const Hero: React.FC<ThemeProps> = ({ light }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -16,7 +18,7 @@ const Hero: React.FC = () => {
     <StyledHero>
       <Frost />
       <FormHold>
-        <FormInner>
+        <FormInner light={light}>
           <form>
             <label htmlFor="searchField">Search Input</label>
             <InputHold>
@@ -61,7 +63,6 @@ const Frost = styled.div`
   height: inherit;
   display: grid;
   place-items: center;
-  font-family: "Arial rounded mt";
   position: relative;
 
   &::before {
@@ -87,10 +88,12 @@ const FormHold = styled.div`
   top: calc(64px + 8em);
 `;
 
-const FormInner = styled.div`
+const FormInner = styled.div<{ light: boolean }>`
   width: 100%;
   height: 78px;
-  background-color: white;
+  background-color: ${({ light }) => {
+    return light ? WHITE : DISCORD_DARK;
+  }};
   border-radius: 16px;
   box-shadow: 0 10px 24px rgba(82, 82, 82, 0.2);
   display: grid;

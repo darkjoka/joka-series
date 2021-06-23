@@ -10,8 +10,9 @@ import { Error } from "../Error";
 import { pushData } from "../../actions/current";
 import { DetailState } from "../../reducers/current";
 import { Detail } from "../Detail";
+import { ThemeProps } from "./SideNav";
 
-const BottomNav: React.FC = () => {
+const BottomNav: React.FC<ThemeProps> = ({ light }) => {
   const [bottomNavigation, link, detail]: [boolean, string, DetailState] =
     useSelector((state: RootState) => {
       return [

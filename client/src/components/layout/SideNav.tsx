@@ -14,8 +14,17 @@ import { Section } from "../Section";
 import { Filters } from "../Filters";
 import { Link } from "react-router-dom";
 import { device } from "../../constants/device";
+import {
+  DISCORD_DARK,
+  DISCORD_TEXT_ON_DARK,
+  DISCORD_YELLOW,
+  WHITE,
+} from "../../constants/colors";
 
-const SideNav: React.FC = () => {
+export interface ThemeProps {
+  light: boolean;
+}
+export const SideNav: React.FC<ThemeProps> = ({ light }) => {
   const sideNavigation = useSelector(
     (state: RootState) => state.navigation.isSideNavOpen
   );
@@ -32,15 +41,15 @@ const SideNav: React.FC = () => {
 
   return (
     <SuperNav sideNavStatus={sideNavigation}>
-      <StyledNav onClick={handlePropagation}>
-        <Icon onClick={handleClick}>
+      <StyledNav light={light} onClick={handlePropagation}>
+        <Icon light={light} onClick={handleClick}>
           <path d={close.path}></path>
         </Icon>
 
-        <BaseSection>
+        <BaseSection light={light}>
           <Link to="/" onClick={handleClick}>
             <Section label={"Home"}>
-              <IconSect viewBox={home.viewBox}>
+              <IconSect light={light} viewBox={home.viewBox}>
                 <path d={home.path}></path>
               </IconSect>
             </Section>
@@ -48,7 +57,7 @@ const SideNav: React.FC = () => {
 
           <Link to="/favorite" onClick={handleClick}>
             <Section label={"Favorited"}>
-              <IconSect viewBox={bookMarkFilled.viewBox}>
+              <IconSect light={light} viewBox={bookMarkFilled.viewBox}>
                 <path d={bookMarkFilled.path}></path>
               </IconSect>
             </Section>
@@ -56,7 +65,7 @@ const SideNav: React.FC = () => {
 
           <Link to="/history" onClick={handleClick}>
             <Section label={"History"}>
-              <IconSect viewBox={recent.viewBox}>
+              <IconSect light={light} viewBox={recent.viewBox}>
                 <path d={recent.path}></path>
               </IconSect>
             </Section>
@@ -84,11 +93,13 @@ const SuperNav = styled.nav<{ sideNavStatus: boolean }>`
 
   display: flex;
 `;
-const StyledNav = styled.div`
+const StyledNav = styled.div<{ light: boolean }>`
   width: 70vw;
   overflow-y: scroll;
   height: 100vh;
-  background-color: white;
+  background-color: ${({ light }) => {
+    return light ? WHITE : DISCORD_DARK;
+  }};
   padding: 12px;
   border-right: 4px solid gainsboro;
   @media ${device.tablet} {
@@ -103,17 +114,23 @@ const StyledOther = styled.div`
     width: 70vw;
   }
 `;
-const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })`
+const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })<{
+  light: boolean;
+}>`
   width: 48px;
   height: 48px;
-  fill: gainsboro;
+  fill: ${({ light }) => {
+    return light ? DISCORD_DARK : DISCORD_TEXT_ON_DARK;
+  }};
 `;
-const IconSect = styled.svg.attrs({ preserveAspectRatio })`
-  fill: gainsboro;
+const IconSect = styled.svg.attrs({ preserveAspectRatio })<{ light: boolean }>`
+  fill: ${({ light }) => {
+    return light ? DISCORD_DARK : DISCORD_TEXT_ON_DARK;
+  }};
   width: 20px;
   height: 20px;
 `;
-const BaseSection = styled.div`
+const BaseSection = styled.div<{ light: boolean }>`
   display: flex;
   flex-direction: column;
   height: 128px;
@@ -121,7 +138,8 @@ const BaseSection = styled.div`
 
   a {
     text-decoration: none;
-    color: black;
+    color: ${({ light }) => {
+      return light ? DISCORD_DARK : DISCORD_TEXT_ON_DARK;
+    }};
   }
 `;
-export { SideNav };
