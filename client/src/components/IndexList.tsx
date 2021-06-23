@@ -27,19 +27,17 @@ export const IndexList = () => {
       setLoading(true);
       setError(false);
 
-      fetch("http://localhost:4000/")
-        .then((response) => {
-          return response.json();
-        })
+      (async () => {
+        try {
+          const response = await fetch("http://localhost:4000/");
+          const result = await response.json();
 
-        .then((result) => {
           handlePopulation(result.data);
-        })
-
-        .catch((e) => {
+        } catch (e) {
           setLoading(false);
           setError(true);
-        });
+        }
+      })();
     }
 
     return () => {
