@@ -7,6 +7,7 @@ import { FavoriteList } from "../FavoriteList";
 import { FilterList } from "../FilterList";
 import { HistoryList } from "../HistoryList";
 import { device } from "../../constants/device";
+import { GENERIC_BACKGROUND } from "../../constants/colors";
 
 const Content: React.FC = () => {
   return (
@@ -33,21 +34,25 @@ const StyledContent = styled.main`
   section {
     padding: 8px;
     min-height: 50vh;
+    padding-top: 64px;
+    margin: 0 auto;
 
     @media ${device.tablet} {
       display: flex;
       flex-wrap: wrap;
-      max-width: 1000px;
+      max-width: 732px;
       justify-content: flex-start;
+    }
+
+    @media ${device.laptop} {
+      max-width: 972px;
     }
   }
 `;
 
 const SectionHold = styled.div`
-  @media ${device.tablet} {
-    display: flex;
-    justify-content: center;
-  }
+  margin-top: -65px;
+  background: ${GENERIC_BACKGROUND};
 `;
 
 export { Content };
