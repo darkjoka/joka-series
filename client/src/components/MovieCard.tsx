@@ -88,16 +88,16 @@ const MovieCard: React.FC<Movie> = ({
 
       <CardContent teaser={teaser}>
         <Title onClick={handleDownload}>{title}</Title>
-        {teaser ? <p>{teaser.slice(0, 70)}...</p> : <AltButtons></AltButtons>}
+        {teaser ? <p>{teaser.slice(0, 70)}...</p> : ""}
         <AltButtons>
           <Favorite onClick={handleBookmark}>
             {localFavoriteStore.some((movie) => {
               return movie.title === title;
             })
-              ? "unfavorite"
-              : "favorite"}
+              ? "Unfavorite"
+              : "Favorite"}
           </Favorite>
-          <Download onClick={handleDownload}>download</Download>
+          <Download onClick={handleDownload}>Download</Download>
         </AltButtons>
       </CardContent>
 
@@ -177,6 +177,7 @@ const CardContent = styled.div<{ teaser: string | undefined }>`
   display: flex;
   flex-direction: column;
   width: 100%;
+
   justify-content: ${({ teaser }) =>
     !teaser ? "space-between" : "space-between"};
 
@@ -190,6 +191,7 @@ const CardContent = styled.div<{ teaser: string | undefined }>`
     width: calc(100% + 3px);
     background-color: white;
     background: white;
+    height: 100%;
   }
 `;
 
@@ -243,23 +245,31 @@ const AltButtons = styled.div`
   justify-content: flex-end;
   align-items: center;
   margin-top: 8px;
+  font-size: 0.9em;
+
+  @media ${device.mobileM} {
+    font-size: 1em;
+  }
 `;
 
 const Favorite = styled.div`
   height: 32px;
   display: grid;
   place-items: center;
-  background-color: gainsboro;
+  border: 1px solid black;
   color: gray;
   width: 86px;
   border-radius: 4px;
+  color: black;
 
   &:hover {
     cursor: pointer;
+    background: black;
+    color: white;
   }
 
   @media ${device.mobileM} {
-    width: 92px;
+    width: 102px;
   }
 `;
 
@@ -267,18 +277,22 @@ const Download = styled.div`
   height: 32px;
   display: grid;
   place-items: center;
-  background-color: gray;
-  color: gainsboro;
+  background-color: black;
+  color: white;
   width: 78px;
   border-radius: 4px;
-  margin-left: 8px;
+  margin-left: 4px;
+  margin-right: 4px;
 
   &:hover {
     cursor: pointer;
+    color: black;
+    background: white;
+    border: 1px solid black;
   }
 
   @media ${device.mobileM} {
-    width: 86px;
+    width: 102px;
   }
 `;
 
