@@ -38,20 +38,18 @@ const BottomNav: React.FC = () => {
 
     setLoading(true);
     setError(false);
+    (async () => {
+      try {
+        const response = await fetch("http://localhost:4000/per");
+        const result = await response.json();
 
-    fetch("http://localhost:4000/per")
-      .then((response) => {
-        return response.json();
-      })
-
-      .then((result) => {
         handleCurrent(result.data);
-      })
-
-      .catch((e) => {
+      } catch (e) {
         setLoading(false);
         setError(true);
-      });
+      }
+    })();
+
     return () => {
       setLoading(false);
       setError(false);
