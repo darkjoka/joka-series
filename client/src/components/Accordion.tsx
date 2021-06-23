@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { cheveron, preserveAspectRatio } from "../constants/svg";
-import { DISCORD_DARK, RED } from "../constants/colors";
+import { DISCORD_DARK, RED, GENERIC_BORDER, GREEN } from "../constants/colors";
+import { device } from "../constants/device";
 
 interface Episode {
   episodeTitle: string;
@@ -39,9 +40,21 @@ export const Accordion: React.FC<AccordionProps> = ({
           </Icon>
         </AccordionHead>
         <AccordionBody isOpen={value}>
-          {episodes.map(({ episodeTitle }) => {
-            return <div key={episodeTitle}>{episodeTitle}</div>;
-          })}
+          {episodes.map(
+            ({ episodeTitle, episodeSize, episodeDownloadLink }) => {
+              return (
+                <Epi key={episodeDownloadLink}>
+                  {episodeTitle}
+                  <Download>
+                    <Size>{episodeSize}</Size>
+                    <Button>
+                      <a href={episodeDownloadLink}> Download</a>
+                    </Button>
+                  </Download>
+                </Epi>
+              );
+            }
+          )}
         </AccordionBody>
       </AccordionContainer>
     </>
@@ -85,19 +98,14 @@ const AccordionHead = styled.div<{ isOpen: boolean }>`
 `;
 const AccordionBody = styled.div<{ isOpen: boolean }>`
   width: 100%;
-  background-color: white;
+  // background-color: white;
   overflow: hidden;
+  padding: 0 10px;
 
-  max-height: ${({ isOpen }) => {
-    return isOpen ? "500px" : "0px";
+  ${({ isOpen }) => {
+    return isOpen ? "max-height:2000px;" : "max-height:0px;";
   }};
   transition: all 0.5s ease;
-
-  div {
-    height: 40px;
-    background: white;
-    margin: 8px 0;
-  }
 `;
 
 const Icon = styled.svg.attrs({
@@ -116,4 +124,43 @@ const Icon = styled.svg.attrs({
       background: ${DISCORD_DARK}; `;
   }}
   transition: all 0.5s ease;
+`;
+
+const Epi = styled.div`
+  height: 64px;
+  margin: 8px 0;
+  // background: white;
+  border-bottom: 1px solid ${GENERIC_BORDER};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:nth-last-child(1) {
+    border: none;
+  }
+`;
+
+const Download = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Size = styled.div`
+  display: none;
+
+  @media ${device.tablet} {
+    display: block;
+  } ;
+`;
+
+const Button = styled.div`
+  margin-left: 16px;
+  background: ${GREEN};
+  padding: 8px;
+  border-radius: 4px;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
 `;
