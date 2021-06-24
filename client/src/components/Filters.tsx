@@ -77,6 +77,7 @@ const FilterObj = styled.div<{ key: number }>`
   width: 95%;
   border-radius: 4px;
   height: 30px;
+  cursor: pointer;
 
   a {
     text-decoration: none;

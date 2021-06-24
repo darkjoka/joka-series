@@ -105,5 +105,6 @@ const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })`
   width: 48px;
   height: 48px;
   fill: white;
+  cursor: pointer;
 `;
 export { BottomNav };

@@ -122,6 +122,7 @@ const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })<{
   fill: ${({ light }) => {
     return light ? DISCORD_DARK : DISCORD_TEXT_ON_DARK;
   }};
+  cursor: pointer;
 `;
 const IconSect = styled.svg.attrs({ preserveAspectRatio })<{ light: boolean }>`
   fill: ${({ light }) => {
@@ -129,6 +130,7 @@ const IconSect = styled.svg.attrs({ preserveAspectRatio })<{ light: boolean }>`
   }};
   width: 20px;
   height: 20px;
+  cursor: pointer;
 `;
 const BaseSection = styled.div<{ light: boolean }>`
   display: flex;

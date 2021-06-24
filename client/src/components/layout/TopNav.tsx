@@ -133,6 +133,7 @@ const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })<{
   fill: ${({ light }) => {
     return light ? DISCORD_DARK : DISCORD_TEXT_ON_DARK;
   }};
+  cursor: pointer;
 
   @media ${device.laptopL} {
     display: none;
@@ -144,6 +145,7 @@ const ThemeIcon = styled.svg.attrs({ preserveAspectRatio })<{ light: boolean }>`
   fill: ${({ light }) => {
     return light ? DISCORD_DARK : DISCORD_TEXT_ON_DARK;
   }};
+  cursor: pointer;
 `;
 
 const IconSect = styled.svg.attrs({ preserveAspectRatio })`
