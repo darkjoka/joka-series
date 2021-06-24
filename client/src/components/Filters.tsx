@@ -82,6 +82,10 @@ const FilterObj = styled.div<{ key: number }>`
   a {
     text-decoration: none;
     color: black;
+    width: inherit;
+    height: inherit;
+    display: grid;
+    place-items: center;
   }
 `;
 
