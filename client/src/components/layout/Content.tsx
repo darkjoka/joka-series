@@ -8,12 +8,17 @@ import { FilterList } from "../FilterList";
 import { HistoryList } from "../HistoryList";
 import { device } from "../../constants/device";
 import { ThemeState } from "../../reducers/theme";
+import { useSelector } from "react-redux";
+import { RootState } from "../../reducers";
 
 const Content: React.FC = () => {
+  const theme = useSelector((state: RootState) => {
+    return state.theme;
+  });
   return (
     <StyledContent>
       <Hero></Hero>
-      <SectionHold>
+      <SectionHold theme={theme}>
         <section>
           <Switch>
             <Route path="/" exact component={IndexList} />
@@ -53,6 +58,7 @@ const StyledContent = styled.main`
 const SectionHold = styled.div<{ theme: ThemeState }>`
   margin-top: -65px;
   background: ${({ theme }) => theme.primaryColor};
+  min-height: 80vh;
 `;
 
 export { Content };

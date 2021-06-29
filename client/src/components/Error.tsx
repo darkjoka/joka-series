@@ -11,7 +11,7 @@ const Error = () => {
 
 const ErrorBox = styled.div`
   width: 100%;
-  min-height: 300px;
+  min-height: 50vh;
   display: grid;
   place-items: center;
   color: red;

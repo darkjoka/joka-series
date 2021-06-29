@@ -104,7 +104,7 @@ const Nav = styled.nav<{ theme: ThemeState }>`
     return `background: ${theme.primaryColor}; box-shadow: 0 5px 4px -4px ${theme.tertiaryColor};`;
   }};
   margin: 0;
-  z-index: 1;
+  z-index: 4;
 `;
 
 const Hold = styled.div`

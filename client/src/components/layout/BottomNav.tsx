@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { GENERIC_BACKGROUND } from "../../constants/colors";
 import { close, preserveAspectRatio } from "../../constants/svg";
 import { RootState } from "../../reducers";
 import { closeBottom } from "../../actions/navigation";
@@ -10,16 +9,22 @@ import { Error } from "../Error";
 import { pushData } from "../../actions/current";
 import { DetailState } from "../../reducers/current";
 import { Detail } from "../Detail";
+import { ThemeState } from "../../reducers/theme";
 
 const BottomNav: React.FC = () => {
-  const [bottomNavigation, link, detail]: [boolean, string, DetailState] =
-    useSelector((state: RootState) => {
-      return [
-        state.navigation.isBottomSectOpen,
-        state.current.link,
-        state.current.detail,
-      ];
-    });
+  const [bottomNavigation, link, detail, theme]: [
+    boolean,
+    string,
+    DetailState,
+    ThemeState
+  ] = useSelector((state: RootState) => {
+    return [
+      state.navigation.isBottomSectOpen,
+      state.current.link,
+      state.current.detail,
+      state.theme,
+    ];
+  });
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -59,11 +64,11 @@ const BottomNav: React.FC = () => {
   return (
     <StyledNav isBottomNavOpen={bottomNavigation}>
       <InnerNav>
-        <Icon onClick={handleClick}>
+        <Icon theme={theme} onClick={handleClick}>
           <path d={close.path}></path>
         </Icon>
       </InnerNav>
-      <Inner>
+      <Inner theme={theme}>
         {!loading && !error && <Detail {...detail} />}
         {loading && <SDetail />}
         {error && <Error />}
@@ -87,7 +92,7 @@ const StyledNav = styled.div<{ isBottomNavOpen: boolean }>`
 `;
 
 const Inner = styled.div`
-  background-color: ${GENERIC_BACKGROUND};
+  background: ${({ theme }) => theme.primaryColor};
   height: 92%;
   border-radius: 26px 26px 0 0;
   overflow-y: auto;
@@ -100,10 +105,12 @@ const InnerNav = styled.div`
   justify-content: flex-end;
 `;
 
-const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })`
+const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })<{
+  theme: ThemeState;
+}>`
   width: 48px;
   height: 48px;
-  fill: white;
+  fill: ${({ theme }) => theme.accentColor};
   cursor: pointer;
 `;
 export { BottomNav };
