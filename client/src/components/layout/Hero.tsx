@@ -35,6 +35,7 @@ const Hero: React.FC = () => {
               />
               {searchTerm ? (
                 <Icon
+                  theme={theme}
                   onClick={() => {
                     setSearchTerm("");
                   }}
@@ -132,7 +133,7 @@ const InputHold = styled.div`
   display: flex;
   align-items: center;
   border-radius: 8px;
-  padding: 4px;
+  padding: 4px 8px;
 
   input[type="text"] {
     height: 36px;
@@ -144,16 +145,15 @@ const InputHold = styled.div`
   }
 `;
 
-const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })`
-  width: 24px;
-  height: 24px;
-  fill: gray;
+const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })<{
+  theme: ThemeState;
+}>`
+  width: 20px;
+  height: 20px;
+  fill: ${({ theme }) => theme.primaryColor};
+  background-color: ${({ theme }) => theme.accentColor};
   padding: 0px;
   border-radius: 4px;
-
-  &:hover {
-    background-color: darkseagreen;
-  }
 `;
 
 export { Hero };
