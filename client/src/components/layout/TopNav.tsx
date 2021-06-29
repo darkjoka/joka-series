@@ -1,11 +1,5 @@
 import React from "react";
 import {
-  WHITE,
-  GENERIC_BORDER,
-  DISCORD_DARK,
-  DISCORD_TEXT_ON_DARK,
-} from "../../constants/colors";
-import {
   menu,
   preserveAspectRatio,
   sun,
@@ -22,9 +16,9 @@ import { toggleDark, toggleLight } from "../../actions/theme";
 import { device } from "../../constants/device";
 import { Link } from "react-router-dom";
 import { Section } from "../Section";
-import { ThemeProps } from "./SideNav";
+import { ThemeState } from "../../reducers/theme";
 
-const TopNav: React.FC<ThemeProps> = ({ light }) => {
+const TopNav: React.FC = () => {
   const theme = useSelector((state: RootState) => {
     return state.theme;
   });
@@ -43,9 +37,9 @@ const TopNav: React.FC<ThemeProps> = ({ light }) => {
   };
 
   return (
-    <Nav light={light}>
+    <Nav theme={theme}>
       <Hold>
-        <Icon light={light} onClick={handleClick}>
+        <Icon theme={theme} onClick={handleClick}>
           <path d={menu.path}></path>
         </Icon>
         <BaseSection>
@@ -75,7 +69,7 @@ const TopNav: React.FC<ThemeProps> = ({ light }) => {
         </BaseSection>
         {theme.isLight && (
           <ThemeIcon
-            light={light}
+            theme={theme}
             viewBox={sun.viewBox}
             onClick={handleDarkToggle}
           >
@@ -83,9 +77,9 @@ const TopNav: React.FC<ThemeProps> = ({ light }) => {
           </ThemeIcon>
         )}
 
-        {theme.isDark && (
+        {!theme.isLight && (
           <ThemeIcon
-            light={light}
+            theme={theme}
             viewBox={moon.viewBox}
             onClick={handleLightToggle}
           >
@@ -97,7 +91,7 @@ const TopNav: React.FC<ThemeProps> = ({ light }) => {
   );
 };
 
-const Nav = styled.nav<{ light: boolean }>`
+const Nav = styled.nav<{ theme: ThemeState }>`
   height: 64px;
   display: flex;
   justify-content: center;
@@ -105,12 +99,12 @@ const Nav = styled.nav<{ light: boolean }>`
   padding: 0 0.5em;
   position: fixed;
   width: 100%;
-  background-color: ${({ light }) => {
-    return light ? WHITE : DISCORD_DARK;
+
+  ${({ theme }) => {
+    return `background: ${theme.primaryColor}; box-shadow: 0 5px 4px -4px ${theme.tertiaryColor};`;
   }};
   margin: 0;
   z-index: 1;
-  box-shadow: 0 5px 4px -4px ${GENERIC_BORDER};
 `;
 
 const Hold = styled.div`
@@ -126,12 +120,12 @@ const Hold = styled.div`
 `;
 
 const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })<{
-  light: boolean;
+  theme: ThemeState;
 }>`
   width: 48px;
   height: 48px;
-  fill: ${({ light }) => {
-    return light ? DISCORD_DARK : DISCORD_TEXT_ON_DARK;
+  fill: ${({ theme }) => {
+    return theme.accentColor;
   }};
   cursor: pointer;
 
@@ -139,17 +133,23 @@ const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })<{
     display: none;
   }
 `;
-const ThemeIcon = styled.svg.attrs({ preserveAspectRatio })<{ light: boolean }>`
+const ThemeIcon = styled.svg.attrs({ preserveAspectRatio })<{
+  theme: ThemeState;
+}>`
   width: 24px;
   height: 24px;
-  fill: ${({ light }) => {
-    return light ? DISCORD_DARK : DISCORD_TEXT_ON_DARK;
+  fill: ${({ theme }) => {
+    return theme.accentColor;
   }};
   cursor: pointer;
 `;
 
-const IconSect = styled.svg.attrs({ preserveAspectRatio })`
-  fill: gainsboro;
+const IconSect = styled.svg.attrs({ preserveAspectRatio })<{
+  theme: ThemeState;
+}>`
+  fill: ${({ theme }) => {
+    return theme.accentColor;
+  }};
   width: 20px;
   height: 20px;
 `;

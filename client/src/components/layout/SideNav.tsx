@@ -14,19 +14,14 @@ import { Section } from "../Section";
 import { Filters } from "../Filters";
 import { Link } from "react-router-dom";
 import { device } from "../../constants/device";
-import {
-  DISCORD_DARK,
-  DISCORD_TEXT_ON_DARK,
-  DISCORD_YELLOW,
-  WHITE,
-} from "../../constants/colors";
 
-export interface ThemeProps {
-  light: boolean;
-}
-export const SideNav: React.FC<ThemeProps> = ({ light }) => {
-  const sideNavigation = useSelector(
-    (state: RootState) => state.navigation.isSideNavOpen
+import { ThemeState } from "../../reducers/theme";
+
+export const SideNav: React.FC = () => {
+  const [sideNavigation, theme]: [boolean, ThemeState] = useSelector(
+    (state: RootState) => {
+      return [state.navigation.isSideNavOpen, state.theme];
+    }
   );
 
   const dispatch = useDispatch();
@@ -41,15 +36,15 @@ export const SideNav: React.FC<ThemeProps> = ({ light }) => {
 
   return (
     <SuperNav sideNavStatus={sideNavigation}>
-      <StyledNav light={light} onClick={handlePropagation}>
-        <Icon light={light} onClick={handleClick}>
+      <StyledNav theme={theme} onClick={handlePropagation}>
+        <Icon theme={theme} onClick={handleClick}>
           <path d={close.path}></path>
         </Icon>
 
-        <BaseSection light={light}>
+        <BaseSection theme={theme}>
           <Link to="/" onClick={handleClick}>
             <Section label={"Home"}>
-              <IconSect light={light} viewBox={home.viewBox}>
+              <IconSect theme={theme} viewBox={home.viewBox}>
                 <path d={home.path}></path>
               </IconSect>
             </Section>
@@ -57,7 +52,7 @@ export const SideNav: React.FC<ThemeProps> = ({ light }) => {
 
           <Link to="/favorite" onClick={handleClick}>
             <Section label={"Favorited"}>
-              <IconSect light={light} viewBox={bookMarkFilled.viewBox}>
+              <IconSect theme={theme} viewBox={bookMarkFilled.viewBox}>
                 <path d={bookMarkFilled.path}></path>
               </IconSect>
             </Section>
@@ -65,7 +60,7 @@ export const SideNav: React.FC<ThemeProps> = ({ light }) => {
 
           <Link to="/history" onClick={handleClick}>
             <Section label={"History"}>
-              <IconSect light={light} viewBox={recent.viewBox}>
+              <IconSect theme={theme} viewBox={recent.viewBox}>
                 <path d={recent.path}></path>
               </IconSect>
             </Section>
@@ -93,15 +88,15 @@ const SuperNav = styled.nav<{ sideNavStatus: boolean }>`
 
   display: flex;
 `;
-const StyledNav = styled.div<{ light: boolean }>`
+const StyledNav = styled.div<{ theme: ThemeState }>`
   width: 70vw;
   overflow-y: scroll;
   height: 100vh;
-  background-color: ${({ light }) => {
-    return light ? WHITE : DISCORD_DARK;
-  }};
+  ${({ theme }) => {
+    return `background: ${theme.primaryColor}; border-right: 4px solid ${theme.accentColor};`;
+  }}
   padding: 12px;
-  border-right: 4px solid gainsboro;
+
   @media ${device.tablet} {
     width: 30vw;
   }
@@ -115,24 +110,26 @@ const StyledOther = styled.div`
   }
 `;
 const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })<{
-  light: boolean;
+  theme: ThemeState;
 }>`
   width: 48px;
   height: 48px;
-  fill: ${({ light }) => {
-    return light ? DISCORD_DARK : DISCORD_TEXT_ON_DARK;
+  fill: ${({ theme }) => {
+    return theme.accentColor;
   }};
   cursor: pointer;
 `;
-const IconSect = styled.svg.attrs({ preserveAspectRatio })<{ light: boolean }>`
-  fill: ${({ light }) => {
-    return light ? DISCORD_DARK : DISCORD_TEXT_ON_DARK;
-  }};
+const IconSect = styled.svg.attrs({ preserveAspectRatio })<{
+  theme: ThemeState;
+}>`
   width: 20px;
   height: 20px;
+  fill: ${({ theme }) => {
+    return theme.accentColor;
+  }};
   cursor: pointer;
 `;
-const BaseSection = styled.div<{ light: boolean }>`
+const BaseSection = styled.div<{ theme: ThemeState }>`
   display: flex;
   flex-direction: column;
   height: 128px;
@@ -140,8 +137,6 @@ const BaseSection = styled.div<{ light: boolean }>`
 
   a {
     text-decoration: none;
-    color: ${({ light }) => {
-      return light ? DISCORD_DARK : DISCORD_TEXT_ON_DARK;
-    }};
+    color: ${({ theme }) => theme.accentColor};
   }
 `;

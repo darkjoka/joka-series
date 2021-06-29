@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { preserveAspectRatio, close } from "../../constants/svg";
-import { DISCORD_DARK, WHITE } from "../../constants/colors";
-import { ThemeProps } from "./SideNav";
+import { RootState } from "../../reducers";
+import { ThemeState } from "../../reducers/theme";
 
-const Hero: React.FC<ThemeProps> = ({ light }) => {
+const Hero: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
-
+  const theme = useSelector((state: RootState) => {
+    return state.theme;
+  });
   useEffect(() => {
     if (!localStorage.getItem("favorite")) {
       localStorage.setItem("favorite", JSON.stringify([]));
@@ -18,7 +21,7 @@ const Hero: React.FC<ThemeProps> = ({ light }) => {
     <StyledHero>
       <Frost />
       <FormHold>
-        <FormInner light={light}>
+        <FormInner theme={theme}>
           <form>
             <label htmlFor="searchField">Search Input</label>
             <InputHold>
@@ -88,12 +91,10 @@ const FormHold = styled.div`
   top: calc(64px + 8em);
 `;
 
-const FormInner = styled.div<{ light: boolean }>`
+const FormInner = styled.div<{ theme: ThemeState }>`
   width: 100%;
   height: 78px;
-  background-color: ${({ light }) => {
-    return light ? WHITE : DISCORD_DARK;
-  }};
+  background: ${({ theme }) => theme.primaryColor};
   border-radius: 16px;
   box-shadow: 0 10px 24px rgba(82, 82, 82, 0.2);
   display: grid;
