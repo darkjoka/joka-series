@@ -101,7 +101,7 @@ const Nav = styled.nav<{ theme: ThemeState }>`
   width: 100%;
 
   ${({ theme }) => {
-    return `background: ${theme.primaryColor}; box-shadow: 0 5px 4px -4px ${theme.tertiaryColor};`;
+    return `background: ${theme.primaryColor}; box-shadow: 0 5px 4px -4px ${theme.shadow}; border-bottom: 4px solid ${theme.border}`;
   }};
   margin: 0;
   z-index: 4;

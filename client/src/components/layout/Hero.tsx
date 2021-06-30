@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
         <FormInner theme={theme}>
           <form>
             <label htmlFor="searchField">Search Input</label>
-            <InputHold>
+            <InputHold theme={theme}>
               <input
                 type="text"
                 id="searchField"
@@ -97,7 +97,8 @@ const FormInner = styled.div<{ theme: ThemeState }>`
   height: 78px;
   background: ${({ theme }) => theme.primaryColor};
   border-radius: 16px;
-  box-shadow: 0 10px 24px rgba(82, 82, 82, 0.2);
+  box-shadow: 0 10px 24px ${({ theme }) => theme.shadow};
+  border: 4px solid ${({ theme }) => theme.border};
   display: grid;
   place-items: center;
   max-width: 600px;
@@ -112,13 +113,20 @@ const FormInner = styled.div<{ theme: ThemeState }>`
   }
 
   input[type="submit"] {
-    background-color: gainsboro;
+    background: ${({ theme }) => theme.accentColor};
+    color: ${({ theme }) => theme.primaryColor};
     border: none;
     height: 42px;
     margin-left: 10px;
     min-width: 80px;
     border-radius: 8px;
     font-size: 1.1em;
+    box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.2);
+    cursor: pointer;
+  }
+
+  input[type="submit"]:active {
+    box-shadow: none;
   }
 
   label {
@@ -127,13 +135,15 @@ const FormInner = styled.div<{ theme: ThemeState }>`
   }
 `;
 
-const InputHold = styled.div`
+const InputHold = styled.div<{ theme: ThemeState }>`
   width: inherit;
-  background-color: gainsboro;
+  background: ${({ theme }) => theme.tertiaryColor};
   display: flex;
   align-items: center;
   border-radius: 8px;
   padding: 4px 8px;
+  box-shadow: 0 2px 0 hsla(0, 0%, 100%, 0.15),
+    inset 0 2px 2px hsla(0, 0%, 0%, 0.1);
 
   input[type="text"] {
     height: 36px;
