@@ -1,11 +1,12 @@
 import React from "react";
+import { ThemeState } from "../reducers/theme";
 import { SMovieCard } from "./skeleton/SMovieCard";
 
-const Load = () => {
+const Load: React.FC<{ theme: ThemeState }> = ({ theme }) => {
   return (
     <>
       {[1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13].map((num) => {
-        return <SMovieCard key={num} teaser={true} />;
+        return <SMovieCard theme={theme} key={num} teaser={true} />;
       })}
     </>
   );

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import MovieDisplay from "./MovieDisplay";
 import { handleLocalFetch } from "./MovieCard";
+import { useSelector } from "react-redux";
+import { RootState } from "../reducers";
 
 export const HistoryList = () => {
   const [movies] = useState(handleLocalFetch("history"));
+  const theme = useSelector((state: RootState) => state.theme);
   return (
     <>
-      <MovieDisplay movies={movies} />
+      <MovieDisplay theme={theme} movies={movies} />
     </>
   );
 };

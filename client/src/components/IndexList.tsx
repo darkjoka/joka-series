@@ -6,11 +6,14 @@ import { Error } from "./Error";
 import { Load } from "./Load";
 import { Movie } from "../reducers/indexP";
 import MovieDisplay from "./MovieDisplay";
+import { ThemeState } from "../reducers/theme";
 
 export const IndexList = () => {
-  const movies = useSelector((state: RootState) => {
-    return state.index;
-  });
+  const [movies, theme]: [Movie[], ThemeState] = useSelector(
+    (state: RootState) => {
+      return [state.index, state.theme];
+    }
+  );
 
   const dispatch = useDispatch();
 
@@ -48,8 +51,8 @@ export const IndexList = () => {
 
   return (
     <>
-      {!loading && !error && <MovieDisplay movies={movies} />}
-      {loading && <Load />}
+      {!loading && !error && <MovieDisplay theme={theme} movies={movies} />}
+      {loading && <Load theme={theme} />}
       {error && <Error />}
     </>
   );

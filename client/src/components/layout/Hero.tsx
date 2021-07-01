@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
       localStorage.setItem("favorite", JSON.stringify([]));
       localStorage.setItem("history", JSON.stringify([]));
     }
-  });
+  }, []);
 
   return (
     <StyledHero>
@@ -59,7 +59,6 @@ const StyledHero = styled.div`
   height: 10em;
   margin-bottom: 4em;
   overflow: hidden;
-  background: url(${""}) 0 / cover fixed;
 `;
 
 const Frost = styled.div`
@@ -147,6 +146,8 @@ const InputHold = styled.div<{ theme: ThemeState }>`
     inset 0 2px 2px hsla(0, 0%, 0%, 0.1);
 
   input[type="text"] {
+    width: inherit;
+    color: ${({ theme }) => theme.primaryInverse};
     height: 36px;
     width: inherit;
     border: none;

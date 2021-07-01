@@ -57,7 +57,7 @@ const StyledContent = styled.main`
 
 const SectionHold = styled.div<{ theme: ThemeState }>`
   margin-top: -65px;
-  background: ${({ theme }) => theme.primaryColor};
+  background: ${({ theme }) => theme.primBG};
   min-height: 80vh;
 `;
 
