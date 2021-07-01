@@ -1,48 +1,49 @@
 import React from "react";
 import styled from "styled-components";
-import { GENERIC_BORDER, WHITE } from "../../constants/colors";
 import { device } from "../../constants/device";
 import { preserveAspectRatio, bookMarkFilled } from "../../constants/svg";
+import { ThemeState } from "../../reducers/theme";
 
 interface MovieCardProps {
   teaser: boolean;
+  theme: ThemeState;
 }
 
-const SMovieCard: React.FC<MovieCardProps> = ({ teaser }) => {
+const SMovieCard: React.FC<MovieCardProps> = ({ teaser, theme }) => {
   return (
-    <Card>
-      <ImageHold></ImageHold>
-      <CardContent teaser={teaser}>
-        <Title></Title>
+    <Card theme={theme}>
+      <ImageHold theme={theme}></ImageHold>
+      <CardContent teaser={teaser} theme={theme}>
+        <Title theme={theme}></Title>
         {teaser ? (
           [0, 1, 2, 3, 4, 5].map((num) => {
-            return <Teaser key={num}></Teaser>;
+            return <Teaser theme={theme} key={num}></Teaser>;
           })
         ) : (
-          <AltButtons>
+          <AltButtons theme={theme}>
             <div></div>
             <div></div>
           </AltButtons>
         )}
       </CardContent>
-      <Icon>
+      <Icon theme={theme}>
         <path d={bookMarkFilled.path}> </path>
       </Icon>
     </Card>
   );
 };
 
-const Card = styled.div`
+const Card = styled.div<{ theme: ThemeState }>`
   width: 100%;
-  border: 1px solid ${GENERIC_BORDER};
+  border: 2px solid ${({ theme }) => theme.tertiaryColor};
   padding: 4px;
   border-radius: 4px 4px 0 0;
   margin: 8px 0px;
   position: relative;
-  background-color: ${WHITE};
+  background-color: ${({ theme }) => theme.primaryColor};
   font-size: 0.9em;
   display: flex;
-  background-color: #f2f2f2f2;
+
   overflow: hidden;
 
   &::before {
@@ -75,20 +76,21 @@ const Card = styled.div`
   }
 `;
 
-const ImageHold = styled.div`
+const ImageHold = styled.div<{ theme: ThemeState }>`
   aspect-ratio: 250/350;
   height: 150px;
   border-radius: 4px;
-  background: #dddddd;
+  background-color: ${({ theme }) => theme.tertiaryColor};
 
-    @media ${device.tablet} {
+  @media ${device.tablet} {
     height: 200px;
     border-radius: 0;
     aspect-ratio: 250/350;
     width: 214.29px;
+  }
 `;
 
-const CardContent = styled.div<{ teaser: boolean }>`
+const CardContent = styled.div<{ teaser: boolean; theme: ThemeState }>`
   margin-left: 4px;
   display: flex;
   flex-direction: column;
@@ -102,13 +104,14 @@ const CardContent = styled.div<{ teaser: boolean }>`
   @media ${device.tablet} {
     margin-left: -1px;
     width: calc(100% + 3px);
+    background-color: ${({ theme }) => theme.primaryColor};
   }
 `;
 
-const Title = styled.p`
+const Title = styled.p<{ theme: ThemeState }>`
   width: 70%;
   height: 24px;
-  background-color: #dddddd;
+  background-color: ${({ theme }) => theme.tertiaryColor};
   border-radius: 2px;
 `;
 
@@ -120,10 +123,10 @@ const Icon = styled.svg.attrs({
   height: 24px;
   position: absolute;
   right: 5px;
-  fill: #dddddd;
+  fill: ${({ theme }) => theme.tertiaryColor};
 
   @media ${device.tablet} {
-    fill: white;
+    fill: ${({ theme }) => theme.primaryColor};
     top: 5px;
   }
 `;
@@ -136,14 +139,14 @@ const AltButtons = styled.div`
   div {
     width: 80px;
     height: 28px;
-    background-color: #dddddd;
+    background-color: ${({ theme }) => theme.accentColor};
     margin: 4px;
   }
 `;
 
-const Teaser = styled.div`
+const Teaser = styled.div<{ theme: ThemeState }>`
   height: 12px;
-  background-color: #dddddd;
+  background-color: ${({ theme }) => theme.tertiaryColor};
   margin: 4px;
   border-radius: 2px;
 `;
