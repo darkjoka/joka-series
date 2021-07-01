@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { pushLink } from "../actions/current";
 import { openBottom } from "../actions/navigation";
-import { GENERIC_BORDER } from "../constants/colors";
 import { device } from "../constants/device";
 import {
   preserveAspectRatio,
