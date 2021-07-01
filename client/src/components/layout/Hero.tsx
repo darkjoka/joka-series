@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { preserveAspectRatio, close } from "../../constants/svg";
 import { RootState } from "../../reducers";
 import { ThemeState } from "../../reducers/theme";
+import pic from "../../assets/img.jpg";
 
 const Hero: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -76,7 +77,7 @@ const Frost = styled.div`
     right: -100px;
     bottom: -100px;
     left: -100px;
-    background: url(${""}) 0 / cover fixed;
+    background: url(${pic}) 0 / cover fixed;
     background-color: gainsboro;
     filter: blur(20px);
   }
