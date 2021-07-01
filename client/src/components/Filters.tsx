@@ -4,8 +4,9 @@ import { genreFilter, yearFilter } from "../constants/filters";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { closeSide } from "../actions/navigation";
+import { ThemeState } from "../reducers/theme";
 
-const Filters: React.FC = () => {
+const Filters: React.FC<{ theme: ThemeState }> = ({ theme }) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -14,7 +15,7 @@ const Filters: React.FC = () => {
 
   return (
     <div>
-      <HeadList>
+      <HeadList theme={theme}>
         <p>By Genre</p>
         <p>By Year</p>
       </HeadList>
@@ -23,7 +24,7 @@ const Filters: React.FC = () => {
         <Section>
           {genreFilter.map((genre, index) => {
             return (
-              <FilterObj key={index} onClick={handleClick}>
+              <FilterObj theme={theme} key={index} onClick={handleClick}>
                 <Link to={`/filter/${genre.toLowerCase()}`}>{genre}</Link>
               </FilterObj>
             );
@@ -32,7 +33,7 @@ const Filters: React.FC = () => {
         <Section>
           {yearFilter.map((year, index) => {
             return (
-              <FilterObj key={index} onClick={handleClick}>
+              <FilterObj theme={theme} key={index} onClick={handleClick}>
                 <Link to={`/filter/${year}`}>{year}</Link>
               </FilterObj>
             );
@@ -43,18 +44,23 @@ const Filters: React.FC = () => {
   );
 };
 
-const HeadList = styled.div`
+const HeadList = styled.div<{ theme: ThemeState }>`
   display: flex;
   justify-content: space-between;
   width: 70%;
   position: relative;
+  color: ${({ theme }) => theme.primaryInverse};
 
   &::after {
     position: absolute;
     content: "";
     width: 100%;
     height: 2px;
-    background: linear-gradient(to right, gray 50%, transparent 50%);
+    background: linear-gradient(
+      to right,
+      ${({ theme }) => theme.accentColor} 50%,
+      transparent 50%
+    );
     bottom: -16px;
   }
 `;
@@ -70,10 +76,10 @@ const Content = styled.div`
   scroll-behavior: smooth;
 `;
 
-const FilterObj = styled.div<{ key: number }>`
+const FilterObj = styled.div<{ key: number; theme: ThemeState }>`
   display: grid;
   place-items: center;
-  background-color: gainsboro;
+  background-color: ${({ theme }) => theme.tertiaryColor};
   width: 95%;
   border-radius: 4px;
   height: 30px;
@@ -81,7 +87,7 @@ const FilterObj = styled.div<{ key: number }>`
 
   a {
     text-decoration: none;
-    color: black;
+    color: ${({ theme }) => theme.primaryInverse};
     width: inherit;
     height: inherit;
     display: grid;

@@ -68,7 +68,7 @@ export const SideNav: React.FC = () => {
         </BaseSection>
 
         <div>
-          <Filters></Filters>
+          <Filters theme={theme}></Filters>
         </div>
       </StyledNav>
 
@@ -125,7 +125,7 @@ const IconSect = styled.svg.attrs({ preserveAspectRatio })<{
   width: 20px;
   height: 20px;
   fill: ${({ theme }) => {
-    return theme.accentColor;
+    return theme.primaryInverse;
   }};
   cursor: pointer;
 `;
@@ -137,6 +137,6 @@ const BaseSection = styled.div<{ theme: ThemeState }>`
 
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.accentColor};
+    color: ${({ theme }) => theme.primaryInverse};
   }
 `;

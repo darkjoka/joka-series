@@ -42,10 +42,10 @@ const TopNav: React.FC = () => {
         <Icon theme={theme} onClick={handleClick}>
           <path d={menu.path}></path>
         </Icon>
-        <BaseSection>
+        <BaseSection theme={theme}>
           <Link to="/">
             <Section label={"Home"}>
-              <IconSect viewBox={home.viewBox}>
+              <IconSect theme={theme} viewBox={home.viewBox}>
                 <path d={home.path}></path>
               </IconSect>
             </Section>
@@ -53,7 +53,7 @@ const TopNav: React.FC = () => {
 
           <Link to="/favorite">
             <Section label={"Favorited"}>
-              <IconSect viewBox={bookMarkFilled.viewBox}>
+              <IconSect theme={theme} viewBox={bookMarkFilled.viewBox}>
                 <path d={bookMarkFilled.path}></path>
               </IconSect>
             </Section>
@@ -61,7 +61,7 @@ const TopNav: React.FC = () => {
 
           <Link to="/history">
             <Section label={"History"}>
-              <IconSect viewBox={recent.viewBox}>
+              <IconSect theme={theme} viewBox={recent.viewBox}>
                 <path d={recent.path}></path>
               </IconSect>
             </Section>
@@ -148,7 +148,7 @@ const IconSect = styled.svg.attrs({ preserveAspectRatio })<{
   theme: ThemeState;
 }>`
   fill: ${({ theme }) => {
-    return theme.accentColor;
+    return theme.primaryInverse;
   }};
   width: 20px;
   height: 20px;
@@ -162,7 +162,7 @@ const BaseSection = styled.div`
   }
   a {
     text-decoration: none;
-    color: black;
+    color: ${({ theme }) => theme.primaryInverse};
   }
 `;
 export { TopNav };
