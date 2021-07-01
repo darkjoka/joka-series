@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { preserveAspectRatio, close } from "../../constants/svg";
@@ -18,12 +18,16 @@ const Hero: React.FC = () => {
     }
   }, []);
 
+  const handleSearch = (event: FormEvent) => {
+    event.preventDefault();
+  };
+
   return (
     <StyledHero>
       <Frost />
       <FormHold>
         <FormInner theme={theme}>
-          <form>
+          <form onSubmit={handleSearch}>
             <label htmlFor="searchField">Search Input</label>
             <InputHold theme={theme}>
               <input
@@ -166,6 +170,7 @@ const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })<{
   background-color: ${({ theme }) => theme.accentColor};
   padding: 0px;
   border-radius: 4px;
+  margin-left: 8px;
 `;
 
 export { Hero };
