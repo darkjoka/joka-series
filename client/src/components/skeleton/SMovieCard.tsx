@@ -54,7 +54,8 @@ const Card = styled.div<{ theme: ThemeState }>`
     left: 0;
     width: 50%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: ${({ theme }) => theme.tertiaryColor};
+    opacity: 0.5;
     z-index: 2;
 
     animation: load 1.5s infinite;

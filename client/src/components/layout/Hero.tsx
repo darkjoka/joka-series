@@ -31,6 +31,7 @@ const Hero: React.FC = () => {
             <label htmlFor="searchField">Search Input</label>
             <InputHold theme={theme}>
               <input
+                minLength={3}
                 type="text"
                 id="searchField"
                 value={searchTerm}
