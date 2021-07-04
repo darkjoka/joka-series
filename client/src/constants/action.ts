@@ -14,3 +14,7 @@ export const TOGGLE_LIGHT = "TOGGLE_LIGHT";
 
 //Index List
 export const POPULATE_INDEX = "POPULATE_INDEX";
+
+// Local
+export const AUGMENT_FAVORITE = "AUGMENT_FAVORITE";
+export const AUGMENT_HISTORY = "AUGMENT_HISTORY";
