@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent } from "react";
+import React, { useState, FormEvent } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { preserveAspectRatio, close } from "../../constants/svg";
@@ -14,13 +14,6 @@ const Hero: React.FC = () => {
   });
 
   const history = useHistory();
-
-  useEffect(() => {
-    if (!localStorage.getItem("favorite")) {
-      localStorage.setItem("favorite", JSON.stringify([]));
-      localStorage.setItem("history", JSON.stringify([]));
-    }
-  }, []);
 
   const handleSearch = (event: FormEvent) => {
     event.preventDefault();
