@@ -25,6 +25,7 @@ const Content: React.FC = () => {
             <Route path="/favorite" component={FavoriteList} />
             <Route path="/filter/:filterItem" component={FilterList} />
             <Route path="/history" component={HistoryList} />{" "}
+            <Route path="/search/:searchItem" component={} />
           </Switch>
         </section>
       </SectionHold>
