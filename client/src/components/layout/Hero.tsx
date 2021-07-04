@@ -5,12 +5,16 @@ import { preserveAspectRatio, close } from "../../constants/svg";
 import { RootState } from "../../reducers";
 import { ThemeState } from "../../reducers/theme";
 import pic from "../../assets/img.jpg";
+import { useHistory } from "react-router-dom";
 
 const Hero: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const theme = useSelector((state: RootState) => {
     return state.theme;
   });
+
+  const history = useHistory();
+
   useEffect(() => {
     if (!localStorage.getItem("favorite")) {
       localStorage.setItem("favorite", JSON.stringify([]));
@@ -20,6 +24,7 @@ const Hero: React.FC = () => {
 
   const handleSearch = (event: FormEvent) => {
     event.preventDefault();
+    searchTerm.length >= 3 && history.push(`/search/${searchTerm}`);
   };
 
   return (
