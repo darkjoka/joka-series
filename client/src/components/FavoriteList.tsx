@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import MovieDisplay from "./MovieDisplay";
-import { handleLocalFetch } from "./MovieCard";
+
 import { useSelector } from "react-redux";
 import { RootState } from "../reducers";
+import { ThemeState } from "../reducers/theme";
+import { Movie } from "../reducers/indexP";
 
 export const FavoriteList = () => {
-  const [movies] = useState(handleLocalFetch("favorite"));
-  const theme = useSelector((state: RootState) => state.theme);
+  const [theme, favorites]: [ThemeState, Movie[]] = useSelector(
+    (state: RootState) => {
+      return [state.theme, state.local.favorite];
+    }
+  );
 
   return (
     <>
-      <MovieDisplay theme={theme} movies={movies} />
+      <MovieDisplay theme={theme} movies={favorites} />
     </>
   );
 };
