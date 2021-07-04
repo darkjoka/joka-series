@@ -36,7 +36,7 @@ const SMovieCard: React.FC<MovieCardProps> = ({ teaser, theme }) => {
 const Card = styled.div<{ theme: ThemeState }>`
   width: 100%;
   border: 2px solid ${({ theme }) => theme.tertiaryColor};
-  padding: 4px;
+  padding: 2px;
   border-radius: 4px 4px 0 0;
   margin: 8px 0px;
   position: relative;
