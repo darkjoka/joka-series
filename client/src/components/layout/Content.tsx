@@ -10,6 +10,7 @@ import { device } from "../../constants/device";
 import { ThemeState } from "../../reducers/theme";
 import { useSelector } from "react-redux";
 import { RootState } from "../../reducers";
+import { SearchList } from "../SearchList";
 
 const Content: React.FC = () => {
   const theme = useSelector((state: RootState) => {
@@ -25,7 +26,7 @@ const Content: React.FC = () => {
             <Route path="/favorite" component={FavoriteList} />
             <Route path="/filter/:filterItem" component={FilterList} />
             <Route path="/history" component={HistoryList} />{" "}
-            <Route path="/search/:searchItem" component={} />
+            <Route path="/search/:searchItem" component={SearchList} />
           </Switch>
         </section>
       </SectionHold>
