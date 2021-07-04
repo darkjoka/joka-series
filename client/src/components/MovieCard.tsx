@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { pushLink } from "../actions/current";
+import { augmentFavorite } from "../actions/local";
 import { openBottom } from "../actions/navigation";
 import { device } from "../constants/device";
 import {
@@ -33,10 +34,15 @@ const MovieCard: React.FC<MovieProps> = ({
   const [localFavoriteStore, setLocalFavoriteStore] = useState<Movie[]>(
     handleLocalFetch("favorite")
   );
+  const dispatch = useDispatch();
 
   const updateLocal = (items: Movie[], store: string): void => {
     localStorage.setItem(store, JSON.stringify(items));
     setLocalFavoriteStore(items);
+  };
+
+  const syncLocal = (movies: Movie[]): void => {
+    dispatch(augmentFavorite(movies));
   };
 
   const handleBookmark = (): void => {
@@ -54,8 +60,8 @@ const MovieCard: React.FC<MovieProps> = ({
     }
 
     updateLocal(favorites, "favorite");
+    syncLocal(favorites);
   };
-  const dispatch = useDispatch();
 
   const addToHistory = () => {
     let history = handleLocalFetch("history");
