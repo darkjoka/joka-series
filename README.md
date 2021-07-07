@@ -8,7 +8,7 @@ A django webscraping app that scrapes information from todaytvseries2.com and pr
 
 ## Demo
 
-[Link to Live Demo](http://joka-series.herokuapp.com/)
+[Link to Live Demo](https://jseries.netlify.app/)
 
 ## Tech Stack
 
