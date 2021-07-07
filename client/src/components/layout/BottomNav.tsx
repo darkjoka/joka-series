@@ -36,30 +36,37 @@ const BottomNav: React.FC = () => {
   };
 
   useEffect(() => {
-    const handleCurrent = (data: DetailState): void => {
-      dispatch(pushData(data));
-      setLoading(false);
-    };
-
-    setLoading(true);
-    setError(false);
-    (async () => {
-      try {
-        const response = await fetch("http://localhost:4000/per");
-        const result = await response.json();
-
-        handleCurrent(result.data);
-      } catch (e) {
+    if (link && bottomNavigation) {
+      const broken = link.split("/");
+      const handleCurrent = (data: DetailState): void => {
+        dispatch(pushData(data));
         setLoading(false);
-        setError(true);
-      }
-    })();
+      };
 
-    return () => {
-      setLoading(false);
+      setLoading(true);
       setError(false);
-    };
-  }, [link, dispatch]);
+      (async () => {
+        try {
+          const response = await fetch(
+            `https://jokaseries.herokuapp.com/detail${
+              broken[broken.length - 1]
+            }`
+          );
+          const result = await response.json();
+
+          handleCurrent(result.data);
+        } catch (e) {
+          setLoading(false);
+          setError(true);
+        }
+      })();
+
+      return () => {
+        setLoading(false);
+        setError(false);
+      };
+    }
+  }, [link, dispatch, bottomNavigation]);
 
   return (
     <StyledNav isBottomNavOpen={bottomNavigation}>

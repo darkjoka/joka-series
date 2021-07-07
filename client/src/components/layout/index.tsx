@@ -15,8 +15,8 @@ const Layout: React.FC = () => {
       localStorage.setItem("favorite", JSON.stringify([]));
       localStorage.setItem("history", JSON.stringify([]));
     } else {
-      dispatch(augmentFavorite(handleLocalFetch('favorite')));
-      dispatch(augmentHistory(handleLocalFetch('history')));
+      dispatch(augmentFavorite(handleLocalFetch("favorite")));
+      dispatch(augmentHistory(handleLocalFetch("history")));
     }
   }, [dispatch]);
 
