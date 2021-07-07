@@ -46,27 +46,23 @@ const Genre = styled.div`
   width: 100%;
   display: flex;
   margin: 16px 0;
-  align-items center;
+  align-items: center;
   border-radius: 4px;
   flex-wrap: wrap;
 
   span {
     margin: 2px 4px;
   }
-
 `;
 
 const Hero = styled.div<{ image: string }>`
   aspect-ratio: 1067/600;
   width: 100%;
-  background: url(${({ image }) => {
-      return image;
-    }}),
-    #dddddd;
   background-size: cover;
   border-radius: 8px;
   margin: 16px 0;
   overflow: hidden;
+  background: url(${({ image }) => image});
 `;
 
 const Description = styled.div`

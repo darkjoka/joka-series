@@ -10,6 +10,7 @@ import { pushData } from "../../actions/current";
 import { DetailState } from "../../reducers/current";
 import { Detail } from "../Detail";
 import { ThemeState } from "../../reducers/theme";
+import { device } from "../../constants/device";
 
 const BottomNav: React.FC = () => {
   const [bottomNavigation, link, detail, theme]: [
@@ -69,7 +70,7 @@ const BottomNav: React.FC = () => {
   }, [link, dispatch, bottomNavigation]);
 
   return (
-    <StyledNav isBottomNavOpen={bottomNavigation}>
+    <StyledNav theme={theme} isBottomNavOpen={bottomNavigation}>
       <InnerNav>
         <Icon theme={theme} onClick={handleClick}>
           <path d={close.path}></path>
@@ -84,18 +85,32 @@ const BottomNav: React.FC = () => {
   );
 };
 
-const StyledNav = styled.div<{ isBottomNavOpen: boolean }>`
+const StyledNav = styled.div<{ isBottomNavOpen: boolean; theme: ThemeState }>`
   width: 100vw;
   height: 100vh;
   position: fixed;
   z-index: 10;
   top: 0;
-  background-color: rgba(0, 25, 25, 0.4);
+  background: linear-gradient(
+    to bottom right,
+    ${({ theme }) => {
+      return theme.isLight
+        ? `rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, .2)`
+        : `rgba(0, 0, 0, .3),
+      rgba(0, 0, 0, .2)`;
+    }}
+  );
+  backdrop-filter: blur(0.9rem);
   padding: 0 8px;
   transition: transform 0.3s ease;
   transform: translateY(
     ${({ isBottomNavOpen }) => (isBottomNavOpen ? "0vh" : "100vh")}
   );
+
+  @media ${device.tablet} {
+    padding: 4px 100px;
+  }
 `;
 
 const Inner = styled.div`

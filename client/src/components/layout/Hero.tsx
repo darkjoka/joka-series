@@ -78,14 +78,13 @@ const Frost = styled.div<{ theme: ThemeState }>`
       to bottom right,
       ${({ theme }) => {
         return theme.isLight
-          ? `rgba(255, 255, 255, .3),
+          ? `rgba(255, 255, 255, 0.3),
       rgba(255, 255, 255, .2)`
           : `rgba(0, 0, 0, .3),
       rgba(0, 0, 0, .2)`;
       }}
     );
-
-    backdrop-filter: blur(0.4rem);
+    backdrop-filter: blur(0.9rem);
   }
 `;
 
