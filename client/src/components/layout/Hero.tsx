@@ -122,13 +122,11 @@ const FormInner = styled.div<{ theme: ThemeState }>`
   input[type="submit"] {
     background: ${({ theme }) => theme.accentColor};
     color: ${({ theme }) => theme.primaryColor};
-    border: none;
     height: 42px;
     margin-left: 10px;
     min-width: 90px;
-    border-radius: 8px;
+    border-radius: 4px;
     font-size: 1.1em;
-    box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.2);
     cursor: pointer;
 
     @media ${device.tablet} {
