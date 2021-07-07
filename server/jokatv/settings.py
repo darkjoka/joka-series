@@ -108,6 +108,8 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https://\w+\.netlify\.app$",
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
