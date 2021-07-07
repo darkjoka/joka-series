@@ -106,6 +106,14 @@ import django_heroku
 django_heroku.settings(locals())
 
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://\w+\.netlify\.app$",
+]
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
