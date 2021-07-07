@@ -44,7 +44,7 @@ const TopNav: React.FC = () => {
         </Icon>
         <BaseSection theme={theme}>
           <Link to="/">
-            <Section label={"Home"}>
+            <Section theme={theme} label={"Home"}>
               <IconSect theme={theme} viewBox={home.viewBox}>
                 <path d={home.path}></path>
               </IconSect>
@@ -52,7 +52,7 @@ const TopNav: React.FC = () => {
           </Link>
 
           <Link to="/favorite">
-            <Section label={"Favorited"}>
+            <Section theme={theme} label={"Favorited"}>
               <IconSect theme={theme} viewBox={bookMarkFilled.viewBox}>
                 <path d={bookMarkFilled.path}></path>
               </IconSect>
@@ -60,7 +60,7 @@ const TopNav: React.FC = () => {
           </Link>
 
           <Link to="/history">
-            <Section label={"History"}>
+            <Section theme={theme} label={"History"}>
               <IconSect theme={theme} viewBox={recent.viewBox}>
                 <path d={recent.path}></path>
               </IconSect>
