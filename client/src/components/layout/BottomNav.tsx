@@ -48,7 +48,7 @@ const BottomNav: React.FC = () => {
       (async () => {
         try {
           const response = await fetch(
-            `https://jokaseries.herokuapp.com/detail${
+            `https://jokaseries.herokuapp.com/detail/${
               broken[broken.length - 1]
             }`
           );
