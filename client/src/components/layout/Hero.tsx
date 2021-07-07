@@ -22,7 +22,9 @@ const Hero: React.FC = () => {
 
   return (
     <StyledHero>
-      <Frost />
+      <Frost theme={theme}>
+        <div></div>
+      </Frost>
       <FormHold>
         <FormInner theme={theme}>
           <form onSubmit={handleSearch}>
@@ -64,24 +66,26 @@ const StyledHero = styled.div`
   overflow: hidden;
 `;
 
-const Frost = styled.div`
-  background: hsla(0, 0%, 100%, 0.5);
+const Frost = styled.div<{ theme: ThemeState }>`
+  background: url(${pic}) 0 / cover fixed;
   width: inherit;
   height: inherit;
-  display: grid;
-  place-items: center;
-  position: relative;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: -100px;
-    right: -100px;
-    bottom: -100px;
-    left: -100px;
-    background: url(${pic}) 0 / cover fixed;
-    background-color: gainsboro;
-    filter: blur(20px);
+  div {
+    width: inherit;
+    height: inherit;
+    background: linear-gradient(
+      to bottom right,
+      ${({ theme }) => {
+        return theme.isLight
+          ? `rgba(255, 255, 255, .3),
+      rgba(255, 255, 255, .2)`
+          : `rgba(0, 0, 0, .3),
+      rgba(0, 0, 0, .2)`;
+      }}
+    );
+
+    backdrop-filter: blur(0.4rem);
   }
 `;
 
