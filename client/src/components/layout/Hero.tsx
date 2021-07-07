@@ -6,6 +6,7 @@ import { RootState } from "../../reducers";
 import { ThemeState } from "../../reducers/theme";
 import pic from "../../assets/img.jpg";
 import { useHistory } from "react-router-dom";
+import { device } from "../../constants/device";
 
 const Hero: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -124,11 +125,15 @@ const FormInner = styled.div<{ theme: ThemeState }>`
     border: none;
     height: 42px;
     margin-left: 10px;
-    min-width: 80px;
+    min-width: 90px;
     border-radius: 8px;
     font-size: 1.1em;
     box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.2);
     cursor: pointer;
+
+    @media ${device.tablet} {
+      min-width: 120px;
+    }
   }
 
   input[type="submit"]:active {
