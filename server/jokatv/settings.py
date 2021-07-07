@@ -100,6 +100,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# heroku settings
+import django_heroku
+
+django_heroku.settings(locals())
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
