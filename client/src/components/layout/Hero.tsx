@@ -123,6 +123,7 @@ const FormInner = styled.div<{ theme: ThemeState }>`
     background: ${({ theme }) => theme.accentColor};
     color: ${({ theme }) => theme.primaryColor};
     height: 42px;
+    border: 0;
     margin-left: 10px;
     min-width: 90px;
     border-radius: 4px;

@@ -61,6 +61,7 @@ const SectionHold = styled.div<{ theme: ThemeState }>`
   margin-top: -65px;
   background: ${({ theme }) => theme.primBG};
   min-height: 80vh;
+  color: ${({ theme }) => theme.primaryInverse};
 `;
 
 export { Content };

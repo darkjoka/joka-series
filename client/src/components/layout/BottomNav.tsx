@@ -107,6 +107,7 @@ const StyledNav = styled.div<{ isBottomNavOpen: boolean; theme: ThemeState }>`
   transform: translateY(
     ${({ isBottomNavOpen }) => (isBottomNavOpen ? "0vh" : "100vh")}
   );
+  color: ${({ theme }) => theme.primaryInverse};
 
   @media ${device.tablet} {
     padding: 4px 100px;
