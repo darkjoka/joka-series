@@ -4,7 +4,7 @@ import json
 from requests.compat import quote_plus
 from django.http import JsonResponse
 
-import scrapers
+from . import scrapers
 
 # base urls
 baseUrl = "http://www.todaytvseries2.com/"
