@@ -32,7 +32,7 @@ export const IndexList = () => {
 
       (async () => {
         try {
-          const response = await fetch("http://localhost:4000/");
+          const response = await fetch("https://jokaseries.herokuapp.com/");
           const result = await response.json();
 
           handlePopulation(result.data);

@@ -27,9 +27,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -99,14 +101,6 @@ if os.environ.get("DEBUG") == "TRUE":
 elif os.environ.get("DEBUG") == "FALSE":
     DEBUG = False
 
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
-
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    r"^https://\w+\.netlify\.app$",
-]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
