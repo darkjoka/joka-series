@@ -18,3 +18,6 @@ export const POPULATE_INDEX = "POPULATE_INDEX";
 // Local
 export const AUGMENT_FAVORITE = "AUGMENT_FAVORITE";
 export const AUGMENT_HISTORY = "AUGMENT_HISTORY";
+
+//Filter List
+export const POPULATE_FILTER = "POPULATE_FILTER";
