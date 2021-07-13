@@ -120,16 +120,16 @@ const FormInner = styled.div<{ theme: ThemeState }>`
   }
 
   input[type="submit"] {
+    --webkit-appearance: none;
     background: ${({ theme }) => theme.accentColor};
     color: ${({ theme }) => theme.primaryColor};
     height: 42px;
     border: 0;
     margin-left: 10px;
     min-width: 90px;
-    /* border-radius: 4px; */
+    border-radius: 4px;
     font-size: 1.1em;
     cursor: pointer;
-    background-color: black;
 
     @media ${device.tablet} {
       min-width: 120px;
