@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Error } from "./Error";
+import { SearchItem } from "./SearchItem";
 
 interface SearchListProp {
   match: { params: { searchItem: string } };
@@ -34,11 +35,7 @@ export const SearchList: React.FC<SearchListProp> = ({ match }) => {
       {!loading &&
         !error &&
         searchItems.map(({ title, permaLink }) => {
-          return (
-            <a key={title} href={permaLink}>
-              {title}
-            </a>
-          );
+          return <SearchItem key={title} permaLink={permaLink} title={title} />;
         })}
       {loading && "loading..."}
       {error && <Error />}
