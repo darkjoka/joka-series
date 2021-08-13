@@ -19,6 +19,7 @@ const Hero: React.FC = () => {
   const handleSearch = (event: FormEvent) => {
     event.preventDefault();
     searchTerm.length >= 3 && history.push(`/search/${searchTerm}`);
+    setSearchTerm("");
   };
 
   return (
