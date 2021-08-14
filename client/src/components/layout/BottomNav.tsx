@@ -144,6 +144,7 @@ const Inner = styled.div`
   border-radius: 26px 26px 0 0;
   overflow-y: auto;
   overscroll-behavior-y: contain;
+  border: 4px solid ${({ theme }) => theme.accentColor};
 `;
 const InnerNav = styled.div`
   height: 8%;
