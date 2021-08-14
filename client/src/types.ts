@@ -105,3 +105,8 @@ export interface SectionInterface {
   label: string;
   theme?: ThemeState;
 }
+
+export interface MovieCardProps {
+  teaser: boolean;
+  theme: ThemeState;
+}
