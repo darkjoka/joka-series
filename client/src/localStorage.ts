@@ -1,4 +1,4 @@
-import { Movie } from "./reducers/indexP";
+import { Movie } from "./types";
 
 export const localFetch = (store: string): Movie[] => {
   const item = localStorage.getItem(store);

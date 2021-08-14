@@ -14,8 +14,7 @@ import { Section } from "../Section";
 import { Filters } from "../Filters";
 import { Link } from "react-router-dom";
 import { device } from "../../constants/device";
-
-import { ThemeState } from "../../reducers/theme";
+import { ThemeState } from "../../types";
 
 export const SideNav: React.FC = () => {
   const [sideNavigation, theme]: [boolean, ThemeState] = useSelector(

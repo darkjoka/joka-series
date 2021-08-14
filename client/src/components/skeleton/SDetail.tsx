@@ -70,12 +70,12 @@ const Genre = styled.div`
   background-color: #f2f2f2f2;
   display: flex;
   margin: 16px 0;
-  align-items center;
+  align-items: center;
   border-radius: 4px;
-position: relative;
+  position: relative;
   overflow: hidden;
 
-    div {
+  div {
     width: 100%;
     height: 16px;
     background-color: #dddddd;
@@ -94,8 +94,6 @@ position: relative;
     z-index: 2;
     animation: load 1.5s infinite;
   }
-
-
 `;
 
 const Description = styled.div`

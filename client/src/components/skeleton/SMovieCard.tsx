@@ -2,12 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { device } from "../../constants/device";
 import { preserveAspectRatio, bookMarkFilled } from "../../constants/svg";
-import { ThemeState } from "../../reducers/theme";
-
-interface MovieCardProps {
-  teaser: boolean;
-  theme: ThemeState;
-}
+import { MovieCardProps, ThemeState } from "../../types";
 
 const SMovieCard: React.FC<MovieCardProps> = ({ teaser, theme }) => {
   return (

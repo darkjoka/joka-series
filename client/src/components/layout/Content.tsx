@@ -7,12 +7,12 @@ import { FavoriteList } from "../FavoriteList";
 import { FilterList } from "../FilterList";
 import { HistoryList } from "../HistoryList";
 import { device } from "../../constants/device";
-import { ThemeState } from "../../reducers/theme";
 import { useSelector } from "react-redux";
 import { RootState } from "../../reducers";
 import { SearchList } from "../SearchList";
+import { ThemeState } from "../../types";
 
-const Content: React.FC = () => {
+export const Content: React.FC = () => {
   const theme = useSelector((state: RootState) => {
     return state.theme;
   });
@@ -63,5 +63,3 @@ const SectionHold = styled.div<{ theme: ThemeState }>`
   min-height: 80vh;
   color: ${({ theme }) => theme.primaryInverse};
 `;
-
-export { Content };

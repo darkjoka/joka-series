@@ -7,10 +7,9 @@ import { closeBottom } from "../../actions/navigation";
 import { SDetail } from "../skeleton/SDetail";
 import { Error } from "../Error";
 import { pushData } from "../../actions/current";
-import { DetailState } from "../../reducers/current";
 import { Detail } from "../Detail";
-import { ThemeState } from "../../reducers/theme";
 import { device } from "../../constants/device";
+import { DetailState, ThemeState } from "../../types";
 
 const BottomNav: React.FC = () => {
   const [bottomNavigation, link, detail, theme]: [

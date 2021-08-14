@@ -3,10 +3,10 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { preserveAspectRatio, close } from "../../constants/svg";
 import { RootState } from "../../reducers";
-import { ThemeState } from "../../reducers/theme";
 import pic from "../../assets/img.jpg";
 import { useHistory } from "react-router-dom";
 import { device } from "../../constants/device";
+import { ThemeState } from "../../types";
 
 const Hero: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
