@@ -62,3 +62,10 @@ export interface MovieAction {
   type: string;
   payLoad: Movie[];
 }
+
+export interface CurrAction {
+  type: string;
+  payLoad: string | DetailState;
+}
+
+export type MovieType = Movie[] | [];
