@@ -17,13 +17,18 @@ export const isLocalEmpty = (store: string): boolean => {
   return Boolean(localStorage.getItem(store));
 };
 
-export const localToggle = (store: string, currMovie: Movie): Movie[] => {
+export const localAdd = (
+  store: string,
+  currMovie: Movie,
+  toggle: boolean = true
+): Movie[] => {
   let items: Movie[] = localFetch(store);
 
   if (
     items.some((movie) => {
       return movie.title === currMovie.title;
-    })
+    }) &&
+    toggle
   ) {
     items = items.filter((series) => {
       return series.title !== currMovie.title;

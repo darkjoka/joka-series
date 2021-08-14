@@ -11,7 +11,7 @@ import {
   bookMark,
   camera,
 } from "../constants/svg";
-import { localFetch, localSet, localToggle } from "../localStorage";
+import { localAdd, localFetch, localSet } from "../localStorage";
 import { Movie } from "../reducers/indexP";
 import { ThemeState } from "../reducers/theme";
 
@@ -40,7 +40,7 @@ const MovieCard: React.FC<MovieProps> = ({
   };
 
   const handleBookmark = (): void => {
-    let favorites = localToggle("favorite", {
+    let favorites = localAdd("favorite", {
       title,
       teaser,
       permaLink,

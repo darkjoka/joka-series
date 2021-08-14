@@ -11,7 +11,6 @@ import { DetailState } from "../../reducers/current";
 import { Detail } from "../Detail";
 import { ThemeState } from "../../reducers/theme";
 import { device } from "../../constants/device";
-import { handleLocalFetch } from "../MovieCard";
 
 const BottomNav: React.FC = () => {
   const [bottomNavigation, link, detail, theme]: [
@@ -28,6 +27,26 @@ const BottomNav: React.FC = () => {
     ];
   });
 
+  // const addToHistory = () => {
+  //   const [title, imageSource, teaser, permaLink] = [
+  //     detail.title,
+  //     detail.heroImage,
+  //     detail.description,
+  //     link,
+  //   ];
+
+  //   let history = handleLocalFetch("history");
+
+  //   if (
+  //     !history.some((movie) => {
+  //       return movie.title === title;
+  //     })
+  //   ) {
+  //     history = history.concat([{ title, imageSource, teaser, permaLink }]);
+  //   }
+  //   localStorage.setItem("history", JSON.stringify(history)); // update local storage
+  // };
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -38,30 +57,15 @@ const BottomNav: React.FC = () => {
   };
 
   useEffect(() => {
-    const addToHistory = () => {
-      const [title, imageSource, teaser, permaLink] = [
-        detail.title,
-        detail.heroImage,
-        detail.description,
-        link,
-      ];
-
-      let history = handleLocalFetch("history");
-
-      if (
-        !history.some((movie) => {
-          return movie.title === title;
-        })
-      ) {
-        history = history.concat([{ title, imageSource, teaser, permaLink }]);
-      }
-      localStorage.setItem("history", JSON.stringify(history)); // update local storage
-    };
     if (link && bottomNavigation) {
+      console.log("here got");
       const broken = link.split("/");
       const handleCurrent = (data: DetailState): void => {
         dispatch(pushData(data));
-        addToHistory();
+        console.log("also");
+        // addToHistory();
+        console.log("final");
+
         setLoading(false);
       };
 
