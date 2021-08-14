@@ -6,17 +6,17 @@ import { BottomNav } from "./BottomNav";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { augmentFavorite, augmentHistory } from "../../actions/local";
-import { handleLocalFetch } from "../MovieCard";
+import { isLocalEmpty, localFetch, localSet } from "../../localStorage";
 
 const Layout: React.FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    if (!localStorage.getItem("favorite")) {
-      localStorage.setItem("favorite", JSON.stringify([]));
-      localStorage.setItem("history", JSON.stringify([]));
+    if (!isLocalEmpty("favorite")) {
+      localSet("favorite", []);
+      localSet("history", []);
     } else {
-      dispatch(augmentFavorite(handleLocalFetch("favorite")));
-      dispatch(augmentHistory(handleLocalFetch("history")));
+      dispatch(augmentFavorite(localFetch("favorite")));
+      dispatch(augmentHistory(localFetch("history")));
     }
   }, [dispatch]);
 
