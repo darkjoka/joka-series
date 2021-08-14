@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { populate_filter } from "../actions/populate";
 import { RootState } from "../reducers";
-import { Movie } from "../reducers/indexP";
-import { ThemeState } from "../reducers/theme";
 import { Load } from "./Load";
 import MovieDisplay from "./MovieDisplay";
 import { Error } from "./Error";
+import { Movie, ThemeState } from "../types";
 interface FilterListProp {
   match: { params: { filterItem: string } };
 }

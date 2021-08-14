@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { DetailState } from "../reducers/current";
+import { DetailState } from "../types";
 import { AccordionList } from "./AccordionList";
 
 export const Detail: React.FC<DetailState> = ({

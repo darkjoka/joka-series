@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { SearchListProp } from "../types";
 import { Error } from "./Error";
 import { SearchItem } from "./SearchItem";
-
-interface SearchListProp {
-  match: { params: { searchItem: string } };
-}
 
 export const SearchList: React.FC<SearchListProp> = ({ match }) => {
   const [error, setError] = useState(false);

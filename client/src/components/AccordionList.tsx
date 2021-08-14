@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import { SeasonEpisode } from "../reducers/current";
+import { seasonEp } from "../types";
 import { Accordion } from "./Accordion";
 
-interface seasonEp {
-  seasonEpisode: SeasonEpisode[];
-}
 export const AccordionList: React.FC<seasonEp> = ({ seasonEpisode }) => {
   const [accState, setAccState] = useState(() => {
     const acc: boolean[] = [];

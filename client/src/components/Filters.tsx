@@ -4,7 +4,7 @@ import { genreFilter, yearFilter } from "../constants/filters";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { closeSide } from "../actions/navigation";
-import { ThemeState } from "../reducers/theme";
+import { ThemeState } from "../types";
 
 const Filters: React.FC<{ theme: ThemeState }> = ({ theme }) => {
   const dispatch = useDispatch();

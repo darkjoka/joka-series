@@ -1,12 +1,6 @@
 import React from "react";
+import { DisplayProps } from "../types";
 import { MovieCard } from "./MovieCard";
-import { Movie } from "../reducers/indexP";
-import { ThemeState } from "../reducers/theme";
-
-interface DisplayProps {
-  movies: Movie[];
-  theme: ThemeState;
-}
 
 const MovieDisplay: React.FC<DisplayProps> = ({ movies, theme }) => {
   return (

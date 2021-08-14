@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { populate_index } from "../actions/populate";
 import { RootState } from "../reducers";
+import { Movie, ThemeState } from "../types";
 import { Error } from "./Error";
 import { Load } from "./Load";
-import { Movie } from "../reducers/indexP";
 import MovieDisplay from "./MovieDisplay";
-import { ThemeState } from "../reducers/theme";
 
 export const IndexList = () => {
   const [movies, theme]: [Movie[], ThemeState] = useSelector(

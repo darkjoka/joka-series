@@ -12,12 +12,8 @@ import {
   camera,
 } from "../constants/svg";
 import { localAdd, localFetch, localSet } from "../localStorage";
-import { Movie } from "../reducers/indexP";
-import { ThemeState } from "../reducers/theme";
+import { Movie, MovieProps, ThemeState } from "../types";
 
-interface MovieProps extends Movie {
-  theme: ThemeState;
-}
 const MovieCard: React.FC<MovieProps> = ({
   imageSource,
   title,

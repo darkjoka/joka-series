@@ -1,12 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ThemeState } from "../reducers/theme";
-
-interface SectionInterface {
-  children: React.ReactNode;
-  label: string;
-  theme?: ThemeState;
-}
+import { SectionInterface, ThemeState } from "../types";
 
 export const Section: React.FC<SectionInterface> = ({
   children,

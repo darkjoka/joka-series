@@ -3,19 +3,7 @@ import styled from "styled-components";
 import { cheveron, preserveAspectRatio } from "../constants/svg";
 import { DISCORD_DARK, RED, GENERIC_BORDER, GREEN } from "../constants/colors";
 import { device } from "../constants/device";
-
-interface Episode {
-  episodeTitle: string;
-  episodeSize: string;
-  episodeDownloadLink: string;
-}
-interface AccordionProps {
-  index: number;
-  value: boolean;
-  handleAccordion: (index: number) => void;
-  season: string;
-  episodes: Episode[];
-}
+import { AccordionProps } from "../types";
 
 export const Accordion: React.FC<AccordionProps> = ({
   index,
