@@ -7,3 +7,7 @@ export const localFetch = (store: string): Movie[] => {
   }
   return [];
 };
+
+export const localSet = (store: string, payLoad: Movie[]): void => {
+  localStorage.setItem(store, JSON.stringify(payLoad));
+};
