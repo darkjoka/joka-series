@@ -69,3 +69,39 @@ export interface CurrAction {
 }
 
 export type MovieType = Movie[] | [];
+
+export interface Episode {
+  episodeTitle: string;
+  episodeSize: string;
+  episodeDownloadLink: string;
+}
+export interface AccordionProps {
+  index: number;
+  value: boolean;
+  handleAccordion: (index: number) => void;
+  season: string;
+  episodes: Episode[];
+}
+
+export interface seasonEp {
+  seasonEpisode: SeasonEpisode[];
+}
+
+export interface MovieProps extends Movie {
+  theme: ThemeState;
+}
+
+export interface DisplayProps {
+  movies: Movie[];
+  theme: ThemeState;
+}
+
+export interface SearchListProp {
+  match: { params: { searchItem: string } };
+}
+
+export interface SectionInterface {
+  children: React.ReactNode;
+  label: string;
+  theme?: ThemeState;
+}
