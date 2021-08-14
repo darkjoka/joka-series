@@ -11,16 +11,10 @@ import {
   bookMark,
   camera,
 } from "../constants/svg";
+import { localFetch, localSet, localToggle } from "../localStorage";
 import { Movie } from "../reducers/indexP";
 import { ThemeState } from "../reducers/theme";
 
-export const handleLocalFetch = (store: string): Movie[] => {
-  const item = localStorage.getItem(store);
-  if (item) {
-    return JSON.parse(item);
-  }
-  return [];
-};
 interface MovieProps extends Movie {
   theme: ThemeState;
 }
@@ -32,12 +26,12 @@ const MovieCard: React.FC<MovieProps> = ({
   theme,
 }) => {
   const [localFavoriteStore, setLocalFavoriteStore] = useState<Movie[]>(
-    handleLocalFetch("favorite")
+    localFetch("favorite")
   );
   const dispatch = useDispatch();
 
   const updateLocal = (items: Movie[], store: string): void => {
-    localStorage.setItem(store, JSON.stringify(items));
+    localSet(store, items);
     setLocalFavoriteStore(items);
   };
 
@@ -46,19 +40,12 @@ const MovieCard: React.FC<MovieProps> = ({
   };
 
   const handleBookmark = (): void => {
-    let favorites = handleLocalFetch("favorite");
-    if (
-      favorites.some((movie) => {
-        return movie.title === title;
-      })
-    ) {
-      favorites = favorites.filter((series) => {
-        return series.title !== title;
-      });
-    } else {
-      favorites = favorites.concat([{ title, imageSource, teaser, permaLink }]);
-    }
-
+    let favorites = localToggle("favorite", {
+      title,
+      teaser,
+      permaLink,
+      imageSource,
+    });
     updateLocal(favorites, "favorite");
     syncLocal(favorites);
   };
