@@ -79,7 +79,7 @@ const MovieCard: React.FC<MovieProps> = ({
   const handleDownload = () => {
     dispatch(pushLink(permaLink));
     dispatch(openBottom());
-    addToHistory();
+    // addToHistory();
   };
 
   return (
