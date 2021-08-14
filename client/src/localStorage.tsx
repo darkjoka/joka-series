@@ -34,7 +34,7 @@ export const localAdd = (
       return series.title !== currMovie.title;
     });
   } else {
-    items = items.concat([{ ...currMovie }]);
+    items = [{ ...currMovie }].concat(items);
   }
 
   return items;
