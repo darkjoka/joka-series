@@ -13,6 +13,10 @@ export const localSet = (store: string, payLoad: Movie[]): void => {
   localStorage.setItem(store, JSON.stringify(payLoad));
 };
 
+export const isLocalEmpty = (store: string): boolean => {
+  return Boolean(localStorage.getItem(store));
+};
+
 export const localToggle = (store: string, currMovie: Movie): Movie[] => {
   let items: Movie[] = localFetch(store);
 
