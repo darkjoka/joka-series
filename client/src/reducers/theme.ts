@@ -8,24 +8,7 @@ import {
   GENERIC_BORDER,
   WHITE,
 } from "../constants/colors";
-
-export interface ThemeState {
-  isLight: boolean;
-  primaryColor: string;
-  primaryInverse: string;
-  secondaryColor: string;
-  secondaryInverse: string;
-  tertiaryColor: string;
-  gradColor: string;
-  accentColor: string;
-  shadow: string;
-  border: string;
-  primBG: string;
-}
-
-interface Action {
-  type: string;
-}
+import { ThemeState, BaseAction } from "../types";
 
 const defaultState: ThemeState = {
   isLight: true,
@@ -43,7 +26,7 @@ const defaultState: ThemeState = {
 
 const theme = (
   state: ThemeState = defaultState,
-  action: Action
+  action: BaseAction
 ): ThemeState => {
   switch (action.type) {
     case TOGGLE_DARK:

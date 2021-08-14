@@ -4,15 +4,7 @@ import {
   OPEN_BOTTOM,
   OPEN_SIDE,
 } from "../constants/action";
-
-interface NavState {
-  isSideNavOpen: boolean;
-  isBottomSectOpen: boolean;
-}
-
-interface Action {
-  type: string;
-}
+import { NavState, BaseAction } from "../types";
 
 const defaultState: NavState = {
   isSideNavOpen: false,
@@ -21,7 +13,7 @@ const defaultState: NavState = {
 
 const navigation = (
   state: NavState = defaultState,
-  action: Action
+  action: BaseAction
 ): NavState => {
   switch (action.type) {
     case OPEN_SIDE:

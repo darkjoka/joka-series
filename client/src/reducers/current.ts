@@ -1,32 +1,5 @@
 import { PUSH_DATA, PUSH_LINK } from "../constants/action";
-
-interface Episode {
-  episodeTitle: string;
-  episodeSize: string;
-  episodeDownloadLink: string;
-}
-
-export interface SeasonEpisode {
-  season: string;
-  episodes: Episode[];
-}
-
-export interface DetailState {
-  heroImage: string;
-  genres: string[];
-  description: string;
-  seasonEpisodes: SeasonEpisode[];
-  title: string;
-}
-export interface CurrentState {
-  link: string;
-  detail: DetailState;
-}
-
-interface Action {
-  type: string;
-  payLoad: string | DetailState;
-}
+import { CurrentState, CurrAction } from "../types";
 
 const defaultState: CurrentState = {
   link: "",
@@ -41,7 +14,7 @@ const defaultState: CurrentState = {
 
 export const current = (
   state: CurrentState = defaultState,
-  action: Action
+  action: CurrAction
 ): CurrentState => {
   switch (action.type) {
     case PUSH_LINK:
