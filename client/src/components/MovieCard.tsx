@@ -63,23 +63,9 @@ const MovieCard: React.FC<MovieProps> = ({
     syncLocal(favorites);
   };
 
-  const addToHistory = () => {
-    let history = handleLocalFetch("history");
-    if (
-      !history.some((movie) => {
-        return movie.title === title;
-      })
-    ) {
-      history = history.concat([{ title, imageSource, teaser, permaLink }]);
-    }
-
-    updateLocal(history, "history");
-  };
-
   const handleDownload = () => {
     dispatch(pushLink(permaLink));
     dispatch(openBottom());
-    // addToHistory();
   };
 
   return (
