@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../reducers";
 import { SearchListProp } from "../types";
 import { Error } from "./Error";
 import { SearchItem } from "./SearchItem";
@@ -7,6 +9,10 @@ export const SearchList: React.FC<SearchListProp> = ({ match }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [searchItems, setSearchItems] = useState([]);
+
+  const theme = useSelector((state: RootState) => {
+    return state.theme;
+  });
 
   useEffect(() => {
     setLoading(true);
@@ -32,7 +38,14 @@ export const SearchList: React.FC<SearchListProp> = ({ match }) => {
       {!loading &&
         !error &&
         searchItems.map(({ title, permaLink }) => {
-          return <SearchItem key={title} permaLink={permaLink} title={title} />;
+          return (
+            <SearchItem
+              key={title}
+              permaLink={permaLink}
+              title={title}
+              theme={theme}
+            />
+          );
         })}
       {loading && "loading..."}
       {error && <Error />}
