@@ -32,6 +32,7 @@ const MovieCard: React.FC<MovieProps> = ({
   };
 
   const syncLocal = (movies: Movie[]): void => {
+    // syncs app state with localStorage
     dispatch(augmentFavorite(movies));
   };
 

@@ -1,6 +1,6 @@
 import React from "react";
-import { Hero } from "./Hero";
 import styled from "styled-components";
+import { Hero } from "./Hero";
 import { Route, Switch } from "react-router-dom";
 import { IndexList } from "../IndexList";
 import { FavoriteList } from "../FavoriteList";
