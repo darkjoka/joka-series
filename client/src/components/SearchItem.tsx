@@ -24,8 +24,9 @@ const Container = styled.div<{ theme: ThemeState }>`
   place-items: center;
   cursor: pointer;
   border-radius: 4px;
-  padding: 0 8px 0 8px;
+  padding: 8px;
   border: 2px solid ${({ theme }) => theme.tertiaryColor};
   color: ${({ theme }) => theme.primaryInverse};
   background-color: ${({ theme }) => theme.primaryColor};
+  margin: 8px;
 `;

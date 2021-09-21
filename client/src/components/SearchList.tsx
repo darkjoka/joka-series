@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import styled from "styled-components";
 import { RootState } from "../reducers";
-import { SearchListProp } from "../types";
+import { SearchListProp, ThemeState } from "../types";
 import { Error } from "./Error";
 import { SearchItem } from "./SearchItem";
 
@@ -35,20 +36,27 @@ export const SearchList: React.FC<SearchListProp> = ({ match }) => {
   }, [match.params.searchItem]);
   return (
     <>
-      {!loading &&
-        !error &&
-        searchItems.map(({ title, permaLink }) => {
-          return (
-            <SearchItem
-              key={title}
-              permaLink={permaLink}
-              title={title}
-              theme={theme}
-            />
-          );
-        })}
+      {!loading && !error && (
+        <Search>
+          {searchItems.map(({ title, permaLink }) => {
+            return (
+              <SearchItem
+                key={title}
+                permaLink={permaLink}
+                title={title}
+                theme={theme}
+              />
+            );
+          })}
+        </Search>
+      )}
       {loading && "loading..."}
       {error && <Error />}
     </>
   );
 };
+
+const Search = styled.div<{ theme: ThemeState }>`
+  display: flex;
+  flex-wrap: wrap;
+`;
