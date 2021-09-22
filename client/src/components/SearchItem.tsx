@@ -29,4 +29,8 @@ const Container = styled.div<{ theme: ThemeState }>`
   color: ${({ theme }) => theme.primaryInverse};
   background-color: ${({ theme }) => theme.primaryColor};
   margin: 8px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.tertiaryColor};
+  }
 `;
