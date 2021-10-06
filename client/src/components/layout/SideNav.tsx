@@ -1,15 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { closeSide } from "../../actions/navigation";
-import { RootState } from "../../reducers";
+import { closeSide } from "../../store/actions/navigation";
+import { RootState } from "../../store/reducers";
 import styled from "styled-components";
-import {
-  preserveAspectRatio,
-  close,
-  home,
-  recent,
-  bookMarkFilled,
-} from "../../constants/svg";
+import { preserveAspectRatio, close, home, recent, bookMarkFilled } from "../../constants/svg";
 import { Section } from "../Section";
 import { Filters } from "../Filters";
 import { Link } from "react-router-dom";
@@ -17,11 +11,9 @@ import { device } from "../../constants/device";
 import { ThemeState } from "../../types";
 
 export const SideNav: React.FC = () => {
-  const [sideNavigation, theme]: [boolean, ThemeState] = useSelector(
-    (state: RootState) => {
-      return [state.navigation.isSideNavOpen, state.theme];
-    }
-  );
+  const [sideNavigation, theme]: [boolean, ThemeState] = useSelector((state: RootState) => {
+    return [state.navigation.isSideNavOpen, state.theme];
+  });
 
   const dispatch = useDispatch();
 
@@ -81,9 +73,7 @@ const SuperNav = styled.nav<{ sideNavStatus: boolean }>`
   height: 100vh;
   transition: transform 0.3s ease-in-out;
   z-index: 100;
-  transform: translateX(
-    ${({ sideNavStatus }) => (sideNavStatus ? "0vw" : "-100vw")}
-  );
+  transform: translateX(${({ sideNavStatus }) => (sideNavStatus ? "0vw" : "-100vw")});
 
   display: flex;
 `;

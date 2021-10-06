@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { RootState } from "../reducers";
+import { RootState } from "../store/reducers";
 import { SearchListProp, ThemeState } from "../types";
 import { Error } from "./Error";
 import { SearchItem } from "./SearchItem";
@@ -20,9 +20,7 @@ export const SearchList: React.FC<SearchListProp> = ({ match }) => {
     setError(false);
     (async () => {
       try {
-        const response = await fetch(
-          `https://jokaseries.herokuapp.com/search/${match.params.searchItem}`
-        );
+        const response = await fetch(`https://jokaseries.herokuapp.com/search/${match.params.searchItem}`);
         const result = await response.json();
         setSearchItems(result.data);
       } catch (e) {
@@ -39,14 +37,7 @@ export const SearchList: React.FC<SearchListProp> = ({ match }) => {
       {!loading && !error && (
         <Search>
           {searchItems.map(({ title, permaLink }) => {
-            return (
-              <SearchItem
-                key={title}
-                permaLink={permaLink}
-                title={title}
-                theme={theme}
-              />
-            );
+            return <SearchItem key={title} permaLink={permaLink} title={title} theme={theme} />;
           })}
         </Search>
       )}

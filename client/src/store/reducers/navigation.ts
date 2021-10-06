@@ -1,20 +1,12 @@
-import {
-  CLOSE_BOTTOM,
-  CLOSE_SIDE,
-  OPEN_BOTTOM,
-  OPEN_SIDE,
-} from "../constants/action";
-import { NavState, BaseAction } from "../types";
+import { CLOSE_BOTTOM, CLOSE_SIDE, OPEN_BOTTOM, OPEN_SIDE } from "../../constants/action";
+import { NavState, BaseAction } from "../../types";
 
 const defaultState: NavState = {
   isSideNavOpen: false,
   isBottomSectOpen: false,
 };
 
-const navigation = (
-  state: NavState = defaultState,
-  action: BaseAction
-): NavState => {
+const navigation = (state: NavState = defaultState, action: BaseAction): NavState => {
   switch (action.type) {
     case OPEN_SIDE:
       return { ...state, isSideNavOpen: true };

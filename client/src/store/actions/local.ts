@@ -1,5 +1,5 @@
-import { AUGMENT_FAVORITE, AUGMENT_HISTORY } from "../constants/action";
-import { Movie } from "../types";
+import { AUGMENT_FAVORITE, AUGMENT_HISTORY } from "../../constants/action";
+import { Movie } from "../../types";
 
 export const augmentFavorite = (favorites: Movie[]) => {
   return { type: AUGMENT_FAVORITE, payLoad: favorites };

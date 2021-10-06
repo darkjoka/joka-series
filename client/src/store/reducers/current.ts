@@ -1,5 +1,5 @@
-import { PUSH_DATA, PUSH_LINK } from "../constants/action";
-import { CurrentState, CurrAction } from "../types";
+import { PUSH_DATA, PUSH_LINK } from "../../constants/action";
+import { CurrentState, CurrAction } from "../../types";
 
 const defaultState: CurrentState = {
   link: "",
@@ -12,20 +12,13 @@ const defaultState: CurrentState = {
   },
 };
 
-export const current = (
-  state: CurrentState = defaultState,
-  action: CurrAction
-): CurrentState => {
+export const current = (state: CurrentState = defaultState, action: CurrAction): CurrentState => {
   switch (action.type) {
     case PUSH_LINK:
-      return typeof action.payLoad === "string"
-        ? { ...state, link: action.payLoad }
-        : state;
+      return typeof action.payLoad === "string" ? { ...state, link: action.payLoad } : state;
 
     case PUSH_DATA:
-      return typeof action.payLoad === "object"
-        ? { ...state, detail: action.payLoad }
-        : state;
+      return typeof action.payLoad === "object" ? { ...state, detail: action.payLoad } : state;
 
     default:
       return state;

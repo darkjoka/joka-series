@@ -8,7 +8,7 @@ import { FilterList } from "../FilterList";
 import { HistoryList } from "../HistoryList";
 import { device } from "../../constants/device";
 import { useSelector } from "react-redux";
-import { RootState } from "../../reducers";
+import { RootState } from "../../store/reducers";
 import { SearchList } from "../SearchList";
 import { ThemeState } from "../../types";
 

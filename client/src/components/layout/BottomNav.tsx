@@ -2,29 +2,21 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { close, preserveAspectRatio } from "../../constants/svg";
-import { RootState } from "../../reducers";
-import { closeBottom } from "../../actions/navigation";
+import { RootState } from "../../store/reducers";
+import { closeBottom } from "../../store/actions/navigation";
 import { SDetail } from "../skeleton/SDetail";
 import { Error } from "../Error";
-import { pushData } from "../../actions/current";
+import { pushData } from "../../store/actions/current";
 import { Detail } from "../Detail";
 import { device } from "../../constants/device";
 import { DetailState, ThemeState } from "../../types";
 
 const BottomNav: React.FC = () => {
-  const [bottomNavigation, link, detail, theme]: [
-    boolean,
-    string,
-    DetailState,
-    ThemeState
-  ] = useSelector((state: RootState) => {
-    return [
-      state.navigation.isBottomSectOpen,
-      state.current.link,
-      state.current.detail,
-      state.theme,
-    ];
-  });
+  const [bottomNavigation, link, detail, theme]: [boolean, string, DetailState, ThemeState] = useSelector(
+    (state: RootState) => {
+      return [state.navigation.isBottomSectOpen, state.current.link, state.current.detail, state.theme];
+    }
+  );
 
   // const addToHistory = () => {
   //   const [title, imageSource, teaser, permaLink] = [
@@ -72,11 +64,7 @@ const BottomNav: React.FC = () => {
       setError(false);
       (async () => {
         try {
-          const response = await fetch(
-            `https://jokaseries.herokuapp.com/detail/${
-              broken[broken.length - 1]
-            }`
-          );
+          const response = await fetch(`https://jokaseries.herokuapp.com/detail/${broken[broken.length - 1]}`);
           const result = await response.json();
 
           handleCurrent(result.data);
@@ -128,9 +116,7 @@ const StyledNav = styled.div<{ isBottomNavOpen: boolean; theme: ThemeState }>`
   backdrop-filter: blur(0.9rem);
   padding: 0 8px;
   transition: transform 0.3s ease;
-  transform: translateY(
-    ${({ isBottomNavOpen }) => (isBottomNavOpen ? "0vh" : "100vh")}
-  );
+  transform: translateY(${({ isBottomNavOpen }) => (isBottomNavOpen ? "0vh" : "100vh")});
   color: ${({ theme }) => theme.primaryInverse};
 
   @media ${device.tablet} {

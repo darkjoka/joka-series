@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MovieDisplay from "./MovieDisplay";
 import { useSelector } from "react-redux";
-import { RootState } from "../reducers";
+import { RootState } from "../store/reducers";
 import { localFetch } from "../localStorage";
 
 export const HistoryList = () => {

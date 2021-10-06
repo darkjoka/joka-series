@@ -1,29 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { pushLink } from "../actions/current";
-import { augmentFavorite } from "../actions/local";
-import { openBottom } from "../actions/navigation";
+import { pushLink } from "../store/actions/current";
+import { augmentFavorite } from "../store/actions/local";
+import { openBottom } from "../store/actions/navigation";
 import { device } from "../constants/device";
-import {
-  preserveAspectRatio,
-  bookMarkFilled,
-  bookMark,
-  camera,
-} from "../constants/svg";
+import { preserveAspectRatio, bookMarkFilled, bookMark, camera } from "../constants/svg";
 import { localAdd, localFetch, localSet } from "../localStorage";
 import { Movie, MovieProps, ThemeState } from "../types";
 
-const MovieCard: React.FC<MovieProps> = ({
-  imageSource,
-  title,
-  teaser,
-  permaLink,
-  theme,
-}) => {
-  const [localFavoriteStore, setLocalFavoriteStore] = useState<Movie[]>(
-    localFetch("favorite")
-  );
+const MovieCard: React.FC<MovieProps> = ({ imageSource, title, teaser, permaLink, theme }) => {
+  const [localFavoriteStore, setLocalFavoriteStore] = useState<Movie[]>(localFetch("favorite"));
   const dispatch = useDispatch();
 
   const updateLocal = (items: Movie[], store: string): void => {
@@ -55,10 +42,7 @@ const MovieCard: React.FC<MovieProps> = ({
   return (
     <Card theme={theme}>
       <ImageHold theme={theme} onClick={handleDownload}>
-        <object
-          data={`http://www.todaytvseries2.com/${imageSource}`}
-          aria-label={title}
-        >
+        <object data={`http://www.todaytvseries2.com/${imageSource}`} aria-label={title}>
           <CamIcon theme={theme}>
             <path d={camera.path}></path>
           </CamIcon>
@@ -164,8 +148,7 @@ const CardContent = styled.div<{
   flex-direction: column;
   width: 100%;
 
-  justify-content: ${({ teaser }) =>
-    !teaser ? "space-between" : "space-between"};
+  justify-content: ${({ teaser }) => (!teaser ? "space-between" : "space-between")};
 
   p {
     margin: 4px;

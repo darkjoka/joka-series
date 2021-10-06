@@ -2,7 +2,7 @@ import React, { useState, FormEvent } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { preserveAspectRatio, close } from "../../constants/svg";
-import { RootState } from "../../reducers";
+import { RootState } from "../../store/reducers";
 import pic from "../../assets/img.jpg";
 import { useHistory } from "react-router-dom";
 import { device } from "../../constants/device";
@@ -154,8 +154,7 @@ const InputHold = styled.div<{ theme: ThemeState }>`
   align-items: center;
   border-radius: 8px;
   padding: 4px 8px;
-  box-shadow: 0 2px 0 hsla(0, 0%, 100%, 0.15),
-    inset 0 2px 2px hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0 2px 0 hsla(0, 0%, 100%, 0.15), inset 0 2px 2px hsla(0, 0%, 0%, 0.1);
 
   input[type="text"] {
     width: inherit;

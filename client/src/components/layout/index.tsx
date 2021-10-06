@@ -5,7 +5,7 @@ import { SideNav } from "./SideNav";
 import { BottomNav } from "./BottomNav";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { augmentFavorite, augmentHistory } from "../../actions/local";
+import { augmentFavorite, augmentHistory } from "../../store/actions/local";
 import { isLocalEmpty, localFetch, localSet } from "../../localStorage";
 
 const Layout: React.FC = () => {

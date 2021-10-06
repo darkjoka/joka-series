@@ -1,5 +1,5 @@
-import { POPULATE_INDEX } from "../constants/action";
-import { MovieAction, MovieType } from "../types";
+import { POPULATE_INDEX } from "../../constants/action";
+import { MovieAction, MovieType } from "../../types";
 
 const defaultState: MovieType = [];
 

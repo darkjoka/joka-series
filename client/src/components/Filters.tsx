@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { genreFilter, yearFilter } from "../constants/filters";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { closeSide } from "../actions/navigation";
+import { closeSide } from "../store/actions/navigation";
 import { ThemeState } from "../types";
 
 const Filters: React.FC<{ theme: ThemeState }> = ({ theme }) => {
@@ -56,11 +56,7 @@ const HeadList = styled.div<{ theme: ThemeState }>`
     content: "";
     width: 100%;
     height: 2px;
-    background: linear-gradient(
-      to right,
-      ${({ theme }) => theme.accentColor} 50%,
-      transparent 50%
-    );
+    background: linear-gradient(to right, ${({ theme }) => theme.accentColor} 50%, transparent 50%);
     bottom: -16px;
   }
 `;

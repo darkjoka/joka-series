@@ -1,4 +1,4 @@
-import { TOGGLE_LIGHT, TOGGLE_DARK } from "../constants/action";
+import { TOGGLE_LIGHT, TOGGLE_DARK } from "../../constants/action";
 import {
   DARK_ONE,
   DISCORD_DARK,
@@ -7,8 +7,8 @@ import {
   GENERIC_BACKGROUND,
   GENERIC_BORDER,
   WHITE,
-} from "../constants/colors";
-import { ThemeState, BaseAction } from "../types";
+} from "../../constants/colors";
+import { ThemeState, BaseAction } from "../../types";
 
 const defaultState: ThemeState = {
   isLight: true,
@@ -24,10 +24,7 @@ const defaultState: ThemeState = {
   border: "transparent",
 };
 
-const theme = (
-  state: ThemeState = defaultState,
-  action: BaseAction
-): ThemeState => {
+const theme = (state: ThemeState = defaultState, action: BaseAction): ThemeState => {
   switch (action.type) {
     case TOGGLE_DARK:
       return {
