@@ -1,5 +1,5 @@
 import { CLOSE_BOTTOM, CLOSE_SIDE, OPEN_BOTTOM, OPEN_SIDE } from "../../constants/action";
-import { NavState, BaseAction } from "../../types";
+import { NavState, BaseAction } from "../../shared/types/types";
 
 const defaultState: NavState = {
   isSideNavOpen: false,
