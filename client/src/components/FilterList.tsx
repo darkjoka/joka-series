@@ -5,7 +5,7 @@ import { RootState } from "../store/reducers";
 import { Load } from "./Load";
 import MovieDisplay from "./MovieDisplay";
 import { Error } from "./Error";
-import { Movie, ThemeState } from "../types";
+import { Movie, ThemeState } from "../shared/types/types";
 interface FilterListProp {
   match: { params: { filterItem: string } };
 }

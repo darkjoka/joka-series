@@ -1,15 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { DetailState } from "../types";
+import { DetailState } from "../shared/types/types";
 import { AccordionList } from "./AccordionList";
 
-export const Detail: React.FC<DetailState> = ({
-  heroImage,
-  genres,
-  description,
-  seasonEpisodes,
-  title,
-}) => {
+export const Detail: React.FC<DetailState> = ({ heroImage, genres, description, seasonEpisodes, title }) => {
   return (
     <SupEntry>
       <Entry>

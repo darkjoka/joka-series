@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { populate_index } from "../store/actions/populate";
 import { RootState } from "../store/reducers";
-import { Movie, ThemeState } from "../types";
+import { Movie, ThemeState } from "../shared/types/types";
 import { Error } from "./Error";
 import { Load } from "./Load";
 import MovieDisplay from "./MovieDisplay";

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { seasonEp } from "../types";
+import { seasonEp } from "../shared/types/types";
 import { Accordion } from "./Accordion";
 
 export const AccordionList: React.FC<seasonEp> = ({ seasonEpisode }) => {
@@ -25,13 +25,7 @@ export const AccordionList: React.FC<seasonEp> = ({ seasonEpisode }) => {
     <>
       {seasonEpisode.map((data, index) => {
         return (
-          <Accordion
-            key={index}
-            value={accState[index]}
-            index={index}
-            {...data}
-            handleAccordion={handleAccordion}
-          />
+          <Accordion key={index} value={accState[index]} index={index} {...data} handleAccordion={handleAccordion} />
         );
       })}
     </>

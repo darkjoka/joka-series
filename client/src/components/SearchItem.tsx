@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { pushLink } from "../store/actions/current";
 import { openBottom } from "../store/actions/navigation";
-import { ThemeState } from "../types";
+import { ThemeState } from "../shared/types/types";
 
 export const SearchItem: React.FC<{
   permaLink: string;

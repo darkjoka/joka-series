@@ -9,7 +9,7 @@ import { Error } from "../Error";
 import { pushData } from "../../store/actions/current";
 import { Detail } from "../Detail";
 import { device } from "../../constants/device";
-import { DetailState, ThemeState } from "../../types";
+import { DetailState, ThemeState } from "../../shared/types/types";
 
 const BottomNav: React.FC = () => {
   const [bottomNavigation, link, detail, theme]: [boolean, string, DetailState, ThemeState] = useSelector(

@@ -8,7 +8,7 @@ import {
   GENERIC_BORDER,
   WHITE,
 } from "../../constants/colors";
-import { ThemeState, BaseAction } from "../../types";
+import { ThemeState, BaseAction } from "../../shared/types/types";
 
 const defaultState: ThemeState = {
   isLight: true,

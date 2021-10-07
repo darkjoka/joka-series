@@ -1,4 +1,4 @@
-import { Movie } from "./types";
+import { Movie } from "./shared/types/types";
 
 export const localFetch = (store: string): Movie[] => {
   // fetch and return movies from specified store
@@ -20,11 +20,7 @@ export const isLocalEmpty = (store: string): boolean => {
   return Boolean(localStorage.getItem(store));
 };
 
-export const localAdd = (
-  store: string,
-  currMovie: Movie,
-  toggle: boolean = true
-): Movie[] => {
+export const localAdd = (store: string, currMovie: Movie, toggle: boolean = true): Movie[] => {
   // fetch and add a movie to specified store
   let items: Movie[] = localFetch(store);
 

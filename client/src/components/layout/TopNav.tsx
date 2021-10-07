@@ -8,7 +8,7 @@ import { toggleDark, toggleLight } from "../../store/actions/theme";
 import { device } from "../../constants/device";
 import { Link } from "react-router-dom";
 import { Section } from "../Section";
-import { ThemeState } from "../../types";
+import { ThemeState } from "../../shared/types/types";
 
 const TopNav: React.FC = () => {
   const theme = useSelector((state: RootState) => {

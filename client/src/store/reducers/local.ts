@@ -1,5 +1,5 @@
 import { AUGMENT_FAVORITE, AUGMENT_HISTORY } from "../../constants/action";
-import { LocalInterface, MovieAction } from "../../types";
+import { LocalInterface, MovieAction } from "../../shared/types/types";
 
 const defaultState: LocalInterface = {
   favorite: [],

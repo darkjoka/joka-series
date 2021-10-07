@@ -10,7 +10,7 @@ import { device } from "../../constants/device";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/reducers";
 import { SearchList } from "../SearchList";
-import { ThemeState } from "../../types";
+import { ThemeState } from "../../shared/types/types";
 
 export const Content: React.FC = () => {
   const theme = useSelector((state: RootState) => {

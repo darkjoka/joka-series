@@ -1,5 +1,5 @@
 import { PUSH_DATA, PUSH_LINK } from "../../constants/action";
-import { CurrentState, CurrAction } from "../../types";
+import { CurrentState, CurrAction } from "../../shared/types/types";
 
 const defaultState: CurrentState = {
   link: "",

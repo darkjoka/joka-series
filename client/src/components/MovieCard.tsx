@@ -7,7 +7,7 @@ import { openBottom } from "../store/actions/navigation";
 import { device } from "../constants/device";
 import { preserveAspectRatio, bookMarkFilled, bookMark, camera } from "../constants/svg";
 import { localAdd, localFetch, localSet } from "../localStorage";
-import { Movie, MovieProps, ThemeState } from "../types";
+import { Movie, MovieProps, ThemeState } from "../shared/types/types";
 
 const MovieCard: React.FC<MovieProps> = ({ imageSource, title, teaser, permaLink, theme }) => {
   const [localFavoriteStore, setLocalFavoriteStore] = useState<Movie[]>(localFetch("favorite"));

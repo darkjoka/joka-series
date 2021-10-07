@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeState } from "../types";
+import { ThemeState } from "../shared/types/types";
 import { SMovieCard } from "./skeleton/SMovieCard";
 
 const Load: React.FC<{ theme: ThemeState }> = ({ theme }) => {

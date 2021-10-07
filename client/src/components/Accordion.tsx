@@ -3,15 +3,9 @@ import styled from "styled-components";
 import { cheveron, preserveAspectRatio } from "../constants/svg";
 import { DISCORD_DARK, RED, GENERIC_BORDER, GREEN } from "../constants/colors";
 import { device } from "../constants/device";
-import { AccordionProps } from "../types";
+import { AccordionProps } from "../shared/types/types";
 
-export const Accordion: React.FC<AccordionProps> = ({
-  index,
-  value,
-  handleAccordion,
-  season,
-  episodes,
-}) => {
+export const Accordion: React.FC<AccordionProps> = ({ index, value, handleAccordion, season, episodes }) => {
   return (
     <>
       <AccordionContainer>
@@ -28,21 +22,19 @@ export const Accordion: React.FC<AccordionProps> = ({
           </Icon>
         </AccordionHead>
         <AccordionBody isOpen={value}>
-          {episodes.map(
-            ({ episodeTitle, episodeSize, episodeDownloadLink }) => {
-              return (
-                <Epi key={episodeDownloadLink}>
-                  {episodeTitle}
-                  <Download>
-                    <Size>{episodeSize}</Size>
-                    <Button>
-                      <a href={episodeDownloadLink}> Download</a>
-                    </Button>
-                  </Download>
-                </Epi>
-              );
-            }
-          )}
+          {episodes.map(({ episodeTitle, episodeSize, episodeDownloadLink }) => {
+            return (
+              <Epi key={episodeDownloadLink}>
+                {episodeTitle}
+                <Download>
+                  <Size>{episodeSize}</Size>
+                  <Button>
+                    <a href={episodeDownloadLink}> Download</a>
+                  </Button>
+                </Download>
+              </Epi>
+            );
+          })}
         </AccordionBody>
       </AccordionContainer>
     </>

@@ -1,5 +1,5 @@
 import { PUSH_DATA, PUSH_LINK } from "../../constants/action";
-import { DetailState } from "../../types";
+import { DetailState } from "../../shared/types/types";
 
 export const pushLink = (link: string): { type: string; payLoad: string } => {
   return { type: PUSH_LINK, payLoad: link };
