@@ -7,7 +7,7 @@ import { Error } from "../Error";
 import { Load } from "../Load";
 import MovieDisplay from "../MovieDisplay";
 
-export const IndexList = () => {
+export const Home = () => {
   const [movies, theme]: [Movie[], ThemeState] = useSelector((state: RootState) => {
     return [state.index, state.theme];
   });
