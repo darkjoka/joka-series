@@ -5,7 +5,7 @@ import { RootState } from "../../../store/reducers";
 import styled from "styled-components";
 import { preserveAspectRatio, close, home, recent, bookMarkFilled } from "../../../shared/constants/svg";
 import { Section } from "../../Section";
-import { Filters } from "../../Filters";
+import { MovieFilters } from "../../MovieFilters";
 import { Link } from "react-router-dom";
 import { device } from "../../../shared/constants/device";
 import { ThemeState } from "../../../shared/types/types";
@@ -59,7 +59,7 @@ export const SideNav: React.FC = () => {
         </BaseSection>
 
         <div>
-          <Filters theme={theme}></Filters>
+          <MovieFilters theme={theme}></MovieFilters>
         </div>
       </StyledNav>
 
