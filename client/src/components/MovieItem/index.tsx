@@ -7,18 +7,18 @@ import { openBottom } from "../../store/actions/navigation";
 import { device } from "../../shared/constants/device";
 import { preserveAspectRatio, bookMarkFilled, bookMark, camera } from "../../shared/constants/svg";
 import { localAdd, localFetch, localSet } from "../../shared/localStorage";
-import { Movie, MovieProps, ThemeState } from "../../shared/types/types";
+import { Movies, MovieProps, ThemeState } from "../../shared/types/types";
 
-const MovieCard: React.FC<MovieProps> = ({ imageSource, title, teaser, permaLink, theme }) => {
-  const [localFavoriteStore, setLocalFavoriteStore] = useState<Movie[]>(localFetch("favorite"));
+const MovieItem: React.FC<MovieProps> = ({ imageSource, title, teaser, permaLink, theme }) => {
+  const [localFavoriteStore, setLocalFavoriteStore] = useState<Movies>(localFetch("favorite"));
   const dispatch = useDispatch();
 
-  const updateLocal = (items: Movie[], store: string): void => {
+  const updateLocal = (items: Movies, store: string): void => {
     localSet(store, items);
     setLocalFavoriteStore(items);
   };
 
-  const syncLocal = (movies: Movie[]): void => {
+  const syncLocal = (movies: Movies): void => {
     // syncs app state with localStorage
     dispatch(augmentFavorite(movies));
   };
@@ -261,4 +261,4 @@ const Download = styled.div<{ theme: ThemeState }>`
   }
 `;
 
-export { MovieCard };
+export { MovieItem };
