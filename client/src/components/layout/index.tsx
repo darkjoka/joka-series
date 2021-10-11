@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { augmentFavorite, augmentHistory } from "../../store/actions/local";
 import { isLocalEmpty, localFetch, localSet } from "../../shared/localStorage";
 
-export const Layout: React.FC = () => {
+const Layout: React.FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (!isLocalEmpty("favorite")) {
@@ -31,3 +31,5 @@ export const Layout: React.FC = () => {
     </>
   );
 };
+
+export { Layout };

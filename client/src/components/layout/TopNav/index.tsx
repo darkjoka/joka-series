@@ -1,15 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-
-import { Section } from "../../Section";
-import { RootState } from "../../../store/reducers";
+import { menu, preserveAspectRatio, sun, moon, home, bookMarkFilled, recent } from "../../../shared/constants/svg";
 import { openSide } from "../../../store/actions/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
+import { RootState } from "../../../store/reducers";
 import { toggleDark, toggleLight } from "../../../store/actions/theme";
-import { Nav, Hold, Icon, BaseSection, IconSect, ThemeIcon } from "./TopNavStyle";
-import { bookMarkFilled, home, menu, moon, recent, sun } from "../../../shared/constants/svg";
+import { device } from "../../../shared/constants/device";
+import { Link } from "react-router-dom";
+import { Section } from "../../Section";
+import { ThemeState } from "../../../shared/types/types";
 
-export const TopNav: React.FC = () => {
+const TopNav: React.FC = () => {
   const theme = useSelector((state: RootState) => {
     return state.theme;
   });
@@ -73,3 +74,79 @@ export const TopNav: React.FC = () => {
     </Nav>
   );
 };
+
+const Nav = styled.nav<{ theme: ThemeState }>`
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.5s ease-in-out;
+  padding: 0 0.5em;
+  position: fixed;
+  width: 100%;
+
+  ${({ theme }) => {
+    return `background: ${theme.primaryColor}; box-shadow: 0 5px 4px -4px ${theme.shadow}; border-bottom: 4px solid ${theme.border}`;
+  }};
+  margin: 0;
+  z-index: 4;
+`;
+
+const Hold = styled.div`
+  width: inherit;
+  display: flex;
+  align-items: center;
+  justify-items: baseline;
+  justify-content: space-between;
+
+  @media ${device.tablet} {
+    max-width: 950px;
+  }
+`;
+
+const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })<{
+  theme: ThemeState;
+}>`
+  width: 48px;
+  height: 48px;
+  fill: ${({ theme }) => {
+    return theme.accentColor;
+  }};
+  cursor: pointer;
+
+  @media ${device.laptopL} {
+    display: none;
+  }
+`;
+const ThemeIcon = styled.svg.attrs({ preserveAspectRatio })<{
+  theme: ThemeState;
+}>`
+  width: 24px;
+  height: 24px;
+  fill: ${({ theme }) => {
+    return theme.accentColor;
+  }};
+  cursor: pointer;
+`;
+
+const IconSect = styled.svg.attrs({ preserveAspectRatio })<{
+  theme: ThemeState;
+}>`
+  fill: ${({ theme }) => {
+    return theme.primaryInverse;
+  }};
+  width: 20px;
+  height: 20px;
+`;
+const BaseSection = styled.div`
+  justify-content: space-evenly;
+  display: none;
+
+  @media ${device.laptopL} {
+    display: flex;
+  }
+  a {
+    text-decoration: none;
+    color: ${({ theme }) => theme.primaryInverse};
+  }
+`;
+export { TopNav };
