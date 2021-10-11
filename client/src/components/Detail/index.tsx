@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { DetailState } from "../../shared/types/types";
-import { AccordionList } from "../AccordionList";
+import { Accordion } from "../Accordion";
 
 export const Detail: React.FC<DetailState> = ({ heroImage, genres, description, seasonEpisodes, title }) => {
   return (
@@ -15,7 +15,7 @@ export const Detail: React.FC<DetailState> = ({ heroImage, genres, description, 
           })}
         </Genre>
         <Description>{description}</Description>
-        <AccordionList seasonEpisode={seasonEpisodes}></AccordionList>
+        <Accordion seasonEpisode={seasonEpisodes}></Accordion>
       </Entry>
     </SupEntry>
   );
