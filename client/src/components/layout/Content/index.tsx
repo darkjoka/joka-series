@@ -9,7 +9,7 @@ import { History } from "../../History";
 import { device } from "../../../shared/constants/device";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/reducers";
-import { SearchList } from "../../SearchList";
+import { Search } from "../../Search";
 import { ThemeState } from "../../../shared/types/types";
 
 export const Content: React.FC = () => {
@@ -26,7 +26,7 @@ export const Content: React.FC = () => {
             <Route path="/favorite" component={Favorite} />
             <Route path="/filter/:filterItem" component={Filter} />
             <Route path="/history" component={History} />
-            <Route path="/search/:searchItem" component={SearchList} />
+            <Route path="/search/:searchItem" component={Search} />
           </Switch>
         </section>
       </SectionHold>
