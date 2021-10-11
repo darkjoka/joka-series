@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { seasonEp } from "../../shared/types/types";
 import { AccordionItem } from "../AccordionItem";
 
-export const AccordionList: React.FC<seasonEp> = ({ seasonEpisode }) => {
+export const Accordion: React.FC<seasonEp> = ({ seasonEpisode }) => {
   const [accState, setAccState] = useState(() => {
     const acc: boolean[] = [];
     for (let i = 0; i < seasonEpisode.length; i++) {
