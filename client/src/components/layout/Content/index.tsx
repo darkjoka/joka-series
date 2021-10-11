@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Hero } from "../Hero";
 import { Route, Switch } from "react-router-dom";
 import { IndexList } from "../../IndexList";
-import { FavoriteList } from "../../FavoriteList";
+import { Favorite } from "../../Favorite";
 import { FilterList } from "../../FilterList";
 import { HistoryList } from "../../HistoryList";
 import { device } from "../../../shared/constants/device";
@@ -23,7 +23,7 @@ export const Content: React.FC = () => {
         <section>
           <Switch>
             <Route path="/" exact component={IndexList} />
-            <Route path="/favorite" component={FavoriteList} />
+            <Route path="/favorite" component={Favorite} />
             <Route path="/filter/:filterItem" component={FilterList} />
             <Route path="/history" component={HistoryList} />{" "}
             <Route path="/search/:searchItem" component={SearchList} />
