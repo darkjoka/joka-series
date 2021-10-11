@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Hero } from "../Hero";
 import { Route, Switch } from "react-router-dom";
-import { IndexList } from "../../IndexList";
+import { Home } from "../../Home";
 import { Favorite } from "../../Favorite";
 import { Filter } from "../../Filter";
 import { History } from "../../History";
@@ -22,7 +22,7 @@ export const Content: React.FC = () => {
       <SectionHold theme={theme}>
         <section>
           <Switch>
-            <Route path="/" exact component={IndexList} />
+            <Route path="/" exact component={Home} />
             <Route path="/favorite" component={Favorite} />
             <Route path="/filter/:filterItem" component={Filter} />
             <Route path="/history" component={History} />
