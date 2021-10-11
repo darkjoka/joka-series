@@ -7,7 +7,7 @@ import { closeBottom } from "../../../store/actions/navigation";
 import { SDetail } from "../../skeleton/DetailSkeleton";
 import { Error } from "../../Error";
 import { pushData } from "../../../store/actions/current";
-import { Detail } from "../../Detail";
+import { MovieDetail } from "../../MovieDetail";
 import { device } from "../../../shared/constants/device";
 import { DetailState, ThemeState } from "../../../shared/types/types";
 
@@ -89,7 +89,7 @@ const BottomNav: React.FC = () => {
         </Icon>
       </InnerNav>
       <Inner theme={theme}>
-        {!loading && !error && <Detail {...detail} />}
+        {!loading && !error && <MovieDetail {...detail} />}
         {loading && <SDetail />}
         {error && <Error />}
       </Inner>
