@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { close, preserveAspectRatio } from "../../../constants/svg";
 import { RootState } from "../../../store/reducers";
 import { closeBottom } from "../../../store/actions/navigation";
-import { SDetail } from "../../skeleton/SDetail";
+import { SDetail } from "../../skeleton/DetailSkeleton";
 import { Error } from "../../Error";
 import { pushData } from "../../../store/actions/current";
 import { Detail } from "../../Detail";
