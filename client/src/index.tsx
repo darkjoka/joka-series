@@ -4,7 +4,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./store";
 import { Provider } from "react-redux";
-import GlobalStyle from "./components/GlobalStyle";
+import GlobalStyle from "./shared/GlobalStyle";
 
 ReactDOM.render(
   <React.StrictMode>
