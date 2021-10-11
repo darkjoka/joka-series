@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import styled from "styled-components";
-import { RootState } from "../../store/reducers";
-import { SearchListProp, ThemeState } from "../../shared/types/types";
-import { Error } from "../Error";
-import { SearchItem } from "../SearchItem";
 
-export const Search: React.FC<SearchListProp> = ({ match }) => {
+import { Error } from "../Error";
+import { Container } from "./SearchStyle";
+import { SearchItem } from "../SearchItem";
+import { RootState } from "../../store/reducers";
+import { SearchProp } from "../../shared/types/types";
+
+export const Search: React.FC<SearchProp> = ({ match }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [searchItems, setSearchItems] = useState([]);
@@ -46,8 +47,3 @@ export const Search: React.FC<SearchListProp> = ({ match }) => {
     </>
   );
 };
-
-const Container = styled.div<{ theme: ThemeState }>`
-  display: flex;
-  flex-wrap: wrap;
-`;
