@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Movie from "../Movie";
-import { Load } from "../Load";
-import { Error } from "../Error";
+import Movie from "../../components/Movie";
+import { Load } from "../../components/Load";
+import { Error } from "../../components/Error";
 import { RootState } from "../../store/reducers";
 import { Movies, ThemeState } from "../../shared/types/types";
 import { populate_filter } from "../../store/actions/populate";
