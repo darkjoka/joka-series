@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export const SDetail: React.FC = () => {
+export const MovieDetailSkeleton: React.FC = () => {
   return (
     <SupEntry>
       <Entry>
