@@ -6,7 +6,7 @@ import { Hero } from "../Hero";
 import { Home } from "../../../views/Home";
 import { Filter } from "../../Filter";
 import { Search } from "../../Search";
-import { History } from "../../History";
+import { History } from "../../../views/History";
 import { Favorite } from "../../Favorite";
 import { RootState } from "../../../store/reducers";
 import { StyledContent, SectionHold } from "./ContentStyle";
