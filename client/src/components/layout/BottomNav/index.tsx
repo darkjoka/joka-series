@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { close, preserveAspectRatio } from "../../../shared/constants/svg";
 import { RootState } from "../../../store/reducers";
 import { closeBottom } from "../../../store/actions/navigation";
-import { SDetail } from "../../skeleton/DetailSkeleton";
+import { MovieDetailSkeleton } from "../../skeleton/MovieDetailSkeleton";
 import { Error } from "../../Error";
 import { pushData } from "../../../store/actions/current";
 import { MovieDetail } from "../../MovieDetail";
@@ -90,7 +90,7 @@ const BottomNav: React.FC = () => {
       </InnerNav>
       <Inner theme={theme}>
         {!loading && !error && <MovieDetail {...detail} />}
-        {loading && <SDetail />}
+        {loading && <MovieDetailSkeleton />}
         {error && <Error />}
       </Inner>
     </StyledNav>
