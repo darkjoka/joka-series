@@ -6,7 +6,7 @@ import { SearchListProp, ThemeState } from "../../shared/types/types";
 import { Error } from "../Error";
 import { SearchItem } from "../SearchItem";
 
-export const SearchList: React.FC<SearchListProp> = ({ match }) => {
+export const Search: React.FC<SearchListProp> = ({ match }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [searchItems, setSearchItems] = useState([]);
@@ -35,11 +35,11 @@ export const SearchList: React.FC<SearchListProp> = ({ match }) => {
   return (
     <>
       {!loading && !error && (
-        <Search>
+        <Container>
           {searchItems.map(({ title, permaLink }) => {
             return <SearchItem key={title} permaLink={permaLink} title={title} theme={theme} />;
           })}
-        </Search>
+        </Container>
       )}
       {loading && "loading..."}
       {error && <Error />}
@@ -47,7 +47,7 @@ export const SearchList: React.FC<SearchListProp> = ({ match }) => {
   );
 };
 
-const Search = styled.div<{ theme: ThemeState }>`
+const Container = styled.div<{ theme: ThemeState }>`
   display: flex;
   flex-wrap: wrap;
 `;
