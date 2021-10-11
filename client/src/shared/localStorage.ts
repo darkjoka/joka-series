@@ -1,4 +1,4 @@
-import { Movie } from "./shared/types/types";
+import { Movie } from "./types/types";
 
 export const localFetch = (store: string): Movie[] => {
   // fetch and return movies from specified store
