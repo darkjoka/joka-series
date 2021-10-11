@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { populate_index } from "../../store/actions/populate";
 import { RootState } from "../../store/reducers";
-import { Movie, ThemeState } from "../../shared/types/types";
+import { MovieType, ThemeState } from "../../shared/types/types";
 import { Error } from "../Error";
 import { Load } from "../Load";
-import MovieDisplay from "../MovieDisplay";
+import Movie from "../Movie";
 
 export const Home = () => {
-  const [movies, theme]: [Movie[], ThemeState] = useSelector((state: RootState) => {
+  const [movies, theme]: [MovieType[], ThemeState] = useSelector((state: RootState) => {
     return [state.index, state.theme];
   });
 
@@ -18,7 +18,7 @@ export const Home = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const handlePopulation = (data: Movie[]): void => {
+    const handlePopulation = (data: MovieType[]): void => {
       dispatch(populate_index(data));
       setLoading(false);
     };
@@ -48,7 +48,7 @@ export const Home = () => {
 
   return (
     <>
-      {!loading && !error && <MovieDisplay theme={theme} movies={movies} />}
+      {!loading && !error && <Movie theme={theme} movies={movies} />}
       {loading && <Load theme={theme} />}
       {error && <Error />}
     </>

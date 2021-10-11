@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MovieDisplay from "../MovieDisplay";
+import Movie from "../Movie";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/reducers";
 import { localFetch } from "../../shared/localStorage";
@@ -9,7 +9,7 @@ export const History = () => {
   const theme = useSelector((state: RootState) => state.theme);
   return (
     <>
-      <MovieDisplay theme={theme} movies={movies} />
+      <Movie theme={theme} movies={movies} />
     </>
   );
 };

@@ -3,15 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { populate_filter } from "../../store/actions/populate";
 import { RootState } from "../../store/reducers";
 import { Load } from "../Load";
-import MovieDisplay from "../MovieDisplay";
+import Movie from "../Movie";
 import { Error } from "../Error";
-import { Movie, ThemeState } from "../../shared/types/types";
+import { Movies, ThemeState } from "../../shared/types/types";
 interface FilterListProp {
   match: { params: { filterItem: string } };
 }
 
 export const Filter: React.FC<FilterListProp> = ({ match }) => {
-  const [movies, theme]: [Movie[], ThemeState] = useSelector((state: RootState) => {
+  const [movies, theme]: [Movies, ThemeState] = useSelector((state: RootState) => {
     return [state.filter, state.theme];
   });
 
@@ -21,7 +21,7 @@ export const Filter: React.FC<FilterListProp> = ({ match }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const handlePopulation = (data: Movie[]): void => {
+    const handlePopulation = (data: Movies): void => {
       dispatch(populate_filter(data));
       setLoading(false);
     };
@@ -46,7 +46,7 @@ export const Filter: React.FC<FilterListProp> = ({ match }) => {
 
   return (
     <>
-      {!loading && !error && <MovieDisplay theme={theme} movies={movies} />}
+      {!loading && !error && <Movie theme={theme} movies={movies} />}
       {loading && <Load theme={theme} />}
       {error && <Error />}
     </>
