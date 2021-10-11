@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/reducers";
 import { Movie, ThemeState } from "../../shared/types/types";
 
-export const FavoriteList = () => {
+export const Favorite = () => {
   const [theme, favorites]: [ThemeState, Movie[]] = useSelector((state: RootState) => {
     return [state.theme, state.local.favorite];
   });
