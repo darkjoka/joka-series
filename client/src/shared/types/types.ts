@@ -96,7 +96,7 @@ export interface DisplayProps {
   theme: ThemeState;
 }
 
-export interface SearchListProp {
+export interface SearchProp {
   match: { params: { searchItem: string } };
 }
 
