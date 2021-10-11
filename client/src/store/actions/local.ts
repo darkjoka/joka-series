@@ -1,4 +1,4 @@
-import { AUGMENT_FAVORITE, AUGMENT_HISTORY } from "../../constants/action";
+import { AUGMENT_FAVORITE, AUGMENT_HISTORY } from "../../shared/constants/action";
 import { Movie } from "../../shared/types/types";
 
 export const augmentFavorite = (favorites: Movie[]) => {

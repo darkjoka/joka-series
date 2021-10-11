@@ -1,4 +1,4 @@
-import { OPEN_SIDE, OPEN_BOTTOM, CLOSE_BOTTOM, CLOSE_SIDE } from "../../constants/action";
+import { OPEN_SIDE, OPEN_BOTTOM, CLOSE_BOTTOM, CLOSE_SIDE } from "../../shared/constants/action";
 
 export const openSide = () => {
   return { type: OPEN_SIDE };

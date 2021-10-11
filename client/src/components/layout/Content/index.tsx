@@ -6,7 +6,7 @@ import { IndexList } from "../../IndexList";
 import { FavoriteList } from "../../FavoriteList";
 import { FilterList } from "../../FilterList";
 import { HistoryList } from "../../HistoryList";
-import { device } from "../../../constants/device";
+import { device } from "../../../shared/constants/device";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/reducers";
 import { SearchList } from "../../SearchList";

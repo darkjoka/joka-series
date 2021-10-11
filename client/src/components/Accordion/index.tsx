@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { cheveron, preserveAspectRatio } from "../../constants/svg";
-import { DISCORD_DARK, RED, GENERIC_BORDER, GREEN } from "../../constants/colors";
-import { device } from "../../constants/device";
+import { cheveron, preserveAspectRatio } from "../../shared/constants/svg";
+import { DISCORD_DARK, RED, GENERIC_BORDER, GREEN } from "../../shared/constants/colors";
+import { device } from "../../shared/constants/device";
 import { AccordionProps } from "../../shared/types/types";
 
 export const Accordion: React.FC<AccordionProps> = ({ index, value, handleAccordion, season, episodes }) => {

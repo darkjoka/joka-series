@@ -1,4 +1,4 @@
-import { TOGGLE_LIGHT, TOGGLE_DARK } from "../../constants/action";
+import { TOGGLE_LIGHT, TOGGLE_DARK } from "../../shared/constants/action";
 import {
   DARK_ONE,
   DISCORD_DARK,
@@ -7,7 +7,7 @@ import {
   GENERIC_BACKGROUND,
   GENERIC_BORDER,
   WHITE,
-} from "../../constants/colors";
+} from "../../shared/constants/colors";
 import { ThemeState, BaseAction } from "../../shared/types/types";
 
 const defaultState: ThemeState = {

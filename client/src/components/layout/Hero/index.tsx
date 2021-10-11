@@ -1,11 +1,11 @@
 import React, { useState, FormEvent } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { preserveAspectRatio, close } from "../../../constants/svg";
+import { preserveAspectRatio, close } from "../../../shared/constants/svg";
 import { RootState } from "../../../store/reducers";
 import pic from "../../assets/img.jpg";
 import { useHistory } from "react-router-dom";
-import { device } from "../../../constants/device";
+import { device } from "../../../shared/constants/device";
 import { ThemeState } from "../../../shared/types/types";
 
 const Hero: React.FC = () => {

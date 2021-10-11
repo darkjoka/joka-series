@@ -1,11 +1,11 @@
 import React from "react";
-import { menu, preserveAspectRatio, sun, moon, home, bookMarkFilled, recent } from "../../../constants/svg";
+import { menu, preserveAspectRatio, sun, moon, home, bookMarkFilled, recent } from "../../../shared/constants/svg";
 import { openSide } from "../../../store/actions/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { RootState } from "../../../store/reducers";
 import { toggleDark, toggleLight } from "../../../store/actions/theme";
-import { device } from "../../../constants/device";
+import { device } from "../../../shared/constants/device";
 import { Link } from "react-router-dom";
 import { Section } from "../../Section";
 import { ThemeState } from "../../../shared/types/types";

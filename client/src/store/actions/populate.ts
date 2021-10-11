@@ -1,4 +1,4 @@
-import { POPULATE_FILTER, POPULATE_INDEX } from "../../constants/action";
+import { POPULATE_FILTER, POPULATE_INDEX } from "../../shared/constants/action";
 import { Movie } from "../../shared/types/types";
 
 export const populate_index = (payLoad: Movie[]) => {

@@ -1,4 +1,4 @@
-import { PUSH_DATA, PUSH_LINK } from "../../constants/action";
+import { PUSH_DATA, PUSH_LINK } from "../../shared/constants/action";
 import { CurrentState, CurrAction } from "../../shared/types/types";
 
 const defaultState: CurrentState = {

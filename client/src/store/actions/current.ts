@@ -1,4 +1,4 @@
-import { PUSH_DATA, PUSH_LINK } from "../../constants/action";
+import { PUSH_DATA, PUSH_LINK } from "../../shared/constants/action";
 import { DetailState } from "../../shared/types/types";
 
 export const pushLink = (link: string): { type: string; payLoad: string } => {

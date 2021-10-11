@@ -1,4 +1,4 @@
-import { CLOSE_BOTTOM, CLOSE_SIDE, OPEN_BOTTOM, OPEN_SIDE } from "../../constants/action";
+import { CLOSE_BOTTOM, CLOSE_SIDE, OPEN_BOTTOM, OPEN_SIDE } from "../../shared/constants/action";
 import { NavState, BaseAction } from "../../shared/types/types";
 
 const defaultState: NavState = {

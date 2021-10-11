@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { close, preserveAspectRatio } from "../../../constants/svg";
+import { close, preserveAspectRatio } from "../../../shared/constants/svg";
 import { RootState } from "../../../store/reducers";
 import { closeBottom } from "../../../store/actions/navigation";
 import { SDetail } from "../../skeleton/DetailSkeleton";
 import { Error } from "../../Error";
 import { pushData } from "../../../store/actions/current";
 import { Detail } from "../../Detail";
-import { device } from "../../../constants/device";
+import { device } from "../../../shared/constants/device";
 import { DetailState, ThemeState } from "../../../shared/types/types";
 
 const BottomNav: React.FC = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { genreFilter, yearFilter } from "../../constants/filters";
+import { genreFilter, yearFilter } from "../../shared/constants/filters";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { closeSide } from "../../store/actions/navigation";

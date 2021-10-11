@@ -1,4 +1,4 @@
-import { POPULATE_FILTER } from "../../constants/action";
+import { POPULATE_FILTER } from "../../shared/constants/action";
 import { MovieType, MovieAction } from "../../shared/types/types";
 
 const defaultState: MovieType = [];

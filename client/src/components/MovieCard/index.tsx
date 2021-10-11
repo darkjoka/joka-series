@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { pushLink } from "../../store/actions/current";
 import { augmentFavorite } from "../../store/actions/local";
 import { openBottom } from "../../store/actions/navigation";
-import { device } from "../../constants/device";
-import { preserveAspectRatio, bookMarkFilled, bookMark, camera } from "../../constants/svg";
+import { device } from "../../shared/constants/device";
+import { preserveAspectRatio, bookMarkFilled, bookMark, camera } from "../../shared/constants/svg";
 import { localAdd, localFetch, localSet } from "../../shared/localStorage";
 import { Movie, MovieProps, ThemeState } from "../../shared/types/types";
 
