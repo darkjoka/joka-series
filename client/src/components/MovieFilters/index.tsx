@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { closeSide } from "../../store/actions/navigation";
 import { ThemeState } from "../../shared/types/types";
 
-const Filters: React.FC<{ theme: ThemeState }> = ({ theme }) => {
+const MovieFilters: React.FC<{ theme: ThemeState }> = ({ theme }) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -103,4 +103,4 @@ const Section = styled.div`
   margin-top: 32px;
   scroll-snap-align: start;
 `;
-export { Filters };
+export { MovieFilters };
