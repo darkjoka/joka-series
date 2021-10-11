@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { populate_index } from "../../store/actions/populate";
-import { RootState } from "../../store/reducers";
-import { MovieType, ThemeState } from "../../shared/types/types";
-import { Error } from "../Error";
-import { Load } from "../Load";
+
 import Movie from "../Movie";
+import { Load } from "../Load";
+import { Error } from "../Error";
+import { RootState } from "../../store/reducers";
+import { populate_index } from "../../store/actions/populate";
+import { MovieType, ThemeState } from "../../shared/types/types";
 
 export const Home = () => {
   const [movies, theme]: [MovieType[], ThemeState] = useSelector((state: RootState) => {

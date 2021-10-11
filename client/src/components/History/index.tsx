@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Movie from "../Movie";
 import { useSelector } from "react-redux";
+
+import Movie from "../Movie";
 import { RootState } from "../../store/reducers";
 import { localFetch } from "../../shared/localStorage";
 
