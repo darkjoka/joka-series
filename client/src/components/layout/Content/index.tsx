@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import { IndexList } from "../../IndexList";
 import { Favorite } from "../../Favorite";
 import { Filter } from "../../Filter";
-import { HistoryList } from "../../HistoryList";
+import { History } from "../../History";
 import { device } from "../../../shared/constants/device";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/reducers";
@@ -25,7 +25,7 @@ export const Content: React.FC = () => {
             <Route path="/" exact component={IndexList} />
             <Route path="/favorite" component={Favorite} />
             <Route path="/filter/:filterItem" component={Filter} />
-            <Route path="/history" component={HistoryList} />{" "}
+            <Route path="/history" component={History} />
             <Route path="/search/:searchItem" component={SearchList} />
           </Switch>
         </section>
