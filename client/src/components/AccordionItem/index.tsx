@@ -5,7 +5,7 @@ import { DISCORD_DARK, RED, GENERIC_BORDER, GREEN } from "../../shared/constants
 import { device } from "../../shared/constants/device";
 import { AccordionProps } from "../../shared/types/types";
 
-export const Accordion: React.FC<AccordionProps> = ({ index, value, handleAccordion, season, episodes }) => {
+export const AccordionItem: React.FC<AccordionProps> = ({ index, value, handleAccordion, season, episodes }) => {
   return (
     <>
       <AccordionContainer>
