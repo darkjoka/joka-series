@@ -21,7 +21,7 @@ export interface CurrentState {
   detail: DetailState;
 }
 
-export interface Movie {
+export interface MovieType {
   title: string;
   permaLink: string;
   imageSource: string;
@@ -31,8 +31,8 @@ export interface Movie {
 }
 
 export interface LocalInterface {
-  favorite: Movie[];
-  history: Movie[];
+  favorite: MovieType[];
+  history: MovieType[];
 }
 
 export interface NavState {
@@ -60,7 +60,7 @@ export interface BaseAction {
 
 export interface MovieAction {
   type: string;
-  payLoad: Movie[];
+  payLoad: MovieType[];
 }
 
 export interface CurrAction {
@@ -68,7 +68,7 @@ export interface CurrAction {
   payLoad: string | DetailState;
 }
 
-export type MovieType = Movie[] | [];
+export type Movies = MovieType[] | [];
 
 export interface Episode {
   episodeTitle: string;
@@ -87,12 +87,12 @@ export interface seasonEp {
   seasonEpisode: SeasonEpisode[];
 }
 
-export interface MovieProps extends Movie {
+export interface MovieProps extends MovieType {
   theme: ThemeState;
 }
 
 export interface DisplayProps {
-  movies: Movie[];
+  movies: MovieType[];
   theme: ThemeState;
 }
 
