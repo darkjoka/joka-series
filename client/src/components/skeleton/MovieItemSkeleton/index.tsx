@@ -4,7 +4,7 @@ import { device } from "../../../shared/constants/device";
 import { preserveAspectRatio, bookMarkFilled } from "../../../shared/constants/svg";
 import { MovieCardProps, ThemeState } from "../../../shared/types/types";
 
-const SMovieCard: React.FC<MovieCardProps> = ({ teaser, theme }) => {
+const MovieItemSkeleton: React.FC<MovieCardProps> = ({ teaser, theme }) => {
   return (
     <Card theme={theme}>
       <ImageHold theme={theme}></ImageHold>
@@ -146,4 +146,4 @@ const Teaser = styled.div<{ theme: ThemeState }>`
   margin: 4px;
   border-radius: 2px;
 `;
-export { SMovieCard };
+export { MovieItemSkeleton };
