@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
 import { Hero } from "../Hero";
-import { Home } from "../../Home";
+import { Home } from "../../../views/Home";
 import { Filter } from "../../Filter";
 import { Search } from "../../Search";
 import { History } from "../../History";
