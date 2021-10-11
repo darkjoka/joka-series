@@ -7,7 +7,7 @@ import { Home } from "../../../views/Home";
 import { Filter } from "../../Filter";
 import { Search } from "../../Search";
 import { History } from "../../../views/History";
-import { Favorite } from "../../Favorite";
+import { Favorite } from "../../../views/Favorite";
 import { RootState } from "../../../store/reducers";
 import { StyledContent, SectionHold } from "./ContentStyle";
 
