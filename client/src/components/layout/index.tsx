@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
-import { Content } from "./Content";
+import { useDispatch } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
+
 import { TopNav } from "./TopNav";
 import { SideNav } from "./SideNav";
+import { Content } from "./Content";
 import { BottomNav } from "./BottomNav";
-import { BrowserRouter as Router } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { augmentFavorite, augmentHistory } from "../../store/actions/local";
 import { isLocalEmpty, localFetch, localSet } from "../../shared/localStorage";
 
-const Layout: React.FC = () => {
+export const Layout: React.FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (!isLocalEmpty("favorite")) {
@@ -31,5 +32,3 @@ const Layout: React.FC = () => {
     </>
   );
 };
-
-export { Layout };
