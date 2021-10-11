@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { close, preserveAspectRatio } from "../../constants/svg";
-import { RootState } from "../../store/reducers";
-import { closeBottom } from "../../store/actions/navigation";
-import { SDetail } from "../skeleton/SDetail";
-import { Error } from "../Error";
-import { pushData } from "../../store/actions/current";
-import { Detail } from "../Detail";
-import { device } from "../../constants/device";
-import { DetailState, ThemeState } from "../../shared/types/types";
+import { close, preserveAspectRatio } from "../../../constants/svg";
+import { RootState } from "../../../store/reducers";
+import { closeBottom } from "../../../store/actions/navigation";
+import { SDetail } from "../../skeleton/SDetail";
+import { Error } from "../../Error";
+import { pushData } from "../../../store/actions/current";
+import { Detail } from "../../Detail";
+import { device } from "../../../constants/device";
+import { DetailState, ThemeState } from "../../../shared/types/types";
 
 const BottomNav: React.FC = () => {
   const [bottomNavigation, link, detail, theme]: [boolean, string, DetailState, ThemeState] = useSelector(

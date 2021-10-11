@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { Hero } from "./Hero";
+import { Hero } from "../Hero";
 import { Route, Switch } from "react-router-dom";
-import { IndexList } from "../IndexList";
-import { FavoriteList } from "../FavoriteList";
-import { FilterList } from "../FilterList";
-import { HistoryList } from "../HistoryList";
-import { device } from "../../constants/device";
+import { IndexList } from "../../IndexList";
+import { FavoriteList } from "../../FavoriteList";
+import { FilterList } from "../../FilterList";
+import { HistoryList } from "../../HistoryList";
+import { device } from "../../../constants/device";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/reducers";
-import { SearchList } from "../SearchList";
-import { ThemeState } from "../../shared/types/types";
+import { RootState } from "../../../store/reducers";
+import { SearchList } from "../../SearchList";
+import { ThemeState } from "../../../shared/types/types";
 
 export const Content: React.FC = () => {
   const theme = useSelector((state: RootState) => {
