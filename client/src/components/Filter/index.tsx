@@ -10,7 +10,7 @@ interface FilterListProp {
   match: { params: { filterItem: string } };
 }
 
-export const FilterList: React.FC<FilterListProp> = ({ match }) => {
+export const Filter: React.FC<FilterListProp> = ({ match }) => {
   const [movies, theme]: [Movie[], ThemeState] = useSelector((state: RootState) => {
     return [state.filter, state.theme];
   });
