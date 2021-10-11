@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { pushLink } from "../store/actions/current";
-import { augmentFavorite } from "../store/actions/local";
-import { openBottom } from "../store/actions/navigation";
-import { device } from "../constants/device";
-import { preserveAspectRatio, bookMarkFilled, bookMark, camera } from "../constants/svg";
-import { localAdd, localFetch, localSet } from "../shared/localStorage";
-import { Movie, MovieProps, ThemeState } from "../shared/types/types";
+import { pushLink } from "../../store/actions/current";
+import { augmentFavorite } from "../../store/actions/local";
+import { openBottom } from "../../store/actions/navigation";
+import { device } from "../../constants/device";
+import { preserveAspectRatio, bookMarkFilled, bookMark, camera } from "../../constants/svg";
+import { localAdd, localFetch, localSet } from "../../shared/localStorage";
+import { Movie, MovieProps, ThemeState } from "../../shared/types/types";
 
 const MovieCard: React.FC<MovieProps> = ({ imageSource, title, teaser, permaLink, theme }) => {
   const [localFavoriteStore, setLocalFavoriteStore] = useState<Movie[]>(localFetch("favorite"));

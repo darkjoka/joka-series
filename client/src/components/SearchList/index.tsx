@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { RootState } from "../store/reducers";
-import { SearchListProp, ThemeState } from "../shared/types/types";
-import { Error } from "./Error";
-import { SearchItem } from "./SearchItem";
+import { RootState } from "../../store/reducers";
+import { SearchListProp, ThemeState } from "../../shared/types/types";
+import { Error } from "../Error";
+import { SearchItem } from "../SearchItem";
 
 export const SearchList: React.FC<SearchListProp> = ({ match }) => {
   const [error, setError] = useState(false);

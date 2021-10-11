@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { SectionInterface, ThemeState } from "../shared/types/types";
+import { SectionInterface, ThemeState } from "../../shared/types/types";
 
 export const Section: React.FC<SectionInterface> = ({ children, label, theme }) => {
   return (

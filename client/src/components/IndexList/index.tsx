@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { populate_index } from "../store/actions/populate";
-import { RootState } from "../store/reducers";
-import { Movie, ThemeState } from "../shared/types/types";
-import { Error } from "./Error";
-import { Load } from "./Load";
-import MovieDisplay from "./MovieDisplay";
+import { populate_index } from "../../store/actions/populate";
+import { RootState } from "../../store/reducers";
+import { Movie, ThemeState } from "../../shared/types/types";
+import { Error } from "../Error";
+import { Load } from "../Load";
+import MovieDisplay from "../MovieDisplay";
 
 export const IndexList = () => {
   const [movies, theme]: [Movie[], ThemeState] = useSelector((state: RootState) => {

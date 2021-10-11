@@ -1,6 +1,6 @@
 import React from "react";
-import { DisplayProps } from "../shared/types/types";
-import { MovieCard } from "./MovieCard";
+import { DisplayProps } from "../../shared/types/types";
+import { MovieCard } from "../MovieCard";
 
 const MovieDisplay: React.FC<DisplayProps> = ({ movies, theme }) => {
   return (

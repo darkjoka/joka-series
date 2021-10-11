@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { genreFilter, yearFilter } from "../constants/filters";
+import { genreFilter, yearFilter } from "../../constants/filters";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { closeSide } from "../store/actions/navigation";
-import { ThemeState } from "../shared/types/types";
+import { closeSide } from "../../store/actions/navigation";
+import { ThemeState } from "../../shared/types/types";
 
 const Filters: React.FC<{ theme: ThemeState }> = ({ theme }) => {
   const dispatch = useDispatch();

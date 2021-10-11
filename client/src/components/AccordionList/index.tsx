@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { seasonEp } from "../shared/types/types";
-import { Accordion } from "./Accordion";
+import { seasonEp } from "../../shared/types/types";
+import { Accordion } from "../Accordion";
 
 export const AccordionList: React.FC<seasonEp> = ({ seasonEpisode }) => {
   const [accState, setAccState] = useState(() => {

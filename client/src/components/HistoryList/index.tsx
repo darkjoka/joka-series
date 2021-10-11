@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import MovieDisplay from "./MovieDisplay";
+import MovieDisplay from "../MovieDisplay";
 import { useSelector } from "react-redux";
-import { RootState } from "../store/reducers";
-import { localFetch } from "../shared/localStorage";
+import { RootState } from "../../store/reducers";
+import { localFetch } from "../../shared/localStorage";
 
 export const HistoryList = () => {
   const [movies] = useState(localFetch("history"));
