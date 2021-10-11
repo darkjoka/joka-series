@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { populate_filter } from "../../store/actions/populate";
-import { RootState } from "../../store/reducers";
-import { Load } from "../Load";
+
 import Movie from "../Movie";
+import { Load } from "../Load";
 import { Error } from "../Error";
+import { RootState } from "../../store/reducers";
 import { Movies, ThemeState } from "../../shared/types/types";
-interface FilterListProp {
+import { populate_filter } from "../../store/actions/populate";
+interface FilterProp {
   match: { params: { filterItem: string } };
 }
 
-export const Filter: React.FC<FilterListProp> = ({ match }) => {
+export const Filter: React.FC<FilterProp> = ({ match }) => {
   const [movies, theme]: [Movies, ThemeState] = useSelector((state: RootState) => {
     return [state.filter, state.theme];
   });
