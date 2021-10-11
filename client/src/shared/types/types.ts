@@ -35,7 +35,7 @@ export interface LocalInterface {
   history: MovieType[];
 }
 
-export interface NavState {
+export interface NavigationState {
   isSideNavOpen: boolean;
   isBottomSectOpen: boolean;
 }
