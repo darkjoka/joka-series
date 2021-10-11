@@ -4,7 +4,7 @@ import { Hero } from "../Hero";
 import { Route, Switch } from "react-router-dom";
 import { IndexList } from "../../IndexList";
 import { Favorite } from "../../Favorite";
-import { FilterList } from "../../FilterList";
+import { Filter } from "../../Filter";
 import { HistoryList } from "../../HistoryList";
 import { device } from "../../../shared/constants/device";
 import { useSelector } from "react-redux";
@@ -24,7 +24,7 @@ export const Content: React.FC = () => {
           <Switch>
             <Route path="/" exact component={IndexList} />
             <Route path="/favorite" component={Favorite} />
-            <Route path="/filter/:filterItem" component={FilterList} />
+            <Route path="/filter/:filterItem" component={Filter} />
             <Route path="/history" component={HistoryList} />{" "}
             <Route path="/search/:searchItem" component={SearchList} />
           </Switch>
