@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { DetailState } from "../../shared/types/types";
 import { Accordion } from "../Accordion";
 
-export const Detail: React.FC<DetailState> = ({ heroImage, genres, description, seasonEpisodes, title }) => {
+export const MovieDetail: React.FC<DetailState> = ({ heroImage, genres, description, seasonEpisodes, title }) => {
   return (
     <SupEntry>
       <Entry>
