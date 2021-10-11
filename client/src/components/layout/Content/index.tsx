@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import { Hero } from "../Hero";
 import { Home } from "../../../views/Home";
 import { Filter } from "../../Filter";
-import { Search } from "../../Search";
+import { Search } from "../../../views/Search";
 import { History } from "../../../views/History";
 import { Favorite } from "../../../views/Favorite";
 import { RootState } from "../../../store/reducers";
