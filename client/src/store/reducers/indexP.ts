@@ -1,9 +1,9 @@
 import { POPULATE_INDEX } from "../../shared/constants/action";
-import { MovieAction, MovieType } from "../../shared/types/types";
+import { MovieAction, Movies } from "../../shared/types/types";
 
-const defaultState: MovieType = [];
+const defaultState: Movies = [];
 
-export const index = (state: MovieType = defaultState, action: MovieAction) => {
+export const index = (state: Movies = defaultState, action: MovieAction) => {
   switch (action.type) {
     case POPULATE_INDEX:
       return action.payLoad;

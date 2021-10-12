@@ -1,9 +1,9 @@
 import { POPULATE_FILTER } from "../../shared/constants/action";
-import { MovieType, MovieAction } from "../../shared/types/types";
+import { Movies, MovieAction } from "../../shared/types/types";
 
-const defaultState: MovieType = [];
+const defaultState: Movies = [];
 
-export const filter = (state: MovieType = defaultState, action: MovieAction) => {
+export const filter = (state: Movies = defaultState, action: MovieAction) => {
   switch (action.type) {
     case POPULATE_FILTER:
       return action.payLoad;

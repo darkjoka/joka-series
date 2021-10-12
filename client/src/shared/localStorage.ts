@@ -1,6 +1,6 @@
-import { Movie } from "./types/types";
+import { Movies, MovieType } from "./types/types";
 
-export const localFetch = (store: string): Movie[] => {
+export const localFetch = (store: string): Movies => {
   // fetch and return movies from specified store
   const item = localStorage.getItem(store);
 
@@ -10,7 +10,7 @@ export const localFetch = (store: string): Movie[] => {
   return [];
 };
 
-export const localSet = (store: string, payLoad: Movie[]): void => {
+export const localSet = (store: string, payLoad: Movies): void => {
   // set specified store to movies
   localStorage.setItem(store, JSON.stringify(payLoad));
 };
@@ -20,9 +20,9 @@ export const isLocalEmpty = (store: string): boolean => {
   return Boolean(localStorage.getItem(store));
 };
 
-export const localAdd = (store: string, currMovie: Movie, toggle: boolean = true): Movie[] => {
+export const localAdd = (store: string, currMovie: MovieType, toggle: boolean = true): Movies => {
   // fetch and add a movie to specified store
-  let items: Movie[] = localFetch(store);
+  let items: Movies = localFetch(store);
 
   if (
     items.some((movie) => {
