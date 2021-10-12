@@ -110,3 +110,8 @@ export interface MovieCardProps {
   teaser: boolean;
   theme: ThemeState;
 }
+
+export interface NavState {
+  isSideNavOpen: boolean;
+  isBottomSectOpen: boolean;
+}
