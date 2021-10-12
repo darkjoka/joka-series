@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import varela from "../fonts/VarelaRound-Regular.ttf";
+import varela from "./fonts/VarelaRound-Regular.ttf";
 
 export default createGlobalStyle`
 
