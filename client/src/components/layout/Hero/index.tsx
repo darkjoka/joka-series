@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import { close } from "../../../shared/constants/svg";
 import { RootState } from "../../../store/reducers";
-import { StyledHero, Frost, FormHold, FormInner, InputHold, Icon } from "./HeroStyle";
+import { StyledHero, FormHold, FormInner, InputHold, Icon } from "./HeroStyle";
 
 export const Hero: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,9 +22,6 @@ export const Hero: React.FC = () => {
 
   return (
     <StyledHero>
-      <Frost theme={theme}>
-        <div></div>
-      </Frost>
       <FormHold>
         <FormInner theme={theme}>
           <form onSubmit={handleSearch}>

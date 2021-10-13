@@ -11,28 +11,6 @@ export const StyledHero = styled.div`
   overflow: hidden;
 `;
 
-export const Frost = styled.div<{ theme: ThemeState }>`
-  background: url(${pic}) 0 / cover fixed;
-  width: inherit;
-  height: inherit;
-
-  div {
-    width: inherit;
-    height: inherit;
-    background: linear-gradient(
-      to bottom right,
-      ${({ theme }) => {
-        return theme.isLight
-          ? `rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, .2)`
-          : `rgba(0, 0, 0, .3),
-      rgba(0, 0, 0, .2)`;
-      }}
-    );
-    backdrop-filter: blur(0.9rem);
-  }
-`;
-
 export const FormHold = styled.div`
   height: 64px;
   width: 100vw;
