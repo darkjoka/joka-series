@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { Section } from "../../Section";
 import { RootState } from "../../../store/reducers";
@@ -13,24 +13,11 @@ export const TopNav: React.FC = () => {
   const theme = useSelector((state: RootState) => {
     return state.theme;
   });
-  const dispatch = useDispatch();
-
-  const handleClick = (): void => {
-    dispatch(openSide());
-  };
-
-  const handleDarkToggle = (): void => {
-    dispatch(toggleDark());
-  };
-
-  const handleLightToggle = (): void => {
-    dispatch(toggleLight());
-  };
 
   return (
     <Nav theme={theme}>
       <Hold>
-        <Icon theme={theme} onClick={handleClick}>
+        <Icon theme={theme} onClick={openSide}>
           <path d={menu.path}></path>
         </Icon>
         <BaseSection theme={theme}>
@@ -59,13 +46,13 @@ export const TopNav: React.FC = () => {
           </Link>
         </BaseSection>
         {theme.isLight && (
-          <ThemeIcon theme={theme} viewBox={sun.viewBox} onClick={handleDarkToggle}>
+          <ThemeIcon theme={theme} viewBox={sun.viewBox} onClick={toggleDark}>
             <path d={sun.path}></path>
           </ThemeIcon>
         )}
 
         {!theme.isLight && (
-          <ThemeIcon theme={theme} viewBox={moon.viewBox} onClick={handleLightToggle}>
+          <ThemeIcon theme={theme} viewBox={moon.viewBox} onClick={toggleLight}>
             <path d={moon.path}></path>
           </ThemeIcon>
         )}
