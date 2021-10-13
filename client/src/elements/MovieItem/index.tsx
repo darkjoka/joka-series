@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 
 import { pushLink } from "../../store/actions/current";
 import { openBottom } from "../../store/actions/navigation";
@@ -11,7 +10,6 @@ import { Card, ImageHold, CamIcon, CardContent, Title, AltButtons, Download, Ico
 
 export const MovieItem: React.FC<MovieProps> = ({ imageSource, title, teaser, permaLink, theme }) => {
   const [localFavoriteStore, setLocalFavoriteStore] = useState<Movies>(localFetch("favorite"));
-  const dispatch = useDispatch();
 
   const updateLocal = (items: Movies, store: string): void => {
     localSet(store, items);
@@ -20,7 +18,7 @@ export const MovieItem: React.FC<MovieProps> = ({ imageSource, title, teaser, pe
 
   const syncLocal = (movies: Movies): void => {
     // syncs app state with localStorage
-    dispatch(augmentFavorite(movies));
+    augmentFavorite(movies);
   };
 
   const handleBookmark = (): void => {
@@ -35,8 +33,8 @@ export const MovieItem: React.FC<MovieProps> = ({ imageSource, title, teaser, pe
   };
 
   const handleDownload = () => {
-    dispatch(pushLink(permaLink));
-    dispatch(openBottom());
+    pushLink(permaLink);
+    openBottom();
   };
 
   return (
