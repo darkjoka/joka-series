@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import pic from "../../../assets/img.jpg";
 import { ThemeState } from "../../../shared/types/types";
 import { device } from "../../../shared/constants/device";
 import { close, preserveAspectRatio } from "../../../shared/constants/svg";

@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import { close } from "../../../shared/constants/svg";
 import { RootState } from "../../../store/reducers";
+import { Pattern } from "../../Pattern";
 import { StyledHero, FormHold, FormInner, InputHold, Icon } from "./HeroStyle";
 
 export const Hero: React.FC = () => {
@@ -22,6 +23,7 @@ export const Hero: React.FC = () => {
 
   return (
     <StyledHero>
+      <Pattern />
       <FormHold>
         <FormInner theme={theme}>
           <form onSubmit={handleSearch}>
