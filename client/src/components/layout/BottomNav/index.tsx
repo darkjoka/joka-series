@@ -41,18 +41,12 @@ const BottomNav: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const dispatch = useDispatch();
-
-  const handleClick = (): void => {
-    dispatch(closeBottom());
-  };
-
   useEffect(() => {
     if (link && bottomNavigation) {
       console.log("here got");
       const broken = link.split("/");
       const handleCurrent = (data: DetailState): void => {
-        dispatch(pushData(data));
+        pushData(data);
         console.log("also");
         // addToHistory();
         console.log("final");
@@ -79,12 +73,12 @@ const BottomNav: React.FC = () => {
         setError(false);
       };
     }
-  }, [link, dispatch, bottomNavigation, detail]);
+  }, [link, bottomNavigation, detail]);
 
   return (
     <StyledNav theme={theme} isBottomNavOpen={bottomNavigation}>
       <InnerNav>
-        <Icon theme={theme} onClick={handleClick}>
+        <Icon theme={theme} onClick={closeBottom}>
           <path d={close.path}></path>
         </Icon>
       </InnerNav>
