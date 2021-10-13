@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Movie from "../../components/Movie";
 import { Load } from "../../components/Load";
-import { Error } from "../../components/Error";
+import { Error } from "../../elements/Error";
 import { RootState } from "../../store/reducers";
 import { populate_index } from "../../store/actions/populate";
 import { MovieType, ThemeState } from "../../shared/types/types";

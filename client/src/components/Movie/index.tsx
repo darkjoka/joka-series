@@ -1,6 +1,7 @@
 import React from "react";
+
+import { MovieItem } from "../../elements/MovieItem";
 import { DisplayProps } from "../../shared/types/types";
-import { MovieItem } from "../MovieItem";
 
 const Movie: React.FC<DisplayProps> = ({ movies, theme }) => {
   return (

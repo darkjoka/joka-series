@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { seasonEp } from "../../shared/types/types";
-import { AccordionItem } from "../AccordionItem";
+import { AccordionItem } from "../../elements/AccordionItem";
 
 export const Accordion: React.FC<seasonEp> = ({ seasonEpisode }) => {
   const [accState, setAccState] = useState(() => {

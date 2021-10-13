@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { Error } from "../../Error";
+import { Error } from "../../../elements/Error";
 import { MovieDetail } from "../../MovieDetail";
 import { RootState } from "../../../store/reducers";
 import { close } from "../../../shared/constants/svg";

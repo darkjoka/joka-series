@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { Container } from "./SearchStyle";
-import { Error } from "../../components/Error";
+import { Error } from "../../elements/Error";
 import { RootState } from "../../store/reducers";
 import { SearchProp } from "../../shared/types/types";
-import { SearchItem } from "../../components/SearchItem";
+import { SearchItem } from "../../elements/SearchItem";
 
 export const Search: React.FC<SearchProp> = ({ match }) => {
   const [error, setError] = useState(false);
