@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { useSelector } from "react-redux";
 
 import { Error } from "../../../elements/Error";
@@ -75,7 +76,7 @@ const BottomNav: React.FC = () => {
     }
   }, [link, bottomNavigation, detail]);
 
-  return (
+  return createPortal(
     <StyledNav theme={theme} isBottomNavOpen={bottomNavigation}>
       <InnerNav>
         <Icon theme={theme} onClick={closeBottom}>
@@ -87,7 +88,8 @@ const BottomNav: React.FC = () => {
         {loading && <MovieDetailSkeleton />}
         {error && <Error />}
       </Inner>
-    </StyledNav>
+    </StyledNav>,
+    document.getElementById("bottom") as HTMLElement
   );
 };
 
