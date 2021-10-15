@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { Section } from "../../Section";
 import { MovieFilters } from "../../MovieFilters";
@@ -15,12 +15,6 @@ export const SideNav: React.FC = () => {
     return [state.navigation.isSideNavOpen, state.theme];
   });
 
-  const dispatch = useDispatch();
-
-  const handleClick = (): void => {
-    dispatch(closeSide());
-  };
-
   const handlePropagation = (event: React.BaseSyntheticEvent): void => {
     event.stopPropagation();
   };
@@ -28,12 +22,12 @@ export const SideNav: React.FC = () => {
   return (
     <SuperNav sideNavStatus={sideNavigation}>
       <StyledNav theme={theme} onClick={handlePropagation}>
-        <Icon theme={theme} onClick={handleClick}>
+        <Icon theme={theme} onClick={closeSide}>
           <path d={close.path}></path>
         </Icon>
 
         <BaseSection theme={theme}>
-          <Link to="/" onClick={handleClick}>
+          <Link to="/" onClick={closeSide}>
             <Section label={"Home"}>
               <IconSect theme={theme} viewBox={home.viewBox}>
                 <path d={home.path}></path>
@@ -41,7 +35,7 @@ export const SideNav: React.FC = () => {
             </Section>
           </Link>
 
-          <Link to="/favorite" onClick={handleClick}>
+          <Link to="/favorite" onClick={closeSide}>
             <Section label={"Favorited"}>
               <IconSect theme={theme} viewBox={bookMarkFilled.viewBox}>
                 <path d={bookMarkFilled.path}></path>
@@ -49,7 +43,7 @@ export const SideNav: React.FC = () => {
             </Section>
           </Link>
 
-          <Link to="/history" onClick={handleClick}>
+          <Link to="/history" onClick={closeSide}>
             <Section label={"History"}>
               <IconSect theme={theme} viewBox={recent.viewBox}>
                 <path d={recent.path}></path>
@@ -63,7 +57,7 @@ export const SideNav: React.FC = () => {
         </div>
       </StyledNav>
 
-      <StyledOther onClick={handleClick}></StyledOther>
+      <StyledOther onClick={closeSide}></StyledOther>
     </SuperNav>
   );
 };
