@@ -23,6 +23,13 @@ export const StyledContent = styled.main`
     @media ${device.laptop} {
       max-width: 972px;
     }
+    @media ${device.laptopM} {
+      max-width: 1211.45px;
+    }
+
+    @media ${device.laptopL} {
+      max-width: 1450px;
+    }
   }
 `;
 

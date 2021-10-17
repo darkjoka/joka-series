@@ -30,6 +30,14 @@ export const Hold = styled.div`
   @media ${device.tablet} {
     max-width: 950px;
   }
+
+  @media ${device.laptopM} {
+    max-width: 1211.45px;
+  }
+
+  @media ${device.laptopL} {
+    max-width: 1450px;
+  }
 `;
 
 export const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })<{
