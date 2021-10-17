@@ -50,7 +50,11 @@ export const Home = () => {
 
   return (
     <>
-      <Meta title="Test Title" image="test image" description="test descipt" />
+      <Meta
+        title="Jseries-Download High Quality Tv Series for free"
+        image=""
+        description="Download all lastest and newest low-sized high quality 480p tv series for free without disturbing ads jumping into your face every second"
+      />
 
       {!loading && !error && <Movie theme={theme} movies={movies} />}
       {loading && <Load theme={theme} />}

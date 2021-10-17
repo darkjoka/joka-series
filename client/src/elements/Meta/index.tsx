@@ -15,7 +15,7 @@ export const Meta: React.FC<MetaProps> = ({ description, title, image }) => {
       <meta name="description" content={description} />
       <meta
         name="keywords"
-        content="Free Tv Series,Series Download, Free Download, Free Series Download, Drama, Action, History, Thriller, Comedy"
+        content="Jseries, J series,Free Tv Series,Series Download, Free Download, Free Series Download, Drama, Action, History, Thriller, Comedy"
       />
 
       {/* Google/ Search engine tags  */}
