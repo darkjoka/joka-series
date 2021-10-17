@@ -11,8 +11,8 @@ export const MovieItemSkeleton: React.FC<MovieCardProps> = ({ teaser, theme }) =
       <CardContent teaser={teaser} theme={theme}>
         <Title theme={theme} />
         {teaser ? (
-          [...Array(5)].map((num) => {
-            return <Teaser theme={theme} key={num} />;
+          [...Array(5)].map((_, idx) => {
+            return <Teaser theme={theme} key={idx} />;
           })
         ) : (
           <AltButtons theme={theme}>
