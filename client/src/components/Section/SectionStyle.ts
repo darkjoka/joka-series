@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+import { device } from "../../shared/constants/device";
 import { ThemeState } from "../../shared/types/types";
 
 export const Sect = styled.div<{ theme: ThemeState }>`
@@ -10,6 +11,15 @@ export const Sect = styled.div<{ theme: ThemeState }>`
 
   svg {
     margin-right: 12px;
+  }
+
+  @media ${device.laptopL} {
+    flex-direction: column;
+    align-items: center;
+
+    svg {
+      margin: 0;
+    }
   }
 
   &:hover {
