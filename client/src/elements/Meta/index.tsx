@@ -13,6 +13,10 @@ export const Meta: React.FC<MetaProps> = ({ description, title, image }) => {
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta
+        name="keywords"
+        content="Free Tv Series,Series Download, Free Download, Free Series Download, Drama, Action, History, Thriller, Comedy"
+      />
 
       {/* Google/ Search engine tags  */}
       <meta itemProp="name" content={title} />
