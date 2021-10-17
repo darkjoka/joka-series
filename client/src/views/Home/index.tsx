@@ -7,6 +7,7 @@ import { Error } from "../../elements/Error";
 import { RootState } from "../../store/reducers";
 import { populate_index } from "../../store/actions/populate";
 import { MovieType, ThemeState } from "../../shared/types/types";
+import { Meta } from "../../elements/Meta";
 
 export const Home = () => {
   const [movies, theme]: [MovieType[], ThemeState] = useSelector((state: RootState) => {
@@ -49,6 +50,8 @@ export const Home = () => {
 
   return (
     <>
+      <Meta title="Test Title" image="test image" description="test descipt" />
+
       {!loading && !error && <Movie theme={theme} movies={movies} />}
       {loading && <Load theme={theme} />}
       {error && <Error />}
