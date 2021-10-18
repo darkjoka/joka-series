@@ -5,11 +5,17 @@ import reportWebVitals from "./reportWebVitals";
 import { store } from "./store";
 import { Provider } from "react-redux";
 import GlobalStyle from "./shared/GlobalStyle";
+import { Meta } from "./elements/Meta";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <GlobalStyle />
+      <Meta
+        title="Jseries-Download High Quality Tv Series for free"
+        image=""
+        description="Download all lastest and newest low-sized high quality 480p tv series for free without disturbing ads jumping into your face every second"
+      />
       <App />
     </Provider>
   </React.StrictMode>,

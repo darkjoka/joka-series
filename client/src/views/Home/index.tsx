@@ -7,7 +7,6 @@ import { Error } from "../../elements/Error";
 import { RootState } from "../../store/reducers";
 import { populate_index } from "../../store/actions/populate";
 import { MovieType, ThemeState } from "../../shared/types/types";
-import { Meta } from "../../elements/Meta";
 
 export const Home = () => {
   const [movies, theme]: [MovieType[], ThemeState] = useSelector((state: RootState) => {
@@ -50,12 +49,6 @@ export const Home = () => {
 
   return (
     <>
-      <Meta
-        title="Jseries-Download High Quality Tv Series for free"
-        image=""
-        description="Download all lastest and newest low-sized high quality 480p tv series for free without disturbing ads jumping into your face every second"
-      />
-
       {!loading && !error && <Movie theme={theme} movies={movies} />}
       {loading && <Load theme={theme} />}
       {error && <Error />}
