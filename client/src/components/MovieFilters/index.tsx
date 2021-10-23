@@ -6,16 +6,64 @@ import { closeSide } from "../../store/actions/navigation";
 import { genreFilter, yearFilter } from "../../shared/constants/filters";
 import { HeadList, Content, FilterObj, Section } from "./MovieFiltersStyle";
 
-export const MovieFilters: React.FC<{ theme: ThemeState }> = ({ theme }) => {
+interface ObserverOptions {
+  root?: Element | null;
+  rootMargin?: string;
+  threshold?: number;
+}
+
+const useOnScreen = (options: ObserverOptions): [{ current: null | HTMLElement }, boolean] => {
+  const ref: { current: null | HTMLElement } = React.useRef(null);
+  const [onScreen, setOnScreen] = React.useState(false);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setOnScreen(entry.isIntersecting);
+    }, options);
+
+    const elem = ref.current;
+
+    if (elem) {
+      observer.observe(elem);
+    }
+    return () => {
+      if (elem) {
+        observer.unobserve(elem);
+      }
+    };
+  }, [options]);
+  return [ref, onScreen];
+};
+
+export const MovieFilters: React.FC<{ theme: ThemeState; parent: { current: null | HTMLElement } }> = ({
+  theme,
+  parent,
+}) => {
+  const options: ObserverOptions = {
+    root: parent.current,
+    rootMargin: "0% -50%",
+  };
+
+  const [genreRef]: [any, boolean] = useOnScreen(options);
+  const [yearRef, yearOnScreen]: [any, boolean] = useOnScreen(options);
+
+  const handleGenre = (): void => {
+    genreRef.current?.scrollIntoView();
+  };
+
+  const handleYear = (): void => {
+    yearRef.current?.scrollIntoView();
+  };
+
   return (
     <div>
-      <HeadList theme={theme}>
-        <p>By Genre</p>
-        <p>By Year</p>
+      <HeadList theme={theme} filterItem={yearOnScreen}>
+        <p onClick={handleGenre}>By Genre</p>
+        <p onClick={handleYear}>By Year</p>
       </HeadList>
 
       <Content>
-        <Section>
+        <Section ref={genreRef}>
           {genreFilter.map((genre, index) => {
             return (
               <FilterObj theme={theme} key={index} onClick={closeSide}>
@@ -24,7 +72,7 @@ export const MovieFilters: React.FC<{ theme: ThemeState }> = ({ theme }) => {
             );
           })}
         </Section>
-        <Section>
+        <Section ref={yearRef}>
           {yearFilter.map((year, index) => {
             return (
               <FilterObj theme={theme} key={index} onClick={closeSide}>

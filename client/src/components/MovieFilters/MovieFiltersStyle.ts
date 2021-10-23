@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { ThemeState } from "../../shared/types/types";
 
-export const HeadList = styled.div<{ theme: ThemeState }>`
+export const HeadList = styled.div<{ theme: ThemeState; filterItem: boolean }>`
   display: flex;
   justify-content: space-between;
   width: 70%;
@@ -16,6 +16,16 @@ export const HeadList = styled.div<{ theme: ThemeState }>`
     height: 2px;
     background: linear-gradient(to right, ${({ theme }) => theme.accentColor} 50%, transparent 50%);
     bottom: -16px;
+    transform: translateX(
+      ${({ filterItem }) => {
+        return filterItem && "75%";
+      }}
+    );
+    transition: transform 0.3s ease-out;
+  }
+
+  p {
+    cursor: pointer;
   }
 `;
 
