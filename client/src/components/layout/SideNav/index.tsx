@@ -15,13 +15,15 @@ export const SideNav: React.FC = () => {
     return [state.navigation.isSideNavOpen, state.theme];
   });
 
+  const sideRef = React.useRef(null);
+
   const handlePropagation = (event: React.BaseSyntheticEvent): void => {
     event.stopPropagation();
   };
 
   return (
     <SuperNav sideNavStatus={sideNavigation}>
-      <StyledNav theme={theme} onClick={handlePropagation}>
+      <StyledNav ref={sideRef} theme={theme} onClick={handlePropagation}>
         <Icon theme={theme} onClick={closeSide}>
           <path d={close.path}></path>
         </Icon>
@@ -53,7 +55,7 @@ export const SideNav: React.FC = () => {
         </BaseSection>
 
         <div>
-          <MovieFilters theme={theme}></MovieFilters>
+          <MovieFilters parent={sideRef} theme={theme}></MovieFilters>
         </div>
       </StyledNav>
 
