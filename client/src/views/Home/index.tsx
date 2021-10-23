@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import Movie from "../../components/Movie";
 import { Load } from "../../components/Load";
@@ -13,17 +13,15 @@ export const Home = () => {
     return [state.index, state.theme];
   });
 
-  const dispatch = useDispatch();
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
-    const handlePopulation = (data: MovieType[]): void => {
-      dispatch(populate_index(data));
-      setLoading(false);
-    };
+  const handlePopulation = (data: MovieType[]): void => {
+    populate_index(data);
+    setLoading(false);
+  };
 
+  useEffect(() => {
     if (movies.length === 0) {
       setLoading(true);
       setError(false);
@@ -45,7 +43,7 @@ export const Home = () => {
       setLoading(false);
       setError(false);
     }; //set states to defaults on unmount => prevent prob of memory leak
-  }, [movies, dispatch]);
+  }, [movies]);
 
   return (
     <>

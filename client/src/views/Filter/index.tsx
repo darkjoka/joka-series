@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import Movie from "../../components/Movie";
 import { Load } from "../../components/Load";
@@ -16,17 +16,15 @@ export const Filter: React.FC<FilterProp> = ({ match }) => {
     return [state.filter, state.theme];
   });
 
-  const dispatch = useDispatch();
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
-    const handlePopulation = (data: Movies): void => {
-      dispatch(populate_filter(data));
-      setLoading(false);
-    };
+  const handlePopulation = (data: Movies): void => {
+    populate_filter(data);
+    setLoading(false);
+  };
 
+  useEffect(() => {
     (async () => {
       try {
         const response = await fetch(`https://jokaseries.herokuapp.com/filter/${match.params.filterItem}`);
@@ -43,7 +41,7 @@ export const Filter: React.FC<FilterProp> = ({ match }) => {
       setLoading(false);
       setError(false);
     }; //set states to defaults on unmount => prevent prob of memory leak
-  }, [movies, dispatch, match.params.filterItem]);
+  }, [movies, match.params.filterItem]);
 
   return (
     <>
