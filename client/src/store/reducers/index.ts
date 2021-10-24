@@ -5,6 +5,7 @@ import { theme } from "./theme";
 import { index } from "./indexP";
 import { local } from "./local";
 import { filter } from "./filter";
+import { brand } from "./brand";
 
 export const rootReducer = combineReducers({
   navigation,
@@ -13,6 +14,7 @@ export const rootReducer = combineReducers({
   index,
   local,
   filter,
+  brand,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
