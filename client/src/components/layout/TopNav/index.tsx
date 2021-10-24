@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 
 import { Section } from "../../Section";
 import { openSide } from "../../../store/actions/navigation";
-import { toggleDark, toggleLight } from "../../../store/actions/theme";
+import { toggleDark, toggleDim, toggleLight } from "../../../store/actions/theme";
 import { Nav, Hold, Icon, BaseSection, IconSect, ThemeIcon } from "./TopNavStyle";
 import { bookMarkFilled, home, menu, moon, recent, sun } from "../../../shared/constants/svg";
-// import { getTheme } from "../../../store/reducers/theme";
+import { getTheme } from "../../../store/reducers/theme";
 
 export const TopNav: React.FC = () => {
+  const theme = getTheme();
+
   return (
     <Nav>
       <Hold>
@@ -41,17 +43,21 @@ export const TopNav: React.FC = () => {
           </Link>
         </BaseSection>
 
-        {/* {theme.isLight && (
+        {1 && (
           <ThemeIcon viewBox={sun.viewBox} onClick={toggleDark}>
             <path d={sun.path}></path>
           </ThemeIcon>
         )}
-
-        {!theme.isLight && (
+        {1 && (
+          <ThemeIcon viewBox={sun.viewBox} onClick={toggleDim}>
+            <path d={sun.path}></path>
+          </ThemeIcon>
+        )}
+        {1 && (
           <ThemeIcon viewBox={moon.viewBox} onClick={toggleLight}>
             <path d={moon.path}></path>
           </ThemeIcon>
-        )} */}
+        )}
       </Hold>
     </Nav>
   );
