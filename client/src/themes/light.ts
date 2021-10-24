@@ -1,4 +1,4 @@
-import { Brand, Theme, ThemeProperties } from "../shared/types/types";
+import { Brand, Theme, ThemeProperties, ThemeState } from "../shared/types/types";
 import { color, defaultBrand, theme } from "./base";
 
 const lightColors = (brand: Brand): ThemeProperties => {
@@ -16,6 +16,6 @@ const lightColors = (brand: Brand): ThemeProperties => {
   };
 };
 
-export const light = (brand: Brand = defaultBrand) => {
+export const light = (brand: Brand = defaultBrand): ThemeState => {
   return theme(lightColors, brand);
 };

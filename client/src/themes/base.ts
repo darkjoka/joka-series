@@ -1,4 +1,4 @@
-import { Brand, ThemeProperties } from "../shared/types/types";
+import { Brand, ThemeProperties, ThemeState } from "../shared/types/types";
 
 export const defaultBrand: Brand = {
   hue: 200,
@@ -10,7 +10,7 @@ export const color = (hue: number, saturation: number, lighness: number): string
   return `hsl(${hue},${saturation}%,${lighness}%)`;
 };
 
-export const theme = (identifier: (brand: Brand) => ThemeProperties, brand: Brand) => {
+export const theme = (identifier: (brand: Brand) => ThemeProperties, brand: Brand): ThemeState => {
   const selectTheme = identifier(brand);
   return {
     name: selectTheme.name,
