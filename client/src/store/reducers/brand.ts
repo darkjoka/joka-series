@@ -1,7 +1,8 @@
 import { CHANGE_BRAND_HUE, CHANGE_BRAND_LIGHTNESS, CHANGE_BRAND_SATURATION } from "../../shared/constants/action";
 import { Brand, BrandAction } from "../../shared/types/types";
+import { defaultBrand } from "../../themes/base";
 
-export const brand = (state: Brand, action: BrandAction): Brand => {
+export const brand = (state: Brand = defaultBrand, action: BrandAction): Brand => {
   switch (action.type) {
     case CHANGE_BRAND_HUE:
       let brandHue = action.payLoad;
