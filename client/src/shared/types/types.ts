@@ -64,15 +64,19 @@ export interface BaseAction {
   type: string;
 }
 
+export interface ThemeAction extends BaseAction {
+  payload: Brand;
+}
+
 export interface MovieAction extends BaseAction {
-  payLoad: MovieType[];
+  payload: MovieType[];
 }
 export interface CurrAction extends BaseAction {
-  payLoad: string | DetailState;
+  payload: string | DetailState;
 }
 
 export interface BrandAction extends BaseAction {
-  payLoad: number;
+  payload: number;
 }
 
 export type Movies = MovieType[] | [];
