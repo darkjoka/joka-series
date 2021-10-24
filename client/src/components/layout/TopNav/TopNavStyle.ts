@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { ThemeState } from "../../../shared/types/types";
 import { device } from "../../../shared/constants/device";
 import { menu, preserveAspectRatio } from "../../../shared/constants/svg";
+import { getThemeVariables } from "../../../lib/utils-theme";
+
+const visual = getThemeVariables();
 
 export const Nav = styled.nav<{ theme: ThemeState }>`
   height: 64px;
@@ -18,6 +21,9 @@ export const Nav = styled.nav<{ theme: ThemeState }>`
   }};
   margin: 0;
   z-index: 4;
+  background: ${() => {
+    return visual.theme.primaryText;
+  }};
 `;
 
 export const Hold = styled.div`
