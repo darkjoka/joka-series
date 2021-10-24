@@ -115,3 +115,21 @@ export interface NavState {
   isSideNavOpen: boolean;
   isBottomSectOpen: boolean;
 }
+
+export interface Brand {
+  hue: number;
+  saturation: number;
+  lightness: number;
+}
+
+export interface ThemeProperties {
+  brand: string;
+  text1: string;
+  text2: string;
+  surface1: string;
+  surface2: string;
+  surface3: string;
+  surface4: string;
+  surfaceShadow: string;
+  shadowStrength: number;
+}
