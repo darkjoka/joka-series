@@ -41,31 +41,37 @@ export interface NavigationState {
 }
 
 export interface ThemeState {
-  isLight: boolean;
-  primaryColor: string;
-  primaryInverse: string;
-  secondaryColor: string;
-  secondaryInverse: string;
-  tertiaryColor: string;
-  gradColor: string;
-  accentColor: string;
-  shadow: string;
-  border: string;
-  primBG: string;
+  name: Theme;
+  primaryText: string;
+  secondaryText: string;
+  primaryBackground: string;
+  secondaryBackground: string;
 }
+
+// primaryColor: string;
+// primaryInverse: string;
+// secondaryColor: string;
+// secondaryInverse: string;
+// tertiaryColor: string;
+// gradColor: string;
+// accentColor: string;
+// shadow: string;
+// border: string;
+// primBG: string;
 
 export interface BaseAction {
   type: string;
 }
 
-export interface MovieAction {
-  type: string;
+export interface MovieAction extends BaseAction {
   payLoad: MovieType[];
 }
-
-export interface CurrAction {
-  type: string;
+export interface CurrAction extends BaseAction {
   payLoad: string | DetailState;
+}
+
+export interface BrandAction extends BaseAction {
+  payLoad: number;
 }
 
 export type Movies = MovieType[] | [];
