@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { ThemeState } from "../../shared/types/types";
 import { closeSide } from "../../store/actions/navigation";
 import { genreFilter, yearFilter } from "../../shared/constants/filters";
 import { HeadList, Content, FilterObj, Section } from "./MovieFiltersStyle";
