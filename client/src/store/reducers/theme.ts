@@ -1,5 +1,5 @@
 import { TOGGLE_LIGHT, TOGGLE_DARK, TOGGLE_DIM } from "../../shared/constants/action";
-import { BaseAction, Brand, ThemeState } from "../../shared/types/types";
+import { Brand, ThemeAction, ThemeState } from "../../shared/types/types";
 import { themes } from "../../themes";
 import { store } from "..";
 import { defaultBrand } from "../../themes/base";
@@ -8,7 +8,7 @@ const [light, dark, dim] = themes;
 
 const defaultState: ThemeState = light(defaultBrand);
 
-const getBrand = (): Brand => {
+export const getBrand = (): Brand => {
   const allStore = store.getState();
   return allStore.brand;
 };
@@ -18,16 +18,16 @@ export const getTheme = (): ThemeState => {
   return allStores.theme;
 };
 
-const theme = (state: ThemeState = defaultState, action: BaseAction): ThemeState => {
+const theme = (state: ThemeState = defaultState, action: ThemeAction): ThemeState => {
   switch (action.type) {
     case TOGGLE_DARK:
-      return dark(getBrand());
+      return dark(action.payload);
 
     case TOGGLE_LIGHT:
-      return light(getBrand());
+      return light(action.payload);
 
     case TOGGLE_DIM:
-      return dim(getBrand());
+      return dim(action.payload);
 
     default:
       return state;
