@@ -1,8 +1,9 @@
-import { Brand, ThemeProperties } from "../shared/types/types";
-import { color } from "./base";
+import { Brand, Theme, ThemeProperties } from "../shared/types/types";
+import { color, defaultBrand, theme } from "./base";
 
-export const light = (brand: Brand): ThemeProperties => {
+const lightColors = (brand: Brand): ThemeProperties => {
   return {
+    name: Theme.light,
     brand: color(brand.hue, brand.saturation, brand.lightness),
     text1: color(brand.hue, brand.saturation, 10),
     text2: color(brand.hue, 30, 30),
@@ -13,4 +14,8 @@ export const light = (brand: Brand): ThemeProperties => {
     surfaceShadow: color(brand.hue, 10, 20),
     shadowStrength: 0.2,
   };
+};
+
+export const light = (brand: Brand = defaultBrand) => {
+  return theme(lightColors, brand);
 };

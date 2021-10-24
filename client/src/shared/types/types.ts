@@ -123,6 +123,7 @@ export interface Brand {
 }
 
 export interface ThemeProperties {
+  name: Theme;
   brand: string;
   text1: string;
   text2: string;
@@ -132,4 +133,10 @@ export interface ThemeProperties {
   surface4: string;
   surfaceShadow: string;
   shadowStrength: number;
+}
+
+export enum Theme {
+  light,
+  dark,
+  dim,
 }

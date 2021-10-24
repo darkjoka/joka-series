@@ -1,8 +1,9 @@
-import { Brand, ThemeProperties } from "../shared/types/types";
-import { color } from "./base";
+import { Brand, Theme, ThemeProperties } from "../shared/types/types";
+import { color, defaultBrand, theme } from "./base";
 
-export const dim = (brand: Brand): ThemeProperties => {
+const dimColors = (brand: Brand): ThemeProperties => {
   return {
+    name: Theme.dim,
     brand: color(brand.hue, brand.saturation / 1.25, brand.lightness / 1.25),
     text1: color(brand.hue, 15, 75),
     text2: color(brand.hue, 10, 61),
@@ -13,4 +14,8 @@ export const dim = (brand: Brand): ThemeProperties => {
     surfaceShadow: color(brand.hue, 30, 13),
     shadowStrength: 0.2,
   };
+};
+
+export const dim = (brand: Brand = defaultBrand) => {
+  return theme(dimColors, brand);
 };

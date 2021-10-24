@@ -1,8 +1,9 @@
-import { Brand, ThemeProperties } from "../shared/types/types";
-import { color } from "./base";
+import { Brand, Theme, ThemeProperties } from "../shared/types/types";
+import { color, theme } from "./base";
 
-export const dark = (brand: Brand): ThemeProperties => {
+const darkColors = (brand: Brand): ThemeProperties => {
   return {
+    name: Theme.dark,
     brand: color(brand.hue, brand.saturation / 2, brand.lightness / 1.5),
     text1: color(brand.hue, 15, 85),
     text2: color(brand.hue, 5, 65),
@@ -13,4 +14,8 @@ export const dark = (brand: Brand): ThemeProperties => {
     surfaceShadow: color(brand.hue, 50, 3),
     shadowStrength: 0.8,
   };
+};
+
+export const dark = (brand: Brand) => {
+  return theme(darkColors, brand);
 };
