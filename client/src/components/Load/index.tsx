@@ -1,12 +1,12 @@
 import React from "react";
-import { ThemeState } from "../../shared/types/types";
+
 import { MovieItemSkeleton } from "../skeleton/MovieItemSkeleton";
 
-const Load: React.FC<{ theme: ThemeState }> = ({ theme }) => {
+const Load: React.FC = () => {
   return (
     <>
-      {[1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13].map((num) => {
-        return <MovieItemSkeleton theme={theme} key={num} teaser={true} />;
+      {[...Array(13)].map((_, idx) => {
+        return <MovieItemSkeleton key={idx} teaser={true} />;
       })}
     </>
   );

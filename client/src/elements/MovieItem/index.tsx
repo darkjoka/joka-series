@@ -8,7 +8,7 @@ import { localAdd, localFetch, localSet } from "../../shared/localStorage";
 import { bookMark, bookMarkFilled, camera } from "../../shared/constants/svg";
 import { Card, ImageHold, CamIcon, CardContent, Title, AltButtons, Download, Icon, Favorite } from "./MovieItemStyle";
 
-export const MovieItem: React.FC<MovieProps> = ({ imageSource, title, teaser, permaLink, theme }) => {
+export const MovieItem: React.FC<MovieProps> = ({ imageSource, title, teaser, permaLink }) => {
   const [localFavoriteStore, setLocalFavoriteStore] = useState<Movies>(localFetch("favorite"));
 
   const updateLocal = (items: Movies, store: string): void => {
@@ -38,33 +38,31 @@ export const MovieItem: React.FC<MovieProps> = ({ imageSource, title, teaser, pe
   };
 
   return (
-    <Card theme={theme}>
-      <ImageHold theme={theme} onClick={handleDownload}>
+    <Card>
+      <ImageHold onClick={handleDownload}>
         <object data={`http://www.todaytvseries2.com/${imageSource}`} aria-label={title}>
-          <CamIcon theme={theme}>
+          <CamIcon>
             <path d={camera.path}></path>
           </CamIcon>
         </object>
       </ImageHold>
 
-      <CardContent theme={theme} teaser={teaser}>
+      <CardContent teaser={teaser}>
         <Title onClick={handleDownload}>{title}</Title>
         {teaser ? <p>{teaser.slice(0, 70)}...</p> : ""}
         <AltButtons>
-          <Favorite theme={theme} onClick={handleBookmark}>
+          <Favorite onClick={handleBookmark}>
             {localFavoriteStore.some((movie) => {
               return movie.title === title;
             })
               ? "Unfavorite"
               : "Favorite"}
           </Favorite>
-          <Download theme={theme} onClick={handleDownload}>
-            Download
-          </Download>
+          <Download onClick={handleDownload}>Download</Download>
         </AltButtons>
       </CardContent>
 
-      <Icon theme={theme} onClick={handleBookmark}>
+      <Icon onClick={handleBookmark}>
         <path
           d={
             localFavoriteStore.some((movie) => {

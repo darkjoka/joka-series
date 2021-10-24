@@ -9,15 +9,13 @@ import { close } from "../../../shared/constants/svg";
 import { pushData } from "../../../store/actions/current";
 import { closeBottom } from "../../../store/actions/navigation";
 import { StyledNav, InnerNav, Icon, Inner } from "./BottomNavStyle";
-import { DetailState, ThemeState } from "../../../shared/types/types";
+import { DetailState } from "../../../shared/types/types";
 import { MovieDetailSkeleton } from "../../skeleton/MovieDetailSkeleton";
 
 const BottomNav: React.FC = () => {
-  const [bottomNavigation, link, detail, theme]: [boolean, string, DetailState, ThemeState] = useSelector(
-    (state: RootState) => {
-      return [state.navigation.isBottomSectOpen, state.current.link, state.current.detail, state.theme];
-    }
-  );
+  const [bottomNavigation, link, detail]: [boolean, string, DetailState] = useSelector((state: RootState) => {
+    return [state.navigation.isBottomSectOpen, state.current.link, state.current.detail];
+  });
 
   // const addToHistory = () => {
   //   const [title, imageSource, teaser, permaLink] = [
@@ -77,13 +75,13 @@ const BottomNav: React.FC = () => {
   }, [link, bottomNavigation, detail]);
 
   return createPortal(
-    <StyledNav theme={theme} isBottomNavOpen={bottomNavigation}>
+    <StyledNav isBottomNavOpen={bottomNavigation}>
       <InnerNav>
-        <Icon theme={theme} onClick={closeBottom}>
+        <Icon onClick={closeBottom}>
           <path d={close.path}></path>
         </Icon>
       </InnerNav>
-      <Inner theme={theme}>
+      <Inner>
         {!loading && !error && <MovieDetail {...detail} />}
         {loading && <MovieDetailSkeleton />}
         {error && <Error />}

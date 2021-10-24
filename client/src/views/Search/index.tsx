@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 
 import { Container } from "./SearchStyle";
 import { Error } from "../../elements/Error";
-import { RootState } from "../../store/reducers";
 import { SearchProp } from "../../shared/types/types";
 import { SearchItem } from "../../elements/SearchItem";
 
 export const Search: React.FC<SearchProp> = ({ match }) => {
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [searchItems, setSearchItems] = useState([]);
+  const [error, setError] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [searchItems, setSearchItems] = React.useState([]);
 
-  const theme = useSelector((state: RootState) => {
-    return state.theme;
-  });
-
-  useEffect(() => {
+  React.useEffect(() => {
     setLoading(true);
     setError(false);
     (async () => {
@@ -38,7 +32,7 @@ export const Search: React.FC<SearchProp> = ({ match }) => {
       {!loading && !error && (
         <Container>
           {searchItems.map(({ title, permaLink }) => {
-            return <SearchItem key={title} permaLink={permaLink} title={title} theme={theme} />;
+            return <SearchItem key={title} permaLink={permaLink} title={title} />;
           })}
         </Container>
       )}

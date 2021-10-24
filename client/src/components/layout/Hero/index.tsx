@@ -1,21 +1,16 @@
-import React, { useState, FormEvent } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import { useHistory } from "react-router-dom";
 
 import { close } from "../../../shared/constants/svg";
-import { RootState } from "../../../store/reducers";
 import { Pattern } from "../../Pattern";
 import { StyledHero, FormHold, FormInner, InputHold, Icon } from "./HeroStyle";
 
 export const Hero: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const theme = useSelector((state: RootState) => {
-    return state.theme;
-  });
+  const [searchTerm, setSearchTerm] = React.useState("");
 
   const history = useHistory();
 
-  const handleSearch = (event: FormEvent) => {
+  const handleSearch = (event: React.FormEvent) => {
     event.preventDefault();
     searchTerm.length >= 3 && history.push(`/search/${searchTerm}`);
     setSearchTerm("");
@@ -25,10 +20,10 @@ export const Hero: React.FC = () => {
     <StyledHero>
       <Pattern />
       <FormHold>
-        <FormInner theme={theme}>
+        <FormInner>
           <form onSubmit={handleSearch}>
             <label htmlFor="searchField">Search Input</label>
-            <InputHold theme={theme}>
+            <InputHold>
               <input
                 minLength={3}
                 type="text"
@@ -40,7 +35,6 @@ export const Hero: React.FC = () => {
               />
               {searchTerm ? (
                 <Icon
-                  theme={theme}
                   onClick={() => {
                     setSearchTerm("");
                   }}

@@ -35,10 +35,7 @@ const useOnScreen = (options: ObserverOptions): [{ current: null | HTMLElement }
   return [ref, onScreen];
 };
 
-export const MovieFilters: React.FC<{ theme: ThemeState; parent: { current: null | HTMLElement } }> = ({
-  theme,
-  parent,
-}) => {
+export const MovieFilters: React.FC<{ parent: { current: null | HTMLElement } }> = ({ parent }) => {
   const options: ObserverOptions = {
     root: parent.current,
     rootMargin: "0% -50%",
@@ -57,7 +54,7 @@ export const MovieFilters: React.FC<{ theme: ThemeState; parent: { current: null
 
   return (
     <div>
-      <HeadList theme={theme} filterItem={yearOnScreen}>
+      <HeadList filterItem={yearOnScreen}>
         <p onClick={handleGenre}>By Genre</p>
         <p onClick={handleYear}>By Year</p>
       </HeadList>
@@ -66,7 +63,7 @@ export const MovieFilters: React.FC<{ theme: ThemeState; parent: { current: null
         <Section ref={genreRef}>
           {genreFilter.map((genre, index) => {
             return (
-              <FilterObj theme={theme} key={index} onClick={closeSide}>
+              <FilterObj key={index} onClick={closeSide}>
                 <Link to={`/filter/${genre.toLowerCase()}`}>{genre}</Link>
               </FilterObj>
             );
@@ -75,7 +72,7 @@ export const MovieFilters: React.FC<{ theme: ThemeState; parent: { current: null
         <Section ref={yearRef}>
           {yearFilter.map((year, index) => {
             return (
-              <FilterObj theme={theme} key={index} onClick={closeSide}>
+              <FilterObj key={index} onClick={closeSide}>
                 <Link to={`/filter/${year}`}>{year}</Link>
               </FilterObj>
             );

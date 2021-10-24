@@ -94,13 +94,10 @@ export interface seasonEp {
   seasonEpisode: SeasonEpisode[];
 }
 
-export interface MovieProps extends MovieType {
-  theme: ThemeState;
-}
+export interface MovieProps extends MovieType {}
 
 export interface DisplayProps {
   movies: MovieType[];
-  theme: ThemeState;
 }
 
 export interface SearchProp {
@@ -110,12 +107,10 @@ export interface SearchProp {
 export interface SectionInterface {
   children: React.ReactNode;
   label: string;
-  theme?: ThemeState;
 }
 
 export interface MovieCardProps {
   teaser: boolean;
-  theme: ThemeState;
 }
 
 export interface NavState {

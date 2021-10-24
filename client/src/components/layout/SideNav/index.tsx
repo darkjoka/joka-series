@@ -5,15 +5,12 @@ import { useSelector } from "react-redux";
 import { Section } from "../../Section";
 import { MovieFilters } from "../../MovieFilters";
 import { RootState } from "../../../store/reducers";
-import { ThemeState } from "../../../shared/types/types";
 import { closeSide } from "../../../store/actions/navigation";
 import { bookMarkFilled, close, home, recent } from "../../../shared/constants/svg";
 import { SuperNav, StyledNav, Icon, BaseSection, IconSect, StyledOther } from "./SideNav";
 
 export const SideNav: React.FC = () => {
-  const [sideNavigation, theme]: [boolean, ThemeState] = useSelector((state: RootState) => {
-    return [state.navigation.isSideNavOpen, state.theme];
-  });
+  const sideNavigation: boolean = useSelector((state: RootState) => state.navigation.isSideNavOpen);
 
   const sideRef = React.useRef(null);
 
@@ -23,15 +20,15 @@ export const SideNav: React.FC = () => {
 
   return (
     <SuperNav sideNavStatus={sideNavigation}>
-      <StyledNav ref={sideRef} theme={theme} onClick={handlePropagation}>
-        <Icon theme={theme} onClick={closeSide}>
+      <StyledNav ref={sideRef} onClick={handlePropagation}>
+        <Icon onClick={closeSide}>
           <path d={close.path}></path>
         </Icon>
 
-        <BaseSection theme={theme}>
+        <BaseSection>
           <Link to="/" onClick={closeSide}>
             <Section label={"Home"}>
-              <IconSect theme={theme} viewBox={home.viewBox}>
+              <IconSect viewBox={home.viewBox}>
                 <path d={home.path}></path>
               </IconSect>
             </Section>
@@ -39,7 +36,7 @@ export const SideNav: React.FC = () => {
 
           <Link to="/favorite" onClick={closeSide}>
             <Section label={"Favorited"}>
-              <IconSect theme={theme} viewBox={bookMarkFilled.viewBox}>
+              <IconSect viewBox={bookMarkFilled.viewBox}>
                 <path d={bookMarkFilled.path}></path>
               </IconSect>
             </Section>
@@ -47,7 +44,7 @@ export const SideNav: React.FC = () => {
 
           <Link to="/history" onClick={closeSide}>
             <Section label={"History"}>
-              <IconSect theme={theme} viewBox={recent.viewBox}>
+              <IconSect viewBox={recent.viewBox}>
                 <path d={recent.path}></path>
               </IconSect>
             </Section>
@@ -55,7 +52,7 @@ export const SideNav: React.FC = () => {
         </BaseSection>
 
         <div>
-          <MovieFilters parent={sideRef} theme={theme}></MovieFilters>
+          <MovieFilters parent={sideRef}></MovieFilters>
         </div>
       </StyledNav>
 

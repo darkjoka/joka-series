@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 
 import Movie from "../../components/Movie";
 import { Load } from "../../components/Load";
 import { Error } from "../../elements/Error";
 import { RootState } from "../../store/reducers";
-import { Movies, ThemeState } from "../../shared/types/types";
+import { Movies } from "../../shared/types/types";
 import { populate_filter } from "../../store/actions/populate";
 interface FilterProp {
   match: { params: { filterItem: string } };
 }
 
 export const Filter: React.FC<FilterProp> = ({ match }) => {
-  const [movies, theme]: [Movies, ThemeState] = useSelector((state: RootState) => {
-    return [state.filter, state.theme];
-  });
+  const movies: Movies = useSelector((state: RootState) => state.filter);
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
   const handlePopulation = (data: Movies): void => {
     populate_filter(data);
     setLoading(false);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     (async () => {
       try {
         const response = await fetch(`https://jokaseries.herokuapp.com/filter/${match.params.filterItem}`);
@@ -45,8 +43,8 @@ export const Filter: React.FC<FilterProp> = ({ match }) => {
 
   return (
     <>
-      {!loading && !error && <Movie theme={theme} movies={movies} />}
-      {loading && <Load theme={theme} />}
+      {!loading && !error && <Movie movies={movies} />}
+      {loading && <Load />}
       {error && <Error />}
     </>
   );

@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
 import { Hero } from "../Hero";
@@ -8,17 +7,13 @@ import { Filter } from "../../../views/Filter";
 import { Search } from "../../../views/Search";
 import { History } from "../../../views/History";
 import { Favorite } from "../../../views/Favorite";
-import { RootState } from "../../../store/reducers";
 import { StyledContent, SectionHold } from "./ContentStyle";
 
 export const Content: React.FC = () => {
-  const theme = useSelector((state: RootState) => {
-    return state.theme;
-  });
   return (
     <StyledContent>
       <Hero></Hero>
-      <SectionHold theme={theme}>
+      <SectionHold>
         <section>
           <Switch>
             <Route path="/" exact component={Home} />
