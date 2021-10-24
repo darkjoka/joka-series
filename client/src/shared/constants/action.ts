@@ -11,6 +11,12 @@ export const PUSH_DATA = "PUSH_DATA";
 //Theme
 export const TOGGLE_DARK = "TOGGLE_DARK";
 export const TOGGLE_LIGHT = "TOGGLE_LIGHT";
+export const TOGGLE_DIM = "TOGGLE_DIM";
+
+//Brand
+export const CHANGE_BRAND_HUE = "CHANGE_BRAND_HUE";
+export const CHANGE_BRAND_SATURATION = "CHANGE_BRAND_SATURATION";
+export const CHANGE_BRAND_LIGHTNESS = "CHANGE_BRAND_LIGHTNESS";
 
 //Index List
 export const POPULATE_INDEX = "POPULATE_INDEX";
