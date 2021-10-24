@@ -6,21 +6,28 @@ import { defaultBrand } from "../../themes/base";
 
 const [light, dark, dim] = themes;
 
-const genStore = store.getState();
-const brand: Brand = genStore.brand;
-
 const defaultState: ThemeState = light(defaultBrand);
+
+const getBrand = (): Brand => {
+  const allStore = store.getState();
+  return allStore.brand;
+};
+
+export const getTheme = (): ThemeState => {
+  const allStores = store.getState();
+  return allStores.theme;
+};
 
 const theme = (state: ThemeState = defaultState, action: BaseAction): ThemeState => {
   switch (action.type) {
     case TOGGLE_DARK:
-      return dark(brand);
+      return dark(getBrand());
 
     case TOGGLE_LIGHT:
-      return light(brand);
+      return light(getBrand());
 
     case TOGGLE_DIM:
-      return dim(brand);
+      return dim(getBrand());
 
     default:
       return state;
