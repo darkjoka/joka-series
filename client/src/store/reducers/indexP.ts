@@ -6,7 +6,7 @@ const defaultState: Movies = [];
 export const index = (state: Movies = defaultState, action: MovieAction) => {
   switch (action.type) {
     case POPULATE_INDEX:
-      return action.payLoad;
+      return action.payload;
 
     default:
       return state;

@@ -9,9 +9,9 @@ const defaultState: LocalInterface = {
 export const local = (state: LocalInterface = defaultState, action: MovieAction) => {
   switch (action.type) {
     case AUGMENT_FAVORITE:
-      return { ...state, favorite: action.payLoad };
+      return { ...state, favorite: action.payload };
     case AUGMENT_HISTORY:
-      return { ...state, history: action.payLoad };
+      return { ...state, history: action.payload };
     default:
       return state;
   }

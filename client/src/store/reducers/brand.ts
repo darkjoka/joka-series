@@ -5,7 +5,7 @@ import { defaultBrand } from "../../themes/base";
 export const brand = (state: Brand = defaultBrand, action: BrandAction): Brand => {
   switch (action.type) {
     case CHANGE_BRAND_HUE:
-      let brandHue = action.payLoad;
+      let brandHue = action.payload;
       if (brandHue > 360) {
         brandHue = 360;
       }
@@ -15,7 +15,7 @@ export const brand = (state: Brand = defaultBrand, action: BrandAction): Brand =
       return { ...state, hue: brandHue };
 
     case CHANGE_BRAND_SATURATION:
-      let brandSaturation = action.payLoad;
+      let brandSaturation = action.payload;
       if (brandSaturation > 100) {
         brandSaturation = 100;
       }
@@ -25,7 +25,7 @@ export const brand = (state: Brand = defaultBrand, action: BrandAction): Brand =
       return { ...state, saturation: brandSaturation };
 
     case CHANGE_BRAND_LIGHTNESS:
-      let brandLightness = action.payLoad;
+      let brandLightness = action.payload;
       if (brandLightness > 100) {
         brandLightness = 100;
       }

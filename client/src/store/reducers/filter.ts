@@ -6,7 +6,7 @@ const defaultState: Movies = [];
 export const filter = (state: Movies = defaultState, action: MovieAction) => {
   switch (action.type) {
     case POPULATE_FILTER:
-      return action.payLoad;
+      return action.payload;
 
     default:
       return state;
