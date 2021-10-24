@@ -42,6 +42,7 @@ export interface NavigationState {
 
 export interface ThemeState {
   name: Theme;
+  brand: string;
   primaryText: string;
   secondaryText: string;
   primaryBackground: string;
