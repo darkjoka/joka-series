@@ -47,6 +47,8 @@ export interface ThemeState {
   secondaryText: string;
   primaryBackground: string;
   secondaryBackground: string;
+  shadow: string;
+  shadowStrength: number;
 }
 
 // primaryColor: string;

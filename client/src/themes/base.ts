@@ -19,5 +19,7 @@ export const theme = (identifier: (brand: Brand) => ThemeProperties, brand: Bran
     secondaryText: selectTheme.text2,
     primaryBackground: selectTheme.surface1,
     secondaryBackground: selectTheme.surface2,
+    shadow: selectTheme.surfaceShadow,
+    shadowStrength: selectTheme.shadowStrength,
   };
 };
