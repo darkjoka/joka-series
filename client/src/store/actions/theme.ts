@@ -1,15 +1,25 @@
 import { TOGGLE_DARK, TOGGLE_DIM, TOGGLE_LIGHT } from "../../shared/constants/action";
 import { store } from "..";
-import { getBrand } from "../reducers/theme";
+import { getBrand, getTheme } from "../reducers/theme";
+import { Theme } from "../../shared/types/types";
 
 export const toggleDark = (): void => {
-  store.dispatch({ type: TOGGLE_DARK, payload: getBrand() });
+  const theme = getTheme();
+  if (theme.name !== Theme.dark) {
+    store.dispatch({ type: TOGGLE_DARK, payload: getBrand() });
+  }
 };
 
 export const toggleLight = (): void => {
-  store.dispatch({ type: TOGGLE_LIGHT, payload: getBrand() });
+  const theme = getTheme();
+  if (theme.name !== Theme.light) {
+    store.dispatch({ type: TOGGLE_LIGHT, payload: getBrand() });
+  }
 };
 
 export const toggleDim = (): void => {
-  store.dispatch({ type: TOGGLE_DIM, payload: getBrand() });
+  const theme = getTheme();
+  if (theme.name !== Theme.dim) {
+    store.dispatch({ type: TOGGLE_DIM, payload: getBrand() });
+  }
 };
