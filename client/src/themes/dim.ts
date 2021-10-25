@@ -12,7 +12,7 @@ const dimColors = (brand: Brand): ThemeProperties => {
     surface3: color(brand.hue, 5, 30),
     surface4: color(brand.hue, 5, 35),
     surfaceShadow: color(brand.hue, 30, 13),
-    shadowStrength: 0.2,
+    shadowStrength: 0.6,
   };
 };
 
