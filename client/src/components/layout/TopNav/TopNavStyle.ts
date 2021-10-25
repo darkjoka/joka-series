@@ -2,11 +2,9 @@ import styled from "styled-components";
 
 import { device } from "../../../shared/constants/device";
 import { menu, preserveAspectRatio } from "../../../shared/constants/svg";
-import { getThemeVariables } from "../../../lib/utils-theme";
 
-const visual = getThemeVariables();
-
-export const Nav = styled.nav`
+export const Nav = styled.nav(
+  ({ theme: { theme } }) => `
   height: 64px;
   display: flex;
   justify-content: center;
@@ -14,16 +12,11 @@ export const Nav = styled.nav`
   padding: 0 0.5em;
   position: fixed;
   width: 100%;
-  background-color: ${() => {
-    return visual.theme.primaryBackground;
-  }};
-
-  /* ${({ theme }) => {
-    return `background: ${theme.primaryColor}; box-shadow: 0 5px 4px -4px ${theme.shadow}; border-bottom: 4px solid ${theme.border}`;
-  }}; */
+  background-color: ${theme.primaryBackground};
   margin: 0;
   z-index: 4;
-`;
+`
+);
 
 export const Hold = styled.div`
   width: inherit;
@@ -45,31 +38,35 @@ export const Hold = styled.div`
   }
 `;
 
-export const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })`
+export const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })(
+  ({ theme: { theme } }) => `
   width: 48px;
   height: 48px;
-  fill: ${visual.theme.brand};
+  fill: ${theme.brand};
   cursor: pointer;
 
   @media ${device.laptopL} {
     display: none;
   }
-`;
+`
+);
 
-export const ThemeIcon = styled.svg.attrs({ preserveAspectRatio })`
+export const ThemeIcon = styled.svg.attrs({ preserveAspectRatio })(
+  ({ theme: { theme } }) => `
   width: 24px;
   height: 24px;
-  fill: ${visual.theme.brand};
   cursor: pointer;
-`;
+  fill: ${theme.brand};
+`
+);
 
 export const IconSect = styled.svg.attrs({ preserveAspectRatio })`
-  fill: ${visual.theme.brand};
   width: 20px;
   height: 20px;
 `;
 
-export const BaseSection = styled.div`
+export const BaseSection = styled.div(
+  ({ theme: { theme } }) => `
   justify-content: space-evenly;
   display: none;
 
@@ -78,6 +75,7 @@ export const BaseSection = styled.div`
   }
   a {
     text-decoration: none;
-    color: ${visual.theme.brand};
+    color: ${theme.brand};
   }
-`;
+`
+);

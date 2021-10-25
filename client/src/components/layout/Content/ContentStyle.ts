@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import { ThemeState } from "../../../shared/types/types";
 import { device } from "../../../shared/constants/device";
 
 export const StyledContent = styled.main`
@@ -33,9 +32,11 @@ export const StyledContent = styled.main`
   }
 `;
 
-export const SectionHold = styled.div<{ theme: ThemeState }>`
+export const SectionHold = styled.div(
+  ({ theme: { theme } }) => `
   margin-top: -65px;
-  background: ${({ theme }) => theme.primBG};
+  background-color: ${theme.primaryBackground};
   min-height: 80vh;
-  color: ${({ theme }) => theme.primaryInverse};
-`;
+  color: ${theme.brand}
+`
+);

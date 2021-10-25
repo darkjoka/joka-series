@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import { ThemeState } from "../../../shared/types/types";
 import { device } from "../../../shared/constants/device";
 import { close, preserveAspectRatio } from "../../../shared/constants/svg";
 
@@ -20,13 +19,14 @@ export const FormHold = styled.div`
   top: calc(64px + 8em);
 `;
 
-export const FormInner = styled.div<{ theme: ThemeState }>`
+export const FormInner = styled.div(
+  ({ theme: { theme } }) => `
   width: 100%;
   height: 78px;
-  background: ${({ theme }) => theme.primaryColor};
+  background-color: ${theme.primaryBackground};
   border-radius: 16px;
-  box-shadow: 0 10px 24px ${({ theme }) => theme.shadow};
-  border: 4px solid ${({ theme }) => theme.border};
+  box-shadow: 0 10px  ${24}px ${-4.2 / theme.shadowStrength}px ${theme.shadow};
+  // border: 4px solid ${theme.shadow};
   display: grid;
   place-items: center;
   max-width: 600px;
@@ -42,8 +42,8 @@ export const FormInner = styled.div<{ theme: ThemeState }>`
 
   input[type="submit"] {
     --webkit-appearance: none;
-    background: ${({ theme }) => theme.accentColor};
-    color: ${({ theme }) => theme.primaryColor};
+    background: ${theme.brand};
+    color: ${theme.primaryText};
     height: 42px;
     border: 0;
     margin-left: 10px;
@@ -65,11 +65,12 @@ export const FormInner = styled.div<{ theme: ThemeState }>`
     position: absolute;
     z-index: -1;
   }
-`;
+`
+);
 
-export const InputHold = styled.div<{ theme: ThemeState }>`
+export const InputHold = styled.div(
+  ({ theme: { theme } }) => `
   width: inherit;
-  background: ${({ theme }) => theme.tertiaryColor};
   display: flex;
   align-items: center;
   border-radius: 8px;
@@ -78,24 +79,25 @@ export const InputHold = styled.div<{ theme: ThemeState }>`
 
   input[type="text"] {
     width: inherit;
-    color: ${({ theme }) => theme.primaryInverse};
     height: 36px;
+    color: ${theme.primaryText};
     width: inherit;
     border: none;
     outline: none;
     background-color: transparent;
     font-size: 1em;
   }
-`;
+`
+);
 
-export const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })<{
-  theme: ThemeState;
-}>`
+export const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })(
+  ({ theme: { theme } }) => `
   width: 20px;
   height: 20px;
-  fill: ${({ theme }) => theme.primaryColor};
-  background-color: ${({ theme }) => theme.accentColor};
+  fill: ${theme.primaryText};
+  background-color: ${theme.brand};
   padding: 0px;
   border-radius: 4px;
   margin-left: 8px;
-`;
+`
+);

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import { ThemeState } from "../../../shared/types/types";
 import { device } from "../../../shared/constants/device";
 import { close, preserveAspectRatio } from "../../../shared/constants/svg";
 
@@ -13,19 +12,19 @@ export const SuperNav = styled.nav<{ sideNavStatus: boolean }>`
   display: flex;
 `;
 
-export const StyledNav = styled.div<{ theme: ThemeState }>`
+export const StyledNav = styled.div(
+  ({ theme: { theme } }) => `
   width: 70vw;
   overflow-y: scroll;
   height: 100vh;
-  ${({ theme }) => {
-    return `background: ${theme.primaryColor}; border-right: 4px solid ${theme.accentColor};`;
-  }}
   padding: 12px;
+  background-color: ${theme.primaryBackground};
 
   @media ${device.tablet} {
     width: 30vw;
   }
-`;
+`
+);
 
 export const StyledOther = styled.div`
   width: 30vw;
@@ -35,29 +34,26 @@ export const StyledOther = styled.div`
   }
 `;
 
-export const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })<{
-  theme: ThemeState;
-}>`
+export const Icon = styled.svg.attrs({ viewBox: close.viewBox, preserveAspectRatio })(
+  ({ theme: { theme } }) => `
   width: 48px;
   height: 48px;
-  fill: ${({ theme }) => {
-    return theme.accentColor;
-  }};
+  fill: ${theme.brand};
   cursor: pointer;
-`;
+`
+);
 
-export const IconSect = styled.svg.attrs({ preserveAspectRatio })<{
-  theme: ThemeState;
-}>`
+export const IconSect = styled.svg.attrs({ preserveAspectRatio })(
+  ({ theme: { theme } }) => `
   width: 20px;
   height: 20px;
-  fill: ${({ theme }) => {
-    return theme.primaryInverse;
-  }};
+  fill: ${theme.brand};
   cursor: pointer;
-`;
+`
+);
 
-export const BaseSection = styled.div<{ theme: ThemeState }>`
+export const BaseSection = styled.div(
+  ({ theme: { theme } }) => `
   display: flex;
   flex-direction: column;
   height: 128px;
@@ -65,6 +61,7 @@ export const BaseSection = styled.div<{ theme: ThemeState }>`
 
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.primaryInverse};
+    color: ${theme.brand};
   }
-`;
+`
+);
