@@ -15,6 +15,7 @@ export const Nav = styled.nav(
   background-color: ${theme.primaryBackground};
   margin: 0;
   z-index: 4;
+  box-shadow: 0 10px  ${24}px ${-4.2 / theme.shadowStrength}px ${theme.shadow};
 `
 );
 

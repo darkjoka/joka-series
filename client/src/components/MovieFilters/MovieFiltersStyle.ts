@@ -1,20 +1,19 @@
 import styled from "styled-components";
 
-import { ThemeState } from "../../shared/types/types";
-
-export const HeadList = styled.div<{ theme: ThemeState; filterItem: boolean }>`
+export const HeadList = styled.div<{ filterItem: boolean }>`
+  margin-top: 2em;
   display: flex;
   justify-content: space-between;
   width: 70%;
   position: relative;
-  color: ${({ theme }) => theme.primaryInverse};
+  color: ${({ theme: { theme } }) => theme.primaryText};
 
   &::after {
     position: absolute;
     content: "";
     width: 100%;
     height: 2px;
-    background: linear-gradient(to right, ${({ theme }) => theme.accentColor} 50%, transparent 50%);
+    background: linear-gradient(to right, ${({ theme: { theme } }) => theme.brand} 50%, transparent 50%);
     bottom: -16px;
     transform: translateX(
       ${({ filterItem }) => {
@@ -40,10 +39,10 @@ export const Content = styled.div`
   scroll-behavior: smooth;
 `;
 
-export const FilterObj = styled.div<{ key: number; theme: ThemeState }>`
+export const FilterObj = styled.div<{ key: number }>`
   display: grid;
   place-items: center;
-  background-color: ${({ theme }) => theme.tertiaryColor};
+  background-color: ${({ theme: { theme } }) => theme.primaryBackground};
   width: 95%;
   border-radius: 4px;
   height: 30px;
@@ -51,7 +50,7 @@ export const FilterObj = styled.div<{ key: number; theme: ThemeState }>`
 
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.primaryInverse};
+    color: ${({ theme: { theme } }) => theme.secondaryText};
     width: inherit;
     height: inherit;
     display: grid;
@@ -70,4 +69,8 @@ export const Section = styled.div`
   width: 100%;
   margin-top: 32px;
   scroll-snap-align: start;
+  padding: 8px;
+  background-color: ${({ theme: { theme } }) => theme.secondaryBackground};
+  box-shadow: 0 4px 0 hsla(0, 0%, 100%, 0.15), inset 0 4px 4px hsla(0, 0%, 0%, 0.1);
+  border-radius: 4px;
 `;

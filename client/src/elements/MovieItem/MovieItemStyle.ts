@@ -1,20 +1,21 @@
 import styled from "styled-components";
 
-import { ThemeState } from "../../shared/types/types";
 import { device } from "../../shared/constants/device";
 import { bookMark, preserveAspectRatio, camera } from "../../shared/constants/svg";
+import { darken, lighten, opacify } from "../../lib/utils-theme";
 
-export const Card = styled.div<{ theme: ThemeState }>`
+export const Card = styled.div(
+  ({ theme: { theme } }) => `
   width: 100%;
-  border: 2px solid ${({ theme }) => theme.tertiaryColor};
+  border: 2px solid ${theme.secondaryBackground};
   padding: 4px;
   border-radius: 4px 4px 0 0;
   margin: 8px 0px;
   position: relative;
-  background-color: ${({ theme }) => theme.primaryColor};
+  background-color: ${theme.primaryBackground};
   font-size: 0.9em;
   display: flex;
-  color: ${({ theme }) => theme.primaryInverse};
+  color: ${theme.secondaryText};
 
   @media ${device.mobileM} {
     font-size: 1em;
@@ -26,12 +27,13 @@ export const Card = styled.div<{ theme: ThemeState }>`
     margin: 8px;
     padding: 2px;
   }
-`;
+`
+);
 
-export const ImageHold = styled.div<{ theme: ThemeState }>`
+export const ImageHold = styled.div`
   display: grid;
   place-items: center;
-  background-color: ${({ theme }) => theme.tertiaryColor};
+  background-color: ${({ theme: { theme } }) => theme.secondaryBackground};
   border-radius: 4px;
   aspect-ratio: 250/350;
   height: 150px;
@@ -64,7 +66,6 @@ export const ImageHold = styled.div<{ theme: ThemeState }>`
 
 export const CardContent = styled.div<{
   teaser: string | undefined;
-  theme: ThemeState;
 }>`
   margin-left: 4px;
   display: flex;
@@ -81,7 +82,7 @@ export const CardContent = styled.div<{
     margin-top: -68px;
     margin-left: -1px;
     width: calc(100% + 3px);
-    background-color: ${({ theme }) => theme.primaryColor};
+    background-color: ${({ theme: { theme } }) => theme.primaryBackground};
     height: 100%;
   }
 `;
@@ -90,6 +91,7 @@ export const Title = styled.p`
   font-weight: bold;
   width: calc(100% - 12px);
   margin-bottom: 8px;
+  color: ${({ theme: { theme } }) => theme.primaryText};
 
   &:hover {
     cursor: pointer;
@@ -99,30 +101,31 @@ export const Title = styled.p`
 export const Icon = styled.svg.attrs({
   viewBox: bookMark.viewBox,
   preserveAspectRatio,
-})<{ theme: ThemeState }>`
+})(
+  ({ theme: { theme } }) => `
   width: 24px;
   height: 24px;
   position: absolute;
   right: 5px;
-  fill: ${({ theme }) => theme.tertiaryColor};
+  fill: ${theme.secondaryText};
   &:hover {
     cursor: pointer;
-    fill: ${({ theme }) => theme.accentColor};
+    fill: ${theme.brand};
   }
 
   @media ${device.tablet} {
-    fill: ${({ theme }) => theme.primaryColor};
     top: 5px;
   }
-`;
+`
+);
 
 export const CamIcon = styled.svg.attrs({
   viewBox: camera.viewBox,
   preserveAspectRatio,
-})<{ theme: ThemeState }>`
+})`
   width: 32px;
   height: 32px;
-  fill: ${({ theme }) => theme.primaryColor};
+  fill: ${({ theme: { theme } }) => theme.secondaryText};
 
   @media ${device.tablet} {
     transform: translate3d(-10px, -30px, 0);
@@ -141,45 +144,69 @@ export const AltButtons = styled.div`
   }
 `;
 
-export const Favorite = styled.div<{ theme: ThemeState }>`
+export const Favorite = styled.div(
+  ({ theme: { theme } }) => `
   height: 32px;
   display: grid;
   place-items: center;
-  border: 1px solid ${({ theme }) => theme.accentColor};
+  border: 1px solid ${theme.primaryText};
   width: 86px;
   border-radius: 4px;
-  color: ${({ theme }) => theme.accentColor};
+  color: ${theme.secondaryText};
 
-  &:hover {
-    cursor: pointer;
-    background-color: ${({ theme }) => theme.accentColor};
-    color: ${({ theme }) => theme.primaryColor};
+  &:hover{
+    @media ${device.laptop}{
+      cursor: pointer;
+      background-color: ${opacify(lighten(theme.primaryText, 0.7), 20)};
+      border-color: ${opacify(lighten(theme.primaryText, 0.7), 20)};
+      color: ${theme.primaryText};
+
+    }
   }
+  &:active{
+    background-color: ${opacify(lighten(theme.primaryText, 0.7), 20)};
+    border-color: ${opacify(lighten(theme.primaryText, 0.7), 20)};
+    color: ${theme.primaryText};
+  }
+
 
   @media ${device.mobileM} {
     width: 102px;
   }
-`;
+`
+);
 
-export const Download = styled.div<{ theme: ThemeState }>`
+export const Download = styled.div(
+  ({ theme: { theme } }) => `
   height: 32px;
   display: grid;
   place-items: center;
-  background-color: ${({ theme }) => theme.accentColor};
-  color: ${({ theme }) => theme.primaryColor};
+  background-color: ${theme.primaryText};
+  color: ${theme.primaryBackground};
   width: 78px;
   border-radius: 4px;
   margin-left: 4px;
   margin-right: 4px;
 
   &:hover {
+    @media ${device.laptop}{
     cursor: pointer;
-    color: ${({ theme }) => theme.accentColor};
-    background-color: transparent;
-    border: 1px solid ${({ theme }) => theme.accentColor};
+    border: 1px solid ${theme.primaryText};
+    background-color: ${darken(theme.primaryText, 0.5)};
+    color: ${theme.primaryBackground};
+
   }
+}
+
+  &:active {
+    border: 1px solid ${theme.primaryText};
+    background-color: ${darken(theme.primaryText, 0.5)}
+    color: ${theme.primaryBackground};
+  }
+  
 
   @media ${device.mobileM} {
     width: 102px;
   }
-`;
+`
+);

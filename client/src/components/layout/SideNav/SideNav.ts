@@ -19,6 +19,7 @@ export const StyledNav = styled.div(
   height: 100vh;
   padding: 12px;
   background-color: ${theme.primaryBackground};
+  box-shadow: 10px 0  ${24}px ${-2.2 / theme.shadowStrength}px ${theme.shadow};
 
   @media ${device.tablet} {
     width: 30vw;
@@ -61,7 +62,7 @@ export const BaseSection = styled.div(
 
   a {
     text-decoration: none;
-    color: ${theme.brand};
+    color: ${theme.primaryText};
   }
 `
 );
