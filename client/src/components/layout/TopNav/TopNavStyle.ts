@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
-import { ThemeState } from "../../../shared/types/types";
 import { device } from "../../../shared/constants/device";
 import { menu, preserveAspectRatio } from "../../../shared/constants/svg";
 import { getThemeVariables } from "../../../lib/utils-theme";
 
 const visual = getThemeVariables();
 
-export const Nav = styled.nav<{ theme: ThemeState }>`
+export const Nav = styled.nav`
   height: 64px;
   display: flex;
   justify-content: center;
@@ -15,15 +14,15 @@ export const Nav = styled.nav<{ theme: ThemeState }>`
   padding: 0 0.5em;
   position: fixed;
   width: 100%;
-
-  ${({ theme }) => {
-    return `background: ${theme.primaryColor}; box-shadow: 0 5px 4px -4px ${theme.shadow}; border-bottom: 4px solid ${theme.border}`;
+  background-color: ${() => {
+    return visual.theme.primaryBackground;
   }};
+
+  /* ${({ theme }) => {
+    return `background: ${theme.primaryColor}; box-shadow: 0 5px 4px -4px ${theme.shadow}; border-bottom: 4px solid ${theme.border}`;
+  }}; */
   margin: 0;
   z-index: 4;
-  background: ${() => {
-    return visual.theme.primaryText;
-  }};
 `;
 
 export const Hold = styled.div`
@@ -46,14 +45,10 @@ export const Hold = styled.div`
   }
 `;
 
-export const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })<{
-  theme: ThemeState;
-}>`
+export const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRatio })`
   width: 48px;
   height: 48px;
-  fill: ${({ theme }) => {
-    return theme.accentColor;
-  }};
+  fill: ${visual.theme.brand};
   cursor: pointer;
 
   @media ${device.laptopL} {
@@ -61,23 +56,15 @@ export const Icon = styled.svg.attrs({ viewBox: menu.viewBox, preserveAspectRati
   }
 `;
 
-export const ThemeIcon = styled.svg.attrs({ preserveAspectRatio })<{
-  theme: ThemeState;
-}>`
+export const ThemeIcon = styled.svg.attrs({ preserveAspectRatio })`
   width: 24px;
   height: 24px;
-  fill: ${({ theme }) => {
-    return theme.accentColor;
-  }};
+  fill: ${visual.theme.brand};
   cursor: pointer;
 `;
 
-export const IconSect = styled.svg.attrs({ preserveAspectRatio })<{
-  theme: ThemeState;
-}>`
-  fill: ${({ theme }) => {
-    return theme.primaryInverse;
-  }};
+export const IconSect = styled.svg.attrs({ preserveAspectRatio })`
+  fill: ${visual.theme.brand};
   width: 20px;
   height: 20px;
 `;
@@ -91,6 +78,6 @@ export const BaseSection = styled.div`
   }
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.primaryInverse};
+    color: ${visual.theme.brand};
   }
 `;
