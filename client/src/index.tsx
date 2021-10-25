@@ -6,6 +6,8 @@ import { store } from "./store";
 import { Provider } from "react-redux";
 import GlobalStyle from "./shared/GlobalStyle";
 import { Meta } from "./elements/Meta";
+import { getThemeVariables } from "./lib/utils-theme";
+import { ThemeProvider } from "styled-components";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,7 +18,9 @@ ReactDOM.render(
         image=""
         description="Download all lastest and newest low-sized high quality 480p tv series for free without disturbing ads jumping into your face every second"
       />
-      <App />
+      <ThemeProvider theme={getThemeVariables()}>
+        <App />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
