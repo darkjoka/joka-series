@@ -5,8 +5,9 @@ import { Section } from "../../Section";
 import { openSide } from "../../../store/actions/navigation";
 import { toggleDark, toggleDim, toggleLight } from "../../../store/actions/theme";
 import { Nav, Hold, Icon, BaseSection, IconSect, ThemeIcon } from "./TopNavStyle";
-import { bookMarkFilled, home, menu, moon, recent, sun } from "../../../shared/constants/svg";
+import { bookMarkFilled, dim, home, menu, moon, recent, sun } from "../../../shared/constants/svg";
 import { getTheme } from "../../../store/reducers/theme";
+import { Theme } from "../../../shared/types/types";
 
 export const TopNav: React.FC = () => {
   const theme = getTheme();
@@ -43,18 +44,18 @@ export const TopNav: React.FC = () => {
           </Link>
         </BaseSection>
 
-        {1 && (
-          <ThemeIcon viewBox={sun.viewBox} onClick={toggleDark}>
+        {theme.name === Theme.dark && (
+          <ThemeIcon viewBox={sun.viewBox} onClick={toggleLight}>
             <path d={sun.path}></path>
           </ThemeIcon>
         )}
-        {1 && (
-          <ThemeIcon viewBox={sun.viewBox} onClick={toggleDim}>
-            <path d={sun.path}></path>
+        {theme.name === Theme.light && (
+          <ThemeIcon viewBox={dim.viewBox} onClick={toggleDim}>
+            <path d={dim.path}></path>
           </ThemeIcon>
         )}
-        {1 && (
-          <ThemeIcon viewBox={moon.viewBox} onClick={toggleLight}>
+        {theme.name === Theme.dim && (
+          <ThemeIcon viewBox={moon.viewBox} onClick={toggleDark}>
             <path d={moon.path}></path>
           </ThemeIcon>
         )}
