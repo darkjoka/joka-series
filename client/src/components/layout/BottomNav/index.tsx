@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 import { useSelector } from "react-redux";
 
@@ -19,30 +19,10 @@ const BottomNav: React.FC = () => {
     }
   );
 
-  // const addToHistory = () => {
-  //   const [title, imageSource, teaser, permaLink] = [
-  //     detail.title,
-  //     detail.heroImage,
-  //     detail.description,
-  //     link,
-  //   ];
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
-  //   let history = handleLocalFetch("history");
-
-  //   if (
-  //     !history.some((movie) => {
-  //       return movie.title === title;
-  //     })
-  //   ) {
-  //     history = history.concat([{ title, imageSource, teaser, permaLink }]);
-  //   }
-  //   localStorage.setItem("history", JSON.stringify(history)); // update local storage
-  // };
-
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
+  React.useEffect(() => {
     if (link && bottomNavigation) {
       console.log("here got");
       console.log(thumbUrl);
@@ -75,7 +55,7 @@ const BottomNav: React.FC = () => {
         setError(false);
       };
     }
-  }, [link, bottomNavigation, detail]);
+  }, [link, bottomNavigation, detail, thumbUrl]);
 
   return createPortal(
     <StyledNav isBottomNavOpen={bottomNavigation}>

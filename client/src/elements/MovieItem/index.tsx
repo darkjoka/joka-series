@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { pushLink, pushThumbUrl } from "../../store/actions/current";
 import { openBottom } from "../../store/actions/navigation";
-import { augmentFavorite } from "../../store/actions/local";
-import { Movies, MovieProps } from "../../shared/types/types";
+import { MovieProps } from "../../shared/types/types";
 import { bookMark, bookMarkFilled, camera } from "../../shared/constants/svg";
 import { Card, ImageHold, CamIcon, CardContent, Title, AltButtons, Download, Icon, Favorite } from "./MovieItemStyle";
-import { localAdd, localFetch, localSet } from "../../lib/utils-local";
+import { localToggle } from "../../lib/utils-local";
 
-export const MovieItem: React.FC<MovieProps> = ({ imageSource, title, teaser, permaLink }) => {
-  const [localFavoriteStore, setLocalFavoriteStore] = useState<Movies>(localFetch("favorite"));
+export const MovieItem: React.FC<MovieProps> = ({ imageSource, title, teaser, permaLink, local, setLocal }) => {
+  const handleBookmark = (): void => {
+    setLocal(localToggle("favorite", { imageSource, title, teaser, permaLink }, local));
+  };
 
   const handleDownload = () => {
     pushLink(permaLink);
@@ -31,8 +32,8 @@ export const MovieItem: React.FC<MovieProps> = ({ imageSource, title, teaser, pe
         <Title onClick={handleDownload}>{title}</Title>
         {teaser ? <p>{teaser.slice(0, 70)}...</p> : ""}
         <AltButtons>
-          <Favorite onClick={() => console.log("favorited")}>
-            {localFavoriteStore.some((movie) => {
+          <Favorite onClick={handleBookmark}>
+            {local.some((movie) => {
               return movie.title === title;
             })
               ? "Unfavorite"
@@ -42,10 +43,10 @@ export const MovieItem: React.FC<MovieProps> = ({ imageSource, title, teaser, pe
         </AltButtons>
       </CardContent>
 
-      <Icon onClick={() => console.log("favorited")}>
+      <Icon onClick={handleBookmark}>
         <path
           d={
-            localFavoriteStore.some((movie) => {
+            local.some((movie) => {
               return movie.title === title;
             })
               ? bookMarkFilled.path
