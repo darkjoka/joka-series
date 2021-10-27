@@ -1,16 +1,15 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
 import MovieDisplay from "../../components/Movie";
-import { RootState } from "../../store/reducers";
 import { Movies } from "../../shared/types/types";
+import { useLocal } from "../../shared/hooks/useLocal";
 
 export const Favorite = () => {
-  const favorites: Movies = useSelector((state: RootState) => state.local.favorite);
+  const [favorites, setFavorites] = useLocal("favorite", [] as Movies);
 
   return (
     <>
-      <MovieDisplay movies={favorites} />
+      <MovieDisplay movies={favorites} local={favorites} setLocal={setFavorites} />
     </>
   );
 };

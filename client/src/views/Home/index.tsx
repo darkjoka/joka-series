@@ -7,9 +7,11 @@ import { Error } from "../../elements/Error";
 import { RootState } from "../../store/reducers";
 import { populate_index } from "../../store/actions/populate";
 import { Movies } from "../../shared/types/types";
+import { useLocal } from "../../shared/hooks/useLocal";
 
 export const Home = () => {
   const movies: Movies = useSelector((state: RootState) => state.index);
+  const [local, setLocal] = useLocal("favorite", [] as Movies);
 
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
@@ -45,7 +47,7 @@ export const Home = () => {
 
   return (
     <>
-      {!loading && !error && <Movie movies={movies} />}
+      {!loading && !error && <Movie movies={movies} local={local} setLocal={setLocal} />}
       {loading && <Load />}
       {error && <Error />}
     </>

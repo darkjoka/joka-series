@@ -54,17 +54,6 @@ export interface ThemeState {
   shadowStrength: number;
 }
 
-// primaryColor: string;
-// primaryInverse: string;
-// secondaryColor: string;
-// secondaryInverse: string;
-// tertiaryColor: string;
-// gradColor: string;
-// accentColor: string;
-// shadow: string;
-// border: string;
-// primBG: string;
-
 export interface BaseAction {
   type: string;
 }
@@ -103,10 +92,15 @@ export interface seasonEp {
   seasonEpisode: SeasonEpisode[];
 }
 
-export interface MovieProps extends MovieType {}
+export interface MovieProps extends MovieType {
+  local: Movies;
+  setLocal: (value: Movies) => void;
+}
 
 export interface DisplayProps {
   movies: MovieType[];
+  local: Movies;
+  setLocal: (value: Movies) => void;
 }
 
 export interface SearchProp {
