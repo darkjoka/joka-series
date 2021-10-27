@@ -13,9 +13,11 @@ import { DetailState } from "../../../shared/types/types";
 import { MovieDetailSkeleton } from "../../skeleton/MovieDetailSkeleton";
 
 const BottomNav: React.FC = () => {
-  const [bottomNavigation, link, detail]: [boolean, string, DetailState] = useSelector((state: RootState) => {
-    return [state.navigation.isBottomSectOpen, state.current.link, state.current.detail];
-  });
+  const [bottomNavigation, link, detail, thumbUrl]: [boolean, string, DetailState, string] = useSelector(
+    (state: RootState) => {
+      return [state.navigation.isBottomSectOpen, state.current.link, state.current.detail, state.current.thumbUrl];
+    }
+  );
 
   // const addToHistory = () => {
   //   const [title, imageSource, teaser, permaLink] = [
@@ -43,6 +45,7 @@ const BottomNav: React.FC = () => {
   useEffect(() => {
     if (link && bottomNavigation) {
       console.log("here got");
+      console.log(thumbUrl);
       const broken = link.split("/");
       const handleCurrent = (data: DetailState): void => {
         pushData(data);

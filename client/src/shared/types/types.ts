@@ -18,6 +18,7 @@ export interface DetailState {
 }
 export interface CurrentState {
   link: string;
+  thumbUrl: string;
   detail: DetailState;
 }
 

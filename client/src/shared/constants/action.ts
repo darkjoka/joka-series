@@ -7,6 +7,7 @@ export const CLOSE_BOTTOM = "CLOSE_BOTTOM_NAV";
 // Series Detail
 export const PUSH_LINK = "PUSH_LINK";
 export const PUSH_DATA = "PUSH_DATA";
+export const PUSH_THUMB = "PUSH_THUMB";
 
 //Theme
 export const TOGGLE_DARK = "TOGGLE_DARK";

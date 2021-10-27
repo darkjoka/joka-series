@@ -1,8 +1,9 @@
-import { PUSH_DATA, PUSH_LINK } from "../../shared/constants/action";
+import { PUSH_DATA, PUSH_LINK, PUSH_THUMB } from "../../shared/constants/action";
 import { CurrentState, CurrAction } from "../../shared/types/types";
 
 const defaultState: CurrentState = {
   link: "",
+  thumbUrl: "",
   detail: {
     title: "",
     heroImage: "",
@@ -19,6 +20,9 @@ export const current = (state: CurrentState = defaultState, action: CurrAction):
 
     case PUSH_DATA:
       return typeof action.payload === "object" ? { ...state, detail: action.payload } : state;
+
+    case PUSH_THUMB:
+      return typeof action.payload === "string" ? { ...state, thumbUrl: action.payload } : state;
 
     default:
       return state;
