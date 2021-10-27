@@ -1,67 +1,27 @@
 import { Movies, MovieType } from "../shared/types/types";
-import { augmentFavorite } from "../store/actions/local";
 
-export const localFetch = (store: string): Movies => {
-  // fetch and return movies from specified store
+export const localFetch = <T>(store: string, defaultState: T): T => {
+  // fetch and return item(s) of type T from specified store
   const item = localStorage.getItem(store);
 
   if (item) {
     return JSON.parse(item);
   }
-  return [];
+  return defaultState;
 };
 
-export const localSet = (store: string, payLoad: Movies): void => {
-  // set specified store to movies
-  localStorage.setItem(store, JSON.stringify(payLoad));
+export const localSet = <T>(store: string, value: T): void => {
+  // set store to item(s) of type T
+  localStorage.setItem(store, JSON.stringify(value));
 };
 
-export const isLocalEmpty = (store: string): boolean => {
-  // return true if specified store is empty and false otherwise
-  return Boolean(localStorage.getItem(store));
-};
-
-export const localAdd = (store: string, currMovie: MovieType, toggle: boolean = true): Movies => {
-  // fetch and add a movie to specified store
-  let items: Movies = localFetch(store);
-
-  if (
-    items.some((movie) => {
-      return movie.title === currMovie.title;
-    }) &&
-    toggle
-  ) {
-    items = items.filter((series) => {
-      return series.title !== currMovie.title;
+export const localToggle = (store: string, curr: MovieType, local: Movies): Movies => {
+  if (local.some((movie) => movie.title === curr.title)) {
+    local = local.filter((series) => {
+      return series.title !== curr.title;
     });
   } else {
-    items = [{ ...currMovie }].concat(items);
+    local = [{ ...curr }].concat(local);
   }
-
-  return items;
+  return local;
 };
-
-export const updateLocal = (
-  items: Movies,
-  store: string,
-  callback: (data: Movies) => React.Dispatch<React.SetStateAction<Movies>>
-): void => {
-  localSet(store, items);
-  callback(items);
-};
-
-const syncLocal = (movies: Movies): void => {
-  // syncs app state with localStorage
-  augmentFavorite(movies);
-};
-
-// export const handleBookmark = ({ title, teaser, permaLink, imageSource }): void => {
-//   let favorites = localAdd("favorite", {
-//     title,
-//     teaser,
-//     permaLink,
-//     imageSource,
-//   });
-//   //   updateLocal(favorites, "favorite");
-//   syncLocal(favorites);
-// };
