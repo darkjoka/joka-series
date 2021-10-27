@@ -1,8 +1,5 @@
-import Movie from "../../components/Movie";
-import { pushLink, pushThumbUrl } from "../../store/actions/current";
-import { augmentFavorite } from "../../store/actions/local";
-import { openBottom } from "../../store/actions/navigation";
-import { Movies, MovieType } from "../types/types";
+import { Movies, MovieType } from "../shared/types/types";
+import { augmentFavorite } from "../store/actions/local";
 
 export const localFetch = (store: string): Movies => {
   // fetch and return movies from specified store

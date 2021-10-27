@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import Movie from "../../components/Movie";
-import { localFetch } from "../../shared/lib/local-utils";
+import { localFetch } from "../../lib/utils-local";
 
 export const History = () => {
   const [movies] = useState(localFetch("history"));

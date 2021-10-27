@@ -6,7 +6,7 @@ import { augmentFavorite } from "../../store/actions/local";
 import { Movies, MovieProps } from "../../shared/types/types";
 import { bookMark, bookMarkFilled, camera } from "../../shared/constants/svg";
 import { Card, ImageHold, CamIcon, CardContent, Title, AltButtons, Download, Icon, Favorite } from "./MovieItemStyle";
-import { localAdd, localFetch, localSet } from "../../shared/lib/local-utils";
+import { localAdd, localFetch, localSet } from "../../lib/utils-local";
 
 export const MovieItem: React.FC<MovieProps> = ({ imageSource, title, teaser, permaLink }) => {
   const [localFavoriteStore, setLocalFavoriteStore] = useState<Movies>(localFetch("favorite"));
