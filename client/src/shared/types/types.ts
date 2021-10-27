@@ -145,3 +145,9 @@ export enum Theme {
   dark,
   dim,
 }
+
+export interface ObserverOptions {
+  root?: Element | null;
+  rootMargin?: string;
+  threshold?: number;
+}

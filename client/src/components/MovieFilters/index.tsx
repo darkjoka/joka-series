@@ -4,35 +4,8 @@ import { Link } from "react-router-dom";
 import { closeSide } from "../../store/actions/navigation";
 import { genreFilter, yearFilter } from "../../shared/constants/filters";
 import { HeadList, Content, FilterObj, Section } from "./MovieFiltersStyle";
-
-interface ObserverOptions {
-  root?: Element | null;
-  rootMargin?: string;
-  threshold?: number;
-}
-
-const useOnScreen = (options: ObserverOptions): [{ current: null | HTMLElement }, boolean] => {
-  const ref: { current: null | HTMLElement } = React.useRef(null);
-  const [onScreen, setOnScreen] = React.useState(false);
-
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      setOnScreen(entry.isIntersecting);
-    }, options);
-
-    const elem = ref.current;
-
-    if (elem) {
-      observer.observe(elem);
-    }
-    return () => {
-      if (elem) {
-        observer.unobserve(elem);
-      }
-    };
-  }, [options]);
-  return [ref, onScreen];
-};
+import { useOnScreen } from "../../shared/hooks/useOnScreen";
+import { ObserverOptions } from "../../shared/types/types";
 
 export const MovieFilters: React.FC<{ parent: { current: null | HTMLElement } }> = ({ parent }) => {
   const options: ObserverOptions = {
