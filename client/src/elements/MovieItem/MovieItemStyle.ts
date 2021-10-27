@@ -108,9 +108,16 @@ export const Icon = styled.svg.attrs({
   position: absolute;
   right: 5px;
   fill: ${theme.secondaryText};
+
   &:hover {
+    @media ${device.laptop}{
     cursor: pointer;
     fill: ${theme.brand};
+  }
+  }
+
+  &:active {
+    fill: ${theme.brand}
   }
 
   @media ${device.tablet} {
