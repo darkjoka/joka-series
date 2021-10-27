@@ -6,7 +6,7 @@ import { SideNav } from "./SideNav";
 import { Content } from "./Content";
 import { BottomNav } from "./BottomNav";
 import { augmentFavorite, augmentHistory } from "../../store/actions/local";
-import { isLocalEmpty, localFetch, localSet } from "../../shared/localStorage";
+import { isLocalEmpty, localFetch, localSet } from "../../shared/lib/local-utils";
 
 export const Layout: React.FC = () => {
   useEffect(() => {
