@@ -13,7 +13,7 @@ export const useFetch = (link: string, callback: Callback = null, condition: boo
       setError(false);
       (async () => {
         try {
-          const response = await fetch("https://jokaseries.herokuapp.com/");
+          const response = await fetch(link);
           const result = await response.json();
           if (callback) callback(result.data);
           setData(result.data);
@@ -27,7 +27,7 @@ export const useFetch = (link: string, callback: Callback = null, condition: boo
       setLoading(false);
       setError(false);
     }; //set states to defaults on unmount => prevent prob of memory leak
-  }, [condition, callback]);
+  }, [condition, callback, link]);
 
   return [error, loading, data];
 };
