@@ -11,6 +11,7 @@ import { closeBottom } from "../../../store/actions/navigation";
 import { StyledNav, InnerNav, Icon, Inner } from "./BottomNavStyle";
 import { DetailState } from "../../../shared/types/types";
 import { MovieDetailSkeleton } from "../../skeleton/MovieDetailSkeleton";
+import { useFetch } from "../../../shared/hooks/useFetch";
 
 const BottomNav: React.FC = () => {
   const [bottomNavigation, link, detail, thumbUrl]: [boolean, string, DetailState, string] = useSelector(
@@ -19,43 +20,8 @@ const BottomNav: React.FC = () => {
     }
   );
 
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(false);
-
-  React.useEffect(() => {
-    if (link && bottomNavigation) {
-      console.log("here got");
-      console.log(thumbUrl);
-      const broken = link.split("/");
-      const handleCurrent = (data: DetailState): void => {
-        pushData(data);
-        console.log("also");
-        // addToHistory();
-        console.log("final");
-
-        setLoading(false);
-      };
-
-      setLoading(true);
-      setError(false);
-      (async () => {
-        try {
-          const response = await fetch(`https://jokaseries.herokuapp.com/detail/${broken[broken.length - 1]}`);
-          const result = await response.json();
-
-          handleCurrent(result.data);
-        } catch (e) {
-          setLoading(false);
-          setError(true);
-        }
-      })();
-
-      return () => {
-        setLoading(false);
-        setError(false);
-      };
-    }
-  }, [link, bottomNavigation, detail, thumbUrl]);
+  const permalink = `https://jokaseries.herokuapp.com/detail/${link}`;
+  const [error, loading] = useFetch(permalink, pushData, Boolean(link && bottomNavigation));
 
   return createPortal(
     <StyledNav isBottomNavOpen={bottomNavigation}>

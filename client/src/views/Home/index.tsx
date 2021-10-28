@@ -8,42 +8,12 @@ import { RootState } from "../../store/reducers";
 import { populate_index } from "../../store/actions/populate";
 import { Movies } from "../../shared/types/types";
 import { useLocal } from "../../shared/hooks/useLocal";
+import { useFetch } from "../../shared/hooks/useFetch";
 
 export const Home = () => {
   const movies: Movies = useSelector((state: RootState) => state.index);
   const [local, setLocal] = useLocal("favorite", [] as Movies);
-
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(false);
-
-  const handlePopulation = (data: Movies): void => {
-    populate_index(data);
-    setLoading(false);
-  };
-
-  React.useEffect(() => {
-    if (movies.length === 0) {
-      setLoading(true);
-      setError(false);
-
-      (async () => {
-        try {
-          const response = await fetch("https://jokaseries.herokuapp.com/");
-          const result = await response.json();
-
-          handlePopulation(result.data);
-        } catch (e) {
-          setLoading(false);
-          setError(true);
-        }
-      })();
-    }
-
-    return () => {
-      setLoading(false);
-      setError(false);
-    }; //set states to defaults on unmount => prevent prob of memory leak
-  }, [movies]);
+  const [error, loading] = useFetch("https://jokaseries.herokuapp.com/", populate_index, movies.length === 0);
 
   return (
     <>
