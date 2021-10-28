@@ -12,7 +12,7 @@ export const Card = styled.div(
   border-radius: 4px 4px 0 0;
   margin: 8px 0px;
   position: relative;
-  background-color: ${theme.primaryBackground};
+  background-color: ${theme.tertiaryBackground};
   font-size: 0.9em;
   display: flex;
   color: ${theme.secondaryText};

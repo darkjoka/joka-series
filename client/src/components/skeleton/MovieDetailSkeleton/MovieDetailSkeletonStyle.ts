@@ -13,10 +13,12 @@ export const Entry = styled.div`
   max-width: 800px;
 `;
 
-export const Hero = styled.div`
+export const Hero = styled.div(
+  ({ theme: { theme } }) => `
   aspect-ratio: 1067/600;
   width: 100%;
-  background: #dddddd;
+  border: 2px solid ${theme.secondaryBackground};
+  background: ${theme.tertiaryBackground};
   border-radius: 8px;
   margin: 16px 0;
   position: relative;
@@ -30,17 +32,21 @@ export const Hero = styled.div`
     left: 0;
     width: 50%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: ${theme.secondaryBackground};
+    opacity: .2;
     z-index: 2;
 
     animation: load 1.5s infinite;
   }
-`;
+`
+);
 
-export const Genre = styled.div`
+export const Genre = styled.div(
+  ({ theme: { theme } }) => `
   width: 100%;
   height: 32px;
-  background-color: #f2f2f2f2;
+  border: 2px solid ${theme.secondaryBackground};
+  background-color: ${theme.tertiaryBackground};
   display: flex;
   margin: 16px 0;
   align-items: center;
@@ -51,7 +57,7 @@ export const Genre = styled.div`
   div {
     width: 100%;
     height: 16px;
-    background-color: #dddddd;
+    background-color: ${theme.secondaryBackground};
     margin: 4px;
     border-radius: 2px;
   }
@@ -63,17 +69,20 @@ export const Genre = styled.div`
     left: 0;
     width: 50%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: ${theme.secondaryBackground};
+    opacity: .3;
     z-index: 2;
     animation: load 1.5s infinite;
   }
-`;
-
-export const Description = styled.div`
+`
+);
+export const Description = styled.div(
+  ({ theme: { theme } }) => `
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #f2f2f2f2;
+  border: 2px solid ${theme.secondaryBackground};
+  background-color: ${theme.tertiaryBackground};
   padding: 8px;
   align-items: center;
   border-radius: 4px;
@@ -84,7 +93,7 @@ export const Description = styled.div`
   div {
     width: 100%;
     height: 16px;
-    background-color: #dddddd;
+    background-color: ${theme.secondaryBackground};
     margin: 4px;
     border-radius: 2px;
   }
@@ -97,15 +106,19 @@ export const Description = styled.div`
     left: 0;
     width: 50%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: ${theme.secondaryBackground};
+    opacity: .3;
     z-index: 2;
 
     animation: load 1.5s infinite;
   }
-`;
+`
+);
 
-export const Accordion = styled.div`
-  background-color: #f2f2f2f2;
+export const Accordion = styled.div(
+  ({ theme: { theme } }) => `
+  border: 2px solid ${theme.secondaryBackground};
+  background-color: ${theme.tertiaryBackground};
   width: 100%;
   margin: 16px 0;
   border-radius: 4px;
@@ -119,7 +132,7 @@ export const Accordion = styled.div`
   div {
     width: 100%;
     height: 52px;
-    background-color: #dddddd;
+    background-color: ${theme.secondaryBackground};
     margin: 4px;
     border-radius: 8px;
   }
@@ -132,9 +145,11 @@ export const Accordion = styled.div`
     left: 0;
     width: 50%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: ${theme.secondaryBackground};
+    opacity: .2;
     z-index: 2;
 
     animation: load 1.5s infinite;
   }
-`;
+`
+);

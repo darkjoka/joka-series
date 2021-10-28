@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
-import { ThemeState } from "../../../shared/types/types";
 import { device } from "../../../shared/constants/device";
 import { bookMarkFilled, preserveAspectRatio } from "../../../shared/constants/svg";
 
-export const Card = styled.div<{ theme: ThemeState }>`
+export const Card = styled.div(
+  ({ theme: { theme } }) => `
   width: 100%;
-  border: 2px solid ${({ theme }) => theme.tertiaryColor};
+  border: 2px solid ${theme.secondaryBackground};
   padding: 2px;
-  border-radius: 4px 4px 0 0;
+  border-radius: 4px;
   margin: 8px 0px;
   position: relative;
-  background-color: ${({ theme }) => theme.primaryColor};
+  background-color: ${theme.tertiaryBackground};
   font-size: 0.9em;
   display: flex;
   overflow: hidden;
@@ -23,8 +23,8 @@ export const Card = styled.div<{ theme: ThemeState }>`
     left: 0;
     width: 50%;
     height: 100%;
-    background-color: ${({ theme }) => theme.tertiaryColor};
-    opacity: 0.5;
+    background-color: ${theme.secondaryBackground};
+    opacity: 0.3;
     z-index: 2;
     animation: load 1.5s infinite;
   }
@@ -43,13 +43,14 @@ export const Card = styled.div<{ theme: ThemeState }>`
       transform: skewX(-20deg) translate(250%);
     }
   }
-`;
+`
+);
 
-export const ImageHold = styled.div<{ theme: ThemeState }>`
+export const ImageHold = styled.div`
   aspect-ratio: 250/350;
   height: 150px;
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.tertiaryColor};
+  background-color: ${({ theme: { theme } }) => theme.secondaryBackground};
 
   @media ${device.tablet} {
     height: 200px;
@@ -59,7 +60,7 @@ export const ImageHold = styled.div<{ theme: ThemeState }>`
   }
 `;
 
-export const CardContent = styled.div<{ teaser: boolean; theme: ThemeState }>`
+export const CardContent = styled.div<{ teaser: boolean }>`
   margin-left: 4px;
   display: flex;
   flex-direction: column;
@@ -73,14 +74,14 @@ export const CardContent = styled.div<{ teaser: boolean; theme: ThemeState }>`
   @media ${device.tablet} {
     margin-left: -1px;
     width: calc(100% + 3px);
-    background-color: ${({ theme }) => theme.primaryColor};
+    background-color: ${({ theme: { theme } }) => theme.tertiaryBackground};
   }
 `;
 
-export const Title = styled.p<{ theme: ThemeState }>`
+export const Title = styled.p`
   width: 70%;
   height: 24px;
-  background-color: ${({ theme }) => theme.tertiaryColor};
+  background-color: ${({ theme: { theme } }) => theme.secondaryBackground};
   border-radius: 2px;
 `;
 
@@ -92,10 +93,10 @@ export const Icon = styled.svg.attrs({
   height: 24px;
   position: absolute;
   right: 5px;
-  fill: ${({ theme }) => theme.tertiaryColor};
+  fill: ${({ theme: { theme } }) => theme.secondaryBackground};
 
   @media ${device.tablet} {
-    fill: ${({ theme }) => theme.primaryColor};
+    fill: ${({ theme: { theme } }) => theme.tertiaryBackground};
     top: 5px;
   }
 `;
@@ -108,14 +109,14 @@ export const AltButtons = styled.div`
   div {
     width: 80px;
     height: 28px;
-    background-color: ${({ theme }) => theme.accentColor};
+    background-color: ${({ theme: { theme } }) => theme.secondaryBackground};
     margin: 4px;
   }
 `;
 
-export const Teaser = styled.div<{ theme: ThemeState }>`
+export const Teaser = styled.div`
   height: 12px;
-  background-color: ${({ theme }) => theme.tertiaryColor};
+  background-color: ${({ theme: { theme } }) => theme.secondaryBackground};
   margin: 4px;
   border-radius: 2px;
 `;
