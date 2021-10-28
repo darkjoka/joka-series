@@ -2,17 +2,18 @@ import styled from "styled-components";
 import { DISCORD_DARK, RED, GENERIC_BORDER, GREEN } from "../../shared/constants/colors";
 import { device } from "../../shared/constants/device";
 import { cheveron, preserveAspectRatio } from "../../shared/constants/svg";
+import { theme } from "../../themes/base";
 
 export const AccordionContainer = styled.div`
   margin: 8px 0;
-  border: 1px solid gainsboro;
+  border: 2px solid ${({ theme: { theme } }) => theme.secondaryBackground};
   border-radius: 4px;
 `;
 
 export const AccordionHead = styled.div<{ isOpen: boolean }>`
   width: 100%;
   height: 52px;
-  background-color: white;
+  background-color: ${({ theme: { theme } }) => theme.tertiaryBackground};
   transition: all 0.5s ease;
   position: relative;
   ${({ isOpen }) => {
@@ -23,30 +24,22 @@ export const AccordionHead = styled.div<{ isOpen: boolean }>`
   justify-content: space-between;
   padding: 0 16px;
   cursor: pointer;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 52px;
-    left: 0;
-    right: 0;
-    height: 26px;
-    background: linear-gradient(to bottom, #bbbaba2b, transparent);
-    max-height: ${({ isOpen }) => {
-      return isOpen ? "26px" : "0;";
-    }};
-    transition: all 0.5s ease;
-  }
+  ${({ isOpen, theme: { theme } }) => {
+    return isOpen ? `box-shadow: 0 10px 24px ${-4.2 / theme.shadowStrength}px ${theme.shadow}` : "";
+  }};
+  transition: box-shadow, border-radius -0.5s ease;
+  color: ${({ theme: { theme } }) => theme.primaryText};
 `;
 
-export const AccordionBody = styled.div<{ isOpen: boolean }>`
+export const AccordionBody = styled.div<{ isOpen: boolean; members: number }>`
   width: 100%;
-  // background-color: white;
+  background-color: ${({ theme: { theme } }) => theme.primaryBackground};
   overflow: hidden;
   padding: 0 10px;
+  color: ${({ theme: { theme } }) => theme.secondaryText};
 
-  ${({ isOpen }) => {
-    return isOpen ? "max-height:2000px;" : "max-height:0px;";
+  ${({ isOpen, members }) => {
+    return isOpen ? `max-height: ${72 * members}px` : "max-height: 0";
   }};
   transition: all 0.5s ease;
 `;
@@ -58,22 +51,24 @@ export const Icon = styled.svg.attrs({
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  fill: white;
+  fill: ${({ theme: { theme } }) => theme.primaryText};
+  background: ${({ theme: { theme } }) => theme.brand};
 
   ${({ isOpen }) => {
     return isOpen
-      ? `background: ${RED};`
+      ? ""
       : `transform: rotate(180deg);
-      background: ${DISCORD_DARK}; `;
+      `;
   }}
+
   transition: all 0.5s ease;
 `;
 
 export const Epi = styled.div`
   height: 64px;
   margin: 8px 0;
-  // background: white;
-  border-bottom: 1px solid ${GENERIC_BORDER};
+
+  border-bottom: 1px solid ${({ theme: { theme } }) => theme.secondaryBackground};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -98,12 +93,12 @@ export const Size = styled.div`
 
 export const Button = styled.div`
   margin-left: 16px;
-  background: ${GREEN};
+  background: ${({ theme: { theme } }) => theme.brand};
   padding: 8px;
   border-radius: 4px;
 
   a {
-    color: white;
+    color: ${({ theme: { theme } }) => theme.primaryText};
     text-decoration: none;
   }
 `;

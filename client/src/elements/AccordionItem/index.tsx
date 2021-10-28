@@ -29,7 +29,7 @@ export const AccordionItem: React.FC<AccordionProps> = ({ index, value, handleAc
             <path d={cheveron.path}></path>
           </Icon>
         </AccordionHead>
-        <AccordionBody isOpen={value}>
+        <AccordionBody isOpen={value} members={episodes.length}>
           {episodes.map(({ episodeTitle, episodeSize, episodeDownloadLink }) => {
             return (
               <Epi key={episodeDownloadLink}>
