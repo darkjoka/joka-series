@@ -12,6 +12,9 @@ export const MovieItem: React.FC<MovieProps> = ({ imageSource, title, teaser, pe
     setLocal(localToggle("favorite", { imageSource, title, teaser, permaLink }, local));
   };
 
+  const essentials = permaLink.split("/");
+  permaLink = essentials[essentials.length - 1];
+
   const handleDownload = () => {
     pushLink(permaLink);
     pushThumbUrl(imageSource);
