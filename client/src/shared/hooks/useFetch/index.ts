@@ -8,15 +8,19 @@ export const useFetch = (link: string, callback: Callback = null, condition: boo
   const [data, setData] = React.useState();
 
   React.useEffect(() => {
+    setLoading(true);
+    setError(false);
+
     if (condition) {
-      setLoading(true);
-      setError(false);
       (async () => {
         try {
           const response = await fetch(link);
           const result = await response.json();
+
           if (callback) callback(result.data);
           setData(result.data);
+
+          setLoading(false);
         } catch (e) {
           setLoading(false);
           setError(true);
