@@ -1,8 +1,6 @@
 import styled from "styled-components";
-import { DISCORD_DARK, RED, GENERIC_BORDER, GREEN } from "../../shared/constants/colors";
 import { device } from "../../shared/constants/device";
 import { cheveron, preserveAspectRatio } from "../../shared/constants/svg";
-import { theme } from "../../themes/base";
 
 export const AccordionContainer = styled.div`
   margin: 8px 0;
