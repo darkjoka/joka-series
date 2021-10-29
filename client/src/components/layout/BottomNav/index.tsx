@@ -14,11 +14,9 @@ import { MovieDetailSkeleton } from "../../skeleton/MovieDetailSkeleton";
 import { useFetch } from "../../../shared/hooks/useFetch";
 
 const BottomNav: React.FC = () => {
-  const [bottomNavigation, link, detail, thumbUrl]: [boolean, string, DetailState, string] = useSelector(
-    (state: RootState) => {
-      return [state.navigation.isBottomSectOpen, state.current.link, state.current.detail, state.current.thumbUrl];
-    }
-  );
+  const [bottomNavigation, link, detail]: [boolean, string, DetailState] = useSelector((state: RootState) => {
+    return [state.navigation.isBottomSectOpen, state.current.link, state.current.detail];
+  });
 
   const permalink = `https://jokaseries.herokuapp.com/detail/${link}`;
   const [error, loading] = useFetch(permalink, pushData, Boolean(link && bottomNavigation));
