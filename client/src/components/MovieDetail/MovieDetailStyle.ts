@@ -15,6 +15,7 @@ export const Entry = styled.div`
 
 export const Title = styled.p`
   text-align: center;
+  color: ${({ theme: { theme } }) => theme.primaryText};
 `;
 
 export const Genre = styled.div`
@@ -24,6 +25,7 @@ export const Genre = styled.div`
   align-items: center;
   border-radius: 4px;
   flex-wrap: wrap;
+  color: ${({ theme: { theme } }) => theme.secondaryText};
 
   span {
     margin: 2px 4px;
@@ -42,4 +44,5 @@ export const Hero = styled.div<{ image: string }>`
 
 export const Description = styled.div`
   margin: 16px 0px;
+  color: ${({ theme: { theme } }) => theme.secondaryText};
 `;
