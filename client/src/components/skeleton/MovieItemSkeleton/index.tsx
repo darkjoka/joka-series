@@ -2,7 +2,7 @@ import React from "react";
 
 import { bookMarkFilled } from "../../../shared/constants/svg";
 import { MovieCardProps } from "../../../shared/types/types";
-import { Card, ImageHold, CardContent, Title, Teaser, AltButtons, Icon } from "./MovieItemSkeletonStyle";
+import { Card, ImageHold, CardContent, Title, Teaser, AltButtons, Icon } from "./style";
 
 export const MovieItemSkeleton: React.FC<MovieCardProps> = ({ teaser }) => {
   return (

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Section } from "../../Section";
 import { openSide } from "../../../store/actions/navigation";
 import { toggleDark, toggleDim, toggleLight } from "../../../store/actions/theme";
-import { Nav, Hold, Icon, BaseSection, IconSect, ThemeIcon } from "./TopNavStyle";
+import { Nav, Hold, Icon, BaseSection, IconSect, ThemeIcon } from "./style";
 import { bookMarkFilled, dim, home, menu, moon, recent, sun } from "../../../shared/constants/svg";
 import { getTheme } from "../../../store/reducers/theme";
 import { Theme } from "../../../shared/types/types";

@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import { close } from "../../../shared/constants/svg";
 import { Pattern } from "../../Pattern";
-import { StyledHero, FormHold, FormInner, InputHold, Icon } from "./HeroStyle";
+import { StyledHero, FormHold, FormInner, InputHold, Icon } from "./style";
 
 export const Hero: React.FC = () => {
   const [searchTerm, setSearchTerm] = React.useState("");

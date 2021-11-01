@@ -7,7 +7,7 @@ import { Filter } from "../../../views/Filter";
 import { Search } from "../../../views/Search";
 import { History } from "../../../views/History";
 import { Favorite } from "../../../views/Favorite";
-import { StyledContent, SectionHold } from "./ContentStyle";
+import { StyledContent, SectionHold } from "./style";
 
 export const Content: React.FC = () => {
   return (

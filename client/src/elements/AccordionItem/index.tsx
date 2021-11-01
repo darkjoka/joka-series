@@ -2,16 +2,7 @@ import React from "react";
 
 import { cheveron } from "../../shared/constants/svg";
 import { AccordionProps } from "../../shared/types/types";
-import {
-  AccordionContainer,
-  AccordionHead,
-  Icon,
-  AccordionBody,
-  Epi,
-  Download,
-  Size,
-  Button,
-} from "./AccordionItemStyle";
+import { AccordionContainer, AccordionHead, Icon, AccordionBody, Epi, Download, Size, Button } from "./style";
 
 export const AccordionItem: React.FC<AccordionProps> = ({ index, value, handleAccordion, season, episodes }) => {
   return (

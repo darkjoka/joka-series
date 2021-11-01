@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { closeSide } from "../../store/actions/navigation";
 import { genreFilter, yearFilter } from "../../shared/constants/filters";
-import { HeadList, Content, FilterObj, Section } from "./MovieFiltersStyle";
+import { HeadList, Content, FilterObj, Section } from "./style";
 import { useOnScreen } from "../../shared/hooks/useOnScreen";
 import { ObserverOptions } from "../../shared/types/types";
 

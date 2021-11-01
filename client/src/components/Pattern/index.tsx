@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Wrapper, Row } from "./PatternStyle";
+import { Wrapper, Row } from "./style";
 
 export const Pattern = () => {
   return (

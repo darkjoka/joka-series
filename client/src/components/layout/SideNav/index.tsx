@@ -7,7 +7,7 @@ import { MovieFilters } from "../../MovieFilters";
 import { RootState } from "../../../store/reducers";
 import { closeSide } from "../../../store/actions/navigation";
 import { bookMarkFilled, close, home, recent } from "../../../shared/constants/svg";
-import { SuperNav, StyledNav, Icon, BaseSection, IconSect, StyledOther } from "./SideNav";
+import { SuperNav, StyledNav, Icon, BaseSection, IconSect, StyledOther } from "./style";
 
 export const SideNav: React.FC = () => {
   const sideNavigation: boolean = useSelector((state: RootState) => state.navigation.isSideNavOpen);

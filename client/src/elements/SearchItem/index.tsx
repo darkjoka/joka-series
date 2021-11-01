@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container } from "./SearchItemStyle";
+import { Container } from "./style";
 import { pushLink } from "../../store/actions/current";
 import { openBottom } from "../../store/actions/navigation";
 

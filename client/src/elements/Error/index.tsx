@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ErrorBox } from "./ErrorStyle";
+import { ErrorBox } from "./style";
 
 export const Error = () => {
   return (

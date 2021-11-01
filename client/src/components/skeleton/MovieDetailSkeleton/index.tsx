@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SupEntry, Entry, Hero, Genre, Description, Accordion } from "./MovieDetailSkeletonStyle";
+import { SupEntry, Entry, Hero, Genre, Description, Accordion } from "./style";
 
 export const MovieDetailSkeleton: React.FC = () => {
   return (

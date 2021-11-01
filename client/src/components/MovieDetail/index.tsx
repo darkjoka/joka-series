@@ -2,7 +2,7 @@ import React from "react";
 
 import { Accordion } from "../Accordion";
 import { DetailState } from "../../shared/types/types";
-import { SupEntry, Entry, Hero, Title, Genre, Description } from "./MovieDetailStyle";
+import { SupEntry, Entry, Hero, Title, Genre, Description } from "./style";
 
 export const MovieDetail: React.FC<DetailState> = ({ heroImage, genres, description, seasonEpisodes, title }) => {
   return (

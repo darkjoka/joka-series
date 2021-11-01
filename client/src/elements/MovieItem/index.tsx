@@ -4,7 +4,7 @@ import { pushLink, pushThumbUrl } from "../../store/actions/current";
 import { openBottom } from "../../store/actions/navigation";
 import { MovieProps } from "../../shared/types/types";
 import { bookMark, bookMarkFilled, camera } from "../../shared/constants/svg";
-import { Card, ImageHold, CamIcon, CardContent, Title, AltButtons, Download, Icon, Favorite } from "./MovieItemStyle";
+import { Card, ImageHold, CamIcon, CardContent, Title, AltButtons, Download, Icon, Favorite } from "./style";
 import { localToggle } from "../../lib/utils-local";
 
 export const MovieItem: React.FC<MovieProps> = ({ imageSource, title, teaser, permaLink, local, setLocal }) => {

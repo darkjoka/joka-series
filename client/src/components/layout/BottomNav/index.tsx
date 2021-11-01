@@ -8,7 +8,7 @@ import { RootState } from "../../../store/reducers";
 import { close } from "../../../shared/constants/svg";
 import { pushData } from "../../../store/actions/current";
 import { closeBottom } from "../../../store/actions/navigation";
-import { StyledNav, InnerNav, Icon, Inner } from "./BottomNavStyle";
+import { StyledNav, InnerNav, Icon, Inner } from "./style";
 import { DetailState } from "../../../shared/types/types";
 import { MovieDetailSkeleton } from "../../skeleton/MovieDetailSkeleton";
 import { useFetch } from "../../../shared/hooks/useFetch";
