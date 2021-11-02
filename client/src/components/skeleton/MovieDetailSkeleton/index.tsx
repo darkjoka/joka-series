@@ -8,19 +8,19 @@ export const MovieDetailSkeleton: React.FC = () => {
       <Entry>
         <Hero></Hero>
         <Genre>
-          {[...Array(4)].map((num) => {
-            return <div key={num}></div>;
+          {[...Array(4)].map((_, idx) => {
+            return <div key={idx}></div>;
           })}
         </Genre>
         <Description>
-          {[...Array(8)].map((num) => {
-            return <div key={num}></div>;
+          {[...Array(8)].map((_, idx) => {
+            return <div key={idx}></div>;
           })}
         </Description>
 
         <Accordion>
-          {[...Array(4)].map((num) => {
-            return <div key={num}></div>;
+          {[...Array(4)].map((_, idx) => {
+            return <div key={idx}></div>;
           })}
         </Accordion>
       </Entry>
