@@ -49,6 +49,7 @@ export const Hero = styled.div`
     height: inherit;
     display: grid;
     place-items: center;
+    width: inherit;
   }
 `;
 
