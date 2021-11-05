@@ -13,13 +13,16 @@ import { DetailState } from "../../../shared/types/types";
 import { MovieDetailSkeleton } from "../../skeleton/MovieDetailSkeleton";
 import { useFetch } from "../../../shared/hooks/useFetch";
 
+let prevlink: string;
+
 const BottomNav: React.FC = () => {
   const [bottomNavigation, link, detail]: [boolean, string, DetailState] = useSelector((state: RootState) => {
     return [state.navigation.isBottomSectOpen, state.current.link, state.current.detail];
   });
 
   const permalink = `https://jokaseries.herokuapp.com/detail/${link}`;
-  const [error, loading] = useFetch(permalink, pushData, Boolean(link && bottomNavigation));
+  const [error, loading] = useFetch(permalink, pushData, prevlink === link); // only load new data if prevlink is not current link Note: still confused though
+  prevlink = link;
 
   return createPortal(
     <StyledNav isBottomNavOpen={bottomNavigation}>
