@@ -15,7 +15,6 @@ export const useFetch = (link: string, callback: Callback = null, condition: boo
         try {
           const response = await fetch(link);
           const result = await response.json();
-          console.log("did fetching");
 
           if (callback) callback(result.data);
           setData(result.data);
