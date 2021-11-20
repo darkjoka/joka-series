@@ -21,7 +21,7 @@ const BottomNav: React.FC = () => {
   });
 
   const permalink = `https://jokaseries.herokuapp.com/detail/${link}`;
-  const [error, loading] = useFetch(permalink, pushData, prevlink !== link); // only load new data if prevlink is not current link
+  const [error, loading] = useFetch(permalink, pushData, prevlink === link); // only load new data if prevlink is not current link
   prevlink = link;
 
   return createPortal(
