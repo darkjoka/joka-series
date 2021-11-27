@@ -24,7 +24,7 @@
   "include": [
     "src",
     "fonts"
-  ],
+   ],
   "exclude": [
     "node_modules"
   ]
