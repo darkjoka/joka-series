@@ -26,7 +26,7 @@ export const SideNav: React.FC = () => {
         </Icon>
 
         <BaseSection>
-          <Link href="/">
+          <Link href="/" passHref>
             <a onClick={closeSide}>
               <Section label={"Home"}>
                 <IconSect viewBox={home.viewBox}>
@@ -36,7 +36,7 @@ export const SideNav: React.FC = () => {
             </a>
           </Link>
 
-          <Link href="/favorite">
+          <Link href="/favorite" passHref>
             <a onClick={closeSide}>
               <Section label={"Favorited"}>
                 <IconSect viewBox={bookMarkFilled.viewBox}>
@@ -46,7 +46,7 @@ export const SideNav: React.FC = () => {
             </a>
           </Link>
 
-          <Link href="/history">
+          <Link href="/history" passHref>
             <a onClick={closeSide}>
               <Section label={"History"}>
                 <IconSect viewBox={recent.viewBox}>
