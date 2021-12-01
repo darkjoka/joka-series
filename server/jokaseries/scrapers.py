@@ -1,10 +1,10 @@
-from typing import Dict, List
+from .views import baseUrl
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet
-import requests
 from requests.models import Response
+from typing import Dict, List, Set
 import os
-
+import requests
 
 movieType = Dict[str, str]
 seasonEpisodeType = Dict[str, Dict[str, List[Dict[str, str]]]]
@@ -16,6 +16,11 @@ def getFromIndex(pageLink: str):
     articles: ResultSet = soup.find_all(class_="uk-article")
 
     series: List[movieType] = []
+    try:
+        gallery: Set[str] = (os.listdir("gallery"))
+    except FileNotFoundError:
+        gallery = set()
+        
 
     for article in articles:
         title: str = article.find(class_="uk-article-title1").get_text().strip()
@@ -25,7 +30,7 @@ def getFromIndex(pageLink: str):
         rating: str = article.find(class_="current-rating").get_text().strip()
         teaser: str = article.find(class_="teasershort").get_text().strip()
 
-        imageSource = getImage(imageSource)
+        imageSource = getImage(imageSource, gallery)
 
         movie: movieType = {
             "title": title,
@@ -92,6 +97,13 @@ def getDetails(pageLink: str):
     episodeHeads: ResultSet = soup.find_all(class_="uk-accordion-content")
 
     seasonEpisodes: List[seasonEpisodeType] = []
+
+    try:
+        gallery: Set[str] = (os.listdir("gallery"))
+    except FileNotFoundError:
+        gallery = set()
+    
+    heroImage = getImage(heroImage,gallery)
 
     for seasonHead, episodeHead in zip(seasonHeads, episodeHeads):
         head: str = seasonHead.get_text().strip()
@@ -170,8 +182,8 @@ def getSearchResult(permaLink: str):
     return searchResults
 
 
-def getImage(link: str, dir):
-    mime: Response = requests.get(link)
+def getImage(link: str, dir: Set[str])->str:
+    mime: Response = requests.get(f"{baseUrl}/{link}")
     os.makedirs("gallery", exist_ok=True)
 
     if link in dir:
