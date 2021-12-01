@@ -1,8 +1,11 @@
+import os
 from typing import Dict, List, Union
 import json
+from django.http.response import HttpResponse
 
 from requests.compat import quote_plus
 from django.http import JsonResponse
+from django.http import FileResponse
 
 from . import scrapers
 
@@ -46,3 +49,9 @@ def filter(request, type):
     print(finalUrl)
     result = scrapers.getFilteredSearch(finalUrl)
     return JsonResponse({"data": result}, json_dumps_params={"indent": 2})
+
+
+def image(request, img: str):
+    extension: str = img.split('.')[-1]
+    with open("./jokaseries/gallery/img", "rb") as file:
+        return HttpResponse(file, content_type = f'image/{extension}')
