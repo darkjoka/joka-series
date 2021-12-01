@@ -9,4 +9,5 @@ urlpatterns = [
     path("detail/<str:series>/", views.detail, name="detail"),
     path("trailers/", views.trailers, name="trailers"),
     path("filter/<str:type>", views.filter, name="filter"),
+    path('image/<str:img>', views.image, name="image")
 ]
