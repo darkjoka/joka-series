@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from bs4.element import ResultSet
 import requests
 from requests.models import Response
+import os
 
 
 movieType = Dict[str, str]
@@ -23,6 +24,8 @@ def getFromIndex(pageLink: str):
         lastEpisode: str = article.find("time").get("datetime")
         rating: str = article.find(class_="current-rating").get_text().strip()
         teaser: str = article.find(class_="teasershort").get_text().strip()
+
+        imageSource = getImage(imageSource)
 
         movie: movieType = {
             "title": title,
@@ -165,3 +168,17 @@ def getSearchResult(permaLink: str):
         searchResults.append({"title": title, "permaLink": permaLink})
 
     return searchResults
+
+
+def getImage(link: str, dir):
+    mime: Response = requests.get(link)
+    os.makedirs("gallery", exist_ok=True)
+
+    if link in dir:
+        return f"image/{link}"
+
+    with open(f"gallery/{link}", "wb") as file:
+        for chunk in mime.iter_content(100000):
+            file.write(chunk)
+    return f"image/{link}"
+
