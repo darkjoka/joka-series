@@ -52,6 +52,7 @@ def filter(request, type):
 
 
 def image(request, img: str):
-    extension: str = img.split('.')[-1]
-    with open("./jokaseries/gallery/img", "rb") as file:
-        return HttpResponse(file, content_type = f'image/{extension}')
+    extension: str = img.split(".")[-1]
+
+    with open(f"./gallery/{img}", "rb") as file:
+        return HttpResponse(file, content_type=f"image/{extension}")
