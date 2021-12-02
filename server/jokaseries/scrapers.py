@@ -1,4 +1,3 @@
-from .views import baseUrl
 from bs4 import BeautifulSoup
 from bs4.element import ResultSet
 from requests.models import Response
@@ -9,6 +8,8 @@ import requests
 movieType = Dict[str, str]
 seasonEpisodeType = Dict[str, Dict[str, List[Dict[str, str]]]]
 
+baseUrl = "http://www.todaytvseries2.com/"
+
 
 def getFromIndex(pageLink: str):
     mime: Response = requests.get(pageLink)
@@ -17,10 +18,9 @@ def getFromIndex(pageLink: str):
 
     series: List[movieType] = []
     try:
-        gallery: Set[str] = (os.listdir("gallery"))
+        gallery: Set[str] = os.listdir("gallery")
     except FileNotFoundError:
         gallery = set()
-        
 
     for article in articles:
         title: str = article.find(class_="uk-article-title1").get_text().strip()
@@ -99,11 +99,11 @@ def getDetails(pageLink: str):
     seasonEpisodes: List[seasonEpisodeType] = []
 
     try:
-        gallery: Set[str] = (os.listdir("gallery"))
+        gallery: Set[str] = os.listdir("gallery")
     except FileNotFoundError:
         gallery = set()
-    
-    heroImage = getImage(heroImage,gallery)
+
+    heroImage = getImage(heroImage, gallery)
 
     for seasonHead, episodeHead in zip(seasonHeads, episodeHeads):
         head: str = seasonHead.get_text().strip()
@@ -182,15 +182,16 @@ def getSearchResult(permaLink: str):
     return searchResults
 
 
-def getImage(link: str, dir: Set[str])->str:
-    mime: Response = requests.get(f"{baseUrl}/{link}")
+def getImage(link: str, dir: Set[str]) -> str:
     os.makedirs("gallery", exist_ok=True)
+
+    link = link.split("/")[-1]
 
     if link in dir:
         return f"image/{link}"
 
+    mime: Response = requests.get(f"{baseUrl}/{link}")
     with open(f"gallery/{link}", "wb") as file:
         for chunk in mime.iter_content(100000):
             file.write(chunk)
     return f"image/{link}"
-
