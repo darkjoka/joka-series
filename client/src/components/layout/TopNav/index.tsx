@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 import { Section } from "../../Section";
 import { openSide } from "../../../store/actions/navigation";
@@ -19,7 +19,7 @@ export const TopNav: React.FC = () => {
           <path d={menu.path}></path>
         </Icon>
         <BaseSection>
-          <Link to="/">
+          <Link href="/">
             <Section label={"Home"}>
               <IconSect viewBox={home.viewBox}>
                 <path d={home.path}></path>
@@ -27,7 +27,7 @@ export const TopNav: React.FC = () => {
             </Section>
           </Link>
 
-          <Link to="/favorite">
+          <Link href="/favorite">
             <Section label={"Favorited"}>
               <IconSect viewBox={bookMarkFilled.viewBox}>
                 <path d={bookMarkFilled.path}></path>
@@ -35,7 +35,7 @@ export const TopNav: React.FC = () => {
             </Section>
           </Link>
 
-          <Link to="/history">
+          <Link href="/history">
             <Section label={"History"}>
               <IconSect viewBox={recent.viewBox}>
                 <path d={recent.path}></path>

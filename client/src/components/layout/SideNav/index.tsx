@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { useSelector } from "react-redux";
 
 import { Section } from "../../Section";
@@ -26,28 +26,34 @@ export const SideNav: React.FC = () => {
         </Icon>
 
         <BaseSection>
-          <Link to="/" onClick={closeSide}>
-            <Section label={"Home"}>
-              <IconSect viewBox={home.viewBox}>
-                <path d={home.path}></path>
-              </IconSect>
-            </Section>
+          <Link href="/" passHref>
+            <a onClick={closeSide}>
+              <Section label={"Home"}>
+                <IconSect viewBox={home.viewBox}>
+                  <path d={home.path}></path>
+                </IconSect>
+              </Section>
+            </a>
           </Link>
 
-          <Link to="/favorite" onClick={closeSide}>
-            <Section label={"Favorited"}>
-              <IconSect viewBox={bookMarkFilled.viewBox}>
-                <path d={bookMarkFilled.path}></path>
-              </IconSect>
-            </Section>
+          <Link href="/favorite" passHref>
+            <a onClick={closeSide}>
+              <Section label={"Favorited"}>
+                <IconSect viewBox={bookMarkFilled.viewBox}>
+                  <path d={bookMarkFilled.path}></path>
+                </IconSect>
+              </Section>
+            </a>
           </Link>
 
-          <Link to="/history" onClick={closeSide}>
-            <Section label={"History"}>
-              <IconSect viewBox={recent.viewBox}>
-                <path d={recent.path}></path>
-              </IconSect>
-            </Section>
+          <Link href="/history" passHref>
+            <a onClick={closeSide}>
+              <Section label={"History"}>
+                <IconSect viewBox={recent.viewBox}>
+                  <path d={recent.path}></path>
+                </IconSect>
+              </Section>
+            </a>
           </Link>
         </BaseSection>
 

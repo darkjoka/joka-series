@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 import { closeSide } from "../../store/actions/navigation";
 import { genreFilter, yearFilter } from "../../shared/constants/filters";
@@ -36,7 +36,7 @@ export const MovieFilters: React.FC<{ parent: { current: null | HTMLElement } }>
           {genreFilter.map((genre, index) => {
             return (
               <FilterObj key={index} onClick={closeSide}>
-                <Link to={`/filter/${genre.toLowerCase()}`}>{genre}</Link>
+                <Link href={`/filter/${genre.toLowerCase()}`}>{genre}</Link>
               </FilterObj>
             );
           })}
@@ -45,7 +45,7 @@ export const MovieFilters: React.FC<{ parent: { current: null | HTMLElement } }>
           {yearFilter.map((year, index) => {
             return (
               <FilterObj key={index} onClick={closeSide}>
-                <Link to={`/filter/${year}`}>{year}</Link>
+                <Link href={`/filter/${year}`}>{year}</Link>
               </FilterObj>
             );
           })}

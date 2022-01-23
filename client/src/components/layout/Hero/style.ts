@@ -16,7 +16,7 @@ export const FormHold = styled.div`
   position: absolute;
   display: grid;
   place-items: center;
-  top: calc(64px + 8em);
+  top: 8em;
 `;
 
 export const FormInner = styled.div(

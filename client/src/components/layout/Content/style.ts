@@ -4,7 +4,6 @@ import { device } from "../../../shared/constants/device";
 
 export const StyledContent = styled.main`
   width: 100vw;
-  padding-top: 64px;
 
   section {
     padding: 8px;
